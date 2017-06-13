@@ -1,0 +1,153 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.jakewharton.butterknife'
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    useLibrary 'org.apache.http.legacy'
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders = [
+                GETUI_APP_ID    : "WpKCCUBUtJ7qdM7BgwsTLA",
+                GETUI_APP_KEY   : "dVDPLPnamz6arzy4h6hGu2",
+                GETUI_APP_SECRET: "bVoEEya7W37RJ0e2nLg7R6",
+                GD_API_SECRET : "382c608d07f7b7ca966475479b6e67cd"
+        ]
+        renderscriptTargetApi 23
+        renderscriptSupportModeEnabled true
+
+
+    }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/notice.txt'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+
+    //底层框架层 包括bug收集和插件化框架
+    //    compile project(':unzip')
+    //    compile project(':rtsplib')
+    //    compile project(':vlcvideo')
+    //    compile project(':swipemenu')
+    compile project(':mupdf')
+    compile project(':blackframe')
+    //侧滑
+    compile project(':common')
+    //通用工具集
+    compile project(':verticalrefreshlayout')
+    //下拉刷新
+    //    compile project(':kjhttp')
+    //    compile files('libs/pinyin4j-2.5.0.jar')//拼音帮助包
+    compile files('libs/kjhttp.jar')
+    //网络请求包
+    //    compile files('libs/AMap3DMap_5.0.0_AMapSearch_5.0.0_20170311.jar')//地图包
+    compile files('libs/GetuiSDK2.10.2.0.jar')
+    //个推包
+    //----------------------------------------------------
+    compile('com.android.support:design:' + rootProject.supportVersion)
+    compile('com.android.support:cardview-v7:' + rootProject.supportVersion)
+    //design包
+    //--------------------------------------------------
+    compile 'com.jakewharton:butterknife:8.5.1'
+    //butterknife包
+    annotationProcessor('com.jakewharton:butterknife-compiler:8.5.1')
+    //butterknife包
+    //-----------------------------------------------------
+    //    compile 'com.github.pedroSG94.rtmp-rtsp-stream-client-java:builder:1.0.3'  面对面视屏链接的udp tcp上传本地视频用的
+    compile('com.sandrios.android:sandriosCamera:1.0.9') { exclude module: 'ucrop' }
+    //相机+录像
+    //    compile 'com.mindorks:paracamera:0.2.2'//相机+录像备选
+    compile 'com.github.PhilJay:MPAndroidChart:v3.0.2@aar'
+    //图表库
+    compile 'com.github.barteksc:android-pdf-viewer:2.5.1@aar'
+    //pdf预览库
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    //图片加载库
+    //    compile 'com.google.zxing:core:3.3.0'
+    compile('cn.yipianfengye.android:zxing-library:2.1') { //二维码扫描
+        exclude group: 'com.google.zxing'
+    }
+    compile('com.github.yalantis:ucrop:2.2.1') {//图片裁剪
+        exclude group: 'com.android.support'
+        exclude group: 'com.squareup'
+        exclude group: 'com.squareup.okhttp'
+        exclude group: 'com.squareup.okhttp3'
+        exclude group: 'com.squareup.okio'
+    }
+    compile 'com.wangdafa:PausableRecordLib:1.0.1'
+    //一个可以暂停-继续的音频录制库
+    compile('com.github.yalantis:ucrop:2.2.1-native') {//图片裁剪
+        exclude group: 'com.android.support'
+        exclude group: 'com.squareup'
+        exclude group: 'com.squareup.okhttp'
+        exclude group: 'com.squareup.okhttp3'
+        exclude group: 'com.squareup.okio'
+    }
+    compile('com.github.adrielcafe:AndroidAudioRecorder:0.3.0@aar') {//录音
+        exclude group: 'com.android.support'
+    }
+    compile('cn.finalteam:galleryfinal:1.4.8.7@aar') { exclude group: 'com.android.support' }
+    //相册
+    compile('com.nbsp:library:1.2@aar') { exclude group: 'com.android.support' }
+    compile('com.zhy:autolayout:1.4.5@aar') { exclude group: 'com.android.support' }
+    //适配库
+    //    compile('com.airbnb.android:lottie:1.5.3@aar') { exclude group: 'com.android.support' }//ae动画库
+    compile('me.shaohui.advancedluban:library:1.3.5') {//图片压缩库
+        exclude group: 'io.reactivex'
+        exclude group: 'com.android.support'
+    }
+    compile 'io.reactivex.rxjava2:rxjava:2.1.0'
+    //rxjava
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    //rxandroid
+    compile('q.rorbin:badgeview:1.1.0') { exclude group: 'com.android.support' }
+    //红点库
+    compile('com.jzxiang.pickerview:TimePickerDialog:1.0.1') {//时间选择器
+        exclude group: 'com.android.support'
+    }
+    compile('com.github.hss01248:DialogUtil:1.1.4') {//dialog库
+        exclude group: 'com.android.support'
+    }
+    compile('com.squareup.sqlbrite:sqlbrite:1.1.1') {//数据库增强
+        exclude group: 'io.reactivex'
+        exclude group: 'com.android.support'
+    }
+    compile 'com.amap.api:navi-3dmap:5.1.0'
+    //地图包
+    compile 'com.amap.api:search:5.1.0'
+    //地图包
+    compile 'com.amap.api:location:3.4.0'
+    //地图包
+    //-----------------------------------------------------
+    compile 'com.srxlike.itextpdf:itextpdf:1.0.12.1'
+    //itxt库 写pdf用
+    compile('com.srxlike.rtsplib2:rtsplib2:1.0.3') { exclude group: 'com.android.support' }
+    //rtsp
+    compile('com.srxlike.unzip:unzip:1.0.0') { exclude group: 'com.android.support' }
+    //解压文件
+    compile('com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar') {
+        exclude group: 'com.android.support'
+    }
+    //tab页面
+    compile('q.rorbin:VerticalTabLayout:1.2.2') { exclude group: 'com.android.support' }
+    //竖直tab
+    //    compile ("de.mrmaffen:vlc-android-sdk:2.0.6"){ exclude group: 'com.android.support' }
+    compile project(':navlibrary')
+}
