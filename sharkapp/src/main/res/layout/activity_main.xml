@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawerlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--<com.brioal.swipemenu.view.SwipeMenu-->
+        <!--android:id="@+id/slm"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:background="@drawable/img_frame_background">-->
+        <!--<include-->
+            <!--layout="@layout/activity_leftmenu"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent" />-->
+
+        <include
+            android:id="@+id/mainmenu"
+            layout="@layout/activity_mainmenu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    <!--</com.brioal.swipemenu.view.SwipeMenu>-->
+    <!--<android.support.design.widget.NavigationView-->
+        <!--android:id="@+id/navigation"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_gravity="start" />-->
+</LinearLayout>

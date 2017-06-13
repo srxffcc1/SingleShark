@@ -1,0 +1,75 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.jakewharton.butterknife'
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    enforceUniquePackageName = false
+    defaultConfig {
+        applicationId "com.shark.app"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        resConfigs "en", "zh"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        ndk {
+            // 设置支持的SO库架构
+            abiFilters  'armeabi-v7a'//,'x86', 'x86_64', 'arm64-v8a','armeabi',armeabi-v7a
+        }
+    }
+    dexOptions {
+        preDexLibraries = false
+        javaMaxHeapSize "2g"
+    }
+    signingConfigs {
+
+        release {
+            storeFile file("../aycloud.keystore")
+            storePassword "anyuankeji"
+            keyAlias "aycloud"
+            keyPassword "anyuankeji"
+        }
+
+    }
+    buildTypes {
+        debug {
+            applicationIdSuffix ".debug"
+        }
+
+        release {
+            zipAlignEnabled true
+            shrinkResources false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            signingConfig signingConfigs.release
+        }
+    }
+
+    productFlavors {
+        flavors_release {}
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            output.outputFile = new File(
+                    output.outputFile.parent,
+                    output.outputFile.name.replace(output.outputFile.name, "移动3.0" + "_v${variant.versionName}.apk"))
+        }
+    }
+
+}
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile('com.android.support:design:' + rootProject.supportVersion)
+    compile('com.android.support.constraint:constraint-layout:1.0.2') {
+        exclude module: 'support-v4'
+    }
+    compile 'com.jakewharton:butterknife:8.5.1'
+    annotationProcessor('com.jakewharton:butterknife-compiler:8.5.1')
+    compile project(':businessframe')
+    //    compile 'com.android.support:multidex:1.0.0'
+    compile files('libs/nineoldandroids-2.4.0.jar')
+    compile project(':moduleresource')
+}
