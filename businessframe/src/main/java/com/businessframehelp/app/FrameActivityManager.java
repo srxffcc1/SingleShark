@@ -3,7 +3,7 @@ package com.businessframehelp.app;
 import android.app.Activity;
 import android.content.Context;
 
-import com.morgoo.helper.Log;
+import com.kymjs.common.Log;
 
 import java.util.Stack;
 

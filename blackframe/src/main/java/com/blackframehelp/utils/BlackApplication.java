@@ -1,14 +1,13 @@
 package com.blackframehelp.utils;
 
+import android.app.Application;
 import android.content.Context;
-
-import com.morgoo.droidplugin.PluginApplication;
 
 /**
  * Created by Administrator on 2017/5/8.
  */
 
-public class BlackApplication extends PluginApplication {
+public class BlackApplication extends Application{//extends PluginApplication {
     @Override
     public void onCreate() {
         super.onCreate();
