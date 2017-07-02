@@ -62,7 +62,8 @@ dependencies {
 //    compile files('libs/kjhttp.jar')
     //网络请求包
     //    compile files('libs/AMap3DMap_5.0.0_AMapSearch_5.0.0_20170311.jar')//地图包
-    compile files('libs/GetuiSDK2.10.2.0.jar')
+//    compile files('libs/GetuiSDK2.10.2.0.jar')
+    compile 'com.getui:sdk:2.10.2.0'
     //个推包
     //----------------------------------------------------
     compile('com.android.support:design:' + rootProject.supportVersion)
@@ -78,9 +79,9 @@ dependencies {
     compile('com.sandrios.android:sandriosCamera:1.0.9') { exclude module: 'ucrop' }
     //相机+录像
     //    compile 'com.mindorks:paracamera:0.2.2'//相机+录像备选
-    compile 'com.github.PhilJay:MPAndroidChart:v3.0.2@aar'
+    compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'
     //图表库
-    compile 'com.github.barteksc:android-pdf-viewer:2.5.1@aar'
+//    compile 'com.github.barteksc:android-pdf-viewer:2.6.1'
     //pdf预览库
     compile 'com.github.bumptech.glide:glide:3.7.0'
     //图片加载库
@@ -104,15 +105,15 @@ dependencies {
         exclude group: 'com.squareup.okhttp3'
         exclude group: 'com.squareup.okio'
     }
-    compile('com.github.adrielcafe:AndroidAudioRecorder:0.3.0@aar') {//录音
+    compile('com.github.adrielcafe:AndroidAudioRecorder:0.3.0') {//录音
         exclude group: 'com.android.support'
     }
-    compile('cn.finalteam:galleryfinal:1.4.8.7@aar') { exclude group: 'com.android.support' }
+    compile('cn.finalteam:galleryfinal:1.4.8.7') { exclude group: 'com.android.support' }
     //相册
-    compile('com.nbsp:library:1.2@aar') { exclude group: 'com.android.support' }
-    compile('com.zhy:autolayout:1.4.5@aar') { exclude group: 'com.android.support' }
+    compile('com.nbsp:library:1.2') { exclude group: 'com.android.support' }
+    compile('com.zhy:autolayout:1.4.5') { exclude group: 'com.android.support' }
     //适配库
-    //    compile('com.airbnb.android:lottie:1.5.3@aar') { exclude group: 'com.android.support' }//ae动画库
+    //    compile('com.airbnb.android:lottie:1.5.3') { exclude group: 'com.android.support' }//ae动画库
     compile('me.shaohui.advancedluban:library:1.3.5') {//图片压缩库
         exclude group: 'io.reactivex'
         exclude group: 'com.android.support'
@@ -140,13 +141,14 @@ dependencies {
     compile 'com.amap.api:location:3.4.0'
     //地图包
     //-----------------------------------------------------
-    compile 'com.srxlike.itextpdf:itextpdf:1.0.12.1'
+//    compile 'com.srxlike.itextpdf:itextpdf:1.0.12.1'
+    compile group: 'com.itextpdf', name: 'itextpdf', version: '5.5.11'
     //itxt库 写pdf用
-    compile('com.srxlike.rtsplib2:rtsplib2:1.0.3') { exclude group: 'com.android.support' }
+//    compile('com.srxlike.rtsplib2:rtsplib2:1.0.3') { exclude group: 'com.android.support' }
     //rtsp
     compile('com.srxlike.unzip:unzip:1.0.0') { exclude group: 'com.android.support' }
     //解压文件
-    compile('com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar') {
+    compile('com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2') {
         exclude group: 'com.android.support'
     }
     //tab页面

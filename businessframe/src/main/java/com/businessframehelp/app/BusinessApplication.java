@@ -6,8 +6,9 @@ import android.content.Context;
 import android.os.Bundle;
 
 import com.blackframehelp.utils.BlackApplication;
+import com.kymjs.common.Log;
 import com.kymjs.common.SystemTool;
-import com.morgoo.helper.Log;
+
 
 /**
  * Created by Administrator on 2017/5/8.
@@ -17,7 +18,7 @@ public class BusinessApplication extends BlackApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.sDebug= SystemTool.isApkDebugable(this);
+        Log.mLogEnable= SystemTool.isApkDebugable(this);
         this.registerActivityLifecycleCallbacks(new BusinessActivityLifecycleCallbacks());
 
 
