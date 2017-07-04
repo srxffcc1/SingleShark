@@ -93,7 +93,7 @@ public class AutoCheckBox extends ImageView implements Checkable,IAutoCheck{
     	
     	mOnCheckedChangeListener=onCheckedChangeListener;
     }
-    public void setMonWidgetCheckedChangeListener(OnWidgetCheckedChangeListener monWidgetCheckedChangeListener){
+    public void setOnWidgetCheckedChangeListener(OnWidgetCheckedChangeListener monWidgetCheckedChangeListener){
     	
     	this.monWidgetCheckedChangeListener = monWidgetCheckedChangeListener;
     }

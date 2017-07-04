@@ -75,7 +75,7 @@ public class AutoCheckGroup extends LinearLayout {
 		int childcount = tmp.size();
 		for (int i = 0; i < childcount; i++) {
 			if (tmp.get(i) instanceof IAutoCheck) {
-				((AutoCheckBox) (tmp.get(i))).setMonWidgetCheckedChangeListener(mchildlisteener);
+				((AutoCheckBox) (tmp.get(i))).setOnWidgetCheckedChangeListener(mchildlisteener);
 				mchild.add(tmp.get(i));
 			}
 		}

@@ -2,5 +2,5 @@ package com.businessframehelp.widget;
 
 public interface IAutoCheck {
 	public void setOnCheckedChangeListener(OnCheckedChangeListener onCheckedChangeListener);
-	public void setMonWidgetCheckedChangeListener(OnWidgetCheckedChangeListener onCheckedChangeListener2);
+	public void setOnWidgetCheckedChangeListener(OnWidgetCheckedChangeListener onCheckedChangeListener2);
 }
