@@ -41,55 +41,32 @@ android {
 
 dependencies {
 
-    //底层框架层 包括bug收集和插件化框架
-    //    compile project(':unzip')
-    //    compile project(':rtsplib')
-    //    compile project(':vlcvideo')
-    //    compile project(':swipemenu')
-    compile 'com.srxlike.mupdf:mupdf:1.0.0'
-//    compile project(':mupdf')
+
+
     compile project(':blackframe')
     compile project(':playerdisk')
-    //侧滑
-    compile 'com.srxlike.common:common:1.0.0'
-//    compile project(':common')
-    //通用工具集
-    compile 'com.srxlike.verticalrefreshlayout:verticalrefreshlayout:1.0.0'
-//    compile project(':verticalrefreshlayout')
-    //下拉刷新
-    //    compile project(':kjhttp')
-    //    compile files('libs/pinyin4j-2.5.0.jar')//拼音帮助包
-    compile 'com.srxlike.kjhttp:kjhttp:1.0.0'
-//    compile files('libs/kjhttp.jar')
-    //网络请求包
-    //    compile files('libs/AMap3DMap_5.0.0_AMapSearch_5.0.0_20170311.jar')//地图包
-//    compile files('libs/GetuiSDK2.10.2.0.jar')
-    compile 'com.getui:sdk:2.10.2.0'
-    //个推包
     //----------------------------------------------------
-    compile('com.android.support:design:' + rootProject.supportVersion)
-    compile('com.android.support:cardview-v7:' + rootProject.supportVersion)
-    //design包
-    //--------------------------------------------------
-    compile 'com.jakewharton:butterknife:8.5.1'
-    //butterknife包
-    annotationProcessor('com.jakewharton:butterknife-compiler:8.5.1')
-    //butterknife包
+    compile('com.android.support:design:' + rootProject.supportVersion)//design包
+    compile('com.android.support:cardview-v7:' + rootProject.supportVersion)//card包
+    //----------------------------------------------------
+    compile 'com.jakewharton:butterknife:8.5.1'    //butterknife包
+    annotationProcessor('com.jakewharton:butterknife-compiler:8.5.1')    //butterknife包
     //-----------------------------------------------------
-    //    compile 'com.github.pedroSG94.rtmp-rtsp-stream-client-java:builder:1.0.3'  面对面视屏链接的udp tcp上传本地视频用的
-    compile('com.sandrios.android:sandriosCamera:1.0.9') { exclude module: 'ucrop' }
-    //相机+录像
+    compile 'com.srxlike.mupdf:mupdf:1.0.0'//pdf预览
+    compile 'com.srxlike.common:common:1.0.0'//通用工具集
+    compile 'com.srxlike.verticalrefreshlayout:verticalrefreshlayout:1.0.0'//下拉刷新
+    compile 'com.srxlike.kjhttp:kjhttp:1.0.0'//网络请求包
+    compile ('com.srxlike.navlibrary:navlibrary:1.0.0'){ exclude group: 'com.android.support' }//侧滑
+//    compile project(':navlibrary')
+    //--------------------------------------------------
+    compile 'com.getui:sdk:2.10.2.0'//个推包
+    compile('com.sandrios.android:sandriosCamera:1.0.9') { exclude module: 'ucrop' }//相机+录像
     //    compile 'com.mindorks:paracamera:0.2.2'//相机+录像备选
-    compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'
-    //图表库
+    compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'//图表库
 //    compile 'com.github.barteksc:android-pdf-viewer:2.6.1'
-    //pdf预览库
-    compile 'com.github.bumptech.glide:glide:3.7.0'
-    //图片加载库
-    //    compile 'com.google.zxing:core:3.3.0'
-    compile('cn.yipianfengye.android:zxing-library:2.1') { //二维码扫描
-        exclude group: 'com.google.zxing'
-    }
+    compile 'com.github.bumptech.glide:glide:3.7.0'//图片加载库
+//    compile 'com.google.zxing:core:3.3.0'//zxing
+    compile('cn.yipianfengye.android:zxing-library:2.1')  //二维码扫描
     compile('com.github.yalantis:ucrop:2.2.1') {//图片裁剪
         exclude group: 'com.android.support'
         exclude group: 'com.squareup'
@@ -97,8 +74,7 @@ dependencies {
         exclude group: 'com.squareup.okhttp3'
         exclude group: 'com.squareup.okio'
     }
-    compile 'com.wangdafa:PausableRecordLib:1.0.1'
-    //一个可以暂停-继续的音频录制库
+    compile 'com.wangdafa:PausableRecordLib:1.0.1'//一个可以暂停-继续的音频录制库
     compile('com.github.yalantis:ucrop:2.2.1-native') {//图片裁剪
         exclude group: 'com.android.support'
         exclude group: 'com.squareup'
@@ -109,22 +85,17 @@ dependencies {
     compile('com.github.adrielcafe:AndroidAudioRecorder:0.3.0') {//录音
         exclude group: 'com.android.support'
     }
-    compile('cn.finalteam:galleryfinal:1.4.8.7') { exclude group: 'com.android.support' }
-    //相册
+    compile('cn.finalteam:galleryfinal:1.4.8.7') { exclude group: 'com.android.support' }//相册
     compile('com.nbsp:library:1.2') { exclude group: 'com.android.support' }
-    compile('com.zhy:autolayout:1.4.5') { exclude group: 'com.android.support' }
-    //适配库
+    compile('com.zhy:autolayout:1.4.5') { exclude group: 'com.android.support' }//适配库
     //    compile('com.airbnb.android:lottie:1.5.3') { exclude group: 'com.android.support' }//ae动画库
     compile('me.shaohui.advancedluban:library:1.3.5') {//图片压缩库
         exclude group: 'io.reactivex'
         exclude group: 'com.android.support'
     }
-    compile 'io.reactivex.rxjava2:rxjava:2.1.0'
-    //rxjava
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    //rxandroid
-    compile('q.rorbin:badgeview:1.1.0') { exclude group: 'com.android.support' }
-    //红点库
+    compile 'io.reactivex.rxjava2:rxjava:2.1.0'//rxjava
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'//rxandroid
+    compile('q.rorbin:badgeview:1.1.0') { exclude group: 'com.android.support' }//红点库
     compile('com.jzxiang.pickerview:TimePickerDialog:1.0.1') {//时间选择器
         exclude group: 'com.android.support'
     }
@@ -135,27 +106,14 @@ dependencies {
         exclude group: 'io.reactivex'
         exclude group: 'com.android.support'
     }
-    compile 'com.amap.api:navi-3dmap:5.1.0'
-    //地图包
-    compile 'com.amap.api:search:5.1.0'
-    //地图包
-    compile 'com.amap.api:location:3.4.0'
-    //地图包
-    //-----------------------------------------------------
-//    compile 'com.srxlike.itextpdf:itextpdf:1.0.12.1'
-    compile group: 'com.itextpdf', name: 'itextpdf', version: '5.5.11'
-    //itxt库 写pdf用
-//    compile('com.srxlike.rtsplib2:rtsplib2:1.0.3') { exclude group: 'com.android.support' }
-    //rtsp
-    compile('com.srxlike.unzip:unzip:1.0.0') { exclude group: 'com.android.support' }
-    //解压文件
-    compile('com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2') {
+    compile 'com.amap.api:navi-3dmap:5.1.0'//地图包
+    compile 'com.amap.api:search:5.1.0'//地图包
+    compile 'com.amap.api:location:3.4.0'//地图包
+    compile group: 'com.itextpdf', name: 'itextpdf', version: '5.5.11'//itxt库 写pdf用
+    compile('com.srxlike.unzip:unzip:1.0.0') { exclude group: 'com.android.support' }//解压文件
+    compile('com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2') {//tab按钮
         exclude group: 'com.android.support'
     }
-    //tab页面
-    compile('q.rorbin:VerticalTabLayout:1.2.2') { exclude group: 'com.android.support' }
-    //竖直tab
+    compile('q.rorbin:VerticalTabLayout:1.2.2') { exclude group: 'com.android.support' }//竖直tab
     //    compile ("de.mrmaffen:vlc-android-sdk:2.0.6"){ exclude group: 'com.android.support' }
-    compile ('com.srxlike.navlibrary:navlibrary:1.0.0'){ exclude group: 'com.android.support' }
-//    compile project(':navlibrary')
 }
