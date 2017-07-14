@@ -49,6 +49,7 @@ dependencies {
     compile 'com.srxlike.mupdf:mupdf:1.0.0'
 //    compile project(':mupdf')
     compile project(':blackframe')
+    compile project(':playerdisk')
     //侧滑
     compile 'com.srxlike.common:common:1.0.0'
 //    compile project(':common')
