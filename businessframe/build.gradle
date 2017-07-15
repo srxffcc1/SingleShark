@@ -41,7 +41,7 @@ android {
 
 dependencies {
     compile project(':blackframe')
-    compile project(':playerdisk')
+//    compile project(':playerdisk')
     //----------------------------------------------------
     compile('com.android.support:design:' + rootProject.supportVersion)//design包
     compile('com.android.support:cardview-v7:' + rootProject.supportVersion)//card包
@@ -54,6 +54,7 @@ dependencies {
     compile 'com.srxlike.common:common:1.0.0'//通用工具集
     compile 'com.srxlike.verticalrefreshlayout:verticalrefreshlayout:1.0.0'//下拉刷新
     compile 'com.srxlike.kjhttp:kjhttp:1.0.0'//网络请求包
+//    compile 'com.srxlike.kvplayer:kvplayer:1.0.0'//金山云视频
     compile('com.srxlike.navlibrary:navlibrary:1.0.0') { exclude group: 'com.android.support' }//侧滑
 //    compile project(':navlibrary')
     //--------------------------------------------------

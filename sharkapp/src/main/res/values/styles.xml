@@ -5,6 +5,7 @@
         <!-- Customize your theme here. -->
         <!--<item name="android:windowIsTranslucent">true</item>-->
     </style>
+
     <style name="AppTheme" parent="AppBaseTheme">
         <item name="android:windowNoTitle">true</item>
         <item name="android:listDivider">@drawable/divider_bg</item>
@@ -12,7 +13,6 @@
         <item name="android:windowSoftInputMode">stateHidden</item>
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
-
 
 
     <style name="FirstActivityTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -23,18 +23,16 @@
     </style>
 
 
-
-
-
-
     <style name="RedButton" parent="AppTheme">
         <item name="buttonStyle">@style/Widget.AppCompat.Button</item>
         <item name="colorButtonNormal">@color/color_d81e06</item>
     </style>
+
     <style name="BlueButton" parent="AppTheme">
         <item name="buttonStyle">@style/Widget.AppCompat.Button</item>
         <item name="colorButtonNormal">@color/dodgerblue</item>
     </style>
+
     <style name="YellowButton" parent="AppTheme">
         <item name="buttonStyle">@style/Widget.AppCompat.Button</item>
         <item name="colorButtonNormal">@color/yellow</item>
