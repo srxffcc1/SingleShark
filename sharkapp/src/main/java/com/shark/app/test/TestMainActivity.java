@@ -9,6 +9,7 @@ import android.view.View;
 import com.businessframehelp.app.FrameActivity;
 import com.businessframehelp.enums.ORIENTATION;
 import com.businessframehelp.listen.StyleDialogListener;
+import com.businessframehelp.module.pdf.PdfActivity;
 import com.businessframehelp.utils.FrameUtil;
 import com.businessframehelp.utils.ZipUtil;
 import com.hss01248.dialog.StyledDialog;
@@ -127,6 +128,9 @@ public class TestMainActivity extends FrameActivity {
     }
     public void startTree(View view){
         startActivity(new Intent(this,ListTestActivity.class));
+    }
+    public void testPdf(View view){
+        startActivity(new Intent(this, PdfActivity.class));
     }
 
 }

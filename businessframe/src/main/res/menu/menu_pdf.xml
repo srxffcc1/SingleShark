@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.toolbardisk.MainActivity">
+    <item android:id="@+id/action_pdflook" android:orderInCategory="100"
+        android:title="预览" app:showAsAction="never" />
+    <item android:id="@+id/action_pdfedit" android:orderInCategory="100"
+        android:title="修改" app:showAsAction="never" />
+</menu>

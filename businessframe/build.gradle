@@ -49,12 +49,12 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.5.1'    //butterknife包
     annotationProcessor('com.jakewharton:butterknife-compiler:8.5.1')    //butterknife包
     //-----------------------------------------------------
-    compile 'com.srxlike.mupdf:mupdf:1.0.0'//pdf预览
+//    compile 'com.srxlike.mupdf:mupdf:1.0.0'//pdf预览
     compile('com.srxlike.unzip:unzip:1.0.0') { exclude group: 'com.android.support' }//解压文件
     compile 'com.srxlike.common:common:1.0.0'//通用工具集
     compile 'com.srxlike.verticalrefreshlayout:verticalrefreshlayout:1.0.0'//下拉刷新
     compile 'com.srxlike.kjhttp:kjhttp:1.0.0'//网络请求包
-//    compile 'com.srxlike.kvplayer:kvplayer:1.0.0'//金山云视频
+    compile 'com.srxlike.kvplayer:kvplayer:1.0.1'//金山云视频
     compile('com.srxlike.navlibrary:navlibrary:1.0.0') { exclude group: 'com.android.support' }//侧滑
 //    compile project(':navlibrary')
     //--------------------------------------------------
@@ -62,7 +62,7 @@ dependencies {
     compile('com.sandrios.android:sandriosCamera:1.0.9') { exclude module: 'ucrop' }//相机+录像
 //    compile 'com.mindorks:paracamera:0.2.2'//相机+录像备选
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'//图表库
-//    compile 'com.github.barteksc:android-pdf-viewer:2.6.1'
+    compile 'com.github.barteksc:android-pdf-viewer:2.6.1'//pdf 预览
     compile 'com.github.bumptech.glide:glide:3.7.0'//图片加载库
 //    compile 'com.google.zxing:core:3.3.0'//zxing
     compile('cn.yipianfengye.android:zxing-library:2.1')  //二维码扫描

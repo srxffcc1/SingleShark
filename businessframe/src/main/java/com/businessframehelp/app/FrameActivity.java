@@ -67,11 +67,11 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
         mLocalActivityManager.dispatchCreate(savedInstanceState);
         BroadCastManager.getInstance().registerListtener(this);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        try {
-            getSupportActionBar().hide();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            getSupportActionBar().hide();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
         super.onCreate(savedInstanceState);
         kjHttp = new KJHttp();
         if(savedInstanceState!=null&&savedInstanceState.getSerializable("newstatus")!=null){
@@ -107,11 +107,6 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
         // TODO Auto-generated method stub
         isauthentic=false;
         super.onResume();
-        try {
-            getSupportActionBar().hide();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         mLocalActivityManager.dispatchResume();// mLocalActivityManager为将activity抽取成view做准备
     }
     @Override

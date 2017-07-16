@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.View;
 
 import com.businessframehelp.app.FrameActivity;
@@ -14,6 +16,7 @@ import com.flyco.tablayout.listener.CustomTabEntity;
 import com.shark.app.R;
 import com.shark.app.apps.FragmentManager;
 import com.shark.app.entity.TabEntity;
+import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 
 import java.util.ArrayList;
@@ -34,6 +37,8 @@ import java.util.ArrayList;
    private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
    private View mDecorView;
    private CommonTabLayout mTabLayout_3;
+    private SlidingRootNav menu;
+
     @Override
     public ORIENTATION getORIENTATION() {
         return null;
@@ -48,7 +53,11 @@ import java.util.ArrayList;
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        new SlidingRootNavBuilder(this)
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        menu = new SlidingRootNavBuilder(this)
+                .withToolbarMenuToggle(toolbar)
                 .setBackgroundRid(R.drawable.img_frame_background)
                 .withMenuOpened(false)
                 .withSavedState(savedInstanceState)
@@ -87,5 +96,21 @@ import java.util.ArrayList;
     public void logout(){
 
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.mainmenu_menu, menu);
+        return true;
+    }
 
+    @Override
+    public void onBackPressed() {
+        if(!menu.isMenuHidden()){
+            menu.closeMenu();
+        }else{
+            super.onBackPressed();
+        }
+
+
+    }
 }

@@ -69,7 +69,6 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor('com.jakewharton:butterknife-compiler:8.5.1')
     compile project(':businessframe')//业务模块
-    //    compile 'com.android.support:multidex:1.0.0'
-    compile files('libs/nineoldandroids-2.4.0.jar')
+    compile 'com.android.support:multidex:1.0.0'
     compile project(':moduleresource')//资源模块
 }

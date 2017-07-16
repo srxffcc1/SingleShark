@@ -42,9 +42,10 @@
 
         
         <activity android:name=".test.ListTestActivity" />
-        <activity android:name=".singleactivity.ActivityLogin" />
-        <activity android:name=".singleactivity.ActivityMain" />
-        <activity android:name=".test.TestMainActivity"/>
+        <activity android:name=".singleactivity.ActivityLogin" android:theme="@style/FrameAppTheme.NoActionBarNoSoftInput"/>
+        <activity android:name=".singleactivity.ActivityMain" android:theme="@style/FrameAppTheme.Navigation"/>
+        <activity android:name=".test.TestMainActivity">
+        </activity>
         <activity android:name=".singleactivity.Activity_CheckUpList" />
         <activity android:name=".singleactivity.Activity_EnterpriseList" />
     </application>
