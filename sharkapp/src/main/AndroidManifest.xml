@@ -33,11 +33,7 @@
         <activity
             android:theme="@style/FirstActivityTheme"
             android:name=".singleactivity.ActivitySplash" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         
@@ -45,6 +41,11 @@
         <activity android:name=".singleactivity.ActivityLogin" android:theme="@style/FrameAppTheme.NoActionBarNoSoftInput"/>
         <activity android:name=".singleactivity.ActivityMain" android:theme="@style/FrameAppTheme.Navigation"/>
         <activity android:name=".test.TestMainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".singleactivity.Activity_CheckUpList" />
         <activity android:name=".singleactivity.Activity_EnterpriseList" />

@@ -17,6 +17,12 @@
     </style>
 
     <style name="FrameAppTheme.NoActionBar">
+        <item name="android:textColorSecondary">@android:color/white</item>
+        <!--overflow颜色-->
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <!--标题颜色-->
+        <item name="colorPrimary">#2196F3</item>
+        <!--标题背景-->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>

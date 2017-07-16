@@ -10,6 +10,7 @@ import android.os.Message;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -305,5 +306,15 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
     }
     public void startThread(Runnable runnable){//使用一个随这个当前activity死亡就自动结束的线程
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if(item.getItemId()==android.R.id.home){
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

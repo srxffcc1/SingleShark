@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_search"
-        android:icon="@drawable/ic_search"
-        android:title="测试1"
+        android:id="@+id/action_sync"
+        android:icon="@drawable/ic_sync"
+        android:title="同步"
         app:showAsAction="ifRoom" />
 
 
