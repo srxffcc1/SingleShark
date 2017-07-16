@@ -1,20 +1,23 @@
 package com.shark.app.test;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Message;
 import android.view.View;
 
+import com.artifex.mupdf.mini.DocumentActivity;
 import com.businessframehelp.app.FrameActivity;
 import com.businessframehelp.enums.ORIENTATION;
 import com.businessframehelp.listen.StyleDialogListener;
-import com.businessframehelp.module.pdf.PdfActivity;
 import com.businessframehelp.utils.FrameUtil;
 import com.businessframehelp.utils.ZipUtil;
 import com.hss01248.dialog.StyledDialog;
 import com.hzy.archiver.IArchiverListener;
 import com.shark.app.R;
+
+import java.io.File;
 
 public class TestMainActivity extends FrameActivity {
 
@@ -130,7 +133,11 @@ public class TestMainActivity extends FrameActivity {
         startActivity(new Intent(this,ListTestActivity.class));
     }
     public void testPdf(View view){
-        startActivity(new Intent(this, PdfActivity.class));
+//        startActivity(new Intent(this, PdfActivity.class));
+        Intent intent=new Intent(this, DocumentActivity.class);
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.setData(Uri.fromFile(new File(Environment.getExternalStorageDirectory()+"/test2017.pdf")));
+        startActivity(intent);
     }
 
 }
