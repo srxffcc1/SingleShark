@@ -165,8 +165,7 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
         ButterKnife.bind(this) ;
     }
     @Override
-    public View getIntentContentView(
-            ViewGroup tabMianContent, String mTag, Intent mIntent) {
+    public View getIntentContentView(String mTag, Intent mIntent) {
         if (mLocalActivityManager == null) {
             throw new IllegalStateException(
                     "Did you forget to call 'public void setup(LocalActivityManager activityGroup)'?");
@@ -181,6 +180,27 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
         }
         return wd;
     }
+    public void clearViewInGroup(ViewGroup group){
+        group.removeAllViews();
+    }
+    public void clearViewInGroup(int groupid){
+        ((ViewGroup)findViewById(groupid)).removeAllViews();
+    }
+    @Override
+    public void addIntentContentView(ViewGroup content, String mTag, Intent mIntent) {
+        View view=getIntentContentView(mTag,mIntent);
+        content.removeAllViews();
+        content.addView(view);
+    }
+
+    @Override
+    public void addIntentContentView(int contentRid, String mTag, Intent mIntent) {
+        View view=getIntentContentView(mTag,mIntent);
+        ViewGroup content= (ViewGroup) findViewById(contentRid);
+        content.removeAllViews();
+        content.addView(view);
+    }
+
     public void toastShow(String contecnt){
         Toast roast=Toast.makeText(this, contecnt, Toast.LENGTH_SHORT);
         if(cantoast){

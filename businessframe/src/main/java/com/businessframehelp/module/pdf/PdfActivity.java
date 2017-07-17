@@ -1,15 +1,18 @@
 package com.businessframehelp.module.pdf;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
+import android.os.Message;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.artifex.mupdf.mini.DocumentActivity;
 import com.businessframehelp.R;
+import com.businessframehelp.app.FrameActivity;
+import com.businessframehelp.enums.ORIENTATION;
 import com.businessframehelp.utils.BarUtil;
-import com.github.barteksc.pdfviewer.PDFView;
-import com.github.barteksc.pdfviewer.scroll.ScrollHandle;
 
 import java.io.File;
 
@@ -18,62 +21,68 @@ import java.io.File;
  * Created by King6rf on 2017/7/16.
  */
 
-public class PdfActivity extends AppCompatActivity {
-
-    private PDFView pdfView;
+public class PdfActivity extends FrameActivity {
+    int nowtask=-1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pdf_layout);
         BarUtil.initBar(this);
-        pdfView = (PDFView) findViewById(R.id.pdfview);
-        pdfView.fromFile(new File(Environment.getExternalStorageDirectory()+"/test2017.pdf"))
-                .swipeHorizontal(true)
-                .scrollHandle(new ScrollHandle() {
-                    @Override
-                    public void setScroll(float position) {
 
-                    }
+        lookTask();
+//        pdfView = (PDFView) findViewById(R.id.pdfview);
+//        pdfView.fromFile(new File(Environment.getExternalStorageDirectory()+"/test2017.pdf"))
+//                .swipeHorizontal(true)
+//                .scrollHandle(new ScrollHandle() {
+//                    @Override
+//                    public void setScroll(float position) {
+//
+//                    }
+//
+//                    @Override
+//                    public void setupLayout(PDFView pdfView) {
+//
+//                    }
+//
+//                    @Override
+//                    public void destroyLayout() {
+//
+//                    }
+//
+//                    @Override
+//                    public void setPageNum(int pageNum) {
+//
+//                    }
+//
+//                    @Override
+//                    public boolean shown() {
+//                        return true;
+//                    }
+//
+//                    @Override
+//                    public void show() {
+//
+//                    }
+//
+//                    @Override
+//                    public void hide() {
+//
+//                    }
+//
+//                    @Override
+//                    public void hideDelayed() {
+//                        if(pdfView.getZoom()<=1){
+//                            pdfView.jumpTo(pdfView.getCurrentPage(),true);
+//                        }
+//                    }
+//                })
+//                .load();
+    }
 
-                    @Override
-                    public void setupLayout(PDFView pdfView) {
+    @Override
+    public void handleMessage(Message msg) {
 
-                    }
-
-                    @Override
-                    public void destroyLayout() {
-
-                    }
-
-                    @Override
-                    public void setPageNum(int pageNum) {
-
-                    }
-
-                    @Override
-                    public boolean shown() {
-                        return true;
-                    }
-
-                    @Override
-                    public void show() {
-
-                    }
-
-                    @Override
-                    public void hide() {
-
-                    }
-
-                    @Override
-                    public void hideDelayed() {
-                        if(pdfView.getZoom()==1){
-                            pdfView.jumpTo(pdfView.getCurrentPage());
-                        }
-                    }
-                })
-                .load();
     }
 
     @Override
@@ -82,8 +91,22 @@ public class PdfActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_pdf, menu);
         return true;
     }
-    public void lookTask(){}
-    public void editTask(){}
+    public void lookTask(){
+        if(nowtask!=R.id.action_pdflook){
+            Intent pdfintent=new Intent(this, DocumentActivity.class);
+            pdfintent.setAction(Intent.ACTION_VIEW);
+            pdfintent.setData(Uri.fromFile(new File(Environment.getExternalStorageDirectory()+"/test2017.pdf")));
+            addIntentContentView(R.id.pdfframe,"mupdf",pdfintent);
+        }
+        nowtask=R.id.action_pdflook;
+
+    }
+    public void editTask(){
+        if(nowtask!=R.id.action_pdfedit){
+            clearViewInGroup(R.id.pdfframe);
+        }
+        nowtask=R.id.action_pdfedit;
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -101,5 +124,10 @@ public class PdfActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public ORIENTATION getORIENTATION() {
+        return null;
     }
 }
