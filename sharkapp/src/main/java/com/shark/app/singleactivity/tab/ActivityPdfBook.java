@@ -1,4 +1,4 @@
-package com.shark.app.singleactivity;
+package com.shark.app.singleactivity.tab;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -9,10 +9,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.artifex.mupdf.mini.DocumentActivity;
-import com.businessframehelp.R;
 import com.businessframehelp.app.FrameActivity;
 import com.businessframehelp.enums.ORIENTATION;
 import com.businessframehelp.utils.BarUtil;
+import com.shark.app.R;
+import com.shark.app.singleactivity.ActivityBook;
 
 import java.io.File;
 
@@ -103,7 +104,8 @@ public class ActivityPdfBook extends FrameActivity {
     }
     public void editTask(){
         if(nowtask!=R.id.action_pdfedit){
-            clearViewInGroup(R.id.pdfframe);
+            Intent bookintent=new Intent(this, ActivityBook.class);
+            addIntentContentView(R.id.pdfframe,"book",bookintent);
         }
         nowtask=R.id.action_pdfedit;
     }

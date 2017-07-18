@@ -9,7 +9,7 @@ import android.view.View;
 import com.businessframehelp.app.FrameActivity;
 import com.businessframehelp.enums.ORIENTATION;
 import com.businessframehelp.listen.StyleDialogListener;
-import com.shark.app.singleactivity.ActivityPdfBook;
+import com.shark.app.singleactivity.tab.ActivityPdfBook;
 import com.businessframehelp.utils.FrameUtil;
 import com.businessframehelp.utils.ZipUtil;
 import com.hss01248.dialog.StyledDialog;

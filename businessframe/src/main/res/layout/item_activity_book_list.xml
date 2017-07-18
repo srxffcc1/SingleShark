@@ -18,14 +18,14 @@
             android:orientation="horizontal" >
         </LinearLayout>
 
-        <com.wisdomregulation.frame.PassLinearLayout
+        <LinearLayout
             android:id="@+id/gtmp1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="980"
             android:clickable="true" >
 
-            <com.wisdomregulation.frame.AutoCheckBox
+            <CheckBox
                 android:id="@+id/gtmp2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -53,7 +53,7 @@
                     android:gravity="left|center_vertical"
                     android:text="文书名字" />
             </LinearLayout>
-        </com.wisdomregulation.frame.PassLinearLayout>
+        </LinearLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"

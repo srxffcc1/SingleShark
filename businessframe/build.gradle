@@ -53,9 +53,15 @@ dependencies {
     //-----------------------------------------------------
 //    compile 'com.github.barteksc:android-pdf-viewer:2.6.1'//pdf 预览
     compile 'com.srxlike.mupdf:mupdf:1.0.2'//pdf预览
-    compile ('com.srxlike.helppdf:helppdf:1.0.2'){ exclude group: 'net.lingala.zip4j' }//pdf生成
+    compile ('com.srxlike.helppdf:helppdf:1.0.2'){
+        exclude group: 'net.lingala.zip4j'
+        exclude group: 'commons-logging', module: 'commons-logging'
+    }//pdf生成
 //    compile 'com.srxlike.wisdomregulation_entity:wisdomregulation_entity:1.0.2'
-    compile('com.srxlike.unzip:unzip:1.0.2') { exclude group: 'com.android.support' }//解压文件
+    compile('com.srxlike.unzip:unzip:1.0.2') {
+        exclude group: 'com.android.support'
+        exclude group: 'commons-logging', module: 'commons-logging'
+    }//解压文件
     compile 'com.srxlike.common:common:1.0.0'//通用工具集
     compile 'com.srxlike.verticalrefreshlayout:verticalrefreshlayout:1.0.0'//下拉刷新
     compile 'com.srxlike.kjhttp:kjhttp:1.0.0'//网络请求包

@@ -8,13 +8,13 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="15" />
-    <com.wisdomregulation.frame.AutoCheckGroup
+    <RadioGroup
         android:id="@+id/checkGroup"
         android:layout_weight="500"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:orientation="vertical" >
-    </com.wisdomregulation.frame.AutoCheckGroup>
+    </RadioGroup>
 
     <EditText
         android:id="@+id/bookcontentValue"

@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.businessframehelp.enums.ORIENTATION;
 import com.businessframehelp.inter.IFrameActivity;
 import com.businessframehelp.listen.IBroadCastListener;
+import com.businessframehelp.utils.BarUtil;
 import com.kymjs.common.NetworkUtils;
 import com.zhy.autolayout.AutoLayoutActivity;
 
@@ -68,11 +69,21 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
         mLocalActivityManager.dispatchCreate(savedInstanceState);
         BroadCastManager.getInstance().registerListtener(this);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//        try {
-//            getSupportActionBar().hide();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+        if(!getIntent().getBooleanExtra("needActionBar",true)){
+            try {
+                System.out.println("要去掉suactionbar咯");
+            getSupportActionBar().hide();
+            } catch (Exception e) {
+            e.printStackTrace();
+            }
+            try {
+                System.out.println("要去掉actionbar咯");
+                getActionBar().hide();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
         super.onCreate(savedInstanceState);
         kjHttp = new KJHttp();
         if(savedInstanceState!=null&&savedInstanceState.getSerializable("newstatus")!=null){
@@ -151,18 +162,63 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
     public void setContentView(@LayoutRes int layoutResID) {
         super.setContentView(layoutResID);
         ButterKnife.bind(this) ;
+        BarUtil.initBar(this);
+        if(!getIntent().getBooleanExtra("needActionBar",true)){
+            try {
+                System.out.println("要去掉suactionbar咯");
+                getSupportActionBar().hide();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            try {
+                System.out.println("要去掉actionbar咯");
+                getActionBar().hide();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
     public void setContentView(View view, ViewGroup.LayoutParams params) {
         super.setContentView(view, params);
         ButterKnife.bind(this) ;
+        BarUtil.initBar(this);
+        if(!getIntent().getBooleanExtra("needActionBar",true)){
+            try {
+                System.out.println("要去掉suactionbar咯");
+                getSupportActionBar().hide();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            try {
+                System.out.println("要去掉actionbar咯");
+                getActionBar().hide();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
     public void setContentView(View view) {
         super.setContentView(view);
         ButterKnife.bind(this) ;
+        BarUtil.initBar(this);
+        if(!getIntent().getBooleanExtra("needActionBar",true)){
+            try {
+                System.out.println("要去掉suactionbar咯");
+                getSupportActionBar().hide();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            try {
+                System.out.println("要去掉actionbar咯");
+                getActionBar().hide();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
     @Override
     public View getIntentContentView(String mTag, Intent mIntent) {
@@ -171,6 +227,7 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
                     "Did you forget to call 'public void setup(LocalActivityManager activityGroup)'?");
         }
         mIntent.putExtra("isTabChild", true);
+        mIntent.putExtra("needActionBar",false);
         mIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         String tags= UUID.randomUUID().toString().replaceAll("-", "");
         final Window w = mLocalActivityManager.startActivity(tags, mIntent);

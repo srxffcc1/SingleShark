@@ -72,6 +72,26 @@ public class AutoCheckBox extends ImageView implements Checkable,IAutoCheck{
 		}
 		mBroadcasting = false;
 	}
+	public void setCheckedOnlyDraw(boolean checked) {
+		if (mChecked != checked) {
+			mChecked = checked;
+			refreshDrawableState();
+		}
+
+		if (mBroadcasting) {
+			return;
+		}
+
+		mBroadcasting = true;
+//		if(mOnCheckedChangeListener!=null){
+//
+//			mOnCheckedChangeListener.onCheckedChanged(AutoCheckBox.this,mChecked);
+//		}
+//		if(monWidgetCheckedChangeListener !=null){
+//			monWidgetCheckedChangeListener.onCheckedChanged(AutoCheckBox.this,mChecked);
+//		}
+		mBroadcasting = false;
+	}
 	@Override
 	public boolean isChecked() {
 		return mChecked;
