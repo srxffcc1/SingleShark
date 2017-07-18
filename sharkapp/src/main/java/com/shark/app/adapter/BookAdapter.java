@@ -37,9 +37,15 @@ public class BookAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         return super.getItemViewType(position);
     }
 
-    class BookHolder extends RecyclerView.ViewHolder{
+    class NormalViewHolder extends RecyclerView.ViewHolder{
 
-        public BookHolder(View itemView) {
+        public NormalViewHolder(View itemView) {
+            super(itemView);
+        }
+    }
+    class CheckViewHolder extends RecyclerView.ViewHolder{
+
+        public CheckViewHolder(View itemView) {
             super(itemView);
         }
     }

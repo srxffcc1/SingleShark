@@ -2,7 +2,9 @@
 
     <!-- Base application theme. -->
     <style name="SharkAppBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-
+        <item name="colorPrimary">#2196F3</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
     <style name="SharkAppTheme" parent="SharkAppBaseTheme">

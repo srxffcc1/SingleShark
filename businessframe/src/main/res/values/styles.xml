@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="FrameAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -30,7 +30,7 @@
     <style name="FrameAppTheme.NoActionBarNoSoftInput">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:windowSoftInputMode">stateHidden</item>
+        <item name="android:windowSoftInputMode" tools:targetApi="cupcake">stateHidden</item>
     </style>
     <style name="FrameAppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="FrameAppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />

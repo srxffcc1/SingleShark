@@ -49,7 +49,7 @@
         </activity>
         <activity android:name=".singleactivity.ActivityCheckUpList" />
         <activity android:name=".singleactivity.ActivityEnterpriseList" />
-        <activity android:name="com.shark.app.singleactivity.tab.ActivityPdfBook" android:screenOrientation="portrait" android:theme="@style/FrameAppTheme.NoActionBar"/>
+        <activity android:name="com.shark.app.singleactivity.tab.ActivityPdfBook" />
         <activity android:name=".singleactivity.ActivityBook" />
     </application>
 

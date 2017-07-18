@@ -10,12 +10,14 @@ import android.os.Message;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Toast;
 
+import com.businessframehelp.R;
 import com.businessframehelp.enums.ORIENTATION;
 import com.businessframehelp.inter.IFrameActivity;
 import com.businessframehelp.listen.IBroadCastListener;
@@ -226,10 +228,11 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
             throw new IllegalStateException(
                     "Did you forget to call 'public void setup(LocalActivityManager activityGroup)'?");
         }
+        mLocalActivityManager.removeAllActivities();//获得新的之前先移除旧的activity
         mIntent.putExtra("isTabChild", true);
         mIntent.putExtra("needActionBar",false);
         mIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        String tags= UUID.randomUUID().toString().replaceAll("-", "");
+        String tags= mTag+":"+UUID.randomUUID().toString().replaceAll("-", "");
         final Window w = mLocalActivityManager.startActivity(tags, mIntent);
         final View wd = w != null ? w.getDecorView() : null;
         if (wd.getParent() != null) {
@@ -297,6 +300,12 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
     public void sendMessageAtTime(Message msg, long uptimeMillis){
             handler.sendMessageAtTime(msg,uptimeMillis);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_, menu);
+        return true;
     }
 
     @Override
@@ -389,7 +398,7 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
     public boolean onOptionsItemSelected(MenuItem item) {
 
         if(item.getItemId()==android.R.id.home){
-            finish();
+            onBackPressed();
             return true;
         }
         return super.onOptionsItemSelected(item);
