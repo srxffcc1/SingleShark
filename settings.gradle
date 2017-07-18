@@ -1,4 +1,4 @@
-include ':blackframe'
+include ':blackframe', ':sound'
 include ':sharkapp'
 include ':businessframe'
 include ':moduleresource'

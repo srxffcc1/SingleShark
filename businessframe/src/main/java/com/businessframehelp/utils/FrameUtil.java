@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 
 import com.businessframehelp.R;
+import com.danielkim.soundrecorder.activities.RecordActivity;
 import com.jzxiang.pickerview.TimePickerDialog;
 import com.jzxiang.pickerview.data.Type;
 import com.jzxiang.pickerview.listener.OnDateSetListener;
@@ -17,10 +18,6 @@ import com.sandrios.sandriosCamera.internal.configuration.CameraConfiguration;
 
 import java.io.File;
 
-import cafe.adriel.androidaudiorecorder.AndroidAudioRecorder;
-import cafe.adriel.androidaudiorecorder.model.AudioChannel;
-import cafe.adriel.androidaudiorecorder.model.AudioSampleRate;
-import cafe.adriel.androidaudiorecorder.model.AudioSource;
 import q.rorbin.badgeview.Badge;
 import q.rorbin.badgeview.QBadgeView;
 
@@ -138,21 +135,22 @@ public class FrameUtil {
 //        }
     }
     public void startRecord(Activity activity,int REQUEST_CODE,String filepath){
-        int requestCode = 0;
-        AndroidAudioRecorder.with(activity)
-                // Required
-                .setFilePath(filepath)
-                .setRequestCode(requestCode)
-
-                // Optional
-                .setSource(AudioSource.MIC)
-                .setChannel(AudioChannel.STEREO)
-                .setSampleRate(AudioSampleRate.HZ_48000)
-                .setAutoStart(true)
-                .setKeepDisplayOn(true)
-
-                // Start recording
-                .record();
+//        int requestCode = 0;
+//        AndroidAudioRecorder.with(activity)
+//                // Required
+//                .setFilePath(filepath)
+//                .setRequestCode(requestCode)
+//
+//                // Optional
+//                .setSource(AudioSource.MIC)
+//                .setChannel(AudioChannel.STEREO)
+//                .setSampleRate(AudioSampleRate.HZ_48000)
+//                .setAutoStart(true)
+//                .setKeepDisplayOn(true)
+//
+//                // Start recording
+//                .record();
+        activity.startActivityForResult(new Intent(activity, RecordActivity.class), REQUEST_CODE);
     }
     public void startFileChoser(Activity activity,int REQUEST_CODE){
         new MaterialFilePicker()

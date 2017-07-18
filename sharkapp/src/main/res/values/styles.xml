@@ -1,11 +1,11 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="SharkAppBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
 
     </style>
 
-    <style name="AppTheme" parent="AppBaseTheme">
+    <style name="SharkAppTheme" parent="SharkAppBaseTheme">
         <item name="android:listDivider">@drawable/divider_bg</item>
         <item name="android:windowBackground">@color/bcwhite</item>
         <item name="android:windowSoftInputMode">stateHidden</item>
@@ -22,17 +22,17 @@
     </style>
 
 
-    <style name="RedButton" parent="AppTheme">
+    <style name="RedButton" parent="RecordAppTheme">
         <item name="buttonStyle">@style/Widget.AppCompat.Button</item>
         <item name="colorButtonNormal">@color/color_d81e06</item>
     </style>
 
-    <style name="BlueButton" parent="AppTheme">
+    <style name="BlueButton" parent="RecordAppTheme">
         <item name="buttonStyle">@style/Widget.AppCompat.Button</item>
         <item name="colorButtonNormal">@color/dodgerblue</item>
     </style>
 
-    <style name="YellowButton" parent="AppTheme">
+    <style name="YellowButton" parent="RecordAppTheme">
         <item name="buttonStyle">@style/Widget.AppCompat.Button</item>
         <item name="colorButtonNormal">@color/yellow</item>
     </style>

@@ -42,6 +42,7 @@ android {
 dependencies {
 //    compile project(':mupdf')
     compile project(':blackframe')
+    compile project(':sound')
 //    compile project(':playerdisk')
     //----------------------------------------------------
     compile('com.android.support:design:' + rootProject.supportVersion)//design包
