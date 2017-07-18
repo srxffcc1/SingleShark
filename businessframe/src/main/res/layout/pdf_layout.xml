@@ -13,13 +13,10 @@
         android:background="?attr/colorPrimary"
         app:popupTheme="@style/FrameAppTheme.PopupOverlay" />
 
-    <RelativeLayout
+    <FrameLayout
         android:id="@+id/pdfframe"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <com.github.barteksc.pdfviewer.PDFView
-            android:id="@+id/pdfview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></com.github.barteksc.pdfviewer.PDFView>
-    </RelativeLayout>
+
+    </FrameLayout>
 </LinearLayout>

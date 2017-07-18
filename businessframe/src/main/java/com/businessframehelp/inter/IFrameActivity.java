@@ -13,13 +13,13 @@ import com.businessframehelp.enums.ORIENTATION;
 public interface IFrameActivity {
     /**
      * 将intent转为view
-     * @param tabMianContent
      * @param mTag
      * @param mIntent
      * @return
      */
-    View getIntentContentView(ViewGroup tabMianContent, String mTag, Intent mIntent);
-
+    View getIntentContentView(String mTag, Intent mIntent);
+    void addIntentContentView(ViewGroup content,String mTag, Intent mIntent);
+    void addIntentContentView(int contentRid,String mTag, Intent mIntent);
     /**
      * toast
      * @param contecnt

@@ -51,8 +51,8 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.5.1'    //butterknife包
     annotationProcessor('com.jakewharton:butterknife-compiler:8.5.1')    //butterknife包
     //-----------------------------------------------------
-    compile 'com.github.barteksc:android-pdf-viewer:2.6.1'//pdf 预览
-    compile 'com.srxlike.mupdf:mupdf:1.0.1'//pdf预览
+//    compile 'com.github.barteksc:android-pdf-viewer:2.6.1'//pdf 预览
+    compile 'com.srxlike.mupdf:mupdf:1.0.2'//pdf预览
     compile ('com.srxlike.helppdf:helppdf:1.0.2'){ exclude group: 'net.lingala.zip4j' }//pdf生成
 //    compile 'com.srxlike.wisdomregulation_entity:wisdomregulation_entity:1.0.2'
     compile('com.srxlike.unzip:unzip:1.0.2') { exclude group: 'com.android.support' }//解压文件
