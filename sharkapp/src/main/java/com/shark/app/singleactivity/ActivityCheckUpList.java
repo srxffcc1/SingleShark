@@ -9,7 +9,7 @@ import com.businessframehelp.enums.ORIENTATION;
  * Created by Administrator on 2017/5/25.
  */
 
-public class Activity_EnterpriseList extends FrameActivity {
+public class ActivityCheckUpList extends FrameActivity {
     @Override
     public ORIENTATION getORIENTATION() {
         return null;

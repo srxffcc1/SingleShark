@@ -47,8 +47,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".singleactivity.Activity_CheckUpList" />
-        <activity android:name=".singleactivity.Activity_EnterpriseList" />
+        <activity android:name=".singleactivity.ActivityCheckUpList" />
+        <activity android:name=".singleactivity.ActivityEnterpriseList" />
+        <activity android:name="com.shark.app.singleactivity.ActivityPdfBook" android:screenOrientation="portrait" android:theme="@style/FrameAppTheme.NoActionBar"/>
     </application>
 
 </manifest>

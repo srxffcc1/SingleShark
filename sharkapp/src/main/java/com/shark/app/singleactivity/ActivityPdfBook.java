@@ -1,4 +1,4 @@
-package com.businessframehelp.module.pdf;
+package com.shark.app.singleactivity;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -21,7 +21,7 @@ import java.io.File;
  * Created by King6rf on 2017/7/16.
  */
 
-public class PdfActivity extends FrameActivity {
+public class ActivityPdfBook extends FrameActivity {
     int nowtask=-1;
 
     @Override
