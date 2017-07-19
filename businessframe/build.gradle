@@ -42,7 +42,7 @@ android {
 dependencies {
 //    compile project(':mupdf')
     compile project(':blackframe')
-    compile project(':sound')
+//    compile project(':sound')
 //    compile project(':playerdisk')
     //----------------------------------------------------
     compile('com.android.support:design:' + rootProject.supportVersion)//design包
@@ -62,7 +62,7 @@ dependencies {
         exclude group: 'com.android.support'
         exclude group: 'commons-logging', module: 'commons-logging'
     }//解压文件
-//    compile 'com.srxlike.soundrecord:soundrecord:1.0.1'//录音
+    compile 'com.srxlike.voice:voice:1.0.0'//录音
     compile 'com.srxlike.common:common:1.0.0'//通用工具集
     compile 'com.srxlike.verticalrefreshlayout:verticalrefreshlayout:1.0.0'//下拉刷新
     compile 'com.srxlike.kjhttp:kjhttp:1.0.0'//网络请求包
