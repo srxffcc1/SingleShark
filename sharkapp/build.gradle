@@ -82,5 +82,6 @@ dependencies {
     annotationProcessor('com.jakewharton:butterknife-compiler:8.5.1')
     compile project(':businessframe')//业务模块
     compile 'com.android.support:multidex:1.0.0'
-    compile project(':moduleresource')//资源模块
+    compile project(':moduleresource')//资源模块1
+    compile project(':moduleapk')//资源模块2
 }
