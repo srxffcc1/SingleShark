@@ -53,7 +53,7 @@ dependencies {
     //-----------------------------------------------------
 //    compile 'com.github.barteksc:android-pdf-viewer:2.6.1'//pdf 预览
     compile 'com.srxlike.mupdf:mupdf:1.0.2'//pdf预览
-    compile ('com.srxlike.helppdf:helppdf:1.0.2'){
+    compile ('com.srxlike.helppdf:helppdf:1.0.7'){
         exclude group: 'net.lingala.zip4j'
         exclude group: 'commons-logging', module: 'commons-logging'
     }//pdf生成
@@ -126,6 +126,7 @@ dependencies {
     compile('com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2') {//tab按钮
         exclude group: 'com.android.support'
     }
+    compile ('com.google.android:flexbox:0.3.0'){exclude group: 'com.android.support'}//谷歌流式布局
     compile('q.rorbin:VerticalTabLayout:1.2.2') { exclude group: 'com.android.support' }//竖直tab
 //    compile ("de.mrmaffen:vlc-android-sdk:2.0.6"){ exclude group: 'com.android.support' }
 }

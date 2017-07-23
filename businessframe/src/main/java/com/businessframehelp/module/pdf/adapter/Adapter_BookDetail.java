@@ -1,5 +1,6 @@
 package com.businessframehelp.module.pdf.adapter;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.text.InputType;
@@ -133,7 +134,7 @@ public class Adapter_BookDetail {
         if (fieldtext.matches("check(.*)")) {
 
             convertView = LayoutInflater.from(context).inflate(R.layout.item_activity_book_content2, null);
-            final AutoCheckGroup autogroup = (AutoCheckGroup) convertView.findViewById(R.id.checkGroup);
+            @SuppressLint("WrongViewCast") final AutoCheckGroup autogroup = (AutoCheckGroup) convertView.findViewById(R.id.checkGroup);
             String[] fieldtexts = fieldtext.replace("check", "").split("2");
             for (int i = 0; i < fieldtexts.length; i++) {
                 PassLinearLayout passparent = new PassLinearLayout(context);

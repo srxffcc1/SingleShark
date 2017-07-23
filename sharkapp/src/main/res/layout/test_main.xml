@@ -52,6 +52,7 @@
                     android:layout_weight="1"
                     android:onClick="addBadge"
                     android:text="红点" />
+
             </LinearLayout>
         </LinearLayout>
 
