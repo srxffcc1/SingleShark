@@ -4,4 +4,4 @@ include ':businessframe'
 include ':moduleresource'
 include ':moduleapk'
 
-//include ':sound'
+include ':droidplugin'

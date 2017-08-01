@@ -9,6 +9,7 @@ import android.view.View;
 import com.businessframehelp.app.FrameActivity;
 import com.businessframehelp.enums.ORIENTATION;
 import com.businessframehelp.listen.StyleDialogListener;
+import com.shark.app.singleactivity.ApkFragment;
 import com.shark.app.singleactivity.tab.ActivityPdfBook;
 import com.businessframehelp.utils.FrameUtil;
 import com.businessframehelp.utils.ZipUtil;
@@ -135,6 +136,9 @@ public class TestMainActivity extends FrameActivity {
 //        intent.setAction(Intent.ACTION_VIEW);
 //        intent.setData(Uri.fromFile(new File(Environment.getExternalStorageDirectory()+"/test2017.pdf")));
 //        startActivity(intent);
+    }
+    public void testPDfPrint(View view){
+        PdfPrintHelp.print(Environment.getExternalStorageDirectory()+"/test2017.pdf",this,1000);
     }
 
 }

@@ -1,4 +1,4 @@
-package com.shark.app.test;
+package com.shark.app.singleactivity;
 
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
@@ -28,6 +28,7 @@ import android.widget.Toast;
 import com.businessframehelp.app.BaseFragment;
 import com.morgoo.droidplugin.pm.PluginManager;
 import com.shark.app.R;
+import com.shark.app.entity.ApkItem;
 
 import java.io.File;
 import java.util.ArrayList;
