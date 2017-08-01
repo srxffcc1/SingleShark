@@ -1,20 +1,20 @@
 package com.shark.app.test;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Environment;
 import android.os.Looper;
-import android.os.RemoteException;
 import android.widget.Toast;
 
-import com.morgoo.droidplugin.pm.PluginManager;
+import com.lody.virtual.client.core.InstallStrategy;
+import com.lody.virtual.client.core.VirtualCore;
+import com.lody.virtual.client.ipc.VActivityManager;
+import com.lody.virtual.remote.InstallResult;
 
 import java.io.File;
-
-import static com.morgoo.helper.compat.PackageManagerCompat.INSTALL_FAILED_NOT_SUPPORT_ABI;
-import static com.morgoo.helper.compat.PackageManagerCompat.INSTALL_SUCCEEDED;
+import java.io.IOException;
 
 public class PdfPrintHelp {
     /**
@@ -30,53 +30,84 @@ public class PdfPrintHelp {
                 @Override
                 public void run() {
                     Looper.prepare();
-                    if(PluginHelp.checkPluginInstall("com.dynamixsoftware.printershare")){
-
-                        PackageManager pm = activity.getPackageManager();
-                        Intent intent = pm.getLaunchIntentForPackage("com.dynamixsoftware.printershare");
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    InstallResult res=VirtualCore.get().installPackage(Environment.getExternalStorageDirectory()+"/PrinterShare-11.10.0.apk", InstallStrategy.TERMINATE_IF_EXIST);
+                    if (res.isSuccess) {
+                        try {
+                            VirtualCore.get().preOpt(res.packageName);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        if (res.isUpdate) {
+                            Toast.makeText(activity, "Update: " + res.packageName + " success!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(activity, "Install: " + res.packageName + " success!", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(activity, "Install failed: " + res.error, Toast.LENGTH_SHORT).show();
+                    }
+                        ComponentName comp = new ComponentName("com.dynamixsoftware.printershare","com.dynamixsoftware.printershare.ActivityPrintPDF");
                         Uri fileuri = Uri.fromFile(new File(pdfpath));
+                        Intent intent = new Intent(Intent.ACTION_VIEW);
+                        intent.setComponent(comp);
                         intent.setDataAndType(fileuri, "application/pdf");
-                        activity.startActivity(intent);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        VActivityManager.get().startActivity(intent, 0);
+                        Looper.loop();
+
+
+
+
+
+
+
+//                    Looper.prepare();
+//                    if(PluginHelp.checkPluginInstall("com.dynamixsoftware.printershare")){
+//
+////                        PackageManager pm = activity.getPackageManager();
+////                        Intent intent = pm.getLaunchIntentForPackage("com.dynamixsoftware.printershare");
+////                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+////                        Uri fileuri = Uri.fromFile(new File(pdfpath));
+////                        activity.startActivity(intent);
+//                        ComponentName comp = new ComponentName("com.dynamixsoftware.printershare","com.dynamixsoftware.printershare.ActivityPrintPDF");
 //                        Uri fileuri = Uri.fromFile(new File(pdfpath));
 //                        Intent intent = new Intent(Intent.ACTION_VIEW);
-//                        intent.setClassName(activity, "com.dynamixsoftware.printershare.ActivityPrintPDF");
+//                        intent.setComponent(comp);
 //                        intent.setDataAndType(fileuri, "application/pdf");
 //                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 //                        activity.startActivity(intent);
-                    }else{
-                        try {
-                            final int re = PluginManager.getInstance().installPackage(Environment.getExternalStorageDirectory()+"/PrinterShare-11.10.0.apk", 0);//安装apk
-                            switch (re) {
-                                case PluginManager.INSTALL_FAILED_NO_REQUESTEDPERMISSION:
-                                    Toast.makeText(activity, "安装失败，文件请求的权限太多", Toast.LENGTH_SHORT).show();
-                                    break;
-                                case INSTALL_FAILED_NOT_SUPPORT_ABI:
-                                    Toast.makeText(activity, "宿主不支持插件的abi环境，可能宿主运行时为64位，但插件只支持32位", Toast.LENGTH_SHORT).show();
-                                    break;
-                                case INSTALL_SUCCEEDED:
-                                    Toast.makeText(activity, "安装完成", Toast.LENGTH_SHORT).show();
-                                    PackageManager pm = activity.getPackageManager();
-                                    Intent intent = pm.getLaunchIntentForPackage("com.dynamixsoftware.printershare");
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                    Uri fileuri = Uri.fromFile(new File(pdfpath));
-                                    intent.setDataAndType(fileuri, "application/pdf");
-                                    activity.startActivity(intent);
-
+//                    }else{
+//                        try {
+//                            final int re = PluginManager.getInstance().installPackage(Environment.getExternalStorageDirectory()+"/PrinterShare-11.10.0.apk", 0);//安装apk
+//                            switch (re) {
+//                                case PluginManager.INSTALL_FAILED_NO_REQUESTEDPERMISSION:
+//                                    Toast.makeText(activity, "安装失败，文件请求的权限太多", Toast.LENGTH_SHORT).show();
+//                                    break;
+//                                case INSTALL_FAILED_NOT_SUPPORT_ABI:
+//                                    Toast.makeText(activity, "宿主不支持插件的abi环境，可能宿主运行时为64位，但插件只支持32位", Toast.LENGTH_SHORT).show();
+//                                    break;
+//                                case INSTALL_SUCCEEDED:
+//                                    Toast.makeText(activity, "安装完成", Toast.LENGTH_SHORT).show();
+////                                    PackageManager pm = activity.getPackageManager();
+////                                    Intent intent = pm.getLaunchIntentForPackage("com.dynamixsoftware.printershare");
+////                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+////                                    Uri fileuri = Uri.fromFile(new File(pdfpath));
+////                                    intent.setDataAndType(fileuri, "application/pdf");
+////                                    activity.startActivity(intent);
+//                                    ComponentName comp = new ComponentName("com.dynamixsoftware.printershare","com.dynamixsoftware.printershare.ActivityPrintPDF");
 //                                    Uri fileuri = Uri.fromFile(new File(pdfpath));
 //                                    Intent intent = new Intent(Intent.ACTION_VIEW);
-//                                    intent.setClassName(activity, "com.dynamixsoftware.printershare.ActivityPrintPDF");
+//                                    intent.setComponent(comp);
 //                                    intent.setDataAndType(fileuri, "application/pdf");
 //                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 //                                    activity.startActivity(intent);
-                                    break;
-                            }
-                        } catch (RemoteException e) {
-                            e.printStackTrace();
-                        }
-                    }
-
-                    Looper.loop();
+//                                    break;
+//                            }
+//                        } catch (RemoteException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//
+//                    Looper.loop();
                 }
             }).start();
 

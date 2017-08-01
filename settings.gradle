@@ -3,5 +3,5 @@ include ':sharkapp'
 include ':businessframe'
 include ':moduleresource'
 include ':moduleapk'
-
-include ':droidplugin'
+include ':valib'
+//include ':droidplugin'

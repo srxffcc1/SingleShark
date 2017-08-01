@@ -30,7 +30,7 @@ android {
     }
 }
 dependencies {
-    compile project(':droidplugin')
+    compile project(':valib')
     //    compile fileTree(include: ['*.jar'], dir: 'libs')
 //    compile 'com.srxlike.droidplugin:droidplugin:1.0.0'
     //动态加载框架
