@@ -80,6 +80,7 @@ public class HttpConnectStack implements HttpStack {
             url = rewritten;
         }
         URL parsedUrl = new URL(url);
+        System.out.println("Url:"+url);
         System.out.println("start connect");
         HttpURLConnection connection = openConnection(parsedUrl, request);
         for (String headerName : map.keySet()) {

@@ -146,8 +146,8 @@ public class Network {
      */
     private byte[] entityToBytes(KJHttpResponse kjHttpResponse) throws IOException,
             KJHttpException {
-        PoolingByteArrayOutputStream bytes = new PoolingByteArrayOutputStream(
-                ByteArrayPool.get(), (int) kjHttpResponse.getContentLength());
+//        PoolingByteArrayOutputStream bytes = new PoolingByteArrayOutputStream(
+//                ByteArrayPool.get(), (int) kjHttpResponse.getContentLength());
 
         StringBuilder jsonResults = new StringBuilder();
         try {

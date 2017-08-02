@@ -2,6 +2,7 @@ package com.businessframehelp.utils;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v4.app.FragmentActivity;
@@ -15,6 +16,9 @@ import com.jzxiang.pickerview.listener.OnDateSetListener;
 import com.nbsp.materialfilepicker.MaterialFilePicker;
 import com.sandrios.sandriosCamera.internal.SandriosCamera;
 import com.sandrios.sandriosCamera.internal.configuration.CameraConfiguration;
+import com.zhihu.matisse.Matisse;
+import com.zhihu.matisse.MimeType;
+import com.zhihu.matisse.engine.impl.GlideEngine;
 
 import java.io.File;
 
@@ -204,6 +208,18 @@ public class FrameUtil {
                 .setWheelItemTextSize(12)
                 .build()
         .show(((FragmentActivity)activity).getSupportFragmentManager(),"timepicker");
+    }
+    public void startAlbum(Activity activity,int REQUEST_CODE){
+        Matisse.from(activity)
+                .choose(MimeType.allOf())
+                .countable(true)
+                .maxSelectable(9)
+//                .addFilter(new GifSizeFilter(320, 320, 5 * Filter.K * Filter.K))
+//                .gridExpectedSize(activity.getResources().getDimensionPixelSize(R.dimen.grid_expected_size))
+                .restrictOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED)
+                .thumbnailScale(0.85f)
+                .imageEngine(new GlideEngine())
+                .forResult(REQUEST_CODE);
     }
 
 }

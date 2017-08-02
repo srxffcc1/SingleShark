@@ -81,7 +81,7 @@ dependencies {
     compile('com.sandrios.android:sandriosCamera:1.0.9') { exclude module: 'ucrop' }//相机+录像
 //    compile 'com.mindorks:paracamera:0.2.2'//相机+录像备选
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'//图表库
-    compile 'com.github.bumptech.glide:glide:3.7.0'//图片加载库
+//    compile 'com.github.bumptech.glide:glide:3.7.0'//图片加载库
 //    compile 'com.google.zxing:core:3.3.0'//zxing
     compile('cn.yipianfengye.android:zxing-library:2.1')  //二维码扫描
     compile('com.github.yalantis:ucrop:2.2.1') {//图片裁剪
@@ -102,7 +102,7 @@ dependencies {
     compile('com.github.adrielcafe:AndroidAudioRecorder:0.3.0') {//录音
         exclude group: 'com.android.support'
     }
-    compile('cn.finalteam:galleryfinal:1.4.8.7') { exclude group: 'com.android.support' }//相册
+    compile ('com.zhihu.android:matisse:0.4.3') { exclude group: 'com.android.support' }//相册
     compile('com.nbsp:library:1.2') { exclude group: 'com.android.support' }
     compile('com.zhy:autolayout:1.4.5') { exclude group: 'com.android.support' }//适配库
 //    compile('com.airbnb.android:lottie:1.5.3') { exclude group: 'com.android.support' }//ae动画库
