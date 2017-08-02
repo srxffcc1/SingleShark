@@ -8,9 +8,10 @@ import java.util.Stack;
 
 /**
  * Created by Administrator on 2017/5/13.
+ *
  */
 
-
+@Deprecated
 public class BroadCastManager {
     /**
      * 单例模式

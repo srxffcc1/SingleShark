@@ -25,7 +25,9 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
-
+/**
+ * 设置可以控制的fragment标签
+ */
 public abstract class SingleFragmentPagerAdapter extends PagerAdapter {
     private static final String TAG = "FragmentPagerAdapter";
     private static final boolean DEBUG = false;
@@ -137,6 +139,12 @@ public abstract class SingleFragmentPagerAdapter extends PagerAdapter {
         return position;
     }
 
+    /**
+     * 此处为控制规则
+     * @param viewId
+     * @param id
+     * @return
+     */
     private static String makeFragmentName(int viewId, long id) {
         return "android:switcher:" + viewId + ":" + id;
     }

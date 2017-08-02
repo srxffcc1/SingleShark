@@ -9,7 +9,7 @@ import java.util.HashSet;
 /**
  * Created by Administrator on 2017/5/7.
  */
-
+@Deprecated
 class CustomCL extends ClassLoader {
 
     private String basedir; // 需要该类加载器直接加载的类文件的基目录

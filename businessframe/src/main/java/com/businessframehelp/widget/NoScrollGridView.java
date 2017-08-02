@@ -1,7 +1,7 @@
 package com.businessframehelp.widget;
 
 import android.widget.GridView;
-
+@Deprecated
 public class NoScrollGridView extends GridView
 {
 	public NoScrollGridView(android.content.Context context,

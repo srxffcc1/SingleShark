@@ -1,9 +1,10 @@
 package com.businessframehelp.staticlib;
 
 /**
+ * app静态字段记录类
  * Created by King6rf on 2017/5/10.
  */
-
+@Deprecated
 public class StaticField {
     private static String syncurl="login!sjdsjtb";//线上交互地址头   login!sjdsjtb?json参数json
     private static String bigplanurl="enforcementPlan/enforcementPlanAction!listAll";//bigplan表

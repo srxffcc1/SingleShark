@@ -9,6 +9,7 @@ import java.util.Stack;
 
 /**
  * Created by Administrator on 2017/5/10.
+ * Activity栈
  */
 
 public class FrameActivityManager {

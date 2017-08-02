@@ -6,6 +6,7 @@ import java.util.Map;
 
 /**
  * Created by King6rf on 2017/5/25.
+ * 用于反射资源
  */
 
 public class ClassUtil {

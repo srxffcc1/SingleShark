@@ -30,7 +30,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+@Deprecated
 public class Adapter_BookDetail {
     private Activity context;
     private Base_Entity detailMapData;

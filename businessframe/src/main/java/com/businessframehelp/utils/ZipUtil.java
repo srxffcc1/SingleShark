@@ -5,6 +5,7 @@ import com.hzy.archiver.IArchiverListener;
 
 /**
  * Created by King6rf on 2017/5/12.
+ * 总的压缩类支持多种解压
  */
 
 public class ZipUtil {

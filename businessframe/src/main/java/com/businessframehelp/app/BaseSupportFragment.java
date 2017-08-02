@@ -16,6 +16,7 @@ import java.lang.reflect.Method;
 
 /**
  * Created by Administrator on 2017/5/14.
+ * 现实能onActivityResult的fragment
  */
 
 public class BaseSupportFragment extends Fragment{

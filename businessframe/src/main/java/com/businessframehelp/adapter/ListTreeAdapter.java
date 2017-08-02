@@ -17,7 +17,7 @@ import java.util.Objects;
 /**
  * Created by KingGT80 on 2017/3/15.
  */
-
+@Deprecated
 abstract public class ListTreeAdapter extends BaseAdapter implements IListTreeAdapter{
     public Activity context;
     public List<ListItem> alllist = new ArrayList<>();//第一层进去的展示列表

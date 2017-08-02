@@ -9,6 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by Administrator on 2017/5/13.
+ * 原子控制的db操作管理类
  */
 
 public class DataBaseManager {

@@ -37,6 +37,7 @@ import butterknife.ButterKnife;
 
 /**
  * Created by Administrator on 2017/5/10.
+ * 基Activity 带有 LocalActivityManager 可以实现抽离出Intent转化为view
  */
 
 public abstract class FrameActivity extends AutoLayoutActivity implements IFrameActivity,IBroadCastListener {

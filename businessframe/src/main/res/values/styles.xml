@@ -34,5 +34,8 @@
     </style>
     <style name="FrameAppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="FrameAppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
+    <style name="AutoCompleteStyle" parent="@android:style/Widget.AutoCompleteTextView">
+        <item name="android:popupBackground">@drawable/netencyclopedia_completeitems_bg</item>
+        <item name="android:dropDownVerticalOffset">0dip</item>
+    </style>
 </resources>

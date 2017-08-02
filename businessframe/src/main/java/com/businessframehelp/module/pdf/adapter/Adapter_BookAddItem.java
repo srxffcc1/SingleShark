@@ -13,7 +13,7 @@ import com.wisdomregulation.data.entitybase.Base_Entity;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+@Deprecated
 public class Adapter_BookAddItem {
 	private Activity context;
 	private List<Base_Entity> detailMapData;

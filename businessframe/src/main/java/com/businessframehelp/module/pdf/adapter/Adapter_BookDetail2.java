@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.businessframehelp.R;
 import com.wisdomregulation.data.entitybase.Base_Entity;
-
+@Deprecated
 public class Adapter_BookDetail2 {
     private Activity context;
     private Base_Entity detailMapData;

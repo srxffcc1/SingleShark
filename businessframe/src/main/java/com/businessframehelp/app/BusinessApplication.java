@@ -32,43 +32,43 @@ public class BusinessApplication extends BlackApplication {
         @Override
         public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
             FrameActivityManager.instance().addActivity(activity);
-            Log.v("ActivityLifecycleCallbacks", activity.getClass().getSimpleName()+":"+"onActivityCreated");
+            Log.v("ActivityCallbacks", activity.getClass().getSimpleName()+":"+"onActivityCreated");
 
         }
 
         @Override
         public void onActivityStarted(Activity activity) {
-            Log.v("ActivityLifecycleCallbacks", activity.getClass().getSimpleName()+":"+"onActivityStarted");
+            Log.v("ActivityCallbacks", activity.getClass().getSimpleName()+":"+"onActivityStarted");
 
         }
 
         @Override
         public void onActivityResumed(Activity activity) {
-            Log.v("ActivityLifecycleCallbacks", activity.getClass().getSimpleName()+":"+"onActivityResumed");
+            Log.v("ActivityCallbacks", activity.getClass().getSimpleName()+":"+"onActivityResumed");
         }
 
         @Override
         public void onActivityPaused(Activity activity) {
-            Log.v("ActivityLifecycleCallbacks", activity.getClass().getSimpleName()+":"+"onActivityPaused");
+            Log.v("ActivityCallbacks", activity.getClass().getSimpleName()+":"+"onActivityPaused");
 
         }
 
         @Override
         public void onActivityStopped(Activity activity) {
-            Log.v("ActivityLifecycleCallbacks", activity.getClass().getSimpleName()+":"+"onActivityStopped");
+            Log.v("ActivityCallbacks", activity.getClass().getSimpleName()+":"+"onActivityStopped");
 
         }
 
         @Override
         public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
-            Log.v("ActivityLifecycleCallbacks", activity.getClass().getSimpleName()+":"+"onActivitySaveInstanceState");
+            Log.v("ActivityCallbacks", activity.getClass().getSimpleName()+":"+"onActivitySaveInstanceState");
 
         }
 
         @Override
         public void onActivityDestroyed(Activity activity) {
             FrameActivityManager.instance().finishActivity(activity);
-            Log.v("ActivityLifecycleCallbacks", activity.getClass().getSimpleName()+":"+"onActivityDestroyed");
+            Log.v("ActivityCallbacks", activity.getClass().getSimpleName()+":"+"onActivityDestroyed");
         }
     }
 }

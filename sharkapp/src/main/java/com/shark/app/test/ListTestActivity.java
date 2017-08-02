@@ -20,7 +20,7 @@ import butterknife.BindView;
 /**
  * Created by Administrator on 2017/5/13.
  */
-
+@Deprecated
 public class ListTestActivity extends FrameActivity {
     @BindView(R.id.testlist)
     ListView mTestlist;

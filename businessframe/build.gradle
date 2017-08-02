@@ -44,7 +44,7 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-//    compile project(':mupdf')
+    compile project(':kjhttp')
     compile project(':blackframe')
 //    compile project(':sound')
 //    compile project(':playerdisk')
@@ -66,12 +66,12 @@ dependencies {
         exclude group: 'com.android.support'
         exclude group: 'commons-logging', module: 'commons-logging'
     }//解压文件
-    compile 'com.srxlike.voice:voice:1.0.0'//录音
-    compile 'com.srxlike.common:common:1.0.0'//通用工具集
-    compile 'com.srxlike.verticalrefreshlayout:verticalrefreshlayout:1.0.0'//下拉刷新
-    compile 'com.srxlike.kjhttp:kjhttp:1.0.0'//网络请求包
-    compile 'com.srxlike.kvplayer:kvplayer:1.0.1'//金山云视频
-    compile('com.srxlike.navlibrary:navlibrary:1.0.0') { exclude group: 'com.android.support' }//侧滑
+    compile 'com.srxlike.voice:voice:+'//录音
+    compile 'com.srxlike.common:common:+'//通用工具集
+    compile 'com.srxlike.verticalrefreshlayout:verticalrefreshlayout:+'//下拉刷新
+//    compile 'com.srxlike.kjhttp:kjhttp:+'//网络请求包
+    compile 'com.srxlike.kvplayer:kvplayer:+'//金山云视频
+    compile('com.srxlike.navlibrary:navlibrary:+') { exclude group: 'com.android.support' }//侧滑
 //    compile project(':navlibrary')
     //--------------------------------------------------
     compile 'com.github.promeg:tinypinyin:2.0.3' // TinyPinyin核心包，约80KB

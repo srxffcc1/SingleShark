@@ -5,7 +5,7 @@ import android.database.Cursor;
 /**
  * Created by Administrator on 2017/5/14.
  */
-
+@Deprecated
 public class SharkDb {
 
     public void insert2update(IDao dao) {
