@@ -44,7 +44,7 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile project(':kjhttp')
+//    compile project(':kjhttp')
     compile project(':blackframe')
 //    compile project(':sound')
 //    compile project(':playerdisk')
@@ -69,7 +69,7 @@ dependencies {
     compile 'com.srxlike.voice:voice:+'//录音
     compile 'com.srxlike.common:common:+'//通用工具集
     compile 'com.srxlike.verticalrefreshlayout:verticalrefreshlayout:+'//下拉刷新
-//    compile 'com.srxlike.kjhttp:kjhttp:+'//网络请求包
+    compile 'com.srxlike.kjhttp:kjhttp:+'//网络请求包
     compile 'com.srxlike.kvplayer:kvplayer:+'//金山云视频
     compile('com.srxlike.navlibrary:navlibrary:+') { exclude group: 'com.android.support' }//侧滑
 //    compile project(':navlibrary')

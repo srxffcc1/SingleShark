@@ -30,7 +30,8 @@ android {
     }
 }
 dependencies {
-    compile project(':valib')
+//    compile project(':valib')
+    compile 'com.srxlike.virtuallib:virtuallib:1.0.0'
     //    compile fileTree(include: ['*.jar'], dir: 'libs')
     //动态加载框架
 //    compile 'com.srxlike.virtuallib:virtuallib:+'
