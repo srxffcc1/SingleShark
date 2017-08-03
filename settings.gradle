@@ -1,4 +1,4 @@
-include ':blackframe', ':opencamera'
+include ':blackframe', ':app'
 include ':sharkapp'
 include ':businessframe'
 include ':moduleresource'
