@@ -1,18 +1,6 @@
 package com.shark.app.test;
 
 import android.app.Activity;
-import android.content.ComponentName;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Environment;
-import android.os.Looper;
-
-import com.lody.virtual.client.core.InstallStrategy;
-import com.lody.virtual.client.core.VirtualCore;
-import com.lody.virtual.client.ipc.VActivityManager;
-import com.lody.virtual.remote.InstallResult;
-
-import java.io.File;
 
 public class PdfPrintHelp {
     /**
@@ -27,30 +15,30 @@ public class PdfPrintHelp {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    Looper.prepare();
-                    InstallResult res=VirtualCore.get().installPackage(Environment.getExternalStorageDirectory()+"/PrinterShare-11.10.0.apk", InstallStrategy.TERMINATE_IF_EXIST);
-//                    if (res.isSuccess) {
-//                        try {
-//                            VirtualCore.get().preOpt(res.packageName);
-//                        } catch (IOException e) {
-//                            e.printStackTrace();
-//                        }
-//                        if (res.isUpdate) {
-//                            Toast.makeText(activity, "Update: " + res.packageName + " success!", Toast.LENGTH_SHORT).show();
-//                        } else {
-//                            Toast.makeText(activity, "Install: " + res.packageName + " success!", Toast.LENGTH_SHORT).show();
-//                        }
-//                    } else {
-//                        Toast.makeText(activity, "Install failed: " + res.error, Toast.LENGTH_SHORT).show();
-//                    }
-                        ComponentName comp = new ComponentName("com.dynamixsoftware.printershare","com.dynamixsoftware.printershare.ActivityPrintPDF");
-                        Uri fileuri = Uri.fromFile(new File(pdfpath));
-                        Intent intent = new Intent(Intent.ACTION_VIEW);
-                        intent.setComponent(comp);
-                        intent.setDataAndType(fileuri, "application/pdf");
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        VActivityManager.get().startActivity(intent, 0);
-                        Looper.loop();
+//                    Looper.prepare();
+//                    InstallResult res=VirtualCore.get().installPackage(Environment.getExternalStorageDirectory()+"/PrinterShare-11.10.0.apk", InstallStrategy.TERMINATE_IF_EXIST);
+////                    if (res.isSuccess) {
+////                        try {
+////                            VirtualCore.get().preOpt(res.packageName);
+////                        } catch (IOException e) {
+////                            e.printStackTrace();
+////                        }
+////                        if (res.isUpdate) {
+////                            Toast.makeText(activity, "Update: " + res.packageName + " success!", Toast.LENGTH_SHORT).show();
+////                        } else {
+////                            Toast.makeText(activity, "Install: " + res.packageName + " success!", Toast.LENGTH_SHORT).show();
+////                        }
+////                    } else {
+////                        Toast.makeText(activity, "Install failed: " + res.error, Toast.LENGTH_SHORT).show();
+////                    }
+//                        ComponentName comp = new ComponentName("com.dynamixsoftware.printershare","com.dynamixsoftware.printershare.ActivityPrintPDF");
+//                        Uri fileuri = Uri.fromFile(new File(pdfpath));
+//                        Intent intent = new Intent(Intent.ACTION_VIEW);
+//                        intent.setComponent(comp);
+//                        intent.setDataAndType(fileuri, "application/pdf");
+//                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                        VActivityManager.get().startActivity(intent, 0);
+//                        Looper.loop();
 
                 }
             }).start();

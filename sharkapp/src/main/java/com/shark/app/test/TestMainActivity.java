@@ -128,7 +128,7 @@ public class TestMainActivity extends FrameActivity {
     }
 
     public void startCamera(View view) {
-//        startActivity(new Intent(this, OpMainActivity.class));
+//        startActivity(new Intent(this, CameraStartActivity.class));
         FrameUtil.instance().startCamera(this, 100);
     }
 
