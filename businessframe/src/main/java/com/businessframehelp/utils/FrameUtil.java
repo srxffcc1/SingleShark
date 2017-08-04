@@ -28,7 +28,6 @@ import q.rorbin.badgeview.QBadgeView;
 /**
  * Created by Administrator on 2017/5/9.
  */
-
 public class FrameUtil {
     private static final FrameUtil frameUtil=new FrameUtil();
     private FrameUtil(){
