@@ -123,9 +123,9 @@ dependencies {
         exclude group: 'io.reactivex'
         exclude group: 'com.android.support'
     }
-//    compile 'com.amap.api:navi-3dmap:latest.integration'//地图包
-//    compile 'com.amap.api:search:latest.integration'//地图包
-//    compile 'com.amap.api:location:latest.integration'//地图包
+    compile 'com.amap.api:navi-3dmap:5.1.0'//地图包
+    compile 'com.amap.api:search:5.1.0'//地图包
+    compile 'com.amap.api:location:3.4.0'//地图包
 //    compile group: 'com.itextpdf', name: 'itextpdf', version: '5.5.11'//itxt库 写pdf用
     compile('com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2') {//tab按钮
         exclude group: 'com.android.support'
@@ -134,3 +134,4 @@ dependencies {
     compile('q.rorbin:VerticalTabLayout:1.2.2') { exclude group: 'com.android.support' }//竖直tab
 //    compile ("de.mrmaffen:vlc-android-sdk:2.0.6"){ exclude group: 'com.android.support' }
 }
+

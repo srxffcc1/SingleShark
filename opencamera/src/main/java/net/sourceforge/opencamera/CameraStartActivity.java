@@ -8,9 +8,11 @@ import android.support.annotation.Nullable;
 
 /**
  * Created by Administrator on 2017/8/3.
+ * 中间类 用来快速进入相机界面
  */
 
 public class CameraStartActivity extends Activity {
+    int request=2001;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,10 +20,16 @@ public class CameraStartActivity extends Activity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(CameraStartActivity.this,OpMainActivity.class));
-                finish();
+                startActivityForResult(new Intent(CameraStartActivity.this,OpMainActivity.class),request);
             }
         },100);
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        setResult(RESULT_OK,data);
+        finish();
     }
 }

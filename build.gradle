@@ -40,3 +40,8 @@ ext {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+task whenTaskAdded{task->
+    if(task.name.contains('transformNative_libsWithMergeJniLibsForDebug')){
+        task.enable=false
+    }
+}
