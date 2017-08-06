@@ -15,13 +15,13 @@ android {
                 GETUI_APP_ID    : "WpKCCUBUtJ7qdM7BgwsTLA",
                 GETUI_APP_KEY   : "dVDPLPnamz6arzy4h6hGu2",
                 GETUI_APP_SECRET: "bVoEEya7W37RJ0e2nLg7R6",
-                GD_API_SECRET : "382c608d07f7b7ca966475479b6e67cd"
+                GD_API_SECRET   : "382c608d07f7b7ca966475479b6e67cd"
         ]
         renderscriptTargetApi 23
         renderscriptSupportModeEnabled true
         ndk {
             // 设置支持的SO库架构
-            abiFilters  'armeabi-v7a'//,'x86', 'x86_64', 'arm64-v8a','armeabi',armeabi-v7a
+            abiFilters 'armeabi-v7a'//,'x86', 'x86_64', 'arm64-v8a','armeabi',armeabi-v7a
         }
 
     }
@@ -47,7 +47,7 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
 //    compile project(':kjhttp')
     compile project(':blackframe')
-    compile project(':amaplib')
+//    compile project(':amaplib')
 //    compile project(':sound')
 //    compile project(':playerdisk')
     //----------------------------------------------------
@@ -58,22 +58,27 @@ dependencies {
     annotationProcessor('com.jakewharton:butterknife-compiler:8.5.1')    //butterknife包
     //-----------------------------------------------------
 //    compile 'com.github.barteksc:android-pdf-viewer:2.6.1'//pdf 预览
-    compile 'com.srxlike.mupdf:mupdf:1.0.2'//pdf预览
-    compile ('com.srxlike.helppdf:helppdf:1.0.7'){
-        exclude group: 'net.lingala.zip4j'
-        exclude group: 'commons-logging', module: 'commons-logging'
-    }//pdf生成
-//    compile 'com.srxlike.wisdomregulation_entity:wisdomregulation_entity:1.0.2'
-    compile('com.srxlike.unzip:unzip:1.0.2') {
+    compile 'com.sixdown.mupdf:mupdf:+'//pdf预览
+    compile 'com.sixdown.amapfix:amapfix:+'//地图包
+    compile('com.sixdown.unzip:unzip:+') {
         exclude group: 'com.android.support'
         exclude group: 'commons-logging', module: 'commons-logging'
     }//解压文件
-    compile 'com.srxlike.voice:voice:+'//录音
-    compile 'com.srxlike.common:common:+'//通用工具集
-    compile 'com.srxlike.verticalrefreshlayout:verticalrefreshlayout:+'//下拉刷新
-    compile 'com.srxlike.kjhttp:kjhttp:+'//网络请求包
-    compile 'com.srxlike.kvplayer:kvplayer:+'//金山云视频
-    compile('com.srxlike.navlibrary:navlibrary:+') { exclude group: 'com.android.support' }//侧滑
+    compile 'com.sixdown.opencamera:opencamera:+'//opencamera 库
+    compile 'com.sixdown.soundrecord:soundrecord:+'//录音
+    compile 'com.sixdown.common:common:+'//通用工具集
+    compile 'com.sixdown.verticalrefreshlayout:verticalrefreshlayout:+'//下拉刷新
+    compile 'com.sixdown.kjhttp:kjhttp:+'//网络请求包
+    compile 'com.sixdown.kvplayer:kvplayer:+'//金山云视频
+    compile('com.sixdown.navslidelibrary:navslidelibrary:+') {
+        exclude group: 'com.android.support'
+    }//侧滑
+
+    compile('com.sixdown.helppdf:helppdf:+') {
+        exclude group: 'net.lingala.zip4j'
+        exclude group: 'commons-logging', module: 'commons-logging'
+    }//pdf生成
+    compile 'com.sixdown.bookentity:bookentity:+'
 //    compile project(':navlibrary')
     //--------------------------------------------------
     compile 'com.github.promeg:tinypinyin:2.0.3' // TinyPinyin核心包，约80KB
@@ -104,7 +109,7 @@ dependencies {
     compile('com.github.adrielcafe:AndroidAudioRecorder:0.3.0') {//录音
         exclude group: 'com.android.support'
     }
-    compile ('com.zhihu.android:matisse:0.4.3') { exclude group: 'com.android.support' }//相册
+    compile('com.zhihu.android:matisse:0.4.3') { exclude group: 'com.android.support' }//相册
     compile('com.nbsp:library:1.2') { exclude group: 'com.android.support' }
     compile('com.zhy:autolayout:1.4.5') { exclude group: 'com.android.support' }//适配库
 //    compile('com.airbnb.android:lottie:1.5.3') { exclude group: 'com.android.support' }//ae动画库
@@ -125,14 +130,12 @@ dependencies {
         exclude group: 'io.reactivex'
         exclude group: 'com.android.support'
     }
-//    compile 'com.amap.api:navi-3dmap:5.1.0'//地图包
-//    compile 'com.amap.api:search:5.1.0'//地图包
-//    compile 'com.amap.api:location:3.4.0'//地图包
+
 //    compile group: 'com.itextpdf', name: 'itextpdf', version: '5.5.11'//itxt库 写pdf用
     compile('com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2') {//tab按钮
         exclude group: 'com.android.support'
     }
-    compile ('com.google.android:flexbox:0.3.0'){exclude group: 'com.android.support'}//谷歌流式布局
+    compile('com.google.android:flexbox:0.3.0') { exclude group: 'com.android.support' }//谷歌流式布局
     compile('q.rorbin:VerticalTabLayout:1.2.2') { exclude group: 'com.android.support' }//竖直tab
 //    compile ("de.mrmaffen:vlc-android-sdk:2.0.6"){ exclude group: 'com.android.support' }
 }

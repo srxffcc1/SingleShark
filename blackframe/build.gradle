@@ -31,10 +31,10 @@ android {
 }
 dependencies {
 //    compile project(':valib')
-    compile 'com.srxlike.virtuallib:virtuallib:1.0.0'
+    compile 'com.sixdown.virtuallib:virtuallib:+'
     //    compile fileTree(include: ['*.jar'], dir: 'libs')
     //动态加载框架
-//    compile 'com.srxlike.virtuallib:virtuallib:+'
+//    compile 'com.sixdown.virtuallib:virtuallib:+'
 
     compile 'com.tencent.bugly:crashreport:2.6.0'
     //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9
