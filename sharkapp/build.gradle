@@ -12,6 +12,12 @@ android {
         versionName "1.0"
         resConfigs "en", "zh"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders = [
+                GETUI_APP_ID    : "WpKCCUBUtJ7qdM7BgwsTLA",
+                GETUI_APP_KEY   : "dVDPLPnamz6arzy4h6hGu2",
+                GETUI_APP_SECRET: "bVoEEya7W37RJ0e2nLg7R6",
+                GD_API_SECRET   : "382c608d07f7b7ca966475479b6e67cd"
+        ]
         multiDexEnabled true
         ndk {
             // 设置支持的SO库架构
@@ -23,7 +29,12 @@ android {
         javaMaxHeapSize "2g"
     }
     signingConfigs {
-
+        debug {
+            storeFile file("../aycloud_debug.keystore")
+            keyPassword 'android'
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+        }
         release {
             storeFile file("../aycloud.keystore")
             storePassword "anyuankeji"
@@ -34,7 +45,7 @@ android {
     }
     buildTypes {
         debug {
-            applicationIdSuffix ".debug"
+//            applicationIdSuffix ".debug"
         }
 
         release {
@@ -84,6 +95,7 @@ dependencies {
     annotationProcessor('com.jakewharton:butterknife-compiler:8.5.1')
     compile project(':businessframe')//业务模块
     compile 'com.android.support:multidex:1.0.0'
+    compile project(':moduleclone')//克隆模块
     compile project(':moduleresource')//资源模块1
     compile project(':moduleapk')//资源模块2
 

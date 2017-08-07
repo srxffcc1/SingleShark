@@ -10,12 +10,16 @@ import android.view.View;
 import com.businessframehelp.app.FrameActivity;
 import com.businessframehelp.enums.ORIENTATION;
 import com.businessframehelp.listen.StyleDialogListener;
+import com.businessframehelp.staticlib.StaticAppInfo;
+import com.businessframehelp.staticlib.StaticSdkTool;
 import com.businessframehelp.utils.FrameUtil;
 import com.businessframehelp.utils.HttpConnector;
+import com.businessframehelp.utils.PrintUtil;
 import com.businessframehelp.utils.ZipUtil;
 import com.hss01248.dialog.StyledDialog;
 import com.hzy.archiver.IArchiverListener;
 import com.ksyun.player.disk.ui.activity.player.TextureVideoActivity;
+import com.kymjs.common.FileUtils;
 import com.kymjs.common.Log;
 import com.shark.app.R;
 import com.shark.app.singleactivity.ApkFragment;
@@ -211,7 +215,7 @@ public class TestMainActivity extends FrameActivity {
     }
 
     public void testPDfPrint(View view) {
-        PdfPrintHelp.print(Environment.getExternalStorageDirectory() + "/test2017.pdf", this, 1000);
+        PrintUtil.print(FileUtils.assetsCopy(this, StaticAppInfo.getInstance().getProjcetDir()+ StaticSdkTool.TEST,"wtest"), this, 1000);
     }
 
     public void testWeb(View view){
@@ -241,5 +245,20 @@ public class TestMainActivity extends FrameActivity {
     public void testAlbum(View view){
         FrameUtil.instance().startAlbum(this,100);
 
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        System.out.println("返回的:requestCode"+requestCode+",resultCode:"+resultCode);
+    }
+    public void onlocation(View view){
+        startActivity(new Intent(this,com.amap.location.demo.StartActivity.class));
+    }
+    public void onnavigation(View view){
+        startActivity(new Intent(this,com.amap.navi.demo.activity.IndexActivity.class));
+    }
+
+    public void onmap(View view){
+        startActivity(new Intent(this,com.amap.map3d.demo.MainActivity.class));
     }
 }

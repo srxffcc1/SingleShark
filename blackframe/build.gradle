@@ -30,7 +30,7 @@ android {
     }
 }
 dependencies {
-//    compile project(':valib')
+//    compile project(':virtualapp')
     compile 'com.sixdown.virtuallib:virtuallib:+'
     //    compile fileTree(include: ['*.jar'], dir: 'libs')
     //动态加载框架

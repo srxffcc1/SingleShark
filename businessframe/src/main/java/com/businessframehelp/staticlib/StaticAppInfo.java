@@ -61,6 +61,7 @@ public class StaticAppInfo implements IStaticAppInfo{
 		} catch (Exception e) {
 
 		}
+		StaticSdkTool.initDir(mcontext);
 	}
 	@Override
 	public String getProjcetDir() {
@@ -69,6 +70,7 @@ public class StaticAppInfo implements IStaticAppInfo{
 		path=sd.getString("projectpath", "");
 		if(!"".equals(path)){
 			if(new File(path+"/").exists()){//路径存在
+				System.out.println("路径:"+path);
 				return path;
 			}else{
 				sd.edit().putString("projectpath","");//说明路径不存在 可能存在换了sd卡了
@@ -95,6 +97,7 @@ public class StaticAppInfo implements IStaticAppInfo{
 			default:
 				break;
 		}
+		System.out.println("路径:"+path);
 		return path;
 	}
 
@@ -122,6 +125,9 @@ public class StaticAppInfo implements IStaticAppInfo{
 	public Context getAppLicationContext() {
 		return mcontext;
 	}
+	public enum  StaticMode {
+		demo, test, online
+	}
 
 }
 interface IStaticAppInfo{
@@ -131,7 +137,4 @@ interface IStaticAppInfo{
 	Object getUserEntity();
 	String getIpHead();
 	Context getAppLicationContext();
-}
- enum  StaticMode {
-	demo, test, online
 }

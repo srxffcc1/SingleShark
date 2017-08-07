@@ -3,16 +3,13 @@ package com.businessframehelp.utils;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.net.Uri;
 import android.provider.MediaStore;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 
-import com.businessframehelp.R;
+import com.bigkoo.pickerview.TimePickerView;
 import com.danielkim.soundrecorder.activities.RecordActivity;
-import com.jzxiang.pickerview.TimePickerDialog;
-import com.jzxiang.pickerview.data.Type;
-import com.jzxiang.pickerview.listener.OnDateSetListener;
 import com.nbsp.materialfilepicker.MaterialFilePicker;
 import com.sandrios.sandriosCamera.internal.SandriosCamera;
 import com.sandrios.sandriosCamera.internal.configuration.CameraConfiguration;
@@ -21,6 +18,7 @@ import com.zhihu.matisse.MimeType;
 import com.zhihu.matisse.engine.impl.GlideEngine;
 
 import java.io.File;
+import java.util.Calendar;
 
 import q.rorbin.badgeview.Badge;
 import q.rorbin.badgeview.QBadgeView;
@@ -184,29 +182,56 @@ public class FrameUtil {
 //        badgeView.setText(2+"");
 //        badgeView.show();
     }
-    public void startTimePicker(Activity activity, OnDateSetListener back){
-        long tenYears = 10L * 365 * 1000 * 60 * 60 * 24L;
-        new TimePickerDialog.Builder()
-                .setCallBack(back)
-                .setCancelStringId("取消")
-                .setSureStringId("确认")
-                .setTitleStringId("时间选择器")
-                .setYearText("年")
-                .setMonthText("月")
-                .setDayText("日")
-                .setHourText("时")
-                .setMinuteText("分")
-                .setCyclic(true)
-                .setMinMillseconds(System.currentTimeMillis())
-                .setMaxMillseconds(System.currentTimeMillis() + tenYears)
-                .setCurrentMillseconds(System.currentTimeMillis())
-                .setThemeColor(activity.getResources().getColor(R.color.timepicker_dialog_bg))
-                .setType(Type.ALL)
-                .setWheelItemTextNormalColor(activity.getResources().getColor(R.color.timetimepicker_default_text_color))
-                .setWheelItemTextSelectorColor(activity.getResources().getColor(R.color.timepicker_toolbar_bg))
-                .setWheelItemTextSize(12)
-                .build()
-        .show(((FragmentActivity)activity).getSupportFragmentManager(),"timepicker");
+    public void startTimePicker(Activity activity,TimePickerView.OnTimeSelectListener listener){
+//        long tenYears = 10L * 365 * 1000 * 60 * 60 * 24L;
+//        new TimePickerDialog.Builder()
+//                .setCallBack(back)
+//                .setCancelStringId("取消")
+//                .setSureStringId("确认")
+//                .setTitleStringId("时间选择器")
+//                .setYearText("年")
+//                .setMonthText("月")
+//                .setDayText("日")
+//                .setHourText("时")
+//                .setMinuteText("分")
+//                .setCyclic(true)
+//                .setMinMillseconds(System.currentTimeMillis())
+//                .setMaxMillseconds(System.currentTimeMillis() + tenYears)
+//                .setCurrentMillseconds(System.currentTimeMillis())
+//                .setThemeColor(activity.getResources().getColor(R.color.timepicker_dialog_bg))
+//                .setType(Type.ALL)
+//                .setWheelItemTextNormalColor(activity.getResources().getColor(R.color.timetimepicker_default_text_color))
+//                .setWheelItemTextSelectorColor(activity.getResources().getColor(R.color.timepicker_toolbar_bg))
+//                .setWheelItemTextSize(12)
+//                .build()
+//        .show(((FragmentActivity)activity).getSupportFragmentManager(),"timepicker");
+
+        Calendar selectedDate = Calendar.getInstance();
+        Calendar startDate = Calendar.getInstance();
+        //startDate.set(2013,1,1);
+        Calendar endDate = Calendar.getInstance();
+        //endDate.set(2020,1,1);
+
+        //正确设置方式 原因：注意事项有说明
+//        startDate.set(2013,0,1);
+//        endDate.set(2020,11,31);
+        TimePickerView timePickerView=new TimePickerView.Builder(activity, listener).setType(new boolean[]{true, true, true, true, true, true})// 默认全部显示
+                .setCancelText("取消")//取消按钮文字
+                .setSubmitText("确认")//确认按钮文字
+//                .setContentSize(18)//滚轮文字大小
+//                .setTitleSize(20)//标题文字大小
+                .setTitleText("时间")//标题文字
+                .setOutSideCancelable(false)//点击屏幕，点在控件外部范围时，是否取消显示
+                .isCyclic(true)//是否循环滚动
+                .setDividerColor(Color.DKGRAY)
+                .setDate(selectedDate)// 如果不设置的话，默认是系统时间*/
+                .setRangDate(startDate,endDate)//起始终止年月日设定
+                .setLabel("年","月","日","时","分","秒")//默认设置为年月日时分秒
+                .isCenterLabel(false) //是否只显示中间选中项的label文字，false则每项item全部都带有label。
+                .setDecorView(null)
+                .build();
+        timePickerView.show();
+        ;
     }
     public void startAlbum(Activity activity,int REQUEST_CODE){
         Matisse.from(activity)

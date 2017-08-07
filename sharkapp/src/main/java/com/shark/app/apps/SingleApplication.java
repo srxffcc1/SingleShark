@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.multidex.MultiDex;
 
 import com.businessframehelp.app.BusinessApplication;
+import com.businessframehelp.staticlib.StaticAppInfo;
 import com.businessframehelp.utils.ClassUtil;
 import com.shark.app.R;
 
@@ -17,6 +18,7 @@ public class SingleApplication extends BusinessApplication {
         super.onCreate();
         System.out.println("打开应用");
         ClassUtil.getInstance().init(R.class);
+        StaticAppInfo.getInstance().init(this, StaticAppInfo.StaticMode.test);
     }
 
 

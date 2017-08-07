@@ -1,13 +1,15 @@
-package com.shark.app.test;
+package com.businessframehelp.utils;
 
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Environment;
 import android.os.Looper;
 import android.widget.Toast;
 
+import com.businessframehelp.staticlib.StaticAppInfo;
+import com.businessframehelp.staticlib.StaticSdkTool;
+import com.kymjs.common.FileUtils;
 import com.lody.virtual.client.core.InstallStrategy;
 import com.lody.virtual.client.core.VirtualCore;
 import com.lody.virtual.client.ipc.VActivityManager;
@@ -15,7 +17,7 @@ import com.lody.virtual.remote.InstallResult;
 
 import java.io.File;
 
-public class PdfPrintHelp {
+public class PrintUtil {
     /**
      * @param pdfpath   pdf路劲
      * @param activity
@@ -29,8 +31,10 @@ public class PdfPrintHelp {
                 @Override
                 public void run() {
                     Looper.prepare();
-                    Toast.makeText(activity,"打开插件",Toast.LENGTH_LONG).show();
-                    InstallResult res= VirtualCore.get().installPackage(Environment.getExternalStorageDirectory()+"/PrinterShare-11.10.0.apk", InstallStrategy.TERMINATE_IF_EXIST);
+                    Toast.makeText(activity,"部署插件",Toast.LENGTH_SHORT).show();
+                    String apkfilestring=FileUtils.assetsCopy(activity, StaticAppInfo.getInstance().getProjcetDir()+StaticSdkTool.ZHIAPK,"PrinterShare");
+                    Toast.makeText(activity,"打开插件",Toast.LENGTH_SHORT).show();
+                    InstallResult res= VirtualCore.get().installPackage(apkfilestring, InstallStrategy.TERMINATE_IF_EXIST);
 
 ////                    if (res.isSuccess) {
 ////                        try {
@@ -52,7 +56,7 @@ public class PdfPrintHelp {
                         intent.setComponent(comp);
                         intent.setDataAndType(fileuri, "application/pdf");
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        VActivityManager.get().startActivity(intent, 0);
+                        VActivityManager.get().startActivity(intent, 0);//暂时不研究result了
                         Looper.loop();
 
                 }

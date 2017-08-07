@@ -11,7 +11,7 @@ import java.io.File;
 
 public class StaticSdkTool {
     public static final String GEN="/";
-    public static final String TESTPDF="/TestPdf/";
+    public static final String TEST ="/Test/";
     public static final String ZHIHEAD="/ZhiHead/";
     public static final String ZHICOLLECT="/ZhiCollect/";
     public static final String ZHIEXPORT="/ZhiExport/";
@@ -20,7 +20,7 @@ public class StaticSdkTool {
     public static void initDir(Context context){
         new File(StaticAppInfo.getInstance().getProjcetDir() +GEN)
                 .mkdirs();
-        new File(StaticAppInfo.getInstance().getProjcetDir() + TESTPDF)
+        new File(StaticAppInfo.getInstance().getProjcetDir() + TEST)
                 .mkdirs();
         new File(StaticAppInfo.getInstance().getProjcetDir()+ ZHIHEAD)
                 .mkdirs();

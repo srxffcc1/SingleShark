@@ -404,4 +404,5 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
         }
         return super.onOptionsItemSelected(item);
     }
+
 }
