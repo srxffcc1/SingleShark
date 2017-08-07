@@ -1,6 +1,5 @@
 package com.amap.navi.demo.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -16,11 +15,10 @@ import com.amap.api.navi.AmapNaviPage;
 import com.amap.api.navi.AmapNaviParams;
 import com.amap.api.navi.INaviInfoCallback;
 import com.amap.api.navi.model.AMapNaviLocation;
-import com.shark.resoureclone.R;
 import com.amap.navi.demo.activity.custom.CustomUiActivity;
 import com.amap.navi.demo.util.AmapTTSController;
 import com.amap.navi.demo.util.CheckPermissionsActivity;
-import com.amap.navi.demo.util.SpeechUtils;
+import com.shark.resoureclone.R;
 
 /**
  * Created by shixin on 16/8/23.
@@ -94,7 +92,6 @@ public class IndexActivity extends CheckPermissionsActivity implements INaviInfo
 
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             finish();
-            System.exit(0);// 退出程序
         }
         return super.onKeyDown(keyCode, event);
     }

@@ -352,7 +352,6 @@ public final class MainActivity extends ListActivity {
 	@Override
 	public void onBackPressed() {
 		super.onBackPressed();
-		System.exit(0);
 	}
 
 	@Override

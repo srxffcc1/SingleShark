@@ -27,7 +27,7 @@ public class AmapTTSController {
     /**
      * 请替换您自己申请的ID。
      */
-    private final String appId = "57b3c4a9";
+    private final String appId = "598814b7";
 
     public static AmapTTSController ttsManager;
     private Context mContext;

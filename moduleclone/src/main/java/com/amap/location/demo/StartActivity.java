@@ -95,7 +95,6 @@ public class StartActivity extends ListActivity {
 	@Override
 	public void onBackPressed() {
 		super.onBackPressed();
-		System.exit(0);
 	}
 
 	@Override
