@@ -135,5 +135,12 @@ dependencies {
     compile('com.google.android:flexbox:0.3.0') { exclude group: 'com.android.support' }//谷歌流式布局
     compile('q.rorbin:VerticalTabLayout:1.2.2') { exclude group: 'com.android.support' }//竖直tab
 //    compile ("de.mrmaffen:vlc-android-sdk:2.0.6"){ exclude group: 'com.android.support' }
+    // https://mvnrepository.com/artifact/com.google.code.gson/gson
+//    compile group: 'com.google.code.gson', name: 'gson', version: '+'
+    // https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple
+    compile (group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'){
+        exclude module: 'hamcrest-core'
+    }
+
 }
 

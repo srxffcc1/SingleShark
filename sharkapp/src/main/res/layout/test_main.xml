@@ -237,7 +237,8 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="预留" />
+                    android:onClick="ongettui"
+                    android:text="透传" />
 
                 <Button
                     android:layout_width="0dp"

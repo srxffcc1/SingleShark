@@ -29,6 +29,13 @@
         <meta-data
             android:name="design_height"
             android:value="1280"></meta-data>
+        <service
+            android:name="com.businessframehelp.service.GeTPushService"
+            android:exported="true"
+            android:label="PushService"
+            android:process=":pushservice">
+        </service>
+        <service android:name="com.businessframehelp.service.GeTIntentService"/>
     </application>
 
 </manifest>

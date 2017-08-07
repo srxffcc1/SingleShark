@@ -261,4 +261,8 @@ public class TestMainActivity extends FrameActivity {
     public void onmap(View view){
         startActivity(new Intent(this,com.amap.map3d.demo.MainActivity.class));
     }
+    public void ongettui(View view){
+
+
+    }
 }
