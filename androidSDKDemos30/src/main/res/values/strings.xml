@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TiandituSDK3.0</string>
+
+    <!-- 地图显示&操作 -->
+    <string name="groupkey0">地图</string>
+    <string name="mapviewdemo">地图显示</string>
+    <string name="maplayerdemo">地图图层</string>
+    <string name="mapcontrolldemo">地图操作</string>
+    <string name="mapprojectdemo">地图投影</string>
+
+    <!-- 覆盖物 -->
+    <string name="groupkey1">覆盖物</string>
+    <string name="mylocationdemo">定位</string>
+    <string name="overlaydemo">覆盖物</string>
+    <string name="itemizedoverlaydemo">覆盖物集合</string>
+    <string name="overlaymarkerdemo">覆盖物(图像)</string>
+    <string name="overlaytextdemo">覆盖物(文本)</string>
+    <string name="overlaygeometrydemo">覆盖物(几何形状)</string>
+
+    <!-- 离线地图 -->
+    <string name="groupkey2">离线地图</string>
+    <string name="offlinemapdemolist">离线地图列表</string>
+
+    <!-- 搜索&规划 -->
+    <string name="groupkey3">搜索&amp;规划</string>
+    <string name="poisearchdemo">关键字搜索</string>
+    <string name="geodecodedemo">逆地理编码</string>
+    <string name="busstationidsearchdemo">公交站点ID搜索</string>
+    <string name="buslineidsearchdemo">公交线路ID搜索</string>
+    <string name="buslinekeysearchdemo">公交线路关键字搜索</string>
+    <string name="drivingdemo">自驾规划</string>
+    <string name="transitsearchdemo">公交规划</string>
+
+    <!-- 其它 -->
+    <string name="groupkey4">其它</string>
+
+    <!-- activitylogodemo -->
+    <string name="activitylogodemo_logo">logo</string>
+    <string name="activitylogodemo_left_top">左上</string>
+    <string name="activitylogodemo_left_bottom">左下</string>
+    <string name="activitylogodemo_right_top">右上</string>
+    <string name="activitylogodemo_right_bottom">右下</string>
+    <string name="activitylogodemo_showzoomcontorls">显示缩放控件</string>
+    <string name="activitylogodemo_drawoverlaywhenzooming">缩放时绘制覆盖物</string>
+
+</resources>

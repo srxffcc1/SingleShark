@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout02"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin"
+            android:text="输入经度跨度 纬度跨度" >
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/editTextLonSpan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:hint="经度跨度" >
+            </EditText>
+
+            <EditText
+                android:id="@+id/editTextLatSpan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:hint="纬度跨度" >
+            </EditText>
+
+            <Button
+                android:id="@+id/buttonBound"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="设置" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin"
+                android:text="比例尺" >
+            </TextView>
+
+            <SeekBar
+                android:id="@+id/seekBarLevel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0" />
+
+            <TextView
+                android:id="@+id/textViewLevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin"
+                android:text="00" >
+            </TextView>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textViewTips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin"
+            android:text="提示信息" >
+        </TextView>
+    </LinearLayout>
+
+</ScrollView>

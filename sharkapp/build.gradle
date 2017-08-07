@@ -97,7 +97,7 @@ dependencies {
     compile 'com.android.support:multidex:1.0.0'
     compile project(':moduleclone')//克隆模块
     compile project(':moduleresource')//资源模块1
-    compile project(':moduleapk')//资源模块2
+//    compile project(':moduleapk')//资源模块2
 
 //    compile 'com.amap.api:navi-3dmap:latest.integration'//地图包
 //    compile 'com.amap.api:search:latest.integration'//地图包

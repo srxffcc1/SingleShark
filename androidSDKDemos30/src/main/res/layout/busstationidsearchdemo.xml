@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tabcontentheight_min"
+        android:background="@android:color/black"
+        android:orientation="vertical"
+        android:padding="@dimen/margin" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/editID"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:hint="输入站点id"
+                android:singleLine="true" />
+
+            <Button
+                android:id="@+id/buttonSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="搜索" />
+
+            <Button
+                android:id="@+id/buttonList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="列表" />
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/textViewTips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="提示信息" >
+            </TextView>
+        </ScrollView>
+    </LinearLayout>
+
+    <com.tianditu.android.maps.MapView
+        android:id="@+id/mapview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

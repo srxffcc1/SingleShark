@@ -1,0 +1,14 @@
+<resources>
+
+    <!-- common -->
+    <dimen name="margin">5dp</dimen>
+    
+    <!-- List -->
+    <dimen name="groupheight">32dp</dimen>
+    
+    <!-- tab -->
+    <dimen name="tabtitleheight">36dp</dimen>
+    <dimen name="tabcontentheight">160dp</dimen>
+    <dimen name="tabcontentheight_min">120dp</dimen>
+
+</resources>

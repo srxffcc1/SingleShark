@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+    <com.tianditu.android.maps.MapView
+        android:id="@+id/driving_mapview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <Button
+                android:id="@+id/start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="设置起点"
+                android:textSize="12sp" >
+            </Button>
+            <EditText
+                android:id="@+id/et_start"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:editable="false"
+                android:hint="起点经纬度"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layout_ave1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone" >
+            <Button
+                android:id="@+id/ave_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="设置途经点1"
+                android:textSize="12sp" >
+            </Button>
+            <EditText
+                android:id="@+id/et_ave1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:editable="false"
+                android:hint="途经点1经纬度"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layout_ave2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone" >
+            <Button
+                android:id="@+id/ave_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:editable="false"
+                android:text="设置途经点2"
+                android:textSize="12sp" >
+            </Button>
+            <EditText
+                android:id="@+id/et_ave2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="途经点2经纬度"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layout_ave3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone" >
+            <Button
+                android:id="@+id/ave_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="设置途经点3"
+                android:textSize="12sp" >
+            </Button>
+            <EditText
+                android:id="@+id/et_ave3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:editable="false"
+                android:hint="途经点3经纬度"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layout_ave4"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone" >
+            <Button
+                android:id="@+id/ave_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="设置途经点4"
+                android:textSize="12sp" >
+            </Button>
+            <EditText
+                android:id="@+id/et_ave4"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:editable="false"
+                android:hint="途经点4经纬度"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <Button
+                android:id="@+id/end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="设置终点"
+                android:textSize="12sp" >
+            </Button>
+            <EditText
+                android:id="@+id/et_end"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:editable="false"
+                android:hint="终点经纬度"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3" >
+            <Button
+                android:id="@+id/add_ave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="添加途经点"
+                android:textSize="12sp" >
+            </Button>
+            <Button
+                android:id="@+id/route"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="开始规划自驾路线"
+                android:textSize="12sp" >
+            </Button>
+            <Button
+                android:id="@+id/reset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="重置"
+                android:textSize="12sp" >
+            </Button>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

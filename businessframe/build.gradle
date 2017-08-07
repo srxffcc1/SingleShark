@@ -56,7 +56,8 @@ dependencies {
     //-----------------------------------------------------
 //    compile 'com.github.barteksc:android-pdf-viewer:2.6.1'//pdf 预览
     compile 'com.sixdown.mupdf:mupdf:+'//pdf预览
-//    compile 'com.sixdown.amapfix:amapfix:+'//地图包
+    compile 'com.sixdown.voicerecog:voicerecog:+'
+    compile 'com.sixdown.amapfix:amapfix:+'//地图包
     compile('com.sixdown.unzip:unzip:+') {
         exclude group: 'com.android.support'
         exclude group: 'commons-logging', module: 'commons-logging'
@@ -141,6 +142,7 @@ dependencies {
     compile (group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'){
         exclude module: 'hamcrest-core'
     }
+
 
 }
 
