@@ -420,7 +420,7 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
         return super.onOptionsItemSelected(item);
     }
     @Override
-    final public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(getMenuid()==-1||getMenuid()==0?R.menu.menu_:getMenuid(), menu);
         return true;
     }

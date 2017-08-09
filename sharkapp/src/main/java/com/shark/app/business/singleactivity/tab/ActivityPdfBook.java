@@ -26,7 +26,7 @@ public class ActivityPdfBook extends FrameActivity {
 
     @Override
     public int getMenuid() {
-        return R.menu.menu_pdf;
+        return R.menu.pdf_menu;
     }
 
     @Override
