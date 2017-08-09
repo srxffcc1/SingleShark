@@ -22,8 +22,8 @@ import com.ksyun.player.disk.ui.activity.player.TextureVideoActivity;
 import com.kymjs.common.FileUtils;
 import com.kymjs.common.Log;
 import com.shark.app.R;
-import com.shark.app.singleactivity.ApkFragment;
-import com.shark.app.singleactivity.tab.ActivityPdfBook;
+import com.shark.app.business.singleactivity.ApkFragment;
+import com.shark.app.business.singleactivity.tab.ActivityPdfBook;
 
 import org.kymjs.kjframe.KJHttp;
 import org.kymjs.kjframe.http.HttpCallBack;
@@ -39,6 +39,11 @@ public class TestMainActivity extends FrameActivity {
         return ORIENTATION.PORTRAIT;
     }
 
+
+    @Override
+    public int getMenuid() {
+        return 0;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,15 +121,8 @@ public class TestMainActivity extends FrameActivity {
         startFragmentForResult(new ApkFragment(), 100);
     }
 
-    @Override
-    public void sendFrameBroadCast(Intent intent) {
-        super.sendFrameBroadCast(intent);
-    }
 
-    @Override
-    public void reciverFrameBroadCast(Intent action) {
-        super.reciverFrameBroadCast(action);
-    }
+
 
     @Override
     public void handleMessage(Message msg) {

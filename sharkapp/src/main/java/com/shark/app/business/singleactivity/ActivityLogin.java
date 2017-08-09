@@ -1,4 +1,4 @@
-package com.shark.app.singleactivity;
+package com.shark.app.business.singleactivity;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -57,10 +57,15 @@ public class ActivityLogin extends FrameActivity implements View.OnClickListener
     private int height = 0 ;
 
     @Override
+    public int getMenuid() {
+        return 0;
+    }
+
+    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //设置输入法不弹起
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.app_activity_login);
 //        AndroidBug5497Workaround.assistActivity(this);
         intiView();
     }

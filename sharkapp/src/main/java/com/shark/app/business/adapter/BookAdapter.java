@@ -1,4 +1,4 @@
-package com.shark.app.adapter;
+package com.shark.app.business.adapter;
 
 import android.app.Activity;
 import android.support.v7.widget.RecyclerView;

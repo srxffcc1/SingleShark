@@ -1,4 +1,4 @@
-package com.shark.app.fragment;
+package com.shark.app.business.fragment;
 
 import com.businessframehelp.app.BaseSupportFragment;
 

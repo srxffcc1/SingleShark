@@ -1,4 +1,4 @@
-package com.shark.app.singleactivity;
+package com.shark.app.business.singleactivity;
 
 import android.os.Bundle;
 import android.os.Message;
@@ -32,6 +32,11 @@ public class ActivityBook extends FrameActivity {
     @Override
     public void handleMessage(Message msg) {
 
+    }
+
+    @Override
+    public int getMenuid() {
+        return 0;
     }
 
     @Override

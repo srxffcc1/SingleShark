@@ -1,11 +1,7 @@
-package com.shark.app.apps;
+package com.shark.app.business.fragment;
 
 import android.annotation.SuppressLint;
 import android.support.v4.app.Fragment;
-
-import com.shark.app.fragment.FragmentError;
-import com.shark.app.fragment.FragmentMain;
-import com.shark.app.fragment.FragmentSetting;
 
 
 @SuppressLint("ValidFragment")

@@ -328,12 +328,10 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="430"
-
-        android:background="#ececec">
+        android:layout_weight="430">
 
         <android.support.v7.widget.RecyclerView
-            android:background="#ececec"
+            android:background="#fff"
             android:id="@+id/recycleview"
             android:overScrollMode="never"
             android:layout_width="wrap_content"

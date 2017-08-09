@@ -1,4 +1,4 @@
-package com.shark.app.entity;
+package com.shark.app.business.entity;
 
 /**
  * Created by King6rf on 2017/6/2.

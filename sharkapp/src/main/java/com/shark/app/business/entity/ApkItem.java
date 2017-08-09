@@ -1,4 +1,4 @@
-package com.shark.app.entity;
+package com.shark.app.business.entity;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;

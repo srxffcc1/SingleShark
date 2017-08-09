@@ -36,6 +36,11 @@ public class StaticAppInfo implements IStaticAppInfo{
 	private StaticAppInfo(){
 
 	}
+
+	public StaticMode getMode() {
+		return mode;
+	}
+
 	public static StaticAppInfo getInstance(){
 		return instance;
 	}

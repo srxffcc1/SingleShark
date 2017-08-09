@@ -38,6 +38,7 @@ import butterknife.ButterKnife;
 /**
  * Created by Administrator on 2017/5/10.
  * 基Activity 带有 LocalActivityManager 可以实现抽离出Intent转化为view
+ * 注意重写 onCreateOptionsMenu
  */
 
 public abstract class FrameActivity extends AutoLayoutActivity implements IFrameActivity,IBroadCastListener {
@@ -48,6 +49,7 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
     private ORIENTATION newstatus;
     private ORIENTATION nowstatus;
     private boolean isauthentic=false;
+    private int menuid=-1;
     private  Handler handler=new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -60,7 +62,10 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
         super.onStart();
 
     }
-    public void setNewstatus(ORIENTATION newstatus) {
+
+    abstract public int getMenuid();
+
+    final public void setNewstatus(ORIENTATION newstatus) {
         this.newstatus = newstatus;
         Log.v("SRXCREATE",""+this.newstatus);
         changeOrientation(newstatus);
@@ -74,13 +79,13 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         if(!getIntent().getBooleanExtra("needActionBar",true)){
             try {
-                System.out.println("要去掉suactionbar咯");
+//                System.out.println("要去掉suactionbar咯");
             getSupportActionBar().hide();
             } catch (Exception e) {
             e.printStackTrace();
             }
             try {
-                System.out.println("要去掉actionbar咯");
+//                System.out.println("要去掉actionbar咯");
                 getActionBar().hide();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -103,7 +108,7 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
         }
         isTabChild = this.getIntent().getBooleanExtra("isTabChild", false);// 判断是否属于内部activity
     }
-    public void changeOrientation(ORIENTATION status){
+    final public void changeOrientation(ORIENTATION status){
         if(status!=null&&status==nowstatus){
             
         }else{
@@ -162,7 +167,7 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
         kjHttp=null;
     }
     @Override
-    public void setContentView(@LayoutRes int layoutResID) {
+    final public void setContentView(@LayoutRes int layoutResID) {
         super.setContentView(layoutResID);
         ButterKnife.bind(this) ;
         BarUtil.initBar(this);
@@ -183,19 +188,19 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
     }
 
     @Override
-    public void setContentView(View view, ViewGroup.LayoutParams params) {
+    final public void setContentView(View view, ViewGroup.LayoutParams params) {
         super.setContentView(view, params);
         ButterKnife.bind(this) ;
         BarUtil.initBar(this);
         if(!getIntent().getBooleanExtra("needActionBar",true)){
             try {
-                System.out.println("要去掉suactionbar咯");
+                //System.out.println("要去掉suactionbar咯");
                 getSupportActionBar().hide();
             } catch (Exception e) {
                 e.printStackTrace();
             }
             try {
-                System.out.println("要去掉actionbar咯");
+                //System.out.println("要去掉actionbar咯");
                 getActionBar().hide();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -204,19 +209,19 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
     }
 
     @Override
-    public void setContentView(View view) {
+    final public void setContentView(View view) {
         super.setContentView(view);
         ButterKnife.bind(this) ;
         BarUtil.initBar(this);
         if(!getIntent().getBooleanExtra("needActionBar",true)){
             try {
-                System.out.println("要去掉suactionbar咯");
+                //System.out.println("要去掉suactionbar咯");
                 getSupportActionBar().hide();
             } catch (Exception e) {
                 e.printStackTrace();
             }
             try {
-                System.out.println("要去掉actionbar咯");
+                //System.out.println("要去掉actionbar咯");
                 getActionBar().hide();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -224,7 +229,7 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
         }
     }
     @Override
-    public View getIntentContentView(String mTag, Intent mIntent) {
+    final public View getIntentContentView(String mTag, Intent mIntent) {
         if (mLocalActivityManager == null) {
             throw new IllegalStateException(
                     "Did you forget to call 'public void setup(LocalActivityManager activityGroup)'?");
@@ -241,28 +246,28 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
         }
         return wd;
     }
-    public void clearViewInGroup(ViewGroup group){
+    final public void clearViewInGroup(ViewGroup group){
         group.removeAllViews();
     }
-    public void clearViewInGroup(int groupid){
+    final public void clearViewInGroup(int groupid){
         ((ViewGroup)findViewById(groupid)).removeAllViews();
     }
     @Override
-    public void addIntentContentView(ViewGroup content, String mTag, Intent mIntent) {
+    final public void addIntentContentView(ViewGroup content, String mTag, Intent mIntent) {
         View view=getIntentContentView(mTag,mIntent);
         content.removeAllViews();
         content.addView(view);
     }
 
     @Override
-    public void addIntentContentView(int contentRid, String mTag, Intent mIntent) {
+    final public void addIntentContentView(int contentRid, String mTag, Intent mIntent) {
         View view=getIntentContentView(mTag,mIntent);
         ViewGroup content= (ViewGroup) findViewById(contentRid);
         content.removeAllViews();
         content.addView(view);
     }
 
-    public void toastShow(String contecnt){
+    final public void toastShow(String contecnt){
         Toast roast=Toast.makeText(this, contecnt, Toast.LENGTH_SHORT);
         if(cantoast){
             cantoast=false;
@@ -279,44 +284,53 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
     final public boolean checkNet(){
         return NetworkUtils.checkNet(this);
     }
-    public void httpPost(String url, HttpParams httpParams, HttpCallBack httpCallBack){
-        kjHttp.post(url,httpParams,httpCallBack);
+    final public void httpPost(final String url, final HttpParams httpParams, final HttpCallBack httpCallBack){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                kjHttp.post(url,httpParams,false,httpCallBack);
+            }
+        }).start();
+
     }
-    public void sendMessage(Message message){
+    final public void httpGet(final String url, final HttpParams httpParams, final HttpCallBack httpCallBack){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                kjHttp.get(url,httpParams,false,httpCallBack);
+            }
+        }).start();
+
+    }
+    final public void sendMessage(Message message){
             handler.sendMessage(message);
 
     }
-    public void sendEmptyMessage(int what){
+    final public void sendEmptyMessage(int what){
             handler.sendEmptyMessage(what);
 
     }
-    public void sendEmptyMessageAtTime(int what, long uptimeMillis){
+    final public void sendEmptyMessageAtTime(int what, long uptimeMillis){
             handler.sendEmptyMessageAtTime(what,uptimeMillis);
 
     }
-    public void sendEmptyMessageDelayed(int what, long delayMillis){
+    final public void sendEmptyMessageDelayed(int what, long delayMillis){
             handler.sendEmptyMessageDelayed(what,delayMillis);
 
     }
-    public void sendMessageAtTime(Message msg, long uptimeMillis){
+    final public void sendMessageAtTime(Message msg, long uptimeMillis){
             handler.sendMessageAtTime(msg,uptimeMillis);
 
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_, menu);
-        return true;
-    }
-
-    @Override
-    public void startActivity(Intent intent) {
+    final public void startActivity(Intent intent) {
         isauthentic=true;
         super.startActivity(intent);
     }
 
     @Override
-    public void startActivityForResult(Intent intent, int requestCode) {
+    final public void startActivityForResult(Intent intent, int requestCode) {
         isauthentic=true;
         super.startActivityForResult(intent, requestCode);
     }
@@ -325,7 +339,7 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
      * 应用内发广播
      * @param intent
      */
-    public void sendFrameBroadCast(Intent intent){
+    final public void sendFrameBroadCast(Intent intent){
         BroadCastManager.getInstance().sendBroadCast(intent);
     }
 
@@ -349,7 +363,7 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
      * @param fragment
      * @param requestCode
      */
-    public void startFragmentForResult(android.support.v4.app.Fragment fragment, int requestCode){
+    final public void startFragmentForResult(android.support.v4.app.Fragment fragment, int requestCode){
         isauthentic=true;
         Bundle fragmentb=new Bundle();
         fragmentb.putInt("requestCode",requestCode);
@@ -361,7 +375,7 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
      * @param fragment
      * @param requestCode
      */
-    public void startFragmentForResult(Fragment fragment, int requestCode){
+    final public void startFragmentForResult(Fragment fragment, int requestCode){
         isauthentic=true;
         Bundle fragmentb=new Bundle();
         fragmentb.putInt("requestCode",requestCode);
@@ -373,7 +387,7 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
      * @param fragment
      * @param requestCode
      */
-    public void startFragmentForResult(BaseFragment fragment,int requestCode){
+    final public void startFragmentForResult(BaseFragment fragment,int requestCode){
         Bundle fragmentb=new Bundle();
         fragmentb.putInt("requestCode",requestCode);
         fragment.setArguments(fragmentb);
@@ -385,12 +399,13 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
      * @param fragment
      * @param requestCode
      */
-    public void startFragmentForResult(BaseSupportFragment fragment,int requestCode){
+    final public void startFragmentForResult(BaseSupportFragment fragment,int requestCode){
         Bundle fragmentb=new Bundle();
         fragmentb.putInt("requestCode",requestCode);
         fragment.setArguments(fragmentb);
         getSupportFragmentManager().beginTransaction().addToBackStack("null").add(android.R.id.content,fragment,fragment.getClass().getSimpleName()).commit();
     }
+    @Deprecated
     public void startThread(Runnable runnable){//使用一个随这个当前activity死亡就自动结束的线程
 
     }
@@ -403,6 +418,11 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+    @Override
+    final public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(getMenuid()==-1||getMenuid()==0?R.menu.menu_:getMenuid(), menu);
+        return true;
     }
 
 }

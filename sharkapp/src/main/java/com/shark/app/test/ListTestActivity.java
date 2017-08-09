@@ -31,6 +31,11 @@ public class ListTestActivity extends FrameActivity {
     }
 
     @Override
+    public int getMenuid() {
+        return 0;
+    }
+
+    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.test_list);

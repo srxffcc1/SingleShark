@@ -1,4 +1,4 @@
-package com.shark.app.singleactivity;
+package com.shark.app.business.singleactivity;
 
 import android.os.Message;
 
@@ -9,10 +9,15 @@ import com.businessframehelp.enums.ORIENTATION;
  * Created by Administrator on 2017/5/25.
  */
 
-public class ActivityEnterpriseList extends FrameActivity {
+public class ActivityCheckUpList extends FrameActivity {
     @Override
     public ORIENTATION getORIENTATION() {
         return null;
+    }
+
+    @Override
+    public int getMenuid() {
+        return 0;
     }
 
     @Override

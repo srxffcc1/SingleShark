@@ -1,11 +1,10 @@
-package com.shark.app.singleactivity;
+package com.shark.app.business.singleactivity;
 
 import android.os.Bundle;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.View;
 
 import com.businessframehelp.app.FrameActivity;
@@ -14,8 +13,8 @@ import com.businessframehelp.utils.ViewFindUtils;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.shark.app.R;
-import com.shark.app.apps.FragmentManager;
-import com.shark.app.entity.TabEntity;
+import com.shark.app.business.entity.TabEntity;
+import com.shark.app.business.fragment.FragmentManager;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 
@@ -49,10 +48,16 @@ import java.util.ArrayList;
     public void handleMessage(Message msg) {
 
     }
+
+    @Override
+    public int getMenuid() {
+        return R.menu.mainmenu_menu;
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.recoed_activity_main);
+        setContentView(R.layout.app_activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -96,12 +101,7 @@ import java.util.ArrayList;
     public void logout(){
 
     }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.mainmenu_menu, menu);
-        return true;
-    }
+
 
     @Override
     public void onBackPressed() {

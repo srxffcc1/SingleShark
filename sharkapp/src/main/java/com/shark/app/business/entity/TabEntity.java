@@ -1,4 +1,4 @@
-package com.shark.app.entity;
+package com.shark.app.business.entity;
 
 import com.flyco.tablayout.listener.CustomTabEntity;
 

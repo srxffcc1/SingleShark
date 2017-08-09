@@ -1,4 +1,4 @@
-package com.shark.app.singleactivity;
+package com.shark.app.business.singleactivity;
 
 import android.support.v4.app.Fragment;
 

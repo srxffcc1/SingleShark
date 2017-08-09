@@ -1,11 +1,10 @@
-package com.shark.app.singleactivity.tab;
+package com.shark.app.business.singleactivity.tab;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Message;
-import android.view.Menu;
 import android.view.MenuItem;
 
 import com.artifex.mupdf.mini.DocumentActivity;
@@ -13,7 +12,7 @@ import com.businessframehelp.app.FrameActivity;
 import com.businessframehelp.enums.ORIENTATION;
 import com.businessframehelp.utils.BarUtil;
 import com.shark.app.R;
-import com.shark.app.singleactivity.ActivityBook;
+import com.shark.app.business.singleactivity.ActivityBook;
 
 import java.io.File;
 
@@ -24,6 +23,11 @@ import java.io.File;
 
 public class ActivityPdfBook extends FrameActivity {
     int nowtask=-1;
+
+    @Override
+    public int getMenuid() {
+        return R.menu.menu_pdf;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,12 +90,6 @@ public class ActivityPdfBook extends FrameActivity {
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_pdf, menu);
-        return true;
-    }
     public void lookTask(){
         if(nowtask!=R.id.action_pdflook){
             Intent pdfintent=new Intent(this, DocumentActivity.class);

@@ -31,25 +31,23 @@
         android:supportsRtl="true" android:theme="@style/SharkAppBaseTheme" tools:replace="android:icon,android:theme,android:name">
         <activity
             android:theme="@style/FirstActivityTheme"
-            android:name=".singleactivity.ActivitySplash" >
-
-        </activity>
-
-        
-        <activity android:name=".test.ListTestActivity" />
-        <activity android:name=".singleactivity.ActivityLogin" android:theme="@style/FrameAppTheme.NoActionBarNoSoftInput"/>
-        <activity android:name=".singleactivity.ActivityMain" android:theme="@style/FrameAppTheme.Navigation"/>
-        <activity android:name=".test.TestMainActivity">
+            android:name=".business.singleactivity.ActivitySplash" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".singleactivity.ActivityCheckUpList" />
-        <activity android:name=".singleactivity.ActivityEnterpriseList" />
-        <activity android:name="com.shark.app.singleactivity.tab.ActivityPdfBook" />
-        <activity android:name=".singleactivity.ActivityBook" />
+        <activity android:name=".test.TestMainActivity">
+        </activity>
+
+        <activity android:name=".test.ListTestActivity" />
+        <activity android:name=".business.singleactivity.ActivityLogin" android:theme="@style/FrameAppTheme.NoActionBarNoSoftInput"/>
+        <activity android:name=".business.singleactivity.ActivityMain" android:theme="@style/FrameAppTheme.Navigation"/>
+        <activity android:name=".business.singleactivity.ActivityCheckUpList" />
+        <activity android:name=".business.singleactivity.ActivityEnterpriseList" />
+        <activity android:name=".business.singleactivity.tab.ActivityPdfBook" />
+        <activity android:name=".business.singleactivity.ActivityBook" />
     </application>
 
 </manifest>
