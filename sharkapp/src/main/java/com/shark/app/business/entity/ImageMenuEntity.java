@@ -4,7 +4,7 @@ package com.shark.app.business.entity;
  * Created by King6rf on 2017/6/2.
  */
 
-public class MainMenuEntity {
+public class ImageMenuEntity {
     public Class clickpassclass;
     public int imageRid;
 
@@ -12,7 +12,7 @@ public class MainMenuEntity {
         return clickpassclass;
     }
 
-    public MainMenuEntity setClickpassclass(Class clickpassclass) {
+    public ImageMenuEntity setClickpassclass(Class clickpassclass) {
         this.clickpassclass = clickpassclass;
         return  this;
     }
@@ -21,7 +21,7 @@ public class MainMenuEntity {
         return imageRid;
     }
 
-    public MainMenuEntity setImageRid(int imageRid) {
+    public ImageMenuEntity setImageRid(int imageRid) {
         this.imageRid = imageRid;
         return  this;
     }

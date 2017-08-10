@@ -80,8 +80,8 @@ import java.util.ArrayList;
         mDecorView = getWindow().getDecorView();
 
         mTabLayout_3 = ViewFindUtils.find(mDecorView, R.id.tl_3);
-
         mTabLayout_3.setTabData(mTabEntities, this, R.id.fl_change, mFragments);
+        mTabLayout_3.setVisibility(View.GONE);
     }
     public void syncBackGround(){
 

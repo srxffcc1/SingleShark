@@ -159,7 +159,6 @@ public class DividerGridItemDecoration extends RecyclerView.ItemDecoration
 		outRect.set((int) left, (int) top, (int) right, (int) bottom);
 	}
 
-
 	private void drawLinear(int orientation, Canvas c, RecyclerView parent) {
 		if (orientation == LinearLayoutManager.VERTICAL) {
 			final int left = parent.getPaddingLeft();

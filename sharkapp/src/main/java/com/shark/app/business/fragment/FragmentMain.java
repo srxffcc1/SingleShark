@@ -1,25 +1,22 @@
 package com.shark.app.business.fragment;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import com.businessframehelp.app.BaseSupportFragment;
 import com.businessframehelp.design.DividerGridItemDecoration;
 import com.shark.app.R;
-import com.shark.app.business.entity.MainMenuEntity;
+import com.shark.app.business.adapter.ImageClickRecycleAdapter;
+import com.shark.app.business.entity.ImageMenuEntity;
 import com.shark.app.business.singleactivity.ActivityEnterpriseList;
-import com.zhy.autolayout.utils.AutoUtils;
+import com.shark.app.business.singleactivity.tab.ActivityCheckUpList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,8 +27,10 @@ import java.util.List;
 
 public class FragmentMain extends BaseSupportFragment {
 
-    private List<MainMenuEntity> list;
-
+    private List<ImageMenuEntity> list_1;
+    private List<ImageMenuEntity> list_2;
+    private RecyclerView recycleview_main_1;
+    private RecyclerView recycleview_main_2;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -41,112 +40,55 @@ public class FragmentMain extends BaseSupportFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        RecyclerView recyclerView= (RecyclerView) findViewById(R.id.recycleview);
+        recycleview_main_1 = (RecyclerView) findViewById(R.id.recycleview_main_1);
         GridLayoutManager manager=new GridLayoutManager(getContext(),2, LinearLayoutManager.HORIZONTAL,false);
-        StaggeredGridLayoutManager manager2=new StaggeredGridLayoutManager(6,LinearLayoutManager.HORIZONTAL);
-//        LinearLayoutManager manager=new LinearLayoutManager(getContext());
         manager.setAutoMeasureEnabled(true);
-        recyclerView.setLayoutManager(manager);
-        recyclerView.addItemDecoration(new DividerGridItemDecoration(getContext()).setSpace(1,1,20,1));
+        recycleview_main_1.setLayoutManager(manager);
+        recycleview_main_1.addItemDecoration(new DividerGridItemDecoration(getContext()).setSpace(1,1,20,1));
+        list_1 = new ArrayList<>();
+        list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_enterpiseinfo).setClickpassclass(ActivityEnterpriseList.class));
+        list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_printer).setClickpassclass(null));
+        list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_checkup).setClickpassclass(ActivityCheckUpList.class));
+        list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_checkuprecord).setClickpassclass(null));
+        list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_law).setClickpassclass(null));
+        list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_collect).setClickpassclass(null));
+        list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_troubleinvestigation).setClickpassclass(null));
+        list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_dangerousorg).setClickpassclass(null));
+//        list_1.add(new MainMenuEntity().setImageRid(R.drawable.main_oneenterpriseonerule));
+//        list_1.add(new MainMenuEntity().setImageRid(R.drawable.main_orderlist));
+//        list_1.add(new MainMenuEntity().setImageRid(R.drawable.main_paperseach));
+//        list_1.add(new MainMenuEntity().setImageRid(R.drawable.main_selfcheckup));
 
-        list = new ArrayList<>();
-        list.add(new MainMenuEntity().setImageRid(R.drawable.main_enterpiseinfo).setClickpassclass(ActivityEnterpriseList.class));
-        list.add(new MainMenuEntity().setImageRid(R.drawable.main_printer).setClickpassclass(null));
-        list.add(new MainMenuEntity().setImageRid(R.drawable.main_checkup).setClickpassclass(null));
-        list.add(new MainMenuEntity().setImageRid(R.drawable.main_checkuprecord).setClickpassclass(null));
-        list.add(new MainMenuEntity().setImageRid(R.drawable.main_law).setClickpassclass(null));
-        list.add(new MainMenuEntity().setImageRid(R.drawable.main_collect).setClickpassclass(null));
-        list.add(new MainMenuEntity().setImageRid(R.drawable.main_troubleinvestigation).setClickpassclass(null));
-        list.add(new MainMenuEntity().setImageRid(R.drawable.main_dangerousorg).setClickpassclass(null));
-
-//        list.add(new MainMenuEntity().setImageRid(R.drawable.main_oneenterpriseonerule));
-//        list.add(new MainMenuEntity().setImageRid(R.drawable.main_orderlist));
-//        list.add(new MainMenuEntity().setImageRid(R.drawable.main_paperseach));
-//        list.add(new MainMenuEntity().setImageRid(R.drawable.main_selfcheckup));
-
-        recyclerView.setAdapter(new MainAdapter(this));
-    }
-    class MainAdapter extends RecyclerView.Adapter<MainAdapter.SingelViewHolder>{
-        public Activity mactivity;
-        public Fragment mfragment;
-        public android.support.v4.app.Fragment msupportfragment;
-
-        public MainAdapter(Fragment mfragment) {
-            this.mfragment = mfragment;
-        }
-
-        public MainAdapter(android.support.v4.app.Fragment msupportfragment) {
-            this.msupportfragment = msupportfragment;
-        }
-
-        public MainAdapter(Activity mactivity) {
-            this.mactivity = mactivity;
-        }
-
-        @Override
-        public SingelViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View itemView=LayoutInflater.from(getContext()).inflate(R.layout.item_fragmentcard,parent,false);
-            AutoUtils.autoSize(itemView);
-            return new SingelViewHolder(itemView);
-        }
-
-
-
-        @Override
-        public void onBindViewHolder(SingelViewHolder holder, int position) {
-            holder.autoClickImageView.setImageResource(list.get(position).getImageRid());
-        }
-
-        @Override
-        public int getItemCount() {
-            return list.size();
-        }
-
-        public class SingelViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnLongClickListener {
-            ImageView autoClickImageView;
-            public SingelViewHolder(View itemView) {
-                super(itemView);
-                autoClickImageView= (ImageView) itemView.findViewById(R.id.autoClickImageView);
-                autoClickImageView.setOnClickListener(this);
-                autoClickImageView.setOnLongClickListener(this);
-            }
+        recycleview_main_1.setAdapter(new ImageClickRecycleAdapter(this, list_1){
 
             @Override
-            public void onClick(View v) {
-//                System.out.println("点击项目"+getAdapterPosition());
-                Class desclass=list.get(getAdapterPosition()).getClickpassclass();
-                if(desclass!=null){
-                    if(mactivity!=null){
-                        mactivity.startActivity(new Intent(getActivity(),desclass));
-                    }else if(mfragment!=null){
-                        mfragment.startActivity(new Intent(getActivity(),desclass));
-                    }else{
-                        msupportfragment.startActivity(new Intent(getActivity(),desclass));
-                    }
-                }
+            protected int getImageWidth() {
+                return 160;
             }
+        });
+        GridLayoutManager manager2=new GridLayoutManager(getContext(),2, LinearLayoutManager.HORIZONTAL,false);
+        manager2.setAutoMeasureEnabled(true);
+        recycleview_main_2 = (RecyclerView) findViewById(R.id.recycleview_main_2);
+        recycleview_main_2.setLayoutManager(manager2);
+        recycleview_main_2.addItemDecoration(new DividerGridItemDecoration(getContext()).setSpace(2,2,20,2).setSpaceColor(Color.parseColor("#FF9E99")));
+        list_2 = new ArrayList<>();
+        list_2.add(new ImageMenuEntity().setImageRid(R.drawable.library_aqscbz).setClickpassclass(null));
+        list_2.add(new ImageMenuEntity().setImageRid(R.drawable.library_aqscflfg).setClickpassclass(null));
+        list_2.add(new ImageMenuEntity().setImageRid(R.drawable.library_dxsgal).setClickpassclass(null));
+        list_2.add(new ImageMenuEntity().setImageRid(R.drawable.library_wxhxptz).setClickpassclass(null));
+        list_2.add(new ImageMenuEntity().setImageRid(R.drawable.library_yhpcbz).setClickpassclass(null));
+        list_2.add(new ImageMenuEntity().setImageRid(R.drawable.library_zfyj).setClickpassclass(null));
+        recycleview_main_2.setAdapter(new ImageClickRecycleAdapter(this, list_2){
 
             @Override
-            public boolean onLongClick(View v) {
-                return false;
+            protected int getImageWidth() {
+                return 210;
             }
-        }
+        });
+
     }
-//    public class SpaceItemDecoration extends RecyclerView.ItemDecoration{
-//
-//        private int space;
-//
-//        public SpaceItemDecoration(int space) {
-//            this.space = space;
-//        }
-//
-//        @Override
-//        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-//
-//            if(parent.getChildPosition(view) != 0)
-//                outRect.top = space;
-//        }
-//    }
+
+
 
 
 

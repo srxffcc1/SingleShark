@@ -23,7 +23,7 @@
 
         <include
             android:id="@+id/mainmenu"
-            layout="@layout/app_activity_mainmenu"
+            layout="@layout/app_tab"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     <!--</com.brioal.swipemenu.view.SwipeMenu>-->

@@ -20,7 +20,13 @@ public class FragmentManager{
                 fragment=new FragmentMain();
                 break;
             case "消息":
-                fragment=new FragmentSetting();
+                fragment=new FragmentMessage();
+                break;
+            case "我的主办":
+                fragment=new FragmentHostCheck();
+                break;
+            case "我的协办":
+                fragment=new FragmentJoinCheck();
                 break;
             default:
                 fragment=new FragmentError();

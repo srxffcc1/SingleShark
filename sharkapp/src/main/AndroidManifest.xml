@@ -44,7 +44,7 @@
         <activity android:name=".test.ListTestActivity" />
         <activity android:name=".business.singleactivity.ActivityLogin" android:theme="@style/FrameAppTheme.NoActionBarNoSoftInput"/>
         <activity android:name=".business.singleactivity.ActivityMain" android:theme="@style/FrameAppTheme.Navigation"/>
-        <activity android:name=".business.singleactivity.ActivityCheckUpList" />
+        <activity android:name=".business.singleactivity.tab.ActivityCheckUpList" />
         <activity android:name=".business.singleactivity.ActivityEnterpriseList" />
         <activity android:name=".business.singleactivity.tab.ActivityPdfBook" />
         <activity android:name=".business.singleactivity.ActivityBook" />
