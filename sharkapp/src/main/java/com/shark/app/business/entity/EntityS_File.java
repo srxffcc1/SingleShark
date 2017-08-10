@@ -114,7 +114,7 @@ public class EntityS_File {
 		return 0;
 	}
 	public void open(){
-		context.startActivity(openFile(fileallpath));
+		context.startActivity(openFile(fileallpath).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 	}
 	private  Intent openFile(String filePath){  
 		  

@@ -64,7 +64,7 @@ public class FragmentMain extends BaseSupportFragment {
 
             @Override
             protected int getImageWidth() {
-                return 160;
+                return 180;
             }
         }.setLongclicksameclick(true));
         GridLayoutManager manager2=new GridLayoutManager(getContext(),2, LinearLayoutManager.HORIZONTAL,false);
@@ -83,7 +83,7 @@ public class FragmentMain extends BaseSupportFragment {
 
             @Override
             protected int getImageWidth() {
-                return 200;
+                return 230;
             }
         });
 

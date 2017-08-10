@@ -220,7 +220,7 @@ public class FileUtils {
      * @param path
      * @return
      */
-    public static List<File> getFilesSort(String path) {
+    public static List<File> getFilesSortDesc(String path) {
 
         List<File> list = getFiles(path, new ArrayList<File>());
 
@@ -242,32 +242,54 @@ public class FileUtils {
     }
 
     /**
-     * 对文件列表排序
+     * 获得排序的文件列表
      *
      * @param path
      * @return
      */
-    public static List<File> getFilesSort(File path) {
+    public static List<File> getFilesSortAsc(String path) {
 
-        List<File> list = getFiles(path.getAbsolutePath(), new ArrayList<File>());
+        List<File> list = getFiles(path, new ArrayList<File>());
 
         if (list != null && list.size() > 0) {
 
             Collections.sort(list, new Comparator<File>() {
                 public int compare(File file, File newFile) {
-                    if (file.lastModified() < newFile.lastModified()) {
+                    if (file.lastModified() > newFile.lastModified()) {
                         return 1;
                     } else if (file.lastModified() == newFile.lastModified()) {
                         return 0;
                     } else {
                         return -1;
                     }
-
                 }
             });
-
         }
         return list;
+    }
+
+    /**
+     * 对文件列表排序
+     *
+     * @param path
+     * @return
+     */
+    public static List<File> getFilesSortDesc(File path) {
+
+
+        return getFilesSortDesc(path.getAbsolutePath());
+    }
+
+    /**
+     * 对文件列表排序
+     *
+     * @param path
+     * @return
+     */
+    public static List<File> getFilesSortAsc(File path) {
+
+
+        return getFilesSortAsc(path.getAbsolutePath());
     }
 
     /**

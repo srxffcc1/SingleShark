@@ -62,7 +62,7 @@ public class ActivityCollect extends FrameActivity {
         RecyclerView sourceGrid=(RecyclerView) findViewById(R.id.sourceGrid);
         expandList=new ArrayList<ExpandMap>();
         adapter = new Adapter_CollectList(this, expandList);
-        staggeredGridLayoutManager = new GridLayoutManager(this,3, OrientationHelper.VERTICAL,false);
+        staggeredGridLayoutManager = new GridLayoutManager(this,4, OrientationHelper.VERTICAL,false);
         sourceGrid.addItemDecoration(new DividerGridItemDecoration(getContext()).setSpace(3,3,3,3));
         adapter = new Adapter_CollectList(this, expandList);
         sourceGrid.setLayoutManager(staggeredGridLayoutManager);
@@ -77,10 +77,10 @@ public class ActivityCollect extends FrameActivity {
                 if (delete.exists()) {
                     delete.delete();
                 }
-                File dir = new File(StaticAppInfo.getInstance().getProjcetDir() + "/ZhiCollect/" + "/tmp");
+                File dir = new File(StaticAppInfo.getInstance().getProjcetDir() + "/ZhiCollect/" + "/tmp/");
                 expandList.clear();
                 if (dir.exists()) {
-                    List<File> file = FileUtils.getFilesSort(dir);
+                    List<File> file = FileUtils.getFilesSortAsc(dir);
                     for (int i = 0; i < file.size(); i++) {
                         String datastring = new SimpleDateFormat("yyyy-MM-dd")
                                 .format(file.get(i).lastModified());
@@ -123,7 +123,7 @@ public class ActivityCollect extends FrameActivity {
             FrameUtil.instance().startVideoIntent(this, 100, StaticAppInfo.getInstance().getProjcetDir() + "/ZhiCollect/" + "/tmp" + "/shark_"+System.currentTimeMillis()+".mp4");
         }
         if(item.getItemId()==R.id.action_voice){
-            FrameUtil.instance().startRecord(this, 100, StaticAppInfo.getInstance().getProjcetDir() + "/ZhiCollect/" + "/tmp" + "/shark_"+System.currentTimeMillis()+".mp3");
+            FrameUtil.instance().startRecord(this, 100, StaticAppInfo.getInstance().getProjcetDir() + "/ZhiCollect/" + "/tmp" + "/");
         }
         return super.onOptionsItemSelected(item);
     }

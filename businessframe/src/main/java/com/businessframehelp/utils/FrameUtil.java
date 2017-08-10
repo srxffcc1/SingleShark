@@ -99,7 +99,7 @@ public class FrameUtil {
         Intent intent = new Intent();
         intent.setAction(MediaStore.ACTION_VIDEO_CAPTURE);
         intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
-        intent.putExtra(MediaStore.EXTRA_SIZE_LIMIT,5491520L);
+//        intent.putExtra(MediaStore.EXTRA_SIZE_LIMIT,5491520L);
         Uri uri = Uri.fromFile(new File(path));
         intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
         activity.startActivityForResult(intent, REQUEST_CODE);
@@ -143,7 +143,10 @@ public class FrameUtil {
             activity.startActivityForResult(intent,REQUEST_CODE);
             return;
         } catch (Exception e) {
-            activity.startActivityForResult(new Intent(activity, RecordActivity.class), REQUEST_CODE);
+            Uri mOutPutFileUri = Uri.fromFile(new File(path));
+            Intent intent =new Intent(activity, RecordActivity.class);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, mOutPutFileUri);
+            activity.startActivityForResult(intent, REQUEST_CODE);
             e.printStackTrace();
         }
 //        int requestCode = 0;

@@ -33,7 +33,6 @@
                 android:background="#50666666"
                 android:gravity="center"
                 android:singleLine="true"
-                android:text="ceshi"
                 android:textColor="@color/white" />
 
             <ImageView

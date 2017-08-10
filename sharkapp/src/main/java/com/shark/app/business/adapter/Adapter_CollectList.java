@@ -70,7 +70,7 @@ public class Adapter_CollectList extends RecyclerView.Adapter<RecyclerView.ViewH
                     int type = getItemViewType(position);
                     switch (type) {
                         case 0:
-                            return 3;
+                            return 4;
                         case 1:
                             return 1;
                         default:
@@ -219,8 +219,8 @@ public class Adapter_CollectList extends RecyclerView.Adapter<RecyclerView.ViewH
         public ViewHolderHead(View itemView) {
             super(itemView);
             itemView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            itemView.setPadding(5,5,5,5);
             text = ((TextView) itemView.findViewById(R.id.inspectOption));
+            itemView.setPadding(5,5,5,5);
             AutoUtils.autoSize(itemView);
         }
     }
@@ -234,8 +234,8 @@ public class Adapter_CollectList extends RecyclerView.Adapter<RecyclerView.ViewH
 
         public ViewHolderContent(View itemView) {
             super(itemView);
-            itemView.setLayoutParams(new LinearLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, 240));
-//            itemView.setPadding(5,5,5,5);
+            itemView.setLayoutParams(new LinearLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, 180));
+            itemView.setPadding(5,5,5,5);
             logo = (TextView) (itemView.findViewById(R.id.menuImage));
             logimage = (ImageView) itemView.findViewById(R.id.needfiximage);
             check = (AutoCheckBox) itemView.findViewById(R.id.checkBox1);
