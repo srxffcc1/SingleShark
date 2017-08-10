@@ -2,7 +2,7 @@
 
     <!-- Base application theme. -->
     <style name="SharkAppBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">#2196F3</item>
+        <item name="colorPrimary">#2378BB</item>
         <item name="colorPrimaryDark">@color/black</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item>

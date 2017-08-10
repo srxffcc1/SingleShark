@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_camera"
+        android:orderInCategory="80"
+        android:icon="@mipmap/collect_camera"
+        android:title="   拍照"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/action_video"
+        android:orderInCategory="80"
+        android:icon="@mipmap/collect_video"
+        android:title="   录像"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/action_voice"
+        android:orderInCategory="80"
+        android:icon="@mipmap/collect_voice"
+        android:title="   录音"
+        app:showAsAction="ifRoom"/>
+
+    <!--<item-->
+        <!--android:id="@+id/action_dir"-->
+        <!--android:orderInCategory="80"-->
+        <!--android:icon="@mipmap/collect_dir"-->
+        <!--android:title="   内存"-->
+        <!--app:showAsAction="ifRoom"/>-->
+</menu>

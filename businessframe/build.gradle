@@ -62,7 +62,7 @@ dependencies {
         exclude group: 'com.android.support'
         exclude group: 'commons-logging', module: 'commons-logging'
     }//解压文件
-    compile 'com.sixdown.opencamera:opencamera:+'//opencamera 库
+//    compile 'com.sixdown.opencamera:opencamera:+'//opencamera 库
     compile 'com.sixdown.soundrecord:soundrecord:+'//录音
 //    compile 'com.sixdown.common:common:+'//通用工具集
     compile 'com.sixdown.verticalrefreshlayout:verticalrefreshlayout:+'//下拉刷新

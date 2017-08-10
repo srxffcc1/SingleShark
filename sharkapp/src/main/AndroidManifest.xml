@@ -50,6 +50,7 @@
         <activity android:name=".business.singleactivity.ActivityBook" />
         <activity android:name=".business.singleactivity.ActivityAutoLogin" />
         <activity android:name=".business.singleactivity.ActivityEnterpriseMesh" />
+        <activity android:name=".business.singleactivity.ActivityCollect" />
     </application>
 
 </manifest>

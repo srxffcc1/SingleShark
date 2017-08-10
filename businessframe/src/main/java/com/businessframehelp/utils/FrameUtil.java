@@ -135,7 +135,17 @@ public class FrameUtil {
 //            Toast.makeText(this, "Media captured.", Toast.LENGTH_SHORT).show();
 //        }
     }
-    public void startRecord(Activity activity,int REQUEST_CODE,String filepath){
+    public void startRecord(Activity activity,int REQUEST_CODE,String path){
+        try {
+            Uri mOutPutFileUri = Uri.fromFile(new File(path));
+            Intent intent = new Intent(MediaStore.Audio.Media.RECORD_SOUND_ACTION);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, mOutPutFileUri);
+            activity.startActivityForResult(intent,REQUEST_CODE);
+            return;
+        } catch (Exception e) {
+            activity.startActivityForResult(new Intent(activity, RecordActivity.class), REQUEST_CODE);
+            e.printStackTrace();
+        }
 //        int requestCode = 0;
 //        AndroidAudioRecorder.with(activity)
 //                // Required
@@ -151,7 +161,7 @@ public class FrameUtil {
 //
 //                // Start recording
 //                .record();
-        activity.startActivityForResult(new Intent(activity, RecordActivity.class), REQUEST_CODE);
+
     }
     public void startFileChoser(Activity activity,int REQUEST_CODE){
         new MaterialFilePicker()

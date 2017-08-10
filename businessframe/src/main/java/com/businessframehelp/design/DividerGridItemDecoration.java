@@ -26,6 +26,10 @@ public class DividerGridItemDecoration extends RecyclerView.ItemDecoration
 	private int mtopSpace;
 	private int mbottomSpace;
 	private int mEdgeSpace;
+	private int recycleviewwidth;
+	private int recycleviewheight;
+	float totalSpaceV =-1;
+	float totalSpaceH =-1;
 
 	public DividerGridItemDecoration(Context context) {
 		mDisplayMetrics = context.getResources().getDisplayMetrics();
@@ -61,12 +65,33 @@ public class DividerGridItemDecoration extends RecyclerView.ItemDecoration
 	public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
 		final RecyclerView.LayoutManager manager = parent.getLayoutManager();
 		final int childPosition = parent.getChildAdapterPosition(view);
+		recycleviewwidth=parent.getMeasuredWidth();
+		recycleviewheight=parent.getMeasuredHeight();
+		 int childWidth=view.getWidth();
+		 int childHeight=view.getHeight();
 		final int itemCount = parent.getAdapter().getItemCount();
+
 		if (manager != null) {
 			if (manager instanceof GridLayoutManager) {
-				setGrid(((GridLayoutManager) manager).getOrientation(), ((GridLayoutManager) manager).getSpanCount(), outRect, childPosition, itemCount);
+				if(((GridLayoutManager) manager).getSpanCount()>1){
+					if(((GridLayoutManager) manager).getOrientation() == GridLayoutManager.VERTICAL){
+						if(totalSpaceH !=-1){
+							totalSpaceH =recycleviewwidth-(childWidth*((GridLayoutManager) manager).getSpanCount());
+						}
+
+					}else{
+						if(totalSpaceV !=-1){
+							totalSpaceV =recycleviewheight-(childHeight*((GridLayoutManager) manager).getSpanCount());
+						}
+
+					}
+
+				}else{
+
+				}
+				setGrid(((GridLayoutManager) manager).getOrientation(), ((GridLayoutManager) manager).getSpanCount(), outRect, childPosition, itemCount,childWidth,childHeight);
 			} else if (manager instanceof LinearLayoutManager) {
-				setLinear(((LinearLayoutManager) manager).getOrientation(), outRect, childPosition, itemCount);
+				setLinear(((LinearLayoutManager) manager).getOrientation(), outRect, childPosition, itemCount,childWidth,childHeight);
 			}
 		}
 	}
@@ -83,7 +108,7 @@ public class DividerGridItemDecoration extends RecyclerView.ItemDecoration
 		}
 	}
 
-	private void setLinear(int orientation, Rect outRect, int childPosition, int itemCount) {
+	private void setLinear(int orientation, Rect outRect, int childPosition, int itemCount,int viewwidth,int viewheoght) {
 		if (orientation == LinearLayoutManager.VERTICAL) {
 			if (childPosition == 0) {
 				outRect.set(0, mEdgeSpace, 0, mbottomSpace);
@@ -107,55 +132,80 @@ public class DividerGridItemDecoration extends RecyclerView.ItemDecoration
 //	private int mtopSpace;
 //	private int mbottomSpace;
 //	set(int left, int top, int right, int bottom)
-	private void setGrid(int orientation, int spanCount, Rect outRect, int childPosition, int itemCount) {
-		float totalSpace = mleftSpace * (spanCount - 1) + mEdgeSpace * 2;
-		float eachSpace = totalSpace / spanCount;
+	private void setGrid(int orientation, int spanCount, Rect outRect, int childPosition, int itemCount,int viewwidth,int viewheoght) {
 		int column = childPosition % spanCount;
 		int row = childPosition / spanCount;
-
-		float left;
-		float right;
-		float top;
-		float bottom;
+		float left=0;
+		float right=0;
+		float top=0;
+		float bottom=0;
 		if (orientation == GridLayoutManager.VERTICAL) {
-			top = 0;
-			bottom = mbottomSpace;
-
-			if (childPosition < spanCount) {
-				top = mEdgeSpace;
-			}
-			if (itemCount % spanCount != 0 && itemCount / spanCount == row ||
-					itemCount % spanCount == 0 && itemCount / spanCount == row + 1) {
-				bottom = mbottomSpace;
+			if((spanCount==1&&childPosition<itemCount)){
+				bottom=mbottomSpace;
 			}
 
-			if (spanCount == 1) {
-				left = mEdgeSpace;
-				right = left;
-			} else {
-				left = column * (eachSpace - mEdgeSpace - mEdgeSpace) / (spanCount - 1) + mEdgeSpace;
-				right = eachSpace - left;
-			}
-		} else {
-			left = 0;
-			right = mrightSpace;
 
-			if (childPosition < spanCount) {
-				left = mEdgeSpace;
-			}
-			if (itemCount % spanCount != 0 && itemCount / spanCount == row ||
-					itemCount % spanCount == 0 && itemCount / spanCount == row + 1) {
-				right = mEdgeSpace;
-			}
-
-			if (spanCount == 1) {
-				top = mEdgeSpace;
-				bottom = top;
-			} else {
-				top = column * (eachSpace - mEdgeSpace - mEdgeSpace) / (spanCount - 1) + mEdgeSpace;
-				bottom = eachSpace - top;
+		}else{
+			if((spanCount==1&&childPosition<itemCount)) {
+				right = mrightSpace;
 			}
 		}
+
+
+
+
+//		System.out.println(totalSpace+":"+mEdgeSpace);
+//		System.out.println(itemCount+":"+childPosition);
+//		System.out.println(totalSpace+":"+eachSpace+":"+column+":"+row);
+
+
+//		if (orientation == GridLayoutManager.VERTICAL) {
+//
+//			if(row+1==spanCount||spanCount==1){
+//				right=0;
+//			}
+
+//			top = 0; // 默认 top为0
+//			bottom = mbottomSpace; // 默认bottom为间距值
+//			if (mEdgeSpace == 0) {
+//				left = column * eachSpace / (spanCount - 1);
+//				right = eachSpace - left;
+//				// 无边距的话  只有最后一行bottom为0
+//				if (itemCount / spanCount == row) {
+//					bottom = 0;
+//				}
+//			} else {
+//				if (childPosition < spanCount) {
+//					// 有边距的话 第一行top为边距值
+//					top = mEdgeSpace;
+//				} else if (itemCount / spanCount == row) {
+//					// 有边距的话 最后一行bottom为边距值
+//					bottom = mEdgeSpace;
+//				}
+//				left = column * (eachSpace - mEdgeSpace - mEdgeSpace) / (spanCount - 1) + mEdgeSpace;
+//				right = eachSpace - left;
+//			}
+//		} else {
+			// orientation == GridLayoutManager.HORIZONTAL 跟上面的大同小异, 将top,bottom替换为left,right即可
+//			left = 0;
+//			right = mrightSpace;
+//			if (mEdgeSpace == 0) {
+//				top = column * eachSpace / (spanCount - 1);
+//				bottom = eachSpace - top;
+//				if (itemCount / spanCount == row) {
+//					right = 0;
+//				}
+//			} else {
+//				if (childPosition < spanCount) {
+//					left = mEdgeSpace;
+//				} else if (itemCount / spanCount == row) {
+//					right = mEdgeSpace;
+//				}
+//				top = column * (eachSpace - mEdgeSpace - mEdgeSpace) / (spanCount - 1) + mEdgeSpace;
+//				bottom = eachSpace - top;
+//			}
+//		}
+		System.out.println(childPosition+",left:"+left+",right:"+right+",top:"+top+",bottom:"+bottom);
 		outRect.set((int) left, (int) top, (int) right, (int) bottom);
 	}
 
