@@ -59,7 +59,7 @@ public class ActivityEnterpriseMesh extends FrameActivity {
 
         manager.setAutoMeasureEnabled(true);
         recycler_view.setLayoutManager(manager);
-        recycler_view.addItemDecoration(new DividerGridItemDecoration(getContext()).setSpace(1,1,1,70));
+        recycler_view.addItemDecoration(new DividerGridItemDecoration(getContext()).setSpace(0,0,0,70));
         recycler_view.setAdapter(new ImageTextClickRecycleAdapter(this,list_1) {
             @Override
             protected int getImageWidth() {

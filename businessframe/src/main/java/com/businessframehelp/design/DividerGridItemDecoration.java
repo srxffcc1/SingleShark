@@ -26,10 +26,10 @@ public class DividerGridItemDecoration extends RecyclerView.ItemDecoration
 	private int mtopSpace;
 	private int mbottomSpace;
 	private int mEdgeSpace;
-	private int recycleviewwidth;
-	private int recycleviewheight;
-	float totalSpaceV =-1;
-	float totalSpaceH =-1;
+//	private int recycleviewwidth;
+//	private int recycleviewheight;
+//	float totalSpaceV =0;
+//	float totalSpaceH =0;
 
 	public DividerGridItemDecoration(Context context) {
 		mDisplayMetrics = context.getResources().getDisplayMetrics();
@@ -65,26 +65,28 @@ public class DividerGridItemDecoration extends RecyclerView.ItemDecoration
 	public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
 		final RecyclerView.LayoutManager manager = parent.getLayoutManager();
 		final int childPosition = parent.getChildAdapterPosition(view);
-		recycleviewwidth=parent.getMeasuredWidth();
-		recycleviewheight=parent.getMeasuredHeight();
-		 int childWidth=view.getWidth();
-		 int childHeight=view.getHeight();
+//		recycleviewwidth=parent.getMeasuredWidth();
+//		recycleviewheight=parent.getMeasuredHeight();
+		 int childWidth=view.getMeasuredWidth();
+		 int childHeight=view.getMeasuredHeight();
 		final int itemCount = parent.getAdapter().getItemCount();
 
 		if (manager != null) {
 			if (manager instanceof GridLayoutManager) {
 				if(((GridLayoutManager) manager).getSpanCount()>1){
-					if(((GridLayoutManager) manager).getOrientation() == GridLayoutManager.VERTICAL){
-						if(totalSpaceH !=-1){
-							totalSpaceH =recycleviewwidth-(childWidth*((GridLayoutManager) manager).getSpanCount());
-						}
-
-					}else{
-						if(totalSpaceV !=-1){
-							totalSpaceV =recycleviewheight-(childHeight*((GridLayoutManager) manager).getSpanCount());
-						}
-
-					}
+//					if(((GridLayoutManager) manager).getOrientation() == GridLayoutManager.VERTICAL){
+//						if(totalSpaceH ==0){
+//							System.out.println(recycleviewwidth+":"+childWidth);
+//							totalSpaceH =recycleviewwidth-(childWidth*((GridLayoutManager) manager).getSpanCount());
+//						}
+//
+//					}else{
+//						if(totalSpaceV ==0){
+//							System.out.println(recycleviewheight+":"+childHeight);
+//							totalSpaceV =recycleviewheight-(childHeight*((GridLayoutManager) manager).getSpanCount());
+//						}
+//
+//					}
 
 				}else{
 
@@ -140,71 +142,33 @@ public class DividerGridItemDecoration extends RecyclerView.ItemDecoration
 		float top=0;
 		float bottom=0;
 		if (orientation == GridLayoutManager.VERTICAL) {
-			if((spanCount==1&&childPosition<itemCount)){
+			if((column<spanCount)){
 				bottom=mbottomSpace;
 			}
+//			float subH=totalSpaceH-((mleftSpace+mrightSpace)*spanCount-mrightSpace);//剩余未占满数量
+//			System.out.println(totalSpaceH+"剩余横量"+subH);
+//			if(subH>(mleftSpace+mrightSpace)*2){
+//				System.err.println("the space set very small has a lot spcase no use");
+//			}
+//			if(subH<0){
+//				System.err.println("the space set very big has no enought to show totalview");
+//			}
 
 
 		}else{
-			if((spanCount==1&&childPosition<itemCount)) {
+			if((row<spanCount)) {
 				right = mrightSpace;
 			}
+//			float subV=totalSpaceV-((mtopSpace+mbottomSpace)*spanCount-mbottomSpace);//剩余未占满数量
+//			System.out.println(totalSpaceV+"剩余纵量"+subV);
+//			if(subV>(mtopSpace+mbottomSpace)*2){
+//				System.err.println("the space set very small has a lot spcase no use");
+//			}
+//			if(subV<0){
+//				System.err.println("the space set very big has no enought to show totalview");
+//			}
 		}
 
-
-
-
-//		System.out.println(totalSpace+":"+mEdgeSpace);
-//		System.out.println(itemCount+":"+childPosition);
-//		System.out.println(totalSpace+":"+eachSpace+":"+column+":"+row);
-
-
-//		if (orientation == GridLayoutManager.VERTICAL) {
-//
-//			if(row+1==spanCount||spanCount==1){
-//				right=0;
-//			}
-
-//			top = 0; // 默认 top为0
-//			bottom = mbottomSpace; // 默认bottom为间距值
-//			if (mEdgeSpace == 0) {
-//				left = column * eachSpace / (spanCount - 1);
-//				right = eachSpace - left;
-//				// 无边距的话  只有最后一行bottom为0
-//				if (itemCount / spanCount == row) {
-//					bottom = 0;
-//				}
-//			} else {
-//				if (childPosition < spanCount) {
-//					// 有边距的话 第一行top为边距值
-//					top = mEdgeSpace;
-//				} else if (itemCount / spanCount == row) {
-//					// 有边距的话 最后一行bottom为边距值
-//					bottom = mEdgeSpace;
-//				}
-//				left = column * (eachSpace - mEdgeSpace - mEdgeSpace) / (spanCount - 1) + mEdgeSpace;
-//				right = eachSpace - left;
-//			}
-//		} else {
-			// orientation == GridLayoutManager.HORIZONTAL 跟上面的大同小异, 将top,bottom替换为left,right即可
-//			left = 0;
-//			right = mrightSpace;
-//			if (mEdgeSpace == 0) {
-//				top = column * eachSpace / (spanCount - 1);
-//				bottom = eachSpace - top;
-//				if (itemCount / spanCount == row) {
-//					right = 0;
-//				}
-//			} else {
-//				if (childPosition < spanCount) {
-//					left = mEdgeSpace;
-//				} else if (itemCount / spanCount == row) {
-//					right = mEdgeSpace;
-//				}
-//				top = column * (eachSpace - mEdgeSpace - mEdgeSpace) / (spanCount - 1) + mEdgeSpace;
-//				bottom = eachSpace - top;
-//			}
-//		}
 		System.out.println(childPosition+",left:"+left+",right:"+right+",top:"+top+",bottom:"+bottom);
 		outRect.set((int) left, (int) top, (int) right, (int) bottom);
 	}

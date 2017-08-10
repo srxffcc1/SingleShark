@@ -331,7 +331,7 @@
         android:layout_weight="430">
 
         <android.support.v7.widget.RecyclerView
-            android:background="#fff"
+            android:background="#FFF"
             android:id="@+id/recycleview_main_1"
             android:overScrollMode="never"
             android:layout_width="wrap_content"
@@ -524,7 +524,7 @@
             android:layout_weight="419">
 
             <android.support.v7.widget.RecyclerView
-                android:background="#000"
+                android:background="#FFF"
                 android:id="@+id/recycleview_main_2"
                 android:overScrollMode="never"
                 android:layout_width="wrap_content"

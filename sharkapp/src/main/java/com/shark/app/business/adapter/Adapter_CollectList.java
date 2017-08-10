@@ -1,6 +1,7 @@
 package com.shark.app.business.adapter;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,10 +13,13 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.businessframehelp.utils.ImageLoader;
+import com.businessframehelp.staticlib.StaticAppInfo;
 import com.businessframehelp.widget.AutoCheckBox;
+import com.businessframehelp.widget.OnCheckedChangeListener;
+import com.kymjs.common.ImageLoader;
 import com.shark.app.R;
 import com.shark.app.business.entity.ExpandMap;
+import com.shark.app.business.statich.ActionHome;
 import com.zhy.autolayout.utils.AutoUtils;
 
 import java.io.File;
@@ -39,11 +43,6 @@ public class Adapter_CollectList extends RecyclerView.Adapter<RecyclerView.ViewH
 
     public Adapter_CollectList(Activity context, List<ExpandMap> maplist) {
         this.context = context;
-
-//        menuListData = new ArrayList<ExpandMap>(maplist.size());
-//        for (int i = 0; i <maplist.size() ; i++) {
-//            addItem(maplist.get(i));
-//        }
         menuListData = maplist;
 
     }
@@ -53,7 +52,6 @@ public class Adapter_CollectList extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     public void clear() {
-        cancheck = false;
         checkmap.clear();
     }
 
@@ -111,8 +109,7 @@ public class Adapter_CollectList extends RecyclerView.Adapter<RecyclerView.ViewH
                     final ImageView tmp = ((ViewHolderContent) holder).logimage;
                     final AutoCheckBox checklogo = ((ViewHolderContent) holder).check;
                     final ImageView deletemark = ((ViewHolderContent) holder).deletemark;
-                    ImageLoader.getInstance().loadImage(menuListData.get(position).getEntityvalue().getFileallpath(),tmp);
-//                    Help_ImageLoader.getInstance().loadImage(menuListData.get(position).getEntityvalue().getFileallpath(),tmp);
+                    ImageLoader.getInstance(7, ImageLoader.Type.LIFO).loadImage(menuListData.get(position).getEntityvalue().getFileallpath(),tmp);
                     ((ViewHolderContent) holder).logimage.setOnClickListener(new View.OnClickListener() {
 
                         @Override
@@ -124,18 +121,18 @@ public class Adapter_CollectList extends RecyclerView.Adapter<RecyclerView.ViewH
                             }
                         }
                     });
-//                    ((ViewHolderContent) holder).logo.setOnClickListener(new View.OnClickListener() {
-//
-//                        @Override
-//                        public void onClick(View v) {
-//                            if (!cancheck) {
-//                                Dialog_Tool.showDialog_Rename(context, menuListData.get(position).getEntityvalue());
-//                            } else {
-//                                checklogo.performClick();
-//                            }
-//
-//                        }
-//                    });
+                    ((ViewHolderContent) holder).logo.setOnClickListener(new View.OnClickListener() {
+
+                        @Override
+                        public void onClick(View v) {
+                            if (!cancheck) {
+                                //do rename
+                            } else {
+                                checklogo.performClick();
+                            }
+
+                        }
+                    });
                     ((ViewHolderContent) holder).logimage.setOnLongClickListener(new View.OnLongClickListener() {
                         @Override
                         public boolean onLongClick(View v) {
@@ -145,14 +142,14 @@ public class Adapter_CollectList extends RecyclerView.Adapter<RecyclerView.ViewH
                             return true;
                         }
                     });
-//                    ((ViewHolderContent) holder).check.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-//
-//                        @Override
-//                        public void onCheckedChanged(View buttonView, boolean isChecked) {
-//                            System.out.println("checkmap:put" + position + ":" + isChecked);
-//                            checkmap.put(position, isChecked);
-//                        }
-//                    });
+                    ((ViewHolderContent) holder).check.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+                        @Override
+                        public void onCheckedChanged(View buttonView, boolean isChecked) {
+                            System.out.println("checkmap:put" + position + ":" + isChecked);
+                            checkmap.put(position, isChecked);
+                        }
+                    });
 
                     deletemark.setOnClickListener(new View.OnClickListener() {
 
@@ -174,8 +171,14 @@ public class Adapter_CollectList extends RecyclerView.Adapter<RecyclerView.ViewH
                         ((ViewHolderContent) holder).check.setChecked(false);
                     }
                     switch (menuListData.get(position).getEntityvalue().getFileType()) {
+                        case 1:
+                            ((ViewHolderContent) holder).fileflag.setImageResource(R.mipmap.collect_voice);
+                            break;
                         case 2:
-//                            ((ViewHolderContent) holder).fileflag.setImageResource(R.drawable.flag_06);
+                            ((ViewHolderContent) holder).fileflag.setImageResource(R.mipmap.collect_video);
+                            break;
+                        case 3:
+                            ((ViewHolderContent) holder).fileflag.setImageResource(R.mipmap.collect_camera);
                             break;
                         default:
                             break;
@@ -199,7 +202,11 @@ public class Adapter_CollectList extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     public void checkBoxFresh() {
-
+        if(cancheck){
+            StaticAppInfo.getInstance().getAppLicationContext().sendBroadcast(new Intent(ActionHome.collectundershow));
+        }else{
+            StaticAppInfo.getInstance().getAppLicationContext().sendBroadcast(new Intent(ActionHome.collectunderdismiss));
+        }
     }
 
     @Override

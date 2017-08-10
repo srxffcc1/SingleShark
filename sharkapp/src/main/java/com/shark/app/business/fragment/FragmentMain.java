@@ -45,7 +45,7 @@ public class FragmentMain extends BaseSupportFragment {
         GridLayoutManager manager=new GridLayoutManager(getContext(),2, LinearLayoutManager.HORIZONTAL,false);
         manager.setAutoMeasureEnabled(true);
         recycleview_main_1.setLayoutManager(manager);
-        recycleview_main_1.addItemDecoration(new DividerGridItemDecoration(getContext()).setSpace(1,1,20,1));
+        recycleview_main_1.addItemDecoration(new DividerGridItemDecoration(getContext()).setSpace(0,0,0,0));
         list_1 = new ArrayList<>();
         list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_enterpiseinfo).setClickpassclass(ActivityEnterpriseList.class));
         list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_printer).setClickpassclass(null));
@@ -63,6 +63,11 @@ public class FragmentMain extends BaseSupportFragment {
         recycleview_main_1.setAdapter(new ImageClickRecycleAdapter(this, list_1){
 
             @Override
+            protected int getImageHeight() {
+                return -1;
+            }
+
+            @Override
             protected int getImageWidth() {
                 return 180;
             }
@@ -71,7 +76,7 @@ public class FragmentMain extends BaseSupportFragment {
         manager2.setAutoMeasureEnabled(true);
         recycleview_main_2 = (RecyclerView) findViewById(R.id.recycleview_main_2);
         recycleview_main_2.setLayoutManager(manager2);
-        recycleview_main_2.addItemDecoration(new DividerGridItemDecoration(getContext()).setSpace(2,2,20,2).setSpaceColor(Color.parseColor("#FF9E99")));
+        recycleview_main_2.addItemDecoration(new DividerGridItemDecoration(getContext()).setSpace(0,0,0,0).setSpaceColor(Color.parseColor("#FF9E99")));
         list_2 = new ArrayList<>();
         list_2.add(new ImageMenuEntity().setImageRid(R.drawable.library_aqscbz).setClickpassclass(null));
         list_2.add(new ImageMenuEntity().setImageRid(R.drawable.library_aqscflfg).setClickpassclass(null));
@@ -80,6 +85,11 @@ public class FragmentMain extends BaseSupportFragment {
         list_2.add(new ImageMenuEntity().setImageRid(R.drawable.library_yhpcbz).setClickpassclass(null));
         list_2.add(new ImageMenuEntity().setImageRid(R.drawable.library_zfyj).setClickpassclass(null));
         recycleview_main_2.setAdapter(new ImageClickRecycleAdapter(this, list_2){
+
+            @Override
+            protected int getImageHeight() {
+                return -1;
+            }
 
             @Override
             protected int getImageWidth() {

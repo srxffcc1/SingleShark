@@ -52,11 +52,12 @@ abstract  public class ImageClickRecycleAdapter extends RecyclerView.Adapter<Ima
         mcontext=activity;
         mlist=list;
     }
+    protected abstract int getImageHeight();
     protected abstract int getImageWidth();
     @Override
     public SingelViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView= LayoutInflater.from(mcontext).inflate(R.layout.item_mesh,parent,false);
-        itemView.setLayoutParams(new LinearLayout.LayoutParams(getImageWidth(), ViewGroup.LayoutParams.MATCH_PARENT));
+        itemView.setLayoutParams(new LinearLayout.LayoutParams(getImageWidth(), ViewGroup.LayoutParams.WRAP_CONTENT));
         AutoUtils.autoSize(itemView);
         return new SingelViewHolder(itemView);
     }

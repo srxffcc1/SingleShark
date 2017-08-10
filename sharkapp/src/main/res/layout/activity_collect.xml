@@ -6,6 +6,7 @@
     android:orientation="vertical">
     <android.support.v7.widget.RecyclerView
         android:id="@+id/sourceGrid"
+        android:background="#BFBFBF"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
@@ -25,6 +26,7 @@
             android:background="#2378BB"
             android:clickable="true"
             android:gravity="center"
+            android:visibility="gone"
             android:onClick="finishChoseEvidence"
             android:text="加入到证据"
             android:textColor="@color/white" />

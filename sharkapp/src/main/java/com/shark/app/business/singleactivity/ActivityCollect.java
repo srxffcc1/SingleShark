@@ -1,6 +1,9 @@
 package com.shark.app.business.singleactivity;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Message;
 import android.support.annotation.Nullable;
@@ -8,6 +11,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.LinearLayout;
 
 import com.businessframehelp.app.FrameActivity;
@@ -21,6 +25,7 @@ import com.shark.app.R;
 import com.shark.app.business.adapter.Adapter_CollectList;
 import com.shark.app.business.entity.EntityS_File;
 import com.shark.app.business.entity.ExpandMap;
+import com.shark.app.business.statich.ActionHome;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -38,6 +43,7 @@ public class ActivityCollect extends FrameActivity {
     LinearLayout needshowunder;
     private List<ExpandMap> expandList;
     private Adapter_CollectList adapter;
+    private TmpBroadcastReceiver receiver;
     @Override
     public ORIENTATION getORIENTATION() {
         return null;
@@ -58,16 +64,22 @@ public class ActivityCollect extends FrameActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_collect);
         BarUtil.initBar(this,"调查取证");
+        needshowunder = (LinearLayout) findViewById(R.id.needshowunder);
         new File(StaticAppInfo.getInstance().getProjcetDir() + "/ZhiCollect/" + "/tmp/").mkdirs();
         RecyclerView sourceGrid=(RecyclerView) findViewById(R.id.sourceGrid);
         expandList=new ArrayList<ExpandMap>();
         adapter = new Adapter_CollectList(this, expandList);
         staggeredGridLayoutManager = new GridLayoutManager(this,4, OrientationHelper.VERTICAL,false);
-        sourceGrid.addItemDecoration(new DividerGridItemDecoration(getContext()).setSpace(3,3,3,3));
+        sourceGrid.addItemDecoration(new DividerGridItemDecoration(getContext()).setSpace(0,0,0,10));
         adapter = new Adapter_CollectList(this, expandList);
         sourceGrid.setLayoutManager(staggeredGridLayoutManager);
         sourceGrid.setAdapter(adapter);
         init();
+        receiver = new TmpBroadcastReceiver();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(ActionHome.collectundershow);
+        filter.addAction(ActionHome.collectunderdismiss);
+        this.registerReceiver(receiver, filter);
     }
     public void init() {
         new Thread(new Runnable() {
@@ -101,6 +113,9 @@ public class ActivityCollect extends FrameActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        if(expandList.size()==0){
+                            StaticAppInfo.getInstance().getAppLicationContext().sendBroadcast(new Intent(ActionHome.collectunderdismiss));
+                        }
                         adapter.notifyDataSetChanged();
                     }
                 });
@@ -129,10 +144,65 @@ public class ActivityCollect extends FrameActivity {
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        try {
+            unregisterReceiver(receiver);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==100){
             init();
         }
+    }
+
+
+    public void finishChoseEvidence(View view){
+
+    }
+    public void finishChoseDelete(View view){
+
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+
+                List<File> selectfile=adapter.getFileSelectList();
+                for (int i = 0; i < selectfile.size(); i++) {
+                    selectfile.get(i).delete();
+                    adapter.clear();
+                }
+                if(selectfile.size()>0){
+                    init();
+                }
+
+            }
+        }).start();
+
+    }
+    public void cancelChoseEvidence(View view){
+        adapter.setCancheck(false);
+        adapter.checkBoxFresh();
+        needshowunder.setVisibility(View.GONE);
+    }
+
+    class TmpBroadcastReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if(intent.getAction().equals(ActionHome.collectundershow)){
+                needshowunder.setVisibility(View.VISIBLE);
+            }
+            if(intent.getAction().equals(ActionHome.collectunderdismiss)){
+                needshowunder.setVisibility(View.GONE);
+            }
+
+        }
+
     }
 }

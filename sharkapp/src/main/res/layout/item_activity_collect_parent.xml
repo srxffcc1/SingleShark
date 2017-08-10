@@ -2,22 +2,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="#BFBFBF"
     android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/inspectOption"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1032"
+        android:gravity="left|center_vertical"
+        android:paddingTop="10dp"
+        android:singleLine="true"
+        android:text="test"
+        android:textColor="#FFF" />
 
     <TextView
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="48" />
-
-    <TextView
-        android:id="@+id/inspectOption"
-        android:layout_width="0dp"
-        android:padding="10px"
-        android:layout_height="match_parent"
-        android:layout_weight="1032"
-        android:gravity="left|center_vertical"
-        android:singleLine="true"
-        android:text="test" />
 
 </LinearLayout>

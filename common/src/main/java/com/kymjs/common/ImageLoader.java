@@ -1,13 +1,13 @@
-package com.businessframehelp.utils;
+package com.kymjs.common;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.support.v4.util.LruCache;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.LruCache;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 
@@ -29,7 +29,7 @@ public class ImageLoader {
     /**
      * 线程池的线程数量，默认为1
      */
-    private int mThreadCount = 1;
+    private static int mThreadCount = 3;
     /**
      * 队列的调度方式
      */
@@ -182,9 +182,7 @@ public class ImageLoader {
 
                     int reqWidth = imageSize.width;
                     int reqHeight = imageSize.height;
-
-                    Bitmap bm = decodeSampledBitmapFromResource(path, reqWidth,
-                            reqHeight);
+                    Bitmap bm = ImageUtils.getThumbnailAll(imageView.getContext(),path,reqWidth,reqHeight,R.drawable.voice_flag);
                     addBitmapToLruCache(path, bm);
                     ImgBeanHolder holder = new ImgBeanHolder();
                     holder.bitmap = getBitmapFromLruCache(path);
