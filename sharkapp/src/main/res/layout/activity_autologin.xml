@@ -1,0 +1,46 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_bg"
+    android:orientation="vertical">
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="智慧安监\n\n"-->
+        <!--android:gravity="center"-->
+        <!--android:textSize="30sp"-->
+        <!--android:layout_above="@+id/loadlayout"-->
+        <!--android:layout_alignParentStart="true" />-->
+    <RelativeLayout
+        android:id="@+id/loadlayout"
+        android:layout_width="250px"
+        android:layout_height="250px"
+        android:layout_centerInParent="true">
+        <ImageView
+            android:id="@+id/headlogin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:src="@drawable/bedge" />
+        <com.pnikosis.materialishprogress.ProgressWheel
+            android:id="@+id/progress_wheel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            app:matProg_barColor="#5588FF"
+            app:matProg_progressIndeterminate="true"
+            app:matProg_fillRadius="true" />
+    </RelativeLayout>
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="\n\n登录中..."-->
+        <!--android:gravity="center"-->
+        <!--android:textSize="30sp"-->
+        <!--android:layout_below="@+id/loadlayout"-->
+        <!--android:layout_alignParentStart="true" />-->
+
+</RelativeLayout>

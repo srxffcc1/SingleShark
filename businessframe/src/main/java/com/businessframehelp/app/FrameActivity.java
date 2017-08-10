@@ -2,6 +2,7 @@ package com.businessframehelp.app;
 
 import android.app.Fragment;
 import android.app.LocalActivityManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -412,7 +413,6 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         if(item.getItemId()==android.R.id.home){
             onBackPressed();
             return true;
@@ -421,8 +421,14 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(getMenuid()==-1||getMenuid()==0?R.menu.menu_:getMenuid(), menu);
+        if(getMenuid()==-1){
+            return true;
+        }
+        getMenuInflater().inflate(getMenuid()==0?R.menu.menu_:getMenuid(), menu);
         return true;
+    }
+    public Context getContext(){
+        return getBaseContext();
     }
 
 }

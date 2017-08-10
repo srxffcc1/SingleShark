@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.os.Bundle;
@@ -195,11 +196,13 @@ public class ActivityEnterpriseList extends FrameActivity implements SearchView.
         public class SingelViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnLongClickListener {
             public SingelViewHolder(View itemView) {
                 super(itemView);
+                itemView.setOnClickListener(this);
 
             }
 
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(getBaseContext(),ActivityEnterpriseMesh.class));
 //                System.out.println("点击项目"+getAdapterPosition());
 
             }

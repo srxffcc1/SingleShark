@@ -48,6 +48,8 @@
         <activity android:name=".business.singleactivity.ActivityEnterpriseList" />
         <activity android:name=".business.singleactivity.tab.ActivityPdfBook" />
         <activity android:name=".business.singleactivity.ActivityBook" />
+        <activity android:name=".business.singleactivity.ActivityAutoLogin" />
+        <activity android:name=".business.singleactivity.ActivityEnterpriseMesh" />
     </application>
 
 </manifest>

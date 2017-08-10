@@ -65,7 +65,7 @@ public class FragmentMain extends BaseSupportFragment {
             protected int getImageWidth() {
                 return 160;
             }
-        });
+        }.setLongclicksameclick(true));
         GridLayoutManager manager2=new GridLayoutManager(getContext(),2, LinearLayoutManager.HORIZONTAL,false);
         manager2.setAutoMeasureEnabled(true);
         recycleview_main_2 = (RecyclerView) findViewById(R.id.recycleview_main_2);
@@ -82,7 +82,7 @@ public class FragmentMain extends BaseSupportFragment {
 
             @Override
             protected int getImageWidth() {
-                return 210;
+                return 200;
             }
         });
 

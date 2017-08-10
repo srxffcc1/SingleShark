@@ -28,7 +28,7 @@ public class ActivityTmp extends FrameActivity {
 
     @Override
     public int getMenuid() {
-        return R.menu.enterprisemenu_menu;
+        return 0;
     }
 
     @Override
@@ -44,11 +44,6 @@ public class ActivityTmp extends FrameActivity {
             System.out.println("点击了综合查询");
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onBackPressed() {
-
     }
 
 }

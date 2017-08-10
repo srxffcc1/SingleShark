@@ -108,7 +108,8 @@ import java.util.ArrayList;
         if(!menu.isMenuHidden()){
             menu.closeMenu();
         }else{
-            super.onBackPressed();
+            moveTaskToBack(true);
+//            super.onBackPressed();
         }
 
 

@@ -64,7 +64,6 @@ public class TestRecycleAdapter extends RecyclerView.Adapter<TestRecycleAdapter.
 
         @Override
         public void onClick(View v) {
-//                System.out.println("点击项目"+getAdapterPosition());
 
         }
 
