@@ -46,7 +46,6 @@ import com.amap.api.maps.model.PolygonOptions;
 import com.shark.resoureclone.R;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -105,7 +104,7 @@ public class GeoFence_Keyword_Activity extends CheckPermissionsActivity
 	static final String GEOFENCE_BROADCAST_ACTION = "com.example.geofence.keyword";
 
 	// 记录已经添加成功的围栏
-	private HashMap<String, GeoFence> fenceMap = new HashMap<String, GeoFence>();
+	private android.support.v4.util.ArrayMap<String, GeoFence> fenceMap = new android.support.v4.util.ArrayMap<String, GeoFence>();
 	
 	// 中心点marker
 	private MarkerOptions markerOption = null;

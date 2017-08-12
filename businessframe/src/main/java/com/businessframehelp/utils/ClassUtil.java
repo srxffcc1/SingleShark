@@ -1,8 +1,8 @@
 package com.businessframehelp.utils;
 
+import android.support.v4.util.ArrayMap;
+
 import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by King6rf on 2017/5/25.
@@ -10,7 +10,7 @@ import java.util.Map;
  */
 
 public class ClassUtil {
-    private static Map<String,Class> classmap=new HashMap<String,Class>();
+    private static ArrayMap<String,Class> classmap=new ArrayMap<String,Class>();
     static {
 
     }

@@ -1,7 +1,6 @@
 package com.amap.navi.demo.util;
 
-import java.util.HashMap;
-import java.util.Map;
+import android.support.v4.util.ArrayMap;
 
 /**
  * -1	路径计算失败。	在导航过程中调用calculateDriveRoute方法导致的失败，导航过程中只能用reCalculate方法进行路径计算。
@@ -23,7 +22,7 @@ import java.util.Map;
  * 19	未知错误。
  **/
 public class ErrorInfo {
-    private static Map<Integer, String> list = new HashMap();
+    private static ArrayMap<Integer, String> list = new ArrayMap();
 
     static {
         list.put(-1, "路径计算失败，在导航过程中调用calculateDriveRoute方法导致的失败，导航过程中只能用reCalculate方法进行路径计算。");

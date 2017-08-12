@@ -24,7 +24,6 @@ import com.zhy.autolayout.utils.AutoUtils;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -37,9 +36,9 @@ public class Adapter_CollectList extends RecyclerView.Adapter<RecyclerView.ViewH
     List<ExpandMap> menuListData;
     private int mCurrentItemId = 0;
     int orientation = 1;//0为横1为竖直
-    private Map<Integer, Bitmap> bitmapmap = new HashMap<Integer, Bitmap>();
+    private android.support.v4.util.ArrayMap<Integer, Bitmap> bitmapmap = new android.support.v4.util.ArrayMap<Integer, Bitmap>();
     private boolean cancheck = false;
-    public Map<Integer, Boolean> checkmap = new HashMap<Integer, Boolean>();
+    public android.support.v4.util.ArrayMap<Integer, Boolean> checkmap = new android.support.v4.util.ArrayMap<Integer, Boolean>();
 
     public Adapter_CollectList(Activity context, List<ExpandMap> maplist) {
         this.context = context;

@@ -130,7 +130,7 @@ public class GeoFence_Multiple_Activity extends CheckPermissionsActivity
 	private static final String GEOFENCE_BROADCAST_ACTION = "com.example.geofence.multiple";
 
 	// 记录已经添加成功的围栏
-	private HashMap<String, GeoFence> fenceMap = new HashMap<String, GeoFence>();
+	private android.support.v4.util.ArrayMap<String, GeoFence> fenceMap = new android.support.v4.util.ArrayMap<String, GeoFence>();
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

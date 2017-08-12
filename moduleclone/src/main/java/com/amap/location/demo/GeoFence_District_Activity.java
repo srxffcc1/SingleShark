@@ -87,7 +87,7 @@ public class GeoFence_District_Activity extends CheckPermissionsActivity
 	private AMap mAMap;
 
 	// 记录已经添加成功的围栏
-	private HashMap<String, GeoFence> fenceMap = new HashMap<String, GeoFence>();
+	private android.support.v4.util.ArrayMap<String, GeoFence> fenceMap = new android.support.v4.util.ArrayMap<String, GeoFence>();
 	// 当前的坐标点集合，主要用于进行地图的可视区域的缩放
 	private LatLngBounds.Builder boundsBuilder = new LatLngBounds.Builder();
 

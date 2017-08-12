@@ -1,6 +1,7 @@
 package com.businessframehelp.module.pdf.adapter;
 
 import android.app.Activity;
+import android.support.v4.util.ArrayMap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +11,7 @@ import android.widget.LinearLayout;
 import com.businessframehelp.R;
 import com.wisdomregulation.data.entitybase.Base_Entity;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 @Deprecated
 public class Adapter_BookAddItem {
 	private Activity context;
@@ -21,7 +20,7 @@ public class Adapter_BookAddItem {
 
 	private boolean editState;
 	private boolean isshow=true;
-	private Map<String,EditText> viewmap=new HashMap<String,EditText>();
+	private ArrayMap<String,EditText> viewmap=new ArrayMap<String,EditText>();
 
 	public Adapter_BookAddItem(Activity context,
 							   List<Base_Entity> detailMapData, LinearLayout content) {

@@ -119,7 +119,7 @@ public class GeoFence_Nearby_Activity extends CheckPermissionsActivity
 	static final String GEOFENCE_BROADCAST_ACTION = "com.example.geofence.nearby";
 
 	// 记录已经添加成功的围栏
-	HashMap<String, GeoFence> fenceMap = new HashMap<String, GeoFence>();
+    android.support.v4.util.ArrayMap<String, GeoFence> fenceMap = new android.support.v4.util.ArrayMap<String, GeoFence>();
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

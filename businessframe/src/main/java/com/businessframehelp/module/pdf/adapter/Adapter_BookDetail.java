@@ -3,6 +3,7 @@ package com.businessframehelp.module.pdf.adapter;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.support.v4.util.ArrayMap;
 import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,7 +26,6 @@ import com.wisdomregulation.data.entitybase.Base_Entity;
 import com.wisdomregulation.data.entitydemo.Entity_Demo;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -38,7 +38,7 @@ public class Adapter_BookDetail {
 
     private boolean editState;
     private boolean isshow = true;
-    private Map<String, EditText> viewmap = new HashMap<String, EditText>();
+    private ArrayMap<String, EditText> viewmap = new ArrayMap<String, EditText>();
 
     public Adapter_BookDetail(Activity context,
                               Base_Entity detailMapData, LinearLayout content) {

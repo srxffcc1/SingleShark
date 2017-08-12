@@ -17,7 +17,6 @@ import com.amap.map3d.demo.util.ToastUtil;
 import com.shark.resoureclone.R;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -71,9 +70,9 @@ public class InputtipsActivity extends Activity implements TextWatcher, Inputtip
 	@Override
 	public void onGetInputtips(final List<Tip> tipList, int rCode) {
         if (rCode == AMapException.CODE_AMAP_SUCCESS) {
-            List<HashMap<String, String>> listString = new ArrayList<HashMap<String, String>>();
+            List<android.support.v4.util.ArrayMap<String, String>> listString = new ArrayList<android.support.v4.util.ArrayMap<String, String>>();
             for (int i = 0; i < tipList.size(); i++) {
-            	HashMap<String, String> map = new HashMap<String, String>();
+				android.support.v4.util.ArrayMap<String, String> map = new android.support.v4.util.ArrayMap<String, String>();
             	map.put("name", tipList.get(i).getName());
             	map.put("address", tipList.get(i).getDistrict());
                 listString.add(map);

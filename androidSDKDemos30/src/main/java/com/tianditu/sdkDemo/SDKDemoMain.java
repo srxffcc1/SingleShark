@@ -93,7 +93,7 @@ public class SDKDemoMain extends ExpandableListActivity {
 
 		int len = list.size();
 
-		Map<String, Boolean> entries = new HashMap<String, Boolean>();
+		Map<String, Boolean> entries = new android.support.v4.util.ArrayMap<String, Boolean>();
 
 		for (int i = 0; i < len; i++) {
 			ResolveInfo info = list.get(i);

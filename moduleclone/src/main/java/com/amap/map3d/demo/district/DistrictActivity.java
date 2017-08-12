@@ -2,6 +2,7 @@ package com.amap.map3d.demo.district;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.util.ArrayMap;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -20,9 +21,7 @@ import com.amap.map3d.demo.util.ToastUtil;
 import com.shark.resoureclone.R;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * 政区划查询
@@ -47,7 +46,7 @@ public class DistrictActivity extends Activity implements
 	private DistrictItem currentDistrictItem = null;
 
 	// 下级行政区划集合
-	private Map<String, List<DistrictItem>> subDistrictMap = new HashMap<String, List<DistrictItem>>();
+	private ArrayMap<String, List<DistrictItem>> subDistrictMap = new ArrayMap<String, List<DistrictItem>>();
 
 	// 省级列表
 	private List<DistrictItem> provinceList = new ArrayList<DistrictItem>();
