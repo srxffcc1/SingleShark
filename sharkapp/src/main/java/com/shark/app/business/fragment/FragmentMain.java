@@ -17,6 +17,7 @@ import com.shark.app.business.adapter.ImageClickRecycleAdapter;
 import com.shark.app.business.entity.ImageMenuEntity;
 import com.shark.app.business.singleactivity.ActivityCollect;
 import com.shark.app.business.singleactivity.ActivityEnterpriseList;
+import com.shark.app.business.singleactivity.ActivityLaw;
 import com.shark.app.business.singleactivity.tab.ActivityCheckUpList;
 
 import java.util.ArrayList;
@@ -51,7 +52,7 @@ public class FragmentMain extends BaseSupportFragment {
         list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_printer).setClickpassclass(null));
         list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_checkup).setClickpassclass(ActivityCheckUpList.class));
         list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_checkuprecord).setClickpassclass(null));
-        list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_law).setClickpassclass(null));
+        list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_law).setClickpassclass(ActivityLaw.class));
         list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_collect).setClickpassclass(ActivityCollect.class));
         list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_troubleinvestigation).setClickpassclass(null));
         list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_dangerousorg).setClickpassclass(null));

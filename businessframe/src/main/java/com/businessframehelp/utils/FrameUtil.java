@@ -137,6 +137,9 @@ public class FrameUtil {
     }
     public void startRecord(Activity activity,int REQUEST_CODE,String path){
         try {
+            if(new File(path).isDirectory()){
+                path=path+"/"+"tmp"+System.currentTimeMillis()+".mp3";
+            }
             Uri mOutPutFileUri = Uri.fromFile(new File(path));
             Intent intent = new Intent(MediaStore.Audio.Media.RECORD_SOUND_ACTION);
             intent.putExtra(MediaStore.EXTRA_OUTPUT, mOutPutFileUri);

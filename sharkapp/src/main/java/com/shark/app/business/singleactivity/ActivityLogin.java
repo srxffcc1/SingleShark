@@ -66,6 +66,7 @@ public class ActivityLogin extends FrameActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         //设置输入法不弹起
         setContentView(R.layout.app_activity_login);
+        getSupportActionBar().hide();
 //        AndroidBug5497Workaround.assistActivity(this);
         intiView();
     }

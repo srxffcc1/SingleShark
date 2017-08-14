@@ -48,6 +48,7 @@ public class Adapter_CollectList extends RecyclerView.Adapter<RecyclerView.ViewH
 
     public void setCancheck(boolean cancheck) {
         this.cancheck = cancheck;
+        notifyDataSetChanged();
     }
 
     public void clear() {

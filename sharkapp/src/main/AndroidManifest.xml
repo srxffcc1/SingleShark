@@ -51,6 +51,7 @@
         <activity android:name=".business.singleactivity.ActivityAutoLogin" />
         <activity android:name=".business.singleactivity.ActivityEnterpriseMesh" />
         <activity android:name=".business.singleactivity.ActivityCollect" />
+        <activity android:name=".business.singleactivity.ActivityLaw" />
     </application>
 
 </manifest>

@@ -13,6 +13,7 @@ import android.provider.BaseColumns;
 import android.support.annotation.Nullable;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.CursorAdapter;
+import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -24,6 +25,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.businessframehelp.app.FrameActivity;
 import com.businessframehelp.enums.ORIENTATION;
@@ -56,13 +58,13 @@ public class ActivityEnterpriseList extends FrameActivity implements SearchView.
 
     @Override
     public int getMenuid() {
-        return R.menu.enterprisemenu_menu;
+        return R.menu.mutilsearch_menu;
     }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_enterpriselist);
+        setContentView(R.layout.activity_pageturnfreshlist);
 
         if (StaticAppInfo.getInstance().getMode()== StaticAppInfo.StaticMode.test) {
 
@@ -103,6 +105,7 @@ public class ActivityEnterpriseList extends FrameActivity implements SearchView.
         if(searchEditText.isShown()){
             searchView.onActionViewCollapsed();
             searchView.setImeOptions(EditorInfo.IME_ACTION_SEARCH);
+            Toast.makeText(this,"关闭搜索页面",Toast.LENGTH_SHORT).show();
         }else{
             super.onBackPressed();
         }
@@ -118,15 +121,15 @@ public class ActivityEnterpriseList extends FrameActivity implements SearchView.
         searchView.setQueryHint("输入企业名称");
         searchView.setOnQueryTextListener(this);
         searchView.setOnSuggestionListener(this);
-
+        MatrixCursor cursor = new MatrixCursor(COLUMNS);
         if (mSuggestionsAdapter == null) {
-            MatrixCursor cursor = new MatrixCursor(COLUMNS);
+
             cursor.addRow(new String[] { "1", "Murica" });
             cursor.addRow(new String[] { "2", "Canada" });
             cursor.addRow(new String[] { "3", "Denmark" });
             mSuggestionsAdapter = new QuerySuggestionsAdapter(this, cursor);
         }
-        searchView.setSuggestionsAdapter(mSuggestionsAdapter);
+        searchView.setSuggestionsAdapter(new SimpleCursorAdapter(this, R.layout.item_layout, cursor, new String[]{SearchManager.SUGGEST_COLUMN_TEXT_1}, new int[]{R.id.text1}));
 //        searchView.setSubmitButtonEnabled(false);
         return true;
     }
@@ -223,8 +226,7 @@ public class ActivityEnterpriseList extends FrameActivity implements SearchView.
         @Override
         public View newView(Context context, Cursor cursor, ViewGroup parent) {
             LayoutInflater inflater = LayoutInflater.from(context);
-            View v = inflater.inflate(android.R.layout.simple_list_item_1, parent, false);
-
+            View v = inflater.inflate(android.R.layout.simple_spinner_item, parent, false);
             return v;
         }
 

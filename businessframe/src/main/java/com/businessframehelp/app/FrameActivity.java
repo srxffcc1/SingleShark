@@ -10,12 +10,14 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.businessframehelp.R;
@@ -51,6 +53,12 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
     private ORIENTATION nowstatus;
     private boolean isauthentic=false;
     private int menuid=-1;
+    private Toolbar supportToolbar;
+
+    public Toolbar getSupportToolbar() {
+        return supportToolbar;
+    }
+
     private  Handler handler=new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -169,9 +177,13 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
     }
     @Override
     final public void setContentView(@LayoutRes int layoutResID) {
-        super.setContentView(layoutResID);
+        super.setContentView(R.layout.frameorg_layout);
+        FrameLayout mainorgframe= (FrameLayout) findViewById(R.id.frameorg);
+        View main=getLayoutInflater().inflate(layoutResID,null);
+        mainorgframe.addView(main);
+
         ButterKnife.bind(this) ;
-        BarUtil.initBar(this);
+        supportToolbar=BarUtil.initBar(this);
         if(!getIntent().getBooleanExtra("needActionBar",true)){
             try {
                 System.out.println("要去掉suactionbar咯");
@@ -190,9 +202,14 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
 
     @Override
     final public void setContentView(View view, ViewGroup.LayoutParams params) {
-        super.setContentView(view, params);
+        View mainorg=getLayoutInflater().inflate(R.layout.frameorg_layout,null);
+        super.setContentView(mainorg, params);
+        FrameLayout mainorgframe= (FrameLayout) mainorg.findViewById(R.id.frameorg);
+        View main=view;
+        mainorgframe.addView(main);
+
         ButterKnife.bind(this) ;
-        BarUtil.initBar(this);
+        supportToolbar=BarUtil.initBar(this);
         if(!getIntent().getBooleanExtra("needActionBar",true)){
             try {
                 //System.out.println("要去掉suactionbar咯");
@@ -211,9 +228,15 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
 
     @Override
     final public void setContentView(View view) {
-        super.setContentView(view);
-        ButterKnife.bind(this) ;
-        BarUtil.initBar(this);
+
+        View mainorg=getLayoutInflater().inflate(R.layout.frameorg_layout,null);
+        super.setContentView(mainorg);
+        FrameLayout mainorgframe= (FrameLayout) mainorg.findViewById(R.id.frameorg);
+        View main=view;
+        mainorgframe.addView(main);
+
+        ButterKnife.bind(this);
+        supportToolbar=BarUtil.initBar(this);
         if(!getIntent().getBooleanExtra("needActionBar",true)){
             try {
                 //System.out.println("要去掉suactionbar咯");

@@ -12,18 +12,31 @@ import com.businessframehelp.R;
 public class BarUtil {
     public static Toolbar initBar(AppCompatActivity appCompatActivity){
         Toolbar toolbar = (Toolbar) appCompatActivity.findViewById(R.id.toolbar);
-        if(appCompatActivity.getSupportActionBar()!=null){
+        if(toolbar!=null){
+            if(appCompatActivity.getSupportActionBar()==null){
+                try {
+                    appCompatActivity.setSupportActionBar(toolbar);
+                    appCompatActivity.getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
+                    appCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    if(appCompatActivity.getActionBar()==null){
+                        appCompatActivity.getActionBar().setHomeButtonEnabled(true); //设置返回键可用
+                        appCompatActivity.getActionBar().setDisplayHomeAsUpEnabled(true);
+                    }
+                }
+
+            }
+        }else{
+
             try {
-                appCompatActivity.setSupportActionBar(toolbar);
+                appCompatActivity.getActionBar().setHomeButtonEnabled(true); //设置返回键可用
+                appCompatActivity.getActionBar().setDisplayHomeAsUpEnabled(true);
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            appCompatActivity.getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
-            appCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }else if(appCompatActivity.getActionBar()!=null){
-            appCompatActivity.getActionBar().setHomeButtonEnabled(true); //设置返回键可用
-            appCompatActivity.getActionBar().setDisplayHomeAsUpEnabled(true);
         }
+
 // App Logo
 //        toolbar.setLogo(R.drawable.ic_launcher);
 // Title
@@ -38,20 +51,35 @@ public class BarUtil {
 
     public static Toolbar initBar(AppCompatActivity appCompatActivity,String title){
         Toolbar toolbar = (Toolbar) appCompatActivity.findViewById(R.id.toolbar);
-        if(appCompatActivity.getSupportActionBar()!=null){
+        if(toolbar!=null){
+            if(appCompatActivity.getSupportActionBar()==null){
+                try {
+                    appCompatActivity.setSupportActionBar(toolbar);
+                    appCompatActivity.getSupportActionBar().setTitle(title);
+                    appCompatActivity.getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
+                    appCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    if(appCompatActivity.getActionBar()==null){
+                        appCompatActivity.getActionBar().setTitle(title);
+                        appCompatActivity.getActionBar().setHomeButtonEnabled(true); //设置返回键可用
+                        appCompatActivity.getActionBar().setDisplayHomeAsUpEnabled(true);
+                    }
+                }
+
+            }else {
+
+            }
+        }else{
             try {
-                appCompatActivity.setSupportActionBar(toolbar);
+                appCompatActivity.getActionBar().setTitle(title);
+                appCompatActivity.getActionBar().setHomeButtonEnabled(true); //设置返回键可用
+                appCompatActivity.getActionBar().setDisplayHomeAsUpEnabled(true);
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            appCompatActivity.getSupportActionBar().setTitle(title);
-            appCompatActivity.getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
-            appCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }else if(appCompatActivity.getActionBar()!=null){
-            appCompatActivity.getActionBar().setTitle(title);
-            appCompatActivity.getActionBar().setHomeButtonEnabled(true); //设置返回键可用
-            appCompatActivity.getActionBar().setDisplayHomeAsUpEnabled(true);
         }
+
 // App Logo
 //        toolbar.setLogo(R.drawable.ic_launcher);
 // Title
