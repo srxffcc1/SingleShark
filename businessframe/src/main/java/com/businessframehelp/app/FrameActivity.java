@@ -72,8 +72,6 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
 
     }
 
-    abstract public int getMenuid();
-
     final public void setNewstatus(ORIENTATION newstatus) {
         this.newstatus = newstatus;
         Log.v("SRXCREATE",""+this.newstatus);
@@ -304,7 +302,6 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
             },500);
         }
     }
-    abstract public void handleMessage(Message msg);
     final public boolean checkNet(){
         return NetworkUtils.checkNet(this);
     }

@@ -35,6 +35,7 @@ abstract public class ListTreeAdapter extends BaseAdapter implements IListTreeAd
         this.alllist = alllist;//构造方法中传入的是第一层目录
         this.whillclicklevel = whillclicklevel;
         changeData();
+
     }
 //    abstract public ListView getListView();
 //    private void initListener(){

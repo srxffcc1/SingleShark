@@ -1,6 +1,7 @@
 package com.businessframehelp.inter;
 
 import android.content.Intent;
+import android.os.Message;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -38,4 +39,15 @@ public interface IFrameActivity {
      */
     boolean checkNet();
 
+    /**
+     * 获得菜单id
+     * @return
+     */
+    int getMenuid();
+
+    /**
+     * 用于handle
+     * @param msg
+     */
+    void handleMessage(Message msg);
 }
