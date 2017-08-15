@@ -4,13 +4,12 @@
     android:layout_height="match_parent"
     android:background="#fff"
     android:orientation="vertical">
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/sourceGrid"
-        android:background="#FFF"
-        android:layout_width="match_parent"
+    <include
         android:layout_height="0dp"
-        android:layout_weight="1">
-    </android.support.v7.widget.RecyclerView>
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        layout="@layout/include_refresh"
+        ></include>
 
     <LinearLayout
         android:id="@+id/needshowunder"

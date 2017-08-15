@@ -52,6 +52,7 @@
         <activity android:name=".business.singleactivity.ActivityEnterpriseMesh" />
         <activity android:name=".business.singleactivity.ActivityCollect" />
         <activity android:name=".business.singleactivity.ActivityLaw" />
+        <activity android:name=".business.singleactivity.ActivityLawDetail" />
     </application>
 
 </manifest>

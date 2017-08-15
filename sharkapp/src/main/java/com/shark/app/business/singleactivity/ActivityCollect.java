@@ -66,7 +66,7 @@ public class ActivityCollect extends FrameActivity {
         BarUtil.initBar(this,"调查取证");
         needshowunder = (LinearLayout) findViewById(R.id.needshowunder);
         new File(StaticAppInfo.getInstance().getProjcetDir() + "/ZhiCollect/" + "/tmp/").mkdirs();
-        RecyclerView sourceGrid=(RecyclerView) findViewById(R.id.sourceGrid);
+        RecyclerView sourceGrid=(RecyclerView) findViewById(R.id.recycler_view);
         expandList=new ArrayList<ExpandMap>();
         adapter = new Adapter_CollectList(this, expandList);
         staggeredGridLayoutManager = new GridLayoutManager(this,4, OrientationHelper.VERTICAL,false);

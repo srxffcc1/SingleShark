@@ -1,0 +1,35 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.toolbardisk.MainActivity">
+    <item
+        android:id="@+id/action_lian"
+        android:title="立案阶段"
+        app:showAsAction="never"/>
+
+    <!--showAsAction:ifRoom 指定按钮屏幕空间够的情况下显示在toolbar中，如果屏幕空间不够就显示在菜单中-->
+    <item
+        android:id="@+id/action_diaochaquzheng"
+        android:title="调查取证阶段"
+        app:showAsAction="never"/>
+
+    <!--showAsAction:never 指定按钮永远显示在菜单中-->
+    <item
+        android:id="@+id/action_gaozhitingzheng"
+        android:title="告知听证阶段"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_shenchajueding"
+        android:title="审查决定阶段"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_songdazhixing"
+        android:title="送达执行阶段"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_jieanguidang"
+        android:title="结案归档阶段"
+        app:showAsAction="never"/>
+</menu>

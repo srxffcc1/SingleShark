@@ -250,14 +250,14 @@ public class TestMainActivity extends FrameActivity {
         System.out.println("返回的:requestCode"+requestCode+",resultCode:"+resultCode);
     }
     public void onlocation(View view){
-        startActivity(new Intent(this,com.amap.location.demo.StartActivity.class));
+//        startActivity(new Intent(this,com.amap.location.demo.StartActivity.class));
     }
     public void onnavigation(View view){
-        startActivity(new Intent(this,com.amap.navi.demo.activity.IndexActivity.class));
+//        startActivity(new Intent(this,com.amap.navi.demo.activity.IndexActivity.class));
     }
 
     public void onmap(View view){
-        startActivity(new Intent(this,com.amap.map3d.demo.MainActivity.class));
+//        startActivity(new Intent(this,com.amap.map3d.demo.MainActivity.class));
     }
     public void ongettui(View view){
 
