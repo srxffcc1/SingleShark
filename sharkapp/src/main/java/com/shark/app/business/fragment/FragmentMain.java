@@ -15,9 +15,19 @@ import com.businessframehelp.design.DividerGridItemDecoration;
 import com.shark.app.R;
 import com.shark.app.business.adapter.ImageClickRecycleAdapter;
 import com.shark.app.business.entity.ImageMenuEntity;
-import com.shark.app.business.singleactivity.ActivityCollect;
-import com.shark.app.business.singleactivity.ActivityEnterpriseList;
-import com.shark.app.business.singleactivity.ActivityLaw;
+import com.shark.app.business.singleactivity.library.ActivityAqscbz;
+import com.shark.app.business.singleactivity.library.ActivityAqscflfg;
+import com.shark.app.business.singleactivity.library.ActivityDxsgal;
+import com.shark.app.business.singleactivity.library.ActivityWxhxptz;
+import com.shark.app.business.singleactivity.library.ActivityYhpcbz;
+import com.shark.app.business.singleactivity.library.ActivityZfyj;
+import com.shark.app.business.singleactivity.module.ActivityCollect;
+import com.shark.app.business.singleactivity.module.ActivityEnterpriseList;
+import com.shark.app.business.singleactivity.module.ActivityHazardsList;
+import com.shark.app.business.singleactivity.module.ActivityLaw;
+import com.shark.app.business.singleactivity.module.ActivityPrinterList;
+import com.shark.app.business.singleactivity.module.ActivityRecordList;
+import com.shark.app.business.singleactivity.module.ActivityTroubleInvestigation;
 import com.shark.app.business.singleactivity.tab.ActivityCheckUpList;
 
 import java.util.ArrayList;
@@ -49,13 +59,13 @@ public class FragmentMain extends BaseSupportFragment {
         recycleview_main_1.addItemDecoration(new DividerGridItemDecoration(getContext()).setSpace(0,0,0,0));
         list_1 = new ArrayList<>();
         list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_enterpiseinfo).setClickpassclass(ActivityEnterpriseList.class));
-        list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_printer).setClickpassclass(null));
+        list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_printer).setClickpassclass(ActivityPrinterList.class));
         list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_checkup).setClickpassclass(ActivityCheckUpList.class));
-        list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_checkuprecord).setClickpassclass(null));
+        list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_checkuprecord).setClickpassclass(ActivityRecordList.class));
         list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_law).setClickpassclass(ActivityLaw.class));
         list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_collect).setClickpassclass(ActivityCollect.class));
-        list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_troubleinvestigation).setClickpassclass(null));
-        list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_dangerousorg).setClickpassclass(null));
+        list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_troubleinvestigation).setClickpassclass(ActivityTroubleInvestigation.class));
+        list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_dangerousorg).setClickpassclass(ActivityHazardsList.class));
 //        list_1.add(new MainMenuEntity().setImageRid(R.drawable.main_oneenterpriseonerule));
 //        list_1.add(new MainMenuEntity().setImageRid(R.drawable.main_orderlist));
 //        list_1.add(new MainMenuEntity().setImageRid(R.drawable.main_paperseach));
@@ -79,12 +89,12 @@ public class FragmentMain extends BaseSupportFragment {
         recycleview_main_2.setLayoutManager(manager2);
         recycleview_main_2.addItemDecoration(new DividerGridItemDecoration(getContext()).setSpace(0,0,0,0).setSpaceColor(Color.parseColor("#FF9E99")));
         list_2 = new ArrayList<>();
-        list_2.add(new ImageMenuEntity().setImageRid(R.drawable.library_aqscbz).setClickpassclass(null));
-        list_2.add(new ImageMenuEntity().setImageRid(R.drawable.library_aqscflfg).setClickpassclass(null));
-        list_2.add(new ImageMenuEntity().setImageRid(R.drawable.library_dxsgal).setClickpassclass(null));
-        list_2.add(new ImageMenuEntity().setImageRid(R.drawable.library_wxhxptz).setClickpassclass(null));
-        list_2.add(new ImageMenuEntity().setImageRid(R.drawable.library_yhpcbz).setClickpassclass(null));
-        list_2.add(new ImageMenuEntity().setImageRid(R.drawable.library_zfyj).setClickpassclass(null));
+        list_2.add(new ImageMenuEntity().setImageRid(R.drawable.library_aqscbz).setClickpassclass(ActivityAqscbz.class));
+        list_2.add(new ImageMenuEntity().setImageRid(R.drawable.library_aqscflfg).setClickpassclass(ActivityAqscflfg.class));
+        list_2.add(new ImageMenuEntity().setImageRid(R.drawable.library_dxsgal).setClickpassclass(ActivityDxsgal.class));
+        list_2.add(new ImageMenuEntity().setImageRid(R.drawable.library_wxhxptz).setClickpassclass(ActivityWxhxptz.class));
+        list_2.add(new ImageMenuEntity().setImageRid(R.drawable.library_yhpcbz).setClickpassclass(ActivityYhpcbz.class));
+        list_2.add(new ImageMenuEntity().setImageRid(R.drawable.library_zfyj).setClickpassclass(ActivityZfyj.class));
         recycleview_main_2.setAdapter(new ImageClickRecycleAdapter(this, list_2){
 
             @Override

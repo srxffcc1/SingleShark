@@ -52,7 +52,7 @@ public class ActivityCheckUpList extends FrameActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.app_tab);
+        setContentView(R.layout.include_tab);
         BarUtil.initBar(this,"执法任务");
         for (String title : mTitles) {
             mFragments.add(FragmentManager.getInstance().factory(title));

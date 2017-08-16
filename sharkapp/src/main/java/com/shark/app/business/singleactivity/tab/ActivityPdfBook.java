@@ -12,7 +12,7 @@ import com.businessframehelp.app.FrameActivity;
 import com.businessframehelp.enums.ORIENTATION;
 import com.businessframehelp.utils.BarUtil;
 import com.shark.app.R;
-import com.shark.app.business.singleactivity.ActivityBook;
+import com.shark.app.business.singleactivity.module.ActivityBook;
 
 import java.io.File;
 

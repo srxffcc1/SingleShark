@@ -1,4 +1,4 @@
-package com.shark.app.business.singleactivity;
+package com.shark.app.business.singleactivity.module;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

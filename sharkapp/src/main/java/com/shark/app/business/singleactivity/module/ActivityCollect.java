@@ -1,4 +1,4 @@
-package com.shark.app.business.singleactivity;
+package com.shark.app.business.singleactivity.module;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

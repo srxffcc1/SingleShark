@@ -1,4 +1,4 @@
-package com.shark.app.business.singleactivity;
+package com.shark.app.business.singleactivity.module;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -13,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.shark.app.R;
+import com.shark.app.apps.AbstractActivitySearchList;
+import com.shark.app.business.singleactivity.ActivityEnterpriseMesh;
 import com.zhy.autolayout.utils.AutoUtils;
 
 /**
@@ -21,6 +23,7 @@ import com.zhy.autolayout.utils.AutoUtils;
 
 public class ActivityEnterpriseList extends AbstractActivitySearchList {
 
+    public String activityrole;//列表角色 用来标记当前列表 normalenterpriselist : printerenterpriselist
 
     @Override
     public void onRefresh() {

@@ -1,4 +1,4 @@
-package com.shark.app.business.singleactivity;
+package com.shark.app.apps;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -55,7 +55,7 @@ abstract public class AbstractActivitySearchList extends FrameActivity implement
     @Override
     final protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.setContentView(R.layout.activity_pageturnfreshlist);
+        super.setContentView(R.layout.include_pageturnfreshlist);
         recycler_view = (RecyclerView) findViewById(R.id.recycler_view);
         recycler_view.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         RecyclerView.Adapter adapter=getRecycleAdapter();

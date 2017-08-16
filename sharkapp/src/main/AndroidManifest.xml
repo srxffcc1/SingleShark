@@ -31,7 +31,7 @@
         android:supportsRtl="true" android:theme="@style/SharkAppBaseTheme" tools:replace="android:icon,android:theme,android:name">
         <activity
             android:theme="@style/FirstActivityTheme"
-            android:name=".business.singleactivity.ActivitySplash" >
+            android:name=".business.singleactivity.module.ActivitySplash" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -42,17 +42,28 @@
         </activity>
 
         <activity android:name=".test.ListTestActivity" />
-        <activity android:name=".business.singleactivity.ActivityLogin" android:theme="@style/FrameAppTheme.NoActionBarNoSoftInput"/>
-        <activity android:name=".business.singleactivity.ActivityMain" android:theme="@style/FrameAppTheme.Navigation"/>
+        <activity android:name=".business.singleactivity.module.ActivityLogin" android:theme="@style/FrameAppTheme.NoActionBarNoSoftInput"/>
+        <activity android:name=".business.singleactivity.module.ActivityMain" android:theme="@style/FrameAppTheme.Navigation"/>
         <activity android:name=".business.singleactivity.tab.ActivityCheckUpList" />
-        <activity android:name=".business.singleactivity.ActivityEnterpriseList" />
+        <activity android:name=".business.singleactivity.module.ActivityEnterpriseList" />
         <activity android:name=".business.singleactivity.tab.ActivityPdfBook" />
-        <activity android:name=".business.singleactivity.ActivityBook" />
-        <activity android:name=".business.singleactivity.ActivityAutoLogin" />
+        <activity android:name=".business.singleactivity.module.ActivityBook" />
+        <activity android:name=".business.singleactivity.module.ActivityAutoLogin" />
         <activity android:name=".business.singleactivity.ActivityEnterpriseMesh" />
-        <activity android:name=".business.singleactivity.ActivityCollect" />
-        <activity android:name=".business.singleactivity.ActivityLaw" />
+        <activity android:name=".business.singleactivity.module.ActivityCollect" />
+        <activity android:name=".business.singleactivity.module.ActivityLaw" />
         <activity android:name=".business.singleactivity.ActivityLawDetail" />
+        <activity android:name=".business.singleactivity.ActivityEnterpriseBaseDetail" />
+        <activity android:name=".business.singleactivity.module.ActivityHazardsList" />
+        <activity android:name=".business.singleactivity.module.ActivityRecordList" />
+        <activity android:name=".business.singleactivity.module.ActivityPrinterList" />
+        <activity android:name=".business.singleactivity.module.ActivityTroubleInvestigation" />
+        <activity android:name=".business.singleactivity.library.ActivityAqscbz" />
+        <activity android:name=".business.singleactivity.library.ActivityAqscflfg" />
+        <activity android:name=".business.singleactivity.library.ActivityDxsgal" />
+        <activity android:name=".business.singleactivity.library.ActivityWxhxptz" />
+        <activity android:name=".business.singleactivity.library.ActivityYhpcbz" />
+        <activity android:name=".business.singleactivity.library.ActivityZfyj" />
     </application>
 
 </manifest>

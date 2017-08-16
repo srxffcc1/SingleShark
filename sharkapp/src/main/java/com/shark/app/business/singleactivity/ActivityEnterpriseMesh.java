@@ -47,7 +47,7 @@ public class ActivityEnterpriseMesh extends FrameActivity {
         GridLayoutManager manager=new GridLayoutManager(this,3, LinearLayoutManager.VERTICAL,false);
         RecyclerView recycler_view= (RecyclerView) findViewById(R.id.recycler_view);
         list_1 = new ArrayList<>();
-        list_1.add(new ImageTextMenuEntity("基本信息").setImageRid(R.drawable.mesh_xx).setClickpassclass(null));
+        list_1.add(new ImageTextMenuEntity("基本信息").setImageRid(R.drawable.mesh_xx).setClickpassclass(ActivityEnterpriseBaseDetail.class));
         list_1.add(new ImageTextMenuEntity("处罚记录").setImageRid(R.drawable.mesh_cfjl).setClickpassclass(null));
         list_1.add(new ImageTextMenuEntity("隐患排查").setImageRid(R.drawable.mesh_yhpc).setClickpassclass(null));
         list_1.add(new ImageTextMenuEntity("检查情况").setImageRid(R.drawable.mesh_jcjl).setClickpassclass(null));
