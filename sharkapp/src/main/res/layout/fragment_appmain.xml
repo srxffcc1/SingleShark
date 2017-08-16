@@ -1,328 +1,94 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     android:orientation="vertical">
 
 
-
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="282"
+        android:background="@drawable/headback"
         android:orientation="vertical">
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="990">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="19" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="9"
-                    android:background="#99000000" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="47"
-                    android:orientation="vertical"></LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="203"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="56"></LinearLayout>
-
-                    <FrameLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="202">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:scaleType="fitCenter" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal">
-
-                            <LinearLayout
-                                android:layout_width="2px"
-                                android:layout_height="match_parent"></LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="2px"></LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="0dp"
-                                    android:layout_weight="1">
-
-                                    <ImageView
-                                        android:id="@+id/headpicture"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:clickable="true"
-                                        android:scaleType="fitCenter" />
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="2px"></LinearLayout>
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="2px"
-                                android:layout_height="match_parent"></LinearLayout>
-                        </LinearLayout>
-                    </FrameLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="3"></LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="830"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="19"></LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="9"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/usernametext"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="370"
-                            android:clickable="true"
-                            android:gravity="center"
-                            android:text="欢迎登录,未登录!"
-                            android:textColor="@color/white" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="250"
-                            android:gravity="center"
-                            android:text="修改密码"
-                            android:textColor="@color/white"
-                            android:visibility="gone" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="4"
-                            android:gravity="center"
-                            android:text="|"
-                            android:textColor="@color/white" />
-
-                        <TextView
-                            android:id="@+id/loginout"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="170"
-                            android:clickable="true"
-                            android:gravity="center"
-                            android:text="注销" />
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
-        </FrameLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="10"
-            android:background="#ececec"></LinearLayout>
-    </LinearLayout>
+            android:background="#33303030"
+            android:layout_height="match_parent">
+
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="70px"
+            android:layout_alignParentBottom="true"
+            android:background="#90000000" />
+        <TextView
+            android:paddingLeft="135px"
+            android:layout_width="600px"
+            android:layout_height="70px"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="135px"
+            android:layout_height="135px"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="23dp"
+            android:layout_marginBottom="3dp"
+            android:src="@drawable/headtmp"
+            app:civ_border_color="#FFF"
+            app:civ_border_width="1dp" />
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="#ececec"
+        android:gravity="center"
+        android:padding="7dp"
         android:layout_weight="226"
-        android:background="#F8F8F8"
-        android:orientation="vertical">
-
+        android:orientation="horizontal">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="223"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:background="@drawable/gray_border"
+            android:orientation="horizontal">
+            <com.businessframehelp.widget.AutoClickImageView
+                android:paddingLeft="7dp"
+                android:paddingRight="7dp"
+                android:id="@+id/Mode_GovernmentNotice"
+                android:layout_width="120px"
+                android:layout_height="120px"
+                android:src="@drawable/main_message"
+                android:clickable="true"
+                android:scaleType="fitCenter" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="19"></LinearLayout>
+            <TextView
+                android:id="@+id/noticetitle"
+                android:layout_width="0dp"
+                android:layout_height="120px"
+                android:layout_weight="1"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:text="暂无新通知"
+                android:textColor="#333333" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="180"
-                android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="30"></LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1022"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="174"
-                        android:orientation="horizontal">
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="30"></LinearLayout>
-
-                        <ImageView
-                            android:id="@+id/Mode_GovernmentNotice"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="120"
-                            android:clickable="true"
-                            android:scaleType="fitCenter" />
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="24"></LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="690"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="25"></LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/Mode_GovernmentNotice2"
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="96"
-                            android:clickable="true"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/noticetitle"
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="50"
-                                android:text="暂无新通知"
-                                android:textColor="#333333" />
-
-                            <TextView
-                                android:id="@+id/noticetime"
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="50"
-                                android:text=""
-                                android:textColor="#ABABAB" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="25"></LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="150"
-                        android:orientation="horizontal">
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="26"></LinearLayout>
-
-                        <ImageView
-                            android:id="@+id/isnewnotice"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="96"
-                            android:visibility="invisible" />
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="26"></LinearLayout>
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="30"></LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="19"></LinearLayout>
+            <com.businessframehelp.widget.AutoClickImageView
+                android:id="@+id/isnewnotice"
+                android:paddingLeft="7dp"
+                android:paddingRight="7dp"
+                android:layout_width="120px"
+                android:layout_height="120px"
+                android:src="@drawable/main_newmessage"
+                />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3"
-            android:background="#ececec"></LinearLayout>
+
     </LinearLayout>
 
     <RelativeLayout
@@ -346,197 +112,64 @@
         android:background="#F8F8F8"></LinearLayout>
     <!-- gg -->
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="255"
-        android:background="#F8F8F8">
+        android:layout_weight="235">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+        <android.support.v7.widget.RecyclerView
+            android:background="#FFF"
+            android:id="@+id/recycleview_main_3"
+            android:overScrollMode="never"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="10"></LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1027"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="30"></LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="202"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:id="@+id/Mode_ChartAll"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="300"
-                        android:clickable="true"
-                        android:scaleType="fitCenter" />
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="3"
-                        android:background="#ececec"></LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="300"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="42"
-                            android:scaleType="fitCenter" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="170"
-                            android:orientation="horizontal">
-
-                            <LinearLayout
-                                android:id="@+id/passtocheck"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:id="@+id/checkcount"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="0dp"
-                                    android:layout_weight="86"
-                                    android:clickable="true"
-                                    android:gravity="bottom|center_horizontal"
-                                    android:text="0" />
-
-                                <TextView
-                                    android:id="@+id/smallneedcheck"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="0dp"
-                                    android:layout_weight="78"
-                                    android:clickable="true"
-                                    android:gravity="center"
-                                    android:text="执法检查"
-                                    android:textSize="10sp" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:id="@+id/passtoagaincheck"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:clickable="true"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:id="@+id/checkagaincount"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="0dp"
-                                    android:layout_weight="86"
-                                    android:clickable="true"
-                                    android:gravity="bottom|center_horizontal"
-                                    android:text="0" />
-
-                                <TextView
-                                    android:id="@+id/smallneedcheck2"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="0dp"
-                                    android:layout_weight="78"
-                                    android:clickable="true"
-                                    android:gravity="center"
-                                    android:text="执法复查"
-                                    android:textSize="10sp" />
-                            </LinearLayout>
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="3"
-                        android:background="#ececec"></LinearLayout>
-
-                    <ImageView
-                        android:id="@+id/Mode_GovernmentContacts"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="300"
-                        android:clickable="true"
-                        android:scaleType="fitCenter" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="30"></LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="10"></LinearLayout>
-        </LinearLayout>
-    </FrameLayout>
+        </android.support.v7.widget.RecyclerView>
+    </RelativeLayout>
 
     <!-- cv -->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="75"
-        android:background="#F8F8F8"
-        android:orientation="horizontal">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="fitXY" />
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="411"
+        android:layout_weight="506"
         android:background="@color/white"
         android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="95"
+            android:background="#F8F8F8"
+            android:orientation="horizontal">
 
+        </LinearLayout>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="419">
+            android:layout_weight="410">
 
             <android.support.v7.widget.RecyclerView
-                android:background="#FFF"
                 android:id="@+id/recycleview_main_2"
-                android:overScrollMode="never"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"></android.support.v7.widget.RecyclerView>
+                android:layout_centerInParent="true"
+                android:background="#FFF"
+                android:overScrollMode="never"></android.support.v7.widget.RecyclerView>
         </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="3"
-            android:background="#ececec"></LinearLayout>
+            android:visibility="invisible"
+            android:layout_weight="12">
+            <View
+                android:background="#00AF14"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

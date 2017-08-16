@@ -148,6 +148,9 @@ dependencies {
 //    compile ('com.github.Jay-Goo:MultiSelectPopWindow:v1.0.1'){
 //        exclude group: 'com.android.support'
 //    }
+    compile ('de.hdodenhof:circleimageview:2.1.0'){
+        exclude group: 'com.android.support'
+    }//圆形头像
 
 }
 

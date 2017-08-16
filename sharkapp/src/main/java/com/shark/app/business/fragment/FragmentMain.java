@@ -66,10 +66,10 @@ public class FragmentMain extends BaseSupportFragment {
         list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_collect).setClickpassclass(ActivityCollect.class));
         list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_troubleinvestigation).setClickpassclass(ActivityTroubleInvestigation.class));
         list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_dangerousorg).setClickpassclass(ActivityHazardsList.class));
-//        list_1.add(new MainMenuEntity().setImageRid(R.drawable.main_oneenterpriseonerule));
-//        list_1.add(new MainMenuEntity().setImageRid(R.drawable.main_orderlist));
-//        list_1.add(new MainMenuEntity().setImageRid(R.drawable.main_paperseach));
-//        list_1.add(new MainMenuEntity().setImageRid(R.drawable.main_selfcheckup));
+//        list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_oneenterpriseonerule));
+//        list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_orderlist));
+//        list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_paperseach));
+//        list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_selfcheckup));
 
         recycleview_main_1.setAdapter(new ImageClickRecycleAdapter(this, list_1){
 
