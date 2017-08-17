@@ -172,13 +172,13 @@ public class Adapter_CollectList extends RecyclerView.Adapter<RecyclerView.ViewH
                     }
                     switch (menuListData.get(position).getEntityvalue().getFileType()) {
                         case 1:
-                            ((ViewHolderContent) holder).fileflag.setImageResource(R.mipmap.collect_voice);
+                            ((ViewHolderContent) holder).fileflag.setImageResource(R.drawable.collect_voice);
                             break;
                         case 2:
-                            ((ViewHolderContent) holder).fileflag.setImageResource(R.mipmap.collect_video);
+                            ((ViewHolderContent) holder).fileflag.setImageResource(R.drawable.collect_video);
                             break;
                         case 3:
-                            ((ViewHolderContent) holder).fileflag.setImageResource(R.mipmap.collect_camera);
+                            ((ViewHolderContent) holder).fileflag.setImageResource(R.drawable.collect_camera);
                             break;
                         default:
                             break;

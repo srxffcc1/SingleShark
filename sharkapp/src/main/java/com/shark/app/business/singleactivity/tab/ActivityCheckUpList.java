@@ -27,10 +27,10 @@ public class ActivityCheckUpList extends FrameActivity {
     private String[] mTitles = {"我的主办", "我的协办"};
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
     private int[] mIconUnselectIds = {
-            R.mipmap.tab_host_unselect, R.mipmap.tab_join_unselect
+            R.drawable.tab_host_unselect, R.drawable.tab_join_unselect
     };
     private int[] mIconSelectIds = {
-            R.mipmap.tab_host_select, R.mipmap.tab_join_select
+            R.drawable.tab_host_select, R.drawable.tab_join_select
     };
     private View mDecorView;
     private CommonTabLayout mTabLayout_3;

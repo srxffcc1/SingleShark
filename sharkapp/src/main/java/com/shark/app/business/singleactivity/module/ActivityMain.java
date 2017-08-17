@@ -27,10 +27,10 @@ import java.util.ArrayList;
    private ArrayList<Fragment> mFragments = new ArrayList<>();
    private String[] mTitles = {"首页", "消息"};
    private int[] mIconUnselectIds = {
-           R.mipmap.tab_home_unselect, R.mipmap.tab_speech_unselect
+           R.drawable.tab_home_unselect, R.drawable.tab_speech_unselect
            };
    private int[] mIconSelectIds = {
-           R.mipmap.tab_home_select, R.mipmap.tab_speech_select
+           R.drawable.tab_home_select, R.drawable.tab_speech_select
            };
    private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
    private View mDecorView;

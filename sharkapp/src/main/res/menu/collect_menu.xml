@@ -4,19 +4,19 @@
     <item
         android:id="@+id/action_camera"
         android:orderInCategory="80"
-        android:icon="@mipmap/collect_camera"
+        android:icon="@drawable/selector_camera"
         android:title="   拍照"
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/action_video"
         android:orderInCategory="80"
-        android:icon="@mipmap/collect_video"
+        android:icon="@drawable/selector_video"
         android:title="   录像"
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/action_voice"
         android:orderInCategory="80"
-        android:icon="@mipmap/collect_voice"
+        android:icon="@drawable/selector_voice"
         android:title="   录音"
         app:showAsAction="ifRoom"/>
 

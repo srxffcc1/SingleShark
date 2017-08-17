@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/action_sync"
-        android:icon="@drawable/ic_sync"
+        android:icon="@drawable/selector_sync"
         android:title="同步"
         app:showAsAction="ifRoom" />
 </menu>
