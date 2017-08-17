@@ -2,6 +2,8 @@ package com.shark.app.business.singleactivity.module;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,6 +14,7 @@ import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +26,8 @@ import android.widget.TextView;
 
 import com.businessframehelp.app.FrameActivity;
 import com.businessframehelp.enums.ORIENTATION;
+import com.hss01248.dialog.StyledDialog;
+import com.hss01248.dialog.interfaces.MyDialogListener;
 import com.shark.app.R;
 
 /**
@@ -58,7 +63,7 @@ public class ActivityLogin extends FrameActivity implements View.OnClickListener
 
     @Override
     public int getMenuid() {
-        return 0;
+        return -1;
     }
 
     @Override
@@ -195,7 +200,48 @@ public class ActivityLogin extends FrameActivity implements View.OnClickListener
         mAnimatorSet.setDuration(200);
         mAnimatorSet.start();
     }
+    Dialog menudialog;
+    public void startMenuDialog() {
+        StyledDialog.init(getContext());
+        menudialog=
+                StyledDialog.buildNormalInput("修改IP", "请输入IP", "", "确定", "取消",  new MyDialogListener() {
+                    @Override
+                    public void onFirst() {
 
+                    }
+
+                    @Override
+                    public void onSecond() {
+
+                    }
+
+                    @Override
+                    public void onGetInput(CharSequence input1, CharSequence input2) {
+                        super.onGetInput(input1, input2);
+
+                    }
+                }).show();
+        menudialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                menudialog=null;
+            }
+        });
+    }
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        if(keyCode== KeyEvent.KEYCODE_MENU){
+            if(menudialog==null){
+
+                startMenuDialog();
+            }else {
+                StyledDialog.dismiss(menudialog);
+                menudialog = null;
+            }
+        }
+        return super.onKeyUp(keyCode, event);
+    }
     /**
      * f放大
      * @param view

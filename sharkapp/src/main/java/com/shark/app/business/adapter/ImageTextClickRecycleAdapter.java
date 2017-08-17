@@ -90,7 +90,7 @@ abstract  public class ImageTextClickRecycleAdapter extends RecyclerView.Adapter
 
         @Override
         public void onClick(View v) {
-//                System.out.println("点击项目"+getAdapterPosition());
+//                //System.out.println("点击项目"+getAdapterPosition());
             Class desclass=mlist.get(getAdapterPosition()).getClickpassclass();
             if(desclass!=null){
                 if(mactivity!=null){

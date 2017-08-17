@@ -60,7 +60,7 @@ abstract public class AbstractActivitySearchList extends FrameActivity implement
         recycler_view.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         RecyclerView.Adapter adapter=getRecycleAdapter();
         if(adapter==null){
-            System.out.println("测试列表");
+//            //System.out.println("测试列表");
             adapter=new TmpAdapter(this);
         }
         recycler_view.setAdapter(adapter);
@@ -71,7 +71,7 @@ abstract public class AbstractActivitySearchList extends FrameActivity implement
     @Override
     final public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId()==R.id.action_searchs){
-            System.out.println("点击了综合查询");
+//            //System.out.println("点击了综合查询");
             clickMultiSearch();
         }
         return super.onOptionsItemSelected(item);
@@ -110,7 +110,7 @@ abstract public class AbstractActivitySearchList extends FrameActivity implement
     }
     @Override
     public boolean onQueryTextSubmit(String query) {
-        System.out.println("查询企业："+query);
+//        //System.out.println("查询企业："+query);
         searchView.onActionViewCollapsed();
         searchView.setImeOptions(EditorInfo.IME_ACTION_SEARCH);
         toSearchResult(query);
@@ -182,7 +182,7 @@ abstract public class AbstractActivitySearchList extends FrameActivity implement
             @Override
             public void onClick(View v) {
 //                startActivity(new Intent(getBaseContext(),ActivityEnterpriseMesh.class));
-                System.out.println("点击项目"+getAdapterPosition());
+//                //System.out.println("点击项目"+getAdapterPosition());
 
             }
 

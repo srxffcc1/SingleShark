@@ -1,5 +1,6 @@
 package com.shark.app.test;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -184,10 +185,10 @@ public class TestMainActivity extends FrameActivity {
             }
         });
     }
-
+    Dialog menudialog;
     public void startDialog(View view) {
         StyledDialog.init(getApplicationContext());
-        StyledDialog.buildIosAlertVertical("测试", "中间的", new StyleDialogListener() {
+        menudialog=StyledDialog.buildIosAlertVertical("测试", "中间的", new StyleDialogListener() {
             @Override
             public void onFirst() {
 
@@ -226,7 +227,7 @@ public class TestMainActivity extends FrameActivity {
             @Override
             public void onSuccess(String t) {
                 super.onSuccess(t);
-                System.out.println("新耗时:"+(System.currentTimeMillis()-oldtime));
+//                //System.out.println("新耗时:"+(System.currentTimeMillis()-oldtime));
                 Log.d("log:" + t.toString());
             }
         });
@@ -247,7 +248,7 @@ public class TestMainActivity extends FrameActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        System.out.println("返回的:requestCode"+requestCode+",resultCode:"+resultCode);
+//        //System.out.println("返回的:requestCode"+requestCode+",resultCode:"+resultCode);
     }
     public void onlocation(View view){
 //        startActivity(new Intent(this,com.amap.location.demo.StartActivity.class));

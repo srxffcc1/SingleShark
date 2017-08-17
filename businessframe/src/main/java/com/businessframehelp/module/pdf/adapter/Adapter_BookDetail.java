@@ -57,7 +57,7 @@ public class Adapter_BookDetail {
         for (int i = 0; i < detailMapData.size(); i++) {
             EditText textvalue = viewmap.get(detailMapData.getField(i));
             if (textvalue != null) {
-//                System.out.println(textvalue.getText().toString());
+//                //System.out.println(textvalue.getText().toString());
                 detailMapData.put(i, textvalue.getText().toString());
 //				
             } else {

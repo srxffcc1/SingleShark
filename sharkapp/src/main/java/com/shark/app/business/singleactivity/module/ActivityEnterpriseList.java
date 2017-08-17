@@ -111,7 +111,7 @@ public class ActivityEnterpriseList extends AbstractActivitySearchList {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getBaseContext(),ActivityEnterpriseMesh.class));
-//                System.out.println("点击项目"+getAdapterPosition());
+//                //System.out.println("点击项目"+getAdapterPosition());
 
             }
 

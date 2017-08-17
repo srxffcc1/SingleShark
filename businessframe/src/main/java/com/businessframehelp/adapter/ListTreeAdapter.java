@@ -42,7 +42,7 @@ abstract public class ListTreeAdapter extends BaseAdapter implements IListTreeAd
 //        getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            @Override
 //            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                System.out.println("进入点击事件");
+//                //System.out.println("进入点击事件");
 //                checktoshowchild(view,position);
 //            }
 //        });
@@ -118,7 +118,7 @@ abstract public class ListTreeAdapter extends BaseAdapter implements IListTreeAd
 //界面绑定
     }
     final public void checktoshowchild(View v, int position) {
-        System.out.println("修改列表状态");
+//        //System.out.println("修改列表状态");
         int nowlevel = showlist.get(position).getLevel();
         boolean listhaschange=false;
         if (position < getCount() - 1) {

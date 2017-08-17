@@ -39,6 +39,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".test.TestMainActivity">
+
         </activity>
 
         <activity android:name=".test.ListTestActivity" />

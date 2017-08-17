@@ -18,7 +18,7 @@ public class ClassUtil {
         classmap.clear();
         Class[] classchild = rclass.getDeclaredClasses();
         for (int i = 0; i < classchild.length; i++) {
-//            System.out.println("测试反射map"+classchild[i].getSimpleName());
+//            //System.out.println("测试反射map"+classchild[i].getSimpleName());
             classmap.put(classchild[i].getSimpleName(),classchild[i]);
         }
         return this;
@@ -42,8 +42,8 @@ public class ClassUtil {
         String classname=array[1];
         String resourcename=array[2];
         try {
-//            System.out.println("测试反射出"+ classname);
-//            System.out.println("测试反射出"+ resourcename);
+//            //System.out.println("测试反射出"+ classname);
+//            //System.out.println("测试反射出"+ resourcename);
             Field field=classmap.get(classname).getField(resourcename);
             return field.getLong(null);
         } catch (Exception e) {

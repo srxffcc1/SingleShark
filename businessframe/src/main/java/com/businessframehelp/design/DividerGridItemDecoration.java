@@ -76,13 +76,13 @@ public class DividerGridItemDecoration extends RecyclerView.ItemDecoration
 				if(((GridLayoutManager) manager).getSpanCount()>1){
 //					if(((GridLayoutManager) manager).getOrientation() == GridLayoutManager.VERTICAL){
 //						if(totalSpaceH ==0){
-//							System.out.println(recycleviewwidth+":"+childWidth);
+//							//System.out.println(recycleviewwidth+":"+childWidth);
 //							totalSpaceH =recycleviewwidth-(childWidth*((GridLayoutManager) manager).getSpanCount());
 //						}
 //
 //					}else{
 //						if(totalSpaceV ==0){
-//							System.out.println(recycleviewheight+":"+childHeight);
+//							//System.out.println(recycleviewheight+":"+childHeight);
 //							totalSpaceV =recycleviewheight-(childHeight*((GridLayoutManager) manager).getSpanCount());
 //						}
 //
@@ -146,7 +146,7 @@ public class DividerGridItemDecoration extends RecyclerView.ItemDecoration
 				bottom=mbottomSpace;
 			}
 //			float subH=totalSpaceH-((mleftSpace+mrightSpace)*spanCount-mrightSpace);//剩余未占满数量
-//			System.out.println(totalSpaceH+"剩余横量"+subH);
+//			//System.out.println(totalSpaceH+"剩余横量"+subH);
 //			if(subH>(mleftSpace+mrightSpace)*2){
 //				System.err.println("the space set very small has a lot spcase no use");
 //			}
@@ -160,7 +160,7 @@ public class DividerGridItemDecoration extends RecyclerView.ItemDecoration
 				right = mrightSpace;
 			}
 //			float subV=totalSpaceV-((mtopSpace+mbottomSpace)*spanCount-mbottomSpace);//剩余未占满数量
-//			System.out.println(totalSpaceV+"剩余纵量"+subV);
+//			//System.out.println(totalSpaceV+"剩余纵量"+subV);
 //			if(subV>(mtopSpace+mbottomSpace)*2){
 //				System.err.println("the space set very small has a lot spcase no use");
 //			}
@@ -169,7 +169,7 @@ public class DividerGridItemDecoration extends RecyclerView.ItemDecoration
 //			}
 		}
 
-		System.out.println(childPosition+",left:"+left+",right:"+right+",top:"+top+",bottom:"+bottom);
+//		//System.out.println(childPosition+",left:"+left+",right:"+right+",top:"+top+",bottom:"+bottom);
 		outRect.set((int) left, (int) top, (int) right, (int) bottom);
 	}
 

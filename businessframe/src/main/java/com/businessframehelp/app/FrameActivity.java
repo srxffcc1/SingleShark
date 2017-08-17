@@ -86,13 +86,13 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         if(!getIntent().getBooleanExtra("needActionBar",true)){
             try {
-//                System.out.println("要去掉suactionbar咯");
+//                //System.out.println("要去掉suactionbar咯");
             getSupportActionBar().hide();
             } catch (Exception e) {
             e.printStackTrace();
             }
             try {
-//                System.out.println("要去掉actionbar咯");
+//                //System.out.println("要去掉actionbar咯");
                 getActionBar().hide();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -184,13 +184,13 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
         supportToolbar=BarUtil.initBar(this);
         if(!getIntent().getBooleanExtra("needActionBar",true)){
             try {
-                System.out.println("要去掉suactionbar咯");
+//                //System.out.println("要去掉suactionbar咯");
                 getSupportActionBar().hide();
             } catch (Exception e) {
                 e.printStackTrace();
             }
             try {
-                System.out.println("要去掉actionbar咯");
+//                //System.out.println("要去掉actionbar咯");
                 getActionBar().hide();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -210,13 +210,13 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
         supportToolbar=BarUtil.initBar(this);
         if(!getIntent().getBooleanExtra("needActionBar",true)){
             try {
-                //System.out.println("要去掉suactionbar咯");
+                ////System.out.println("要去掉suactionbar咯");
                 getSupportActionBar().hide();
             } catch (Exception e) {
                 e.printStackTrace();
             }
             try {
-                //System.out.println("要去掉actionbar咯");
+                ////System.out.println("要去掉actionbar咯");
                 getActionBar().hide();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -237,13 +237,13 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
         supportToolbar=BarUtil.initBar(this);
         if(!getIntent().getBooleanExtra("needActionBar",true)){
             try {
-                //System.out.println("要去掉suactionbar咯");
+                ////System.out.println("要去掉suactionbar咯");
                 getSupportActionBar().hide();
             } catch (Exception e) {
                 e.printStackTrace();
             }
             try {
-                //System.out.println("要去掉actionbar咯");
+                ////System.out.println("要去掉actionbar咯");
                 getActionBar().hide();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -370,6 +370,12 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
      */
     public void reciverFrameBroadCast(Intent action){
 
+    }
+    public void onBackPressedCopy() {
+        isauthentic=true;
+        super.onBackPressed();
+        newstatus=getORIENTATION();
+        changeOrientation(getORIENTATION());
     }
 
     @Override

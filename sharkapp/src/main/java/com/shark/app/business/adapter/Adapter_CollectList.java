@@ -146,7 +146,7 @@ public class Adapter_CollectList extends RecyclerView.Adapter<RecyclerView.ViewH
 
                         @Override
                         public void onCheckedChanged(View buttonView, boolean isChecked) {
-                            System.out.println("checkmap:put" + position + ":" + isChecked);
+//                            //System.out.println("checkmap:put" + position + ":" + isChecked);
                             checkmap.put(position, isChecked);
                         }
                     });

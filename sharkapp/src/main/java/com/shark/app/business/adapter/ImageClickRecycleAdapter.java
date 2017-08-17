@@ -85,7 +85,7 @@ abstract  public class ImageClickRecycleAdapter extends RecyclerView.Adapter<Ima
 
         @Override
         public void onClick(View v) {
-//                System.out.println("点击项目"+getAdapterPosition());
+//                //System.out.println("点击项目"+getAdapterPosition());
             Class desclass=mlist.get(getAdapterPosition()).getClickpassclass();
             if(desclass!=null){
                 if(mactivity!=null){

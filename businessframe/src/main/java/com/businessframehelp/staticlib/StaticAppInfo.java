@@ -75,7 +75,7 @@ public class StaticAppInfo implements IStaticAppInfo{
 		path=sd.getString("projectpath", "");
 		if(!"".equals(path)){
 			if(new File(path+"/").exists()){//路径存在
-				System.out.println("路径:"+path);
+				//System.out.println("路径:"+path);
 				return path;
 			}else{
 				sd.edit().putString("projectpath","");//说明路径不存在 可能存在换了sd卡了
@@ -89,7 +89,7 @@ public class StaticAppInfo implements IStaticAppInfo{
 				break;
 			case 2:
 				path=getBigSdCardPath(mcontext)+androiddir+mpkName+projectdir+"/";
-				//System.out.println("需要构造的存储目录"+path);
+				////System.out.println("需要构造的存储目录"+path);
 				File tmp=new File(path);
 				tmp.mkdirs();
 				if(tmp.exists()){
@@ -102,7 +102,7 @@ public class StaticAppInfo implements IStaticAppInfo{
 			default:
 				break;
 		}
-		System.out.println("路径:"+path);
+		//System.out.println("路径:"+path);
 		return path;
 	}
 

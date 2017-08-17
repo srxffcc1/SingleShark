@@ -41,7 +41,7 @@ public class ActivityWxhxptz extends FrameActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId()==R.id.action_searchs){
-            System.out.println("点击了综合查询");
+            //System.out.println("点击了综合查询");
         }
         return super.onOptionsItemSelected(item);
     }

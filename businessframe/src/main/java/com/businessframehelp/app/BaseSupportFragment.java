@@ -62,7 +62,7 @@ public class BaseSupportFragment extends Fragment{
             method.setAccessible(true);
             method.invoke(getActivity(),mRequestCode,mResultCode,mResultData);
         } catch (Exception e) {
-            e.printStackTrace();
+
         }
         super.onDestroy();
     }

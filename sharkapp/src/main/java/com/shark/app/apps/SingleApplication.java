@@ -19,7 +19,7 @@ public class SingleApplication extends BusinessApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        System.out.println("打开应用");
+//        //System.out.println("打开应用");
         ClassUtil.getInstance().init(R.class);
         StaticAppInfo.getInstance().init(this, StaticAppInfo.StaticMode.test);
         PushManager.getInstance().initialize(this.getApplicationContext(), GeTPushService.class);

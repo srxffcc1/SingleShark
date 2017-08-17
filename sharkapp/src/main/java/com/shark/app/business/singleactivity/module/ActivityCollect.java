@@ -129,7 +129,7 @@ public class ActivityCollect extends FrameActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId()==R.id.action_searchs){
-            System.out.println("点击了综合查询");
+            //System.out.println("点击了综合查询");
         }
         if(item.getItemId()==R.id.action_camera){
             FrameUtil.instance().startCameraIntent(this, 100, StaticAppInfo.getInstance().getProjcetDir() + "/ZhiCollect/" + "/tmp" + "/shark_"+System.currentTimeMillis()+".jpg");

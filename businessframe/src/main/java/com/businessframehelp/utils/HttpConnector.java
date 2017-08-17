@@ -38,9 +38,9 @@ public class HttpConnector {
 
 			}
 			conn.connect();
-			System.out.println(conn.getResponseCode());
+//			//System.out.println(conn.getResponseCode());
 			if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
-				System.out.println("start tobyte");
+//				//System.out.println("start tobyte");
 				InputStreamReader in = new InputStreamReader(conn.getInputStream());
 
 				// Load the results into a StringBuilder
@@ -49,7 +49,7 @@ public class HttpConnector {
 				while ((read = in.read(buff)) != -1) {
 					jsonResults.append(buff, 0, read);
 				}
-				System.out.println("end tobyte");
+//				//System.out.println("end tobyte");
 			}
 	        
 	    } catch (MalformedURLException e) {
@@ -62,7 +62,7 @@ public class HttpConnector {
 	        }
 	    }
 	    Log.d("Result", jsonResults.toString());
-		System.out.println("老耗时:"+(System.currentTimeMillis()-oldtime));
+//		//System.out.println("老耗时:"+(System.currentTimeMillis()-oldtime));
 		return jsonResults.toString();
 	}
 	public static void httpPost(final String SERVICEURL,final Map<String, Object> map) {
@@ -101,7 +101,7 @@ public class HttpConnector {
 						while ((readLine = bufferReader.readLine()) != null) {
 							result += readLine;
 						}
-						System.out.println("result： " + result);
+						//System.out.println("result： " + result);
 					} catch (Exception e) {
 						e.printStackTrace();
 					} finally {
@@ -118,7 +118,7 @@ public class HttpConnector {
 						}
 					}
 				} else {
-					System.out.println("param is null");
+					//System.out.println("param is null");
 				}
 				return null;
 			}

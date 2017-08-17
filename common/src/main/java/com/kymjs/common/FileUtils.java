@@ -482,8 +482,8 @@ public class FileUtils {
         try {
             String[] alllist = context.getAssets().list("");
             for (int i = 0; i < alllist.length; i++) {
-                System.out.println("分配");
-                System.out.println(alllist[i]+":"+startwith);
+//                //System.out.println("分配");
+//                //System.out.println(alllist[i]+":"+startwith);
                 if (alllist[i].startsWith(startwith)) {
                     copyAssetToPath(context,alllist[i],outstringparent);
                     result=outstringparent+"/"+alllist[i];
