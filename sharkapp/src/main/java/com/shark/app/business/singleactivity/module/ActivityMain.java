@@ -2,6 +2,7 @@ package com.shark.app.business.singleactivity.module;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 import android.support.annotation.Nullable;
@@ -104,17 +105,24 @@ import java.util.List;
             }
         });
     }
+    private void startMenuDialogImp() {
+        if(menudialog==null){
 
+            startMenuDialog();
+        }else {
+            StyledDialog.dismiss(menudialog);
+            menudialog = null;
+        }
+    }
+
+    public void toLoginOut(View view){
+        startActivity(new Intent(this,ActivityLogin.class));
+        finish();
+    }
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
         if(keyCode== KeyEvent.KEYCODE_MENU){
-            if(menudialog==null){
-
-                startMenuDialog();
-            }else {
-                StyledDialog.dismiss(menudialog);
-                menudialog = null;
-            }
+            startMenuDialogImp();
         }
         return super.onKeyUp(keyCode, event);
     }

@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
@@ -435,6 +436,19 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
     @Deprecated
     public void startThread(Runnable runnable){//使用一个随这个当前activity死亡就自动结束的线程
 
+    }
+
+    @Override
+    final public void finish() {
+        try {//为了防止下一个页面尺寸计算错误此处需要关闭键盘
+            ((InputMethodManager) getSystemService(INPUT_METHOD_SERVICE))
+                    .hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                            InputMethodManager.HIDE_NOT_ALWAYS);
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+
+        super.finish();
     }
 
     @Override

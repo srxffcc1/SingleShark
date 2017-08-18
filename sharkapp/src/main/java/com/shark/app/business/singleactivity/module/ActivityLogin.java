@@ -18,6 +18,7 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -92,8 +93,9 @@ public class ActivityLogin extends FrameActivity implements View.OnClickListener
         keyHeight = screenHeight / 3;//弹起高度为屏幕高度的1/3
         initListener();
     }
-
+boolean needscale=true;
     private void initListener() {
+        logo.setOnClickListener(this);
         btn_login.setOnClickListener(this);
         iv_clean_phone.setOnClickListener(this);
         clean_password.setOnClickListener(this);
@@ -157,28 +159,31 @@ public class ActivityLogin extends FrameActivity implements View.OnClickListener
             public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
               /* old是改变前的左上右下坐标点值，没有old的是改变后的左上右下坐标点值
               现在认为只要控件将Activity向上推的高度超过了1/3屏幕高，就认为软键盘弹起*/
-                if (oldBottom != 0 && bottom != 0 && (oldBottom - bottom > keyHeight)) {
-                    Log.e("wenzhihao", "up------>"+(oldBottom - bottom));
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            scrollView.smoothScrollTo(0, scrollView.getHeight());
-                        }
-                    }, 0);
-                    zoomIn(logo, (oldBottom - bottom) - keyHeight);
-                    service.setVisibility(View.INVISIBLE);
-                } else if (oldBottom != 0 && bottom != 0 && (bottom - oldBottom > keyHeight)) {
-                    Log.e("wenzhihao", "down------>"+(bottom - oldBottom));
-                    //键盘收回后，logo恢复原来大小，位置同样回到初始位置
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            scrollView.smoothScrollTo(0, scrollView.getHeight());
-                        }
-                    }, 0);
-                    zoomOut(logo, (bottom - oldBottom) - keyHeight);
-                    service.setVisibility(View.VISIBLE);
-                }
+              if(needscale){
+                  if (oldBottom != 0 && bottom != 0 && (oldBottom - bottom > keyHeight)) {
+                      Log.e("wenzhihao", "up------>"+(oldBottom - bottom));
+                      new Handler().postDelayed(new Runnable() {
+                          @Override
+                          public void run() {
+                              scrollView.smoothScrollTo(0, scrollView.getHeight());
+                          }
+                      }, 0);
+                      zoomIn(logo, (oldBottom - bottom) - keyHeight);
+                      service.setVisibility(View.INVISIBLE);
+                  } else if (oldBottom != 0 && bottom != 0 && (bottom - oldBottom > keyHeight)) {
+                      Log.e("wenzhihao", "down------>"+(bottom - oldBottom));
+                      //键盘收回后，logo恢复原来大小，位置同样回到初始位置
+                      new Handler().postDelayed(new Runnable() {
+                          @Override
+                          public void run() {
+                              scrollView.smoothScrollTo(0, scrollView.getHeight());
+                          }
+                      }, 0);
+                      zoomOut(logo, (bottom - oldBottom) - keyHeight);
+                      service.setVisibility(View.VISIBLE);
+                  }
+              }
+
             }
         });
     }
@@ -221,9 +226,21 @@ public class ActivityLogin extends FrameActivity implements View.OnClickListener
 
                     }
                 }).show();
+        getWindow().clearFlags(
+                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
+        getWindow().clearFlags(
+                WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+        getWindow().setSoftInputMode(
+                WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         menudialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface dialog) {
+                getWindow().clearFlags(
+                        WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
+                getWindow().clearFlags(
+                        WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+                getWindow().setSoftInputMode(
+                        WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
                 menudialog=null;
             }
         });
@@ -232,16 +249,21 @@ public class ActivityLogin extends FrameActivity implements View.OnClickListener
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
         if(keyCode== KeyEvent.KEYCODE_MENU){
-            if(menudialog==null){
-
-                startMenuDialog();
-            }else {
-                StyledDialog.dismiss(menudialog);
-                menudialog = null;
-            }
+            startMenuDialogImp();
         }
         return super.onKeyUp(keyCode, event);
     }
+
+    private void startMenuDialogImp() {
+        if(menudialog==null){
+
+            startMenuDialog();
+        }else {
+            StyledDialog.dismiss(menudialog);
+            menudialog = null;
+        }
+    }
+
     /**
      * f放大
      * @param view
@@ -286,6 +308,9 @@ public class ActivityLogin extends FrameActivity implements View.OnClickListener
             case R.id.btn_login:
                 startActivity(new Intent(this,ActivityMain.class));
                 finish();
+                break;
+            case R.id.logo:
+                startMenuDialogImp();
                 break;
         }
     }
