@@ -1,9 +1,7 @@
-package com.businessframehelp.module.pdf.adapter;
+package com.shark.pdfedit.adapter;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
-import android.support.v4.util.ArrayMap;
 import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,20 +15,25 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.businessframehelp.R;
-import com.businessframehelp.widget.AutoCheckBox;
-import com.businessframehelp.widget.AutoCheckGroup;
-import com.businessframehelp.widget.OnCheckedChangeListener;
-import com.businessframehelp.widget.PassLinearLayout;
+import com.shark.pdfedit.R;
+import com.shark.pdfedit.statich.BookStatic;
+import com.shark.pdfedit.utils.CallBack;
+import com.shark.pdfedit.utils.DateTimePickDialog;
+import com.shark.pdfedit.widget.AutoCheckBox;
+import com.shark.pdfedit.widget.AutoCheckGroup;
+import com.shark.pdfedit.widget.AutoDialogBuilder;
+import com.shark.pdfedit.widget.OnCheckedChangeListener;
+import com.shark.pdfedit.widget.PassLinearLayout;
 import com.wisdomregulation.data.entitybase.Base_Entity;
 import com.wisdomregulation.data.entitydemo.Entity_Demo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-@Deprecated
+
 public class Adapter_BookDetail {
     private Activity context;
     private Base_Entity detailMapData;
@@ -38,7 +41,7 @@ public class Adapter_BookDetail {
 
     private boolean editState;
     private boolean isshow = true;
-    private ArrayMap<String, EditText> viewmap = new ArrayMap<String, EditText>();
+    private Map<String, EditText> viewmap = new HashMap<String, EditText>();
 
     public Adapter_BookDetail(Activity context,
                               Base_Entity detailMapData, LinearLayout content) {
@@ -57,7 +60,7 @@ public class Adapter_BookDetail {
         for (int i = 0; i < detailMapData.size(); i++) {
             EditText textvalue = viewmap.get(detailMapData.getField(i));
             if (textvalue != null) {
-//                //System.out.println(textvalue.getText().toString());
+//                System.out.println(textvalue.getText().toString());
                 detailMapData.put(i, textvalue.getText().toString());
 //				
             } else {
@@ -133,8 +136,8 @@ public class Adapter_BookDetail {
         String fieldtext = getItem(position).toString();
         if (fieldtext.matches("check(.*)")) {
 
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_activity_book_content2, null);
-            @SuppressLint("WrongViewCast") final AutoCheckGroup autogroup = (AutoCheckGroup) convertView.findViewById(R.id.checkGroup);
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_book_check, null);
+            final AutoCheckGroup autogroup = (AutoCheckGroup) convertView.findViewById(R.id.checkGroup);
             String[] fieldtexts = fieldtext.replace("check", "").split("2");
             for (int i = 0; i < fieldtexts.length; i++) {
                 PassLinearLayout passparent = new PassLinearLayout(context);
@@ -180,7 +183,7 @@ public class Adapter_BookDetail {
             valueedit2.setText(sso);
             viewmap.put(detailMapData.getField(position), valueedit2);
         } else if (fieldtext.matches("list(.*)")) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_activity_book_content3, null);
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_book_tip, null);
             String titiletextstring = getListTitle(fieldtext);
             final String fieldtexttmp = fieldtext;
             final TextView listtitle = (TextView) convertView.findViewById(R.id.listtitle);
@@ -191,7 +194,7 @@ public class Adapter_BookDetail {
             String tmpvalue=detailMapData.getValue(position);
             String tmpfield=fieldtext;
             List<Base_Entity> addlist = string2EntityList(tmpfield,tmpvalue);
-            final Adapter_BookAddItem adapter_bookAddItem = new Adapter_BookAddItem(context, addlist, listcontent);
+            final Adapter_BookTip adapter_bookAddItem = new Adapter_BookTip(context, addlist, listcontent);
             adapter_bookAddItem.initView();
             final EditText valueedit2 = ((EditText) convertView.findViewById(R.id.bookcontentValue));
             showhide.setOnClickListener(new OnClickListener() {
@@ -247,15 +250,15 @@ public class Adapter_BookDetail {
                             });
 
                         }else{
-//                            Dialog_Tool.showDialog_AddBookItem(context, fieldtexttmp, new CallBack() {
-//                                @Override
-//                                public void back(Object resultlist) {
-//                                    final Base_Entity result = (Base_Entity) resultlist;
-//                                    adapter_bookAddItem.addEntity(result);
-//                                    String newtext=adapter_bookAddItem.getResult();
-//                                    valueedit2.setText(newtext);
-//                                }
-//                            });
+                            showDialog_AddBookItem(context, fieldtexttmp, new CallBack() {
+                                @Override
+                                public void back(Object resultlist) {
+                                    final Base_Entity result = (Base_Entity) resultlist;
+                                    adapter_bookAddItem.addEntity(result);
+                                    String newtext=adapter_bookAddItem.getResult();
+                                    valueedit2.setText(newtext);
+                                }
+                            });
                         }
 
                     }
@@ -267,7 +270,7 @@ public class Adapter_BookDetail {
             viewmap.put(detailMapData.getField(position), valueedit);
             valueedit.setText(detailMapData.getValue(position));
         } else {
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_activity_book_content, null);
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_book_content, null);
             ((TextView) convertView.findViewById(R.id.bookcontentName)).setText(fieldtext);
             final EditText valueedit = ((EditText) convertView.findViewById(R.id.bookcontentValue));
             viewmap.put(detailMapData.getField(position), valueedit);
@@ -282,7 +285,7 @@ public class Adapter_BookDetail {
 
                 @Override
                 public void onClick(View v) {
-//                    new DateTimePickDialog(context, "").show(valueedit);
+                    new DateTimePickDialog(context, "").show(valueedit);
 
                 }
             });
@@ -336,6 +339,45 @@ public class Adapter_BookDetail {
 
 
         return itementity;
+    }
+
+    public static View showDialog_AddBookItem(final Activity activity, Object entity, final CallBack back) {
+        LinearLayout dialogview = (LinearLayout) activity
+                .getLayoutInflater().inflate(R.layout.dialog_add_item, null);
+//        Util_MatchTip.initAllScreenText(dialogview);
+        TextView dialogtitle = (TextView) dialogview.findViewById(R.id.dialogtitle);
+        LinearLayout itemcontent = (LinearLayout) dialogview.findViewById(R.id.itemcontent);
+
+        String org = (String) entity;
+        String result = "";
+        String[] orgarray = org.split("3");
+        String[] orgarray2 = orgarray[1].split("2");
+        result = orgarray[0].trim().replace("list", "");
+        Pattern pattern=Pattern.compile("(.*?)lim(.*)");
+        Matcher matcher=pattern.matcher(result);
+        if(matcher.find()){
+            result=matcher.group(1)+"-->限制:"+matcher.group(2);
+        }
+        dialogtitle.setText(result);
+        Base_Entity itementity = new Entity_Demo();
+        for (int i = 0; i < orgarray2.length; i++) {
+            itementity.add(orgarray2[i].trim(), "");
+        }
+        final Adapter_BookDetail adapter = new Adapter_BookDetail(activity, itementity, itemcontent);
+        adapter.setEditState(true).initView();
+        AutoDialogBuilder builder = new AutoDialogBuilder(activity, dialogview,
+                new LinearLayout.LayoutParams((int) (BookStatic.getInstance().getScreenWidth() / 1.1), (int) (BookStatic.getInstance().getScreenHeight() / 1.5)));
+        builder.setPositiveButton(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Base_Entity resultentity = adapter.getResult();
+                back.back(resultentity);
+
+            }
+        }).setNegativeButton(null);
+        builder.show();
+        return dialogview;
     }
 
 }

@@ -20,9 +20,9 @@ public class SingleApplication extends BusinessApplication {
     public void onCreate() {
         super.onCreate();
 //        //System.out.println("打开应用");
-        ClassUtil.getInstance().init(R.class);
-        StaticAppInfo.getInstance().init(this, StaticAppInfo.StaticMode.test);
-        PushManager.getInstance().initialize(this.getApplicationContext(), GeTPushService.class);
+        ClassUtil.getInstance().init(R.class);//R辅助类
+        StaticAppInfo.getInstance().init(this, StaticAppInfo.StaticMode.test);//app信息辅助类
+        PushManager.getInstance().initialize(this.getApplicationContext(), GeTPushService.class);//push
         // 注册 intentService 后 PushDemoReceiver 无效, sdk 会使用 DemoIntentService 传递数据,
         // AndroidManifest 对应保留一个即可(如果注册 DemoIntentService, 可以去掉 PushDemoReceiver, 如果注册了
         // IntentService, 必须在 AndroidManifest 中声明)

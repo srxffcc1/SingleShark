@@ -8,13 +8,13 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="15" />
-    <RadioGroup
+    <com.shark.pdfedit.widget.AutoCheckGroup
         android:id="@+id/checkGroup"
         android:layout_weight="500"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:orientation="vertical" >
-    </RadioGroup>
+    </com.shark.pdfedit.widget.AutoCheckGroup>
 
     <EditText
         android:id="@+id/bookcontentValue"

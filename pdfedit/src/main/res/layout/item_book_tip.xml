@@ -49,7 +49,6 @@
             android:padding="5dp"
             android:gravity="center"
             android:background="#FFEF16"
-            android:textColor="@drawable/text_color_selector9"
             android:text="隐藏↑" />
 
         

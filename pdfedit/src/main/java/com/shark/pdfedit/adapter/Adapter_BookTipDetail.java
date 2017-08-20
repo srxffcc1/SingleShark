@@ -1,4 +1,4 @@
-package com.businessframehelp.module.pdf.adapter;
+package com.shark.pdfedit.adapter;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -8,18 +8,18 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.businessframehelp.R;
+import com.shark.pdfedit.R;
 import com.wisdomregulation.data.entitybase.Base_Entity;
-@Deprecated
-public class Adapter_BookDetail2 {
+
+public class Adapter_BookTipDetail {
     private Activity context;
     private Base_Entity detailMapData;
     private LinearLayout content;
 
     private boolean editState = false;
 
-    public Adapter_BookDetail2(Activity context,
-                               Base_Entity detailMapData, LinearLayout content) {
+    public Adapter_BookTipDetail(Activity context,
+                                 Base_Entity detailMapData, LinearLayout content) {
         super();
         this.context = context;
         this.detailMapData = detailMapData;
@@ -27,7 +27,7 @@ public class Adapter_BookDetail2 {
     }
 
 
-    public Adapter_BookDetail2 initView() {
+    public Adapter_BookTipDetail initView() {
 
         content.removeAllViews();
         for (int i = 0; i < getCount(); i++) {
@@ -62,7 +62,7 @@ public class Adapter_BookDetail2 {
     public View getView(int position, ViewGroup parent) {
         View convertView = null;
         String fieldtext = getItem(position).toString();
-        convertView = LayoutInflater.from(context).inflate(R.layout.item_activity_book_content5, null);
+        convertView = LayoutInflater.from(context).inflate(R.layout.item_book_tipitem, null);
         ((TextView) convertView.findViewById(R.id.bookcontentName2)).setText(fieldtext);
         final EditText valueedit = ((EditText) convertView.findViewById(R.id.bookcontentValue2));
 

@@ -1,29 +1,30 @@
-package com.businessframehelp.module.pdf.adapter;
+package com.shark.pdfedit.adapter;
 
 import android.app.Activity;
-import android.support.v4.util.ArrayMap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
-import com.businessframehelp.R;
+import com.shark.pdfedit.R;
 import com.wisdomregulation.data.entitybase.Base_Entity;
 
+import java.util.HashMap;
 import java.util.List;
-@Deprecated
-public class Adapter_BookAddItem {
+import java.util.Map;
+
+public class Adapter_BookTip {
 	private Activity context;
 	private List<Base_Entity> detailMapData;
 	private LinearLayout content;
 
 	private boolean editState;
 	private boolean isshow=true;
-	private ArrayMap<String,EditText> viewmap=new ArrayMap<String,EditText>();
+	private Map<String,EditText> viewmap=new HashMap<String,EditText>();
 
-	public Adapter_BookAddItem(Activity context,
-							   List<Base_Entity> detailMapData, LinearLayout content) {
+	public Adapter_BookTip(Activity context,
+                           List<Base_Entity> detailMapData, LinearLayout content) {
 		super();
 		this.context = context;
 		this.detailMapData = detailMapData;
@@ -31,7 +32,7 @@ public class Adapter_BookAddItem {
 	}
 
 
-	public Adapter_BookAddItem initView(){
+	public Adapter_BookTip initView(){
 		viewmap.clear();
 		content.removeAllViews();
 		for (int i = 0; i < getCount(); i++) {
@@ -63,7 +64,7 @@ public class Adapter_BookAddItem {
 		}
 		return result;
 	}
-	public Adapter_BookAddItem addEntity(Base_Entity addentity){
+	public Adapter_BookTip addEntity(Base_Entity addentity){
 		detailMapData.add(addentity);
 		View add=getView(detailMapData.size()-1, content);
 		if(add!=null){
@@ -91,9 +92,9 @@ public class Adapter_BookAddItem {
 		return position;
 	}
 	public View getView(int position, ViewGroup parent) {
-		View view= LayoutInflater.from(context).inflate(R.layout.item_activity_book_content4,null);
+		View view= LayoutInflater.from(context).inflate(R.layout.item_book_tipcontent,null);
 		LinearLayout linearLayout= (LinearLayout) view.findViewById(R.id.veraddtip);
-		Adapter_BookDetail2 adapter_bookDetail=new Adapter_BookDetail2(context,detailMapData.get(position), linearLayout).initView();
+		Adapter_BookTipDetail adapter_bookDetail=new Adapter_BookTipDetail(context,detailMapData.get(position), linearLayout).initView();
 		return view;
 	}
 
