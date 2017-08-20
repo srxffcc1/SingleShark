@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Adapter_BookTip {
+public class BookTipBuilder {
 	private Activity context;
 	private List<Base_Entity> detailMapData;
 	private LinearLayout content;
@@ -23,8 +23,8 @@ public class Adapter_BookTip {
 	private boolean isshow=true;
 	private Map<String,EditText> viewmap=new HashMap<String,EditText>();
 
-	public Adapter_BookTip(Activity context,
-                           List<Base_Entity> detailMapData, LinearLayout content) {
+	public BookTipBuilder(Activity context,
+                          List<Base_Entity> detailMapData, LinearLayout content) {
 		super();
 		this.context = context;
 		this.detailMapData = detailMapData;
@@ -32,7 +32,7 @@ public class Adapter_BookTip {
 	}
 
 
-	public Adapter_BookTip initView(){
+	public BookTipBuilder build(){
 		viewmap.clear();
 		content.removeAllViews();
 		for (int i = 0; i < getCount(); i++) {
@@ -64,7 +64,7 @@ public class Adapter_BookTip {
 		}
 		return result;
 	}
-	public Adapter_BookTip addEntity(Base_Entity addentity){
+	public BookTipBuilder addEntity(Base_Entity addentity){
 		detailMapData.add(addentity);
 		View add=getView(detailMapData.size()-1, content);
 		if(add!=null){
@@ -94,7 +94,7 @@ public class Adapter_BookTip {
 	public View getView(int position, ViewGroup parent) {
 		View view= LayoutInflater.from(context).inflate(R.layout.item_book_tipcontent,null);
 		LinearLayout linearLayout= (LinearLayout) view.findViewById(R.id.veraddtip);
-		Adapter_BookTipDetail adapter_bookDetail=new Adapter_BookTipDetail(context,detailMapData.get(position), linearLayout).initView();
+		BookTipDetailBuilder adapter_bookDetail=new BookTipDetailBuilder(context,detailMapData.get(position), linearLayout).build();
 		return view;
 	}
 

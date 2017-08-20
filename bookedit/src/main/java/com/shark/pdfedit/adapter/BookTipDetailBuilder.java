@@ -11,15 +11,15 @@ import android.widget.TextView;
 import com.shark.pdfedit.R;
 import com.wisdomregulation.data.entitybase.Base_Entity;
 
-public class Adapter_BookTipDetail {
+public class BookTipDetailBuilder {
     private Activity context;
     private Base_Entity detailMapData;
     private LinearLayout content;
 
     private boolean editState = false;
 
-    public Adapter_BookTipDetail(Activity context,
-                                 Base_Entity detailMapData, LinearLayout content) {
+    public BookTipDetailBuilder(Activity context,
+                                Base_Entity detailMapData, LinearLayout content) {
         super();
         this.context = context;
         this.detailMapData = detailMapData;
@@ -27,7 +27,7 @@ public class Adapter_BookTipDetail {
     }
 
 
-    public Adapter_BookTipDetail initView() {
+    public BookTipDetailBuilder build() {
 
         content.removeAllViews();
         for (int i = 0; i < getCount(); i++) {

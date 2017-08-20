@@ -1,5 +1,5 @@
 //include ':blackframe'
-include ':pdfedit'
+include ':bookedit'
 include ':app'
 //include ':sharkapp'
 //include ':businessframe'
