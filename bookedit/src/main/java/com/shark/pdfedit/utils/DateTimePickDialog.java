@@ -138,7 +138,7 @@ public class DateTimePickDialog implements OnDateChangedListener,
 		timePicker.setIs24HourView(true);
 		timePicker.setOnTimeChangedListener(this);
 
-		ad = new AlertDialog.Builder(activity,AlertDialog.THEME_HOLO_LIGHT)
+		ad = new AlertDialog.Builder(activity)
 				.setTitle("今日"+initDateTime)
 				.setView(dateTimeLayout)
 				.setPositiveButton("设置", new DialogInterface.OnClickListener() {

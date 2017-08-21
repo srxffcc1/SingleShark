@@ -14,11 +14,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ay.framework.core.pojo.BasePojo;
-import com.joanzapata.pdfview.PDFView;
+import com.github.barteksc.pdfviewer.PDFView;
 import com.shark.pdfedit.R;
 import com.shark.pdfedit.adapter.BookDetailBuilder;
+import com.shark.pdfedit.utils.PdfPrintHelp;
 import com.wisdomregulation.data.entitybase.Base_Entity;
 import com.wisdomregulation.pdflink.IPdfBack;
 import com.wisdomregulation.shark.PdfFactory2017;
@@ -33,6 +35,7 @@ import static android.content.Context.INPUT_METHOD_SERVICE;
 
 /**
  * Created by King6rf on 2017/8/20.
+ * 参考sample的使用方法 com.shark.pdfedit.sample.Sample
  */
 
 public class BookFragment extends Fragment implements View.OnClickListener{
@@ -218,12 +221,37 @@ public class BookFragment extends Fragment implements View.OnClickListener{
         return inflater.inflate(R.layout.book_detail, container, false);
     }
     public void printer(){
-
-    }
-    public void review(){
+        Toast.makeText(getActivity(),"文书生成中",Toast.LENGTH_SHORT).show();
         pdfpath=Environment.getExternalStorageDirectory()+"/at.pdf";
         Base_Entity booktmp=bookDetailBuilder.getResult();
-        PdfFactory2017.create().setTTFpath(Environment.getExternalStorageDirectory()+"/TTFS").setFileout(pdfpath).open().printerMaster(booktmp).close(new IPdfBack() {
+        PdfFactory2017.create().setTimeout(1000).setTTFpath(Environment.getExternalStorageDirectory()+"/TTFS").setFileout(pdfpath).open().printerMaster(booktmp).close(new IPdfBack() {
+            @Override
+            public void writeError() {
+                Toast.makeText(getActivity(),"操作过快请等待1秒",Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void writeStart() {
+
+            }
+
+            @Override
+            public void writeEnd() {
+                PdfPrintHelp.print(pdfpath,getActivity(),1000);
+
+            }
+        });
+    }
+    public void review(){
+        Toast.makeText(this.getActivity(),"文书生成中",Toast.LENGTH_SHORT).show();
+        pdfpath=Environment.getExternalStorageDirectory()+"/at.pdf";
+        Base_Entity booktmp=bookDetailBuilder.getResult();
+        PdfFactory2017.create().setTimeout(1000).setTTFpath(Environment.getExternalStorageDirectory()+"/TTFS").setFileout(pdfpath).open().printerMaster(booktmp).close(new IPdfBack() {
+            @Override
+            public void writeError() {
+                Toast.makeText(getActivity(),"操作过快请等待1秒",Toast.LENGTH_SHORT).show();
+            }
+
             @Override
             public void writeStart() {
 
@@ -247,21 +275,23 @@ public class BookFragment extends Fragment implements View.OnClickListener{
         pdfcontent.setVisibility(View.GONE);
     }
     public void cancel(){
-
+        getActivity().finish();
     }
     public void identify(){
         switch (mflag) {
             case 0://2017
-
+                new Task2017Id().execute();
                 break;
             case 1://2014
 
+                new Task2014Id().execute();
                 break;
             case 2://昆明
 
+                new TaskKmId().execute();
                 break;
             default:
-
+                new Task2017Id().execute();
                 break;
         }
     }
@@ -312,4 +342,15 @@ public class BookFragment extends Fragment implements View.OnClickListener{
             // TODO: handle exception
         }
     }
+
+    public boolean onBackPressed() {
+        if(pdfcontent.getVisibility()==View.VISIBLE){
+            exitpdf();
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
 }

@@ -122,10 +122,10 @@ public class BookDetailBuilder {
         String result = "";
         String[] orgarray = org.split("3");
         result = orgarray[0].trim().replace("list", "");
-        Pattern pattern=Pattern.compile("(.*?)lim(.*)");
-        Matcher matcher=pattern.matcher(result);
-        if(matcher.find()){
-            result=matcher.group(1)+"列表";
+        Pattern pattern = Pattern.compile("(.*?)lim(.*)");
+        Matcher matcher = pattern.matcher(result);
+        if (matcher.find()) {
+            result = matcher.group(1) + "列表";
         }
 
         return result;
@@ -135,7 +135,6 @@ public class BookDetailBuilder {
         View convertView = null;
         String fieldtext = getItem(position).toString();
         if (fieldtext.matches("check(.*)")) {
-
             convertView = LayoutInflater.from(context).inflate(R.layout.item_book_check, null);
             final AutoCheckGroup autogroup = (AutoCheckGroup) convertView.findViewById(R.id.checkGroup);
             String[] fieldtexts = fieldtext.replace("check", "").split("2");
@@ -164,9 +163,7 @@ public class BookDetailBuilder {
                     box.setClickable(false);
                 }
             }
-
             final EditText valueedit2 = ((EditText) convertView.findViewById(R.id.bookcontentValue));
-
             autogroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
                 @Override
@@ -191,9 +188,9 @@ public class BookDetailBuilder {
             final LinearLayout listcontent = (LinearLayout) convertView.findViewById(R.id.needaddtip);
             final TextView showhide = (TextView) convertView.findViewById(R.id.hidetip);
             listtitle.setText(titiletextstring);
-            String tmpvalue=detailMapData.getValue(position);
-            String tmpfield=fieldtext;
-            List<Base_Entity> addlist = string2EntityList(tmpfield,tmpvalue);
+            String tmpvalue = detailMapData.getValue(position);
+            String tmpfield = fieldtext;
+            List<Base_Entity> addlist = string2EntityList(tmpfield, tmpvalue);
             final BookTipBuilder adapter_bookAddItem = new BookTipBuilder(context, addlist, listcontent);
             adapter_bookAddItem.build();
             final EditText valueedit2 = ((EditText) convertView.findViewById(R.id.bookcontentValue));
@@ -224,13 +221,13 @@ public class BookDetailBuilder {
                         String result = "";
                         String[] orgarray = org.split("3");
                         result = orgarray[0].trim().replace("list", "");
-                        Pattern pattern=Pattern.compile("(.*?)lim(.*)");
-                        Matcher matcher=pattern.matcher(result);
-                        int limit=0;
-                        if(matcher.find()){
-                            limit=Integer.parseInt(matcher.group(2));
+                        Pattern pattern = Pattern.compile("(.*?)lim(.*)");
+                        Matcher matcher = pattern.matcher(result);
+                        int limit = 0;
+                        if (matcher.find()) {
+                            limit = Integer.parseInt(matcher.group(2));
                         }
-                        if(adapter_bookAddItem.getCount()>limit){
+                        if (adapter_bookAddItem.getCount() > limit) {
                             context.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
@@ -239,23 +236,23 @@ public class BookDetailBuilder {
                                     String[] orgarray = org.split("3");
 
                                     result = orgarray[0].trim().replace("list", "");
-                                    Pattern pattern=Pattern.compile("(.*?)lim(.*)");
-                                    Matcher matcher=pattern.matcher(result);
-                                    int limit=0;
-                                    if(matcher.find()){
-                                        limit=Integer.parseInt(matcher.group(2));
+                                    Pattern pattern = Pattern.compile("(.*?)lim(.*)");
+                                    Matcher matcher = pattern.matcher(result);
+                                    int limit = 0;
+                                    if (matcher.find()) {
+                                        limit = Integer.parseInt(matcher.group(2));
                                     }
-                                    Toast.makeText(context,"超过"+limit+"个不可继续添加",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(context, "超过" + limit + "个不可继续添加", Toast.LENGTH_SHORT).show();
                                 }
                             });
 
-                        }else{
+                        } else {
                             showDialog_AddBookItem(context, fieldtexttmp, new CallBack() {
                                 @Override
                                 public void back(Object resultlist) {
                                     final Base_Entity result = (Base_Entity) resultlist;
                                     adapter_bookAddItem.addEntity(result);
-                                    String newtext=adapter_bookAddItem.getResult();
+                                    String newtext = adapter_bookAddItem.getResult();
                                     valueedit2.setText(newtext);
                                 }
                             });
@@ -306,32 +303,34 @@ public class BookDetailBuilder {
         }
         return convertView;
     }
-    public List<Base_Entity> string2EntityList(String orgfieldstring,String orgliststring){
-        List<Base_Entity> result=new ArrayList<Base_Entity>();
-        String[] listitem=null;
+
+    public List<Base_Entity> string2EntityList(String orgfieldstring, String orgliststring) {
+        List<Base_Entity> result = new ArrayList<Base_Entity>();
+        String[] listitem = null;
 
 
-        if(orgliststring!=null&&orgliststring.matches("(.*)@(.*)")){
-            listitem=orgliststring.split("@");
-            if(listitem!=null){
+        if (orgliststring != null && orgliststring.matches("(.*)@(.*)")) {
+            listitem = orgliststring.split("@");
+            if (listitem != null) {
                 for (int i = 0; i < listitem.length; i++) {
-                    Base_Entity tmp=string2Entity(orgfieldstring,listitem[i]);
+                    Base_Entity tmp = string2Entity(orgfieldstring, listitem[i]);
                     result.add(tmp);
                 }
-            }else{
+            } else {
             }
-        }else{
+        } else {
         }
         return result;
 
     }
-    public Base_Entity string2Entity(String orgfieldstring,String orgliststring){
+
+    public Base_Entity string2Entity(String orgfieldstring, String orgliststring) {
         Base_Entity itementity = new Entity_Demo();
         String org = orgfieldstring;
         String result = "";
         String[] orgarray = org.split("3");
         String[] orgarray2 = orgarray[1].split("2");
-        String[] valuestringarray=orgliststring.split("#");
+        String[] valuestringarray = orgliststring.split("#");
 
         for (int i = 0; i < orgarray2.length; i++) {
             itementity.add(orgarray2[i].trim(), valuestringarray[i].trim());
@@ -353,10 +352,10 @@ public class BookDetailBuilder {
         String[] orgarray = org.split("3");
         String[] orgarray2 = orgarray[1].split("2");
         result = orgarray[0].trim().replace("list", "");
-        Pattern pattern=Pattern.compile("(.*?)lim(.*)");
-        Matcher matcher=pattern.matcher(result);
-        if(matcher.find()){
-            result=matcher.group(1)+"-->限制:"+matcher.group(2);
+        Pattern pattern = Pattern.compile("(.*?)lim(.*)");
+        Matcher matcher = pattern.matcher(result);
+        if (matcher.find()) {
+            result = matcher.group(1) + "-->限制:" + matcher.group(2);
         }
         dialogtitle.setText(result);
         Base_Entity itementity = new Entity_Demo();
