@@ -1,5 +1,5 @@
-include ':bookedit'
-include ':app'
+//include ':bookedit'
+//include ':app'
 
 
 include ':sharkapp'
