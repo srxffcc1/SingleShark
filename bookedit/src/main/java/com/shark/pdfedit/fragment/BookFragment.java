@@ -20,6 +20,7 @@ import com.ay.framework.core.pojo.BasePojo;
 import com.github.barteksc.pdfviewer.PDFView;
 import com.shark.pdfedit.R;
 import com.shark.pdfedit.adapter.BookDetailBuilder;
+import com.shark.pdfedit.utils.HttpUrlConnectUtil;
 import com.shark.pdfedit.utils.PdfPrintHelp;
 import com.wisdomregulation.data.entitybase.Base_Entity;
 import com.wisdomregulation.pdflink.IPdfBack;
@@ -29,7 +30,14 @@ import com.wisdomregulation.utils.ConvertPrint2014;
 import com.wisdomregulation.utils.ConvertPrint2017;
 import com.wisdomregulation.utils.ConvertPrintkm;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
+import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.List;
+import java.util.UUID;
 
 import static android.content.Context.INPUT_METHOD_SERVICE;
 
@@ -46,6 +54,10 @@ public class BookFragment extends Fragment implements View.OnClickListener{
     public static final int FLAG_2017 = 0;
     public static final int FLAG_2014 = 1;
     public static final int Flag_KM = 2;
+
+
+    private HashMap<String,Object> datamap =  new HashMap();
+    private HashMap<String,Object> othermap= new HashMap();//外部进来的map用于提供额外上传依据
     private String url;
     private String bookaction;
     private int mtype;
@@ -60,6 +72,7 @@ public class BookFragment extends Fragment implements View.OnClickListener{
     private Handler handler=new Handler();
     private LinearLayout pdfcontent;
     private String mip;
+    private String uuid;
 
 
     /**
@@ -167,21 +180,25 @@ public class BookFragment extends Fragment implements View.OnClickListener{
                         mbasebok = ConvertPrint2017.getInstance().webobject2bookentity(mbasepojo);
                         bookname= Static_BookLib.BOOKNAMELIST2017[Integer.parseInt(mbasebok.getClass().getSimpleName().replace("Entity_Book_2017_",""))];
                         bookaction=Static_BookLib.WEBBOOKNAME2017[Integer.parseInt(mbasebok.getClass().getSimpleName().replace("Entity_Book_2017_",""))];
+                        bookaction=Static_BookLib.changeHeadToLowCase(bookaction);
                         break;
                     case 1://2014
                         mbasebok = ConvertPrint2014.getInstance().webobject2bookentity(mbasepojo);
                         bookname=Static_BookLib.BOOKNAMELIST[Integer.parseInt(mbasebok.getClass().getSimpleName().replace("Entity_Book",""))];
                         bookaction=Static_BookLib.WEBBOOKNAME[Integer.parseInt(mbasebok.getClass().getSimpleName().replace("Entity_Book",""))];
+                        bookaction=Static_BookLib.changeHeadToLowCase(bookaction);
                         break;
                     case 2://昆明
                         mbasebok = ConvertPrintkm.getInstance().webobject2bookentity(mbasepojo);
                         bookname=Static_BookLib.BOOKNAMELIST[Integer.parseInt(mbasebok.getClass().getSimpleName().replace("Entity_Book",""))];
                         bookaction=Static_BookLib.WEBBOOKNAME[Integer.parseInt(mbasebok.getClass().getSimpleName().replace("Entity_Book",""))];
+                        bookaction=Static_BookLib.changeHeadToLowCase(bookaction);
                         break;
                     default:
                         mbasebok = ConvertPrint2017.getInstance().webobject2bookentity(mbasepojo);
                         bookname= Static_BookLib.BOOKNAMELIST2017[Integer.parseInt(mbasebok.getClass().getSimpleName().replace("Entity_Book_2017_",""))];
                         bookaction=Static_BookLib.WEBBOOKNAME2017[Integer.parseInt(mbasebok.getClass().getSimpleName().replace("Entity_Book_2017_",""))];
+                        bookaction=Static_BookLib.changeHeadToLowCase(bookaction);
                         break;
                 }
             } catch (java.lang.InstantiationException e) {
@@ -194,19 +211,24 @@ public class BookFragment extends Fragment implements View.OnClickListener{
         }else{
             bookname= Static_BookLib.BOOKNAMELIST2017[Integer.parseInt(mbasebok.getClass().getSimpleName().replace("Entity_Book_2017_",""))];
             bookaction=Static_BookLib.WEBBOOKNAME2017[Integer.parseInt(mbasebok.getClass().getSimpleName().replace("Entity_Book_2017_",""))];
+            bookaction=Static_BookLib.changeHeadToLowCase(bookaction);
         }
         switch (mtype){
             case 0:
-                url=mip+bookaction+bookaction+"Action!add";
+                url=mip+"/"+bookaction+"/"+bookaction+"Action!add";
+                uuid= UUID.randomUUID().toString().replace("-","");
                 break;
             case 1:
-                url=mip+bookaction+bookaction+"Action!update";
+                url=mip+"/"+bookaction+"/"+bookaction+"Action!update";
+                uuid= mbasepojo.getId();
                 break;
             case 2:
                 url="";
+                uuid= UUID.randomUUID().toString().replace("-","");
                 break;
             default:
-                url=mip+bookaction+bookaction+"Action!add";
+                url=mip+"/"+bookaction+"/"+bookaction+"Action!add";
+                uuid= UUID.randomUUID().toString().replace("-","");
                 break;
         }
         title.setText(bookname);
@@ -241,6 +263,110 @@ public class BookFragment extends Fragment implements View.OnClickListener{
 
             }
         });
+    }
+    public void buildMap(){
+        String sClass = null;
+        datamap.clear();
+        try {
+            Object bean = null;
+            if(mflag==FLAG_2017){
+                bean= ConvertPrint2017.getInstance().bookentity2webobject(bookDetailBuilder.getResult());
+                sClass = bean.getClass().getSimpleName().replaceFirst("W","w");
+                Field[] declaredFields = bean.getClass().getFields();
+                for (Field field : declaredFields) {
+                    try {
+                        if(field.get(bean) == null){
+                            datamap.put(sClass+"."+field.getName(),"");
+                        }else{
+                            if(field.getName().contains("List")){
+                                List tmplist= (List) field.get(bean);
+                                if(tmplist!=null&&tmplist.size()>0){
+                                    for (int i = 0; i <tmplist.size() ; i++) {
+                                        Object listchild=tmplist.get(i);
+                                        Field[] declaredlistchildFields = listchild.getClass().getFields();
+
+                                        for(Field childfield : declaredlistchildFields){
+                                            try {
+                                                datamap.put(field.getName()+"["+i+"]."+childfield.getName(),childfield.get(listchild).toString());
+                                            } catch (Exception e) {
+                                                System.err.println(childfield.getName());
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                        if(!"".equals(uuid)){
+                                            datamap.put(field.getName()+"["+i+"]."+"wsid",((BasePojo)bean).getId());
+                                        }
+
+                                    }
+                                }
+                            }else{
+                                datamap.put(sClass+"."+field.getName(),field.get(bean).toString());
+                            }
+
+                        }
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }else if(mflag==FLAG_2014){
+                bean= ConvertPrint2014.getInstance().bookentity2webobject(bookDetailBuilder.getResult());
+                sClass = bean.getClass().getSimpleName().replaceFirst("W","w");
+                Field[] declaredFields = bean.getClass().getFields();
+                for (Field field : declaredFields) {
+                    try {
+                        if(field.get(bean) == null){
+                            datamap.put(sClass+"."+field.getName(),"");
+                        }else{
+                            if(field.getName().contains("List")){
+                                List tmplist= (List) field.get(bean);
+                                if(tmplist!=null&&tmplist.size()>0){
+                                    for (int i = 0; i <tmplist.size() ; i++) {
+                                        Object listchild=tmplist.get(i);
+                                        Field[] declaredlistchildFields = listchild.getClass().getFields();
+
+                                        for(Field childfield : declaredlistchildFields){
+                                            try {
+                                                datamap.put(field.getName()+"["+i+"]."+childfield.getName(),childfield.get(listchild).toString());
+                                            } catch (Exception e) {
+                                                System.err.println(childfield.getName());
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                        if(!"".equals(uuid)){
+                                            datamap.put(field.getName()+"["+i+"]."+"wsid",((BasePojo)bean).getId());
+                                        }
+
+                                    }
+                                }
+                            }else{
+                                datamap.put(sClass+"."+field.getName(),field.get(bean).toString());
+                            }
+
+                        }
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }else if(mflag==Flag_KM){
+                bean= ConvertPrintkm.getInstance().bookentity2webobject(bookDetailBuilder.getResult());
+                sClass = bean.getClass().getSimpleName().replaceFirst("W","w");
+                Field[] declaredFields = bean.getClass().getFields();
+                for (Field field : declaredFields) {
+                    if(field.get(bean) == null){
+                        datamap.put(sClass+"."+field.getName(),"");
+                    }else{
+//					if(field.getName().equals("pcode")){
+//						String temp = field.get(bean).toString();
+//						//Log.d("wjw","value = " + temp);
+//					}
+                        datamap.put(sClass+"."+field.getName(),field.get(bean).toString());
+                    }
+                }
+            }
+            datamap.putAll(othermap);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     public void review(){
         Toast.makeText(this.getActivity(),"文书生成中",Toast.LENGTH_SHORT).show();
@@ -277,43 +403,38 @@ public class BookFragment extends Fragment implements View.OnClickListener{
     public void cancel(){
         getActivity().finish();
     }
-    public void identify(){
-        switch (mflag) {
-            case 0://2017
-                new Task2017Id().execute();
-                break;
-            case 1://2014
-
-                new Task2014Id().execute();
-                break;
-            case 2://昆明
-
-                new TaskKmId().execute();
-                break;
-            default:
-                new Task2017Id().execute();
-                break;
-        }
+    public void submit(){
+        new TaskIdentify().execute();
     }
-    class Task2017Id extends AsyncTask<String,Integer,String>{
+    class TaskIdentify extends AsyncTask<String,Integer,String>{
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
 
         @Override
-        protected String doInBackground(String... params) {
-            return null;
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            try {
+                JSONObject jsonobj=new JSONObject(s);
+                if(jsonobj.optBoolean("operateSuccess")){
+                    finish();
+                }else{
+                    Toast.makeText(getActivity(),"出错",Toast.LENGTH_SHORT);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
-    }
-    class Task2014Id extends AsyncTask<String,Integer,String>{
-
         @Override
         protected String doInBackground(String... params) {
-            return null;
-        }
-    }
-    class TaskKmId extends AsyncTask<String,Integer,String>{
-
-        @Override
-        protected String doInBackground(String... params) {
-            return null;
+            String result= null;
+            try {
+                result = HttpUrlConnectUtil.doPost(url,datamap,mcookie);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return result;
         }
     }
     @Override
@@ -326,7 +447,7 @@ public class BookFragment extends Fragment implements View.OnClickListener{
         } else if (i == R.id.cancel) {
             cancel();
         } else if (i == R.id.identify) {
-            identify();
+            submit();
         }else if (i == R.id.exitpdf) {
             exitpdf();
         }else if (i == R.id.printer2) {
@@ -350,6 +471,9 @@ public class BookFragment extends Fragment implements View.OnClickListener{
         }else{
             return false;
         }
+    }
+    public void finish(){
+        getActivity().finish();
     }
 
 

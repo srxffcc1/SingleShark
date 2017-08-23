@@ -2,7 +2,6 @@ package com.shark.app.test;
 
 import android.app.Dialog;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Message;
@@ -14,7 +13,6 @@ import com.businessframehelp.listen.StyleDialogListener;
 import com.businessframehelp.staticlib.StaticAppInfo;
 import com.businessframehelp.staticlib.StaticSdkTool;
 import com.businessframehelp.utils.FrameUtil;
-import com.businessframehelp.utils.HttpConnector;
 import com.businessframehelp.utils.PrintUtil;
 import com.businessframehelp.utils.ZipUtil;
 import com.hss01248.dialog.StyledDialog;
@@ -107,7 +105,7 @@ public class TestMainActivity extends FrameActivity {
 ////                    e.printStackTrace();
 ////                }
 ////                return "";
-//                return HttpConnector.getResponse("http://116.52.6.33:8080/kmzzhaj/yhjck/yhjckAction!listByYhmc?yhjck.yhmc="+Uri.encode(query));
+//                return HttpConnector.doGet("http://116.52.6.33:8080/kmzzhaj/yhjck/yhjckAction!listByYhmc?yhjck.yhmc="+Uri.encode(query));
 //            }
 //        });
     }
@@ -236,7 +234,7 @@ public class TestMainActivity extends FrameActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                HttpConnector.getResponse("http://116.52.6.33:8080/kmzzhaj/yhjck/yhjckAction!listByYhmc?yhjck.yhmc="+ Uri.encode("今年"));
+//                HttpConnector.doGet("http://116.52.6.33:8080/kmzzhaj/yhjck/yhjckAction!listByYhmc?yhjck.yhmc="+ Uri.encode("今年"));
             }
         }).start();
 

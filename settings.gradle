@@ -1,13 +1,18 @@
 include ':bookedit'
 include ':app'
-//include ':blackframe'
-//
-//include ':sharkapp'
-//include ':businessframe'
-//include ':moduleresource'
-//include ':moduleclone'
-//include ':moduleapk'
+
+
+include ':sharkapp'
+include ':blackframe'
+include ':businessframe'
+include ':moduleresource'
+include ':moduleclone'
+include ':moduleapk'
 include ':common'
+
+
+
+
 //include ':virtualapp'
 //include ':androidSDKDemos30'
 //include ':choosePDFActivity'
