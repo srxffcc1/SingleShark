@@ -20,8 +20,10 @@ import com.ay.framework.core.pojo.BasePojo;
 import com.github.barteksc.pdfviewer.PDFView;
 import com.shark.pdfedit.R;
 import com.shark.pdfedit.adapter.BookDetailBuilder;
+import com.shark.pdfedit.statich.BookStatic;
 import com.shark.pdfedit.utils.HttpUrlConnectUtil;
 import com.shark.pdfedit.utils.PdfPrintHelp;
+import com.shark.pdfedit.utils.ZipTask;
 import com.wisdomregulation.data.entitybase.Base_Entity;
 import com.wisdomregulation.pdflink.IPdfBack;
 import com.wisdomregulation.shark.PdfFactory2017;
@@ -39,6 +41,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
+import static android.R.attr.type;
 import static android.content.Context.INPUT_METHOD_SERVICE;
 
 /**
@@ -57,7 +60,15 @@ public class BookFragment extends Fragment implements View.OnClickListener{
 
 
     private HashMap<String,Object> datamap =  new HashMap();
-    private HashMap<String,Object> othermap= new HashMap();//外部进来的map用于提供额外上传依据
+    /**
+     *
+     ->  xx.version:1
+     ->  xx.qyid:05266368-4
+     ->  xx.tname:卷内目录
+     ->  xx.xzzfid:f69bb13e143f4003a0f127b2233d4683
+     */
+    private HashMap<String,Object> othermap= new HashMap();
+
     private String url;
     private String bookaction;
     private int mtype;
@@ -73,7 +84,26 @@ public class BookFragment extends Fragment implements View.OnClickListener{
     private LinearLayout pdfcontent;
     private String mip;
     private String uuid;
-
+    /**
+     * @param flag      2017 2014 km
+     * @param webobject pc端直接流过来的实体
+     * @param type      ADD UPDATE SEE ->BookFragment.ADD
+     * @param ip        ip地址
+     * @param cookie    cookie
+     * @return
+     */
+    public static BookFragment getInstanceKm(int flag, String ip, String cookie,BasePojo webobject,HashMap<String,Object> othermap) {
+        BookFragment bookFragment = new BookFragment();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("flag", flag);
+        bundle.putSerializable("ip", ip);
+        bundle.putSerializable("webobject", webobject);
+        bundle.putSerializable("type", Flag_KM);
+        bundle.putSerializable("cookie", cookie);
+        bundle.putSerializable("othermap", othermap);
+        bookFragment.setArguments(bundle);
+        return bookFragment;
+    }
 
     /**
      * @param flag      2017 2014 km
@@ -83,7 +113,49 @@ public class BookFragment extends Fragment implements View.OnClickListener{
      * @param cookie    cookie
      * @return
      */
-    public static BookFragment getInstance(int flag, BasePojo webobject, int type, String ip, String cookie) {
+    public static BookFragment getInstance2014(int flag, String ip, String cookie,BasePojo webobject,HashMap<String,Object> othermap) {
+        BookFragment bookFragment = new BookFragment();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("flag", flag);
+        bundle.putSerializable("ip", ip);
+        bundle.putSerializable("webobject", webobject);
+        bundle.putSerializable("type", FLAG_2014);
+        bundle.putSerializable("cookie", cookie);
+        bundle.putSerializable("othermap", othermap);
+        bookFragment.setArguments(bundle);
+        return bookFragment;
+    }
+
+    /**
+     * @param flag      2017 2014 km
+     * @param webobject pc端直接流过来的实体
+     * @param type      ADD UPDATE SEE ->BookFragment.ADD
+     * @param ip        ip地址
+     * @param cookie    cookie
+     * @return
+     */
+    public static BookFragment getInstance2017(int flag, String ip, String cookie,BasePojo webobject,HashMap<String,Object> othermap) {
+        BookFragment bookFragment = new BookFragment();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("flag", flag);
+        bundle.putSerializable("ip", ip);
+        bundle.putSerializable("webobject", webobject);
+        bundle.putSerializable("type", FLAG_2017);
+        bundle.putSerializable("cookie", cookie);
+        bundle.putSerializable("othermap", othermap);
+        bookFragment.setArguments(bundle);
+        return bookFragment;
+    }
+
+    /**
+     * @param flag      2017 2014 km
+     * @param webobject pc端直接流过来的实体
+     * @param type      ADD UPDATE SEE ->BookFragment.ADD
+     * @param ip        ip地址
+     * @param cookie    cookie
+     * @return
+     */
+    public static BookFragment getInstance(int flag, int type, String ip, String cookie,BasePojo webobject,HashMap<String,Object> othermap) {
         BookFragment bookFragment = new BookFragment();
         Bundle bundle = new Bundle();
         bundle.putSerializable("flag", flag);
@@ -91,6 +163,7 @@ public class BookFragment extends Fragment implements View.OnClickListener{
         bundle.putSerializable("webobject", webobject);
         bundle.putSerializable("type", type);
         bundle.putSerializable("cookie", cookie);
+        bundle.putSerializable("othermap", othermap);
         bookFragment.setArguments(bundle);
         return bookFragment;
     }
@@ -103,7 +176,7 @@ public class BookFragment extends Fragment implements View.OnClickListener{
      * @param cookie     cookie
      * @return
      */
-    public static BookFragment getInstance(int flag, Base_Entity bookentity, int type, String ip, String cookie) {
+    public static BookFragment getInstance(int flag, int type, String ip, String cookie, Base_Entity bookentity,HashMap<String,Object> othermap) {
         BookFragment bookFragment = new BookFragment();
         Bundle bundle = new Bundle();
         bundle.putSerializable("ip", ip);
@@ -111,12 +184,13 @@ public class BookFragment extends Fragment implements View.OnClickListener{
         bundle.putSerializable("type", type);
         bundle.putSerializable("bookentity", bookentity);
         bundle.putSerializable("cookie", cookie);
+        bundle.putSerializable("othermap", othermap);
         bookFragment.setArguments(bundle);
         return bookFragment;
     }
 
 
-    @Deprecated
+    @Deprecated  //只是用来测试得不推荐使用因为无效
     public static BookFragment getInstance(Base_Entity bookentity) {
         BookFragment bookFragment = new BookFragment();
         Bundle bundle = new Bundle();
@@ -129,7 +203,7 @@ public class BookFragment extends Fragment implements View.OnClickListener{
         return bookFragment;
     }
 
-    @Deprecated
+    @Deprecated //只是用来测试得不推荐使用因为无效
     public static BookFragment getInstance(Base_Entity bookentity,int type) {
         BookFragment bookFragment = new BookFragment();
         Bundle bundle = new Bundle();
@@ -146,6 +220,7 @@ public class BookFragment extends Fragment implements View.OnClickListener{
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Bundle initbundle = getArguments();
+        othermap= (HashMap<String, Object>) initbundle.getSerializable("othermap");
         mip= (String) initbundle.getSerializable("ip");
         mflag = (int) initbundle.getSerializable("flag");
         mbasepojo = (BasePojo) initbundle.getSerializable("webobject");
@@ -240,6 +315,8 @@ public class BookFragment extends Fragment implements View.OnClickListener{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        BookStatic.getInstance().init(getActivity().getApplicationContext());
+        ZipTask.checkTTF(getActivity().getApplicationContext());
         return inflater.inflate(R.layout.book_detail, container, false);
     }
     public void printer(){

@@ -10,7 +10,6 @@ import com.wisdomregulation.data.entitybook2017.Entity_Book_2017_0;
 public class Sample extends Activity {
 
     private BookFragment bookFragment;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

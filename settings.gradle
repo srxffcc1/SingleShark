@@ -1,14 +1,14 @@
-//include ':bookedit'
-//include ':app'
+include ':bookedit'
+include ':app'
 
 
-include ':sharkapp'
-include ':blackframe'
-include ':businessframe'
-include ':moduleresource'
-include ':moduleclone'
-include ':moduleapk'
-include ':common'
+//include ':sharkapp'
+//include ':blackframe'
+//include ':businessframe'
+//include ':moduleresource'
+//include ':moduleclone'
+//include ':moduleapk'
+//include ':common'
 
 
 
