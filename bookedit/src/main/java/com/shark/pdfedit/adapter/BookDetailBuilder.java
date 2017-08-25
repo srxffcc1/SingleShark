@@ -19,6 +19,7 @@ import com.shark.pdfedit.R;
 import com.shark.pdfedit.statich.BookStatic;
 import com.shark.pdfedit.utils.CallBack;
 import com.shark.pdfedit.utils.DateTimePickDialog;
+import com.shark.pdfedit.utils.TextColorUtil;
 import com.shark.pdfedit.widget.AutoCheckBox;
 import com.shark.pdfedit.widget.AutoCheckGroup;
 import com.shark.pdfedit.widget.AutoDialogBuilder;
@@ -301,6 +302,7 @@ public class BookDetailBuilder {
             valueedit.setClickable(false);
             valueedit.setKeyListener(null);
         }
+        TextColorUtil.fixTextColor(convertView);
         return convertView;
     }
 
@@ -314,7 +316,10 @@ public class BookDetailBuilder {
             if (listitem != null) {
                 for (int i = 0; i < listitem.length; i++) {
                     Base_Entity tmp = string2Entity(orgfieldstring, listitem[i]);
-                    result.add(tmp);
+                    if(tmp!=null){
+                        result.add(tmp);
+                    }
+
                 }
             } else {
             }
@@ -325,18 +330,29 @@ public class BookDetailBuilder {
     }
 
     public Base_Entity string2Entity(String orgfieldstring, String orgliststring) {
-        Base_Entity itementity = new Entity_Demo();
-        String org = orgfieldstring;
-        String result = "";
-        String[] orgarray = org.split("3");
-        String[] orgarray2 = orgarray[1].split("2");
-        String[] valuestringarray = orgliststring.split("#");
+        Base_Entity itementity = null;
+        try {
+            itementity = new Entity_Demo();
+            String org = orgfieldstring;
+            String result = "";
+            String[] orgarray = org.split("_");
+            String[] orgarray2 = orgarray[1].split("2");
+            String[] valuestringarray = orgliststring.split("#");
 
-        for (int i = 0; i < orgarray2.length; i++) {
-            itementity.add(orgarray2[i].trim(), valuestringarray[i].trim());
+            for (int i = 0; i < orgarray2.length; i++) {
+                try {
+                    itementity.add(orgarray2[i].trim(), valuestringarray[i].trim());
+                } catch (ArrayIndexOutOfBoundsException e) {
+
+                    e.printStackTrace();
+                    return null;
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(orgfieldstring);
+            System.out.println(orgliststring);
+            e.printStackTrace();
         }
-
-
         return itementity;
     }
 
@@ -349,7 +365,7 @@ public class BookDetailBuilder {
 
         String org = (String) entity;
         String result = "";
-        String[] orgarray = org.split("3");
+        String[] orgarray = org.split("_");
         String[] orgarray2 = orgarray[1].split("2");
         result = orgarray[0].trim().replace("list", "");
         Pattern pattern = Pattern.compile("(.*?)lim(.*)");

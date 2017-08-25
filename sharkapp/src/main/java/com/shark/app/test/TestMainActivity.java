@@ -2,17 +2,25 @@ package com.shark.app.test;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Message;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AutoCompleteTextView;
+import android.widget.TextView;
 
+import com.businessframehelp.adapter.AutoCompleteAdapter;
 import com.businessframehelp.app.FrameActivity;
+import com.businessframehelp.entity.WikiItem;
 import com.businessframehelp.enums.ORIENTATION;
 import com.businessframehelp.listen.StyleDialogListener;
 import com.businessframehelp.staticlib.StaticAppInfo;
 import com.businessframehelp.staticlib.StaticSdkTool;
 import com.businessframehelp.utils.FrameUtil;
+import com.businessframehelp.utils.HttpUrlConnectUtil;
 import com.businessframehelp.utils.PrintUtil;
 import com.businessframehelp.utils.ZipUtil;
 import com.hss01248.dialog.StyledDialog;
@@ -24,9 +32,13 @@ import com.shark.app.R;
 import com.shark.app.business.singleactivity.ApkFragment;
 import com.shark.app.business.singleactivity.tab.ActivityPdfBook;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.kymjs.kjframe.KJHttp;
 import org.kymjs.kjframe.http.HttpCallBack;
 import org.kymjs.kjframe.http.HttpParams;
+
+import java.util.ArrayList;
 
 public class TestMainActivity extends FrameActivity {
 
@@ -49,65 +61,74 @@ public class TestMainActivity extends FrameActivity {
         super.onCreate(savedInstanceState);
         // TODO:OnCreate Method has been created, run ButterKnife again to generate code
         setContentView(R.layout.test_main);
-//        AutoCompleteTextView autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.testcomplete);
-//        autoCompleteTextView.setAdapter(new AutoCompleteAdapter<WikiItem>(this) {
-//
-//            @Override
-//            public ArrayList<WikiItem> parseResponse(String response) {
-//                Log.d("OpMainActivity", "Response: " + response);
-//                ArrayList<WikiItem> models = new ArrayList<WikiItem>();
+//        testAuto();
+    }
+
+    private void testAuto() {
+        AutoCompleteTextView autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.id_appbar);
+        autoCompleteTextView.setAdapter(new AutoCompleteAdapter<WikiItem>(this) {
+
+            @Override
+            public ArrayList<WikiItem> parseResponse(String response) {
+                Log.d("OpMainActivity", "Response: " + response);
+                ArrayList<WikiItem> models = new ArrayList<WikiItem>();
+                try {
+                    JSONArray jsonArray = new JSONArray(response);
+                    if (jsonArray != null) {
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            models.add(new WikiItem(jsonArray.getJSONObject(i).optString("yhmc")));
+                        }
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                return models;
+            }
+
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent, WikiItem entity) {
+                convertView= LayoutInflater.from(getContext()).inflate(android.R.layout.simple_spinner_item, parent,false);
+		        ((TextView)convertView.findViewById(android.R.id.text1)).setText(entity.getItem());
+                return convertView;
+            }
+
+            @Override
+            public String getResponseNoLine() {
+                return null;
+            }
+
+            @Override
+            public String getRespinseOnline(String query) {
+//                KJHttp kjHttp=new KJHttp();
+//                HttpParams params = new HttpParams();
+//                params.put("yhjck.yhmc", Uri.encode(query)); //传递参数
+//                Request request=new FormRequest(Request.HttpMethod.POST,"http://116.52.6.33:8080/kmzzhaj/yhjck/yhjckAction!listByYhmc",params,null);
+//                HttpConnectStack httpConnectStack=new HttpConnectStack();
+//                StringBuilder jsonResults = new StringBuilder();
 //                try {
-//                    JSONArray jsonArray = new JSONArray(response);
-//                    if (jsonArray != null) {
-//                        for (int i = 0; i < jsonArray.length(); i++) {
-//                            models.add(new WikiItem(jsonArray.getJSONObject(i).optString("yhmc")));
-//                        }
+//                    KJHttpResponse kjHttpResponse=httpConnectStack.performRequest(request,new HashMap<String, String>());
+//
+//                    InputStreamReader in = new InputStreamReader(kjHttpResponse.getContentStream());
+//                    if (in == null) {
 //                    }
-//                } catch (JSONException e) {
+//                    int read;
+//                    char[] buff = new char[512];
+//                    while ((read = in.read(buff)) != -1) {
+//                        jsonResults.append(buff, 0, read);
+//                    }
+//                    return jsonResults.toString();
+//                } catch (IOException e) {
 //                    e.printStackTrace();
 //                }
-//                return models;
-//            }
-//
-//            @Override
-//            public View getView(int position, View convertView, ViewGroup parent, WikiItem entity) {
-//                convertView= LayoutInflater.from(getContext()).inflate(android.R.layout.simple_spinner_item, parent,false);
-//		        ((TextView)convertView.findViewById(android.R.id.text1)).setText(entity.getItem());
-//                return convertView;
-//            }
-//
-//            @Override
-//            public String getResponseNoLine() {
-//                return null;
-//            }
-//
-//            @Override
-//            public String getRespinseOnline(String query) {
-////                KJHttp kjHttp=new KJHttp();
-////                HttpParams params = new HttpParams();
-////                params.put("yhjck.yhmc", Uri.encode(query)); //传递参数
-////                Request request=new FormRequest(Request.HttpMethod.POST,"http://116.52.6.33:8080/kmzzhaj/yhjck/yhjckAction!listByYhmc",params,null);
-////                HttpConnectStack httpConnectStack=new HttpConnectStack();
-////                StringBuilder jsonResults = new StringBuilder();
-////                try {
-////                    KJHttpResponse kjHttpResponse=httpConnectStack.performRequest(request,new HashMap<String, String>());
-////
-////                    InputStreamReader in = new InputStreamReader(kjHttpResponse.getContentStream());
-////                    if (in == null) {
-////                    }
-////                    int read;
-////                    char[] buff = new char[512];
-////                    while ((read = in.read(buff)) != -1) {
-////                        jsonResults.append(buff, 0, read);
-////                    }
-////                    return jsonResults.toString();
-////                } catch (IOException e) {
-////                    e.printStackTrace();
-////                }
-////                return "";
-//                return HttpConnector.doGet("http://116.52.6.33:8080/kmzzhaj/yhjck/yhjckAction!listByYhmc?yhjck.yhmc="+Uri.encode(query));
-//            }
-//        });
+//                return "";
+                try {
+                    return HttpUrlConnectUtil.doGet("http://116.52.6.33:8080/kmzzhaj/yhjck/yhjckAction!listByYhmc?yhjck.yhmc="+ Uri.encode(query),null);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                return query;
+            }
+        });
     }
 
     public void startRtsp(View view) {

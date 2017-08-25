@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.shark.pdfedit.R;
+import com.shark.pdfedit.utils.TextColorUtil;
 import com.wisdomregulation.data.entitybase.Base_Entity;
 
 public class BookTipDetailBuilder {
@@ -77,6 +78,7 @@ public class BookTipDetailBuilder {
             valueedit.setClickable(false);
             valueedit.setKeyListener(null);
         }
+        TextColorUtil.fixTextColor(convertView);
         return convertView;
     }
 

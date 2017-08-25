@@ -15,9 +15,8 @@ import java.util.Map;
 import java.util.UUID;
 
 
-@Deprecated
 public class HttpUrlConnectUtil {
-    public static  int TIMEOUT = 2 * 1000; // 超时时间
+    public static int TIMEOUT = 2 * 1000; // 超时时间
     public static final String CHARSET = "utf-8"; // 设置编码
 
     private static final String SERVLET_POST = "POST";
@@ -25,11 +24,24 @@ public class HttpUrlConnectUtil {
     private static final String SERVLET_DELETE = "DELETE";
     private static final String SERVLET_PUT = "PUT";
 
+    /**
+     * 检查url
+     *
+     * @param orgurl
+     * @return
+     */
     private static String checkUrl(String orgurl) {
         String url = orgurl.split("\\?")[0];
         return url;
     }
 
+    /**
+     * 检查map
+     *
+     * @param orgmap
+     * @param orgurl
+     * @return
+     */
     private static Map<String, Object> checkMap(Map<String, Object> orgmap, String orgurl) {
         if (orgmap == null) {
             orgmap = new HashMap<String, Object>();
@@ -39,7 +51,7 @@ public class HttpUrlConnectUtil {
             String split = array[1];
             String[] splits = split.split("&");
             for (int i = 0; i < splits.length; i++) {
-                orgmap.put(splits[i].split("=")[0], splits[i].split("=")[1]);
+                orgmap.put(splits[i].split("=")[0],splits[i].split("=").length<2?"":splits[i].split("=")[1]);
             }
         } else {
 
@@ -53,6 +65,13 @@ public class HttpUrlConnectUtil {
         return orgmap;
     }
 
+    /**
+     * 获得返回
+     *
+     * @param urlConn
+     * @return
+     * @throws IOException
+     */
     private static String getRespone(HttpURLConnection urlConn) throws IOException {
         InputStreamReader in = new InputStreamReader(urlConn.getInputStream());
         StringBuilder jsonResults = new StringBuilder();
@@ -65,10 +84,18 @@ public class HttpUrlConnectUtil {
         return jsonResults.toString();
     }
 
-    private static String getResponeFile(HttpURLConnection urlConn,String outputstring) throws IOException {
+    /**
+     * 获得返回的文件
+     *
+     * @param urlConn
+     * @param outputstring
+     * @return
+     * @throws IOException
+     */
+    private static String getResponeFile(HttpURLConnection urlConn, String outputstring) throws IOException {
         BufferedInputStream bin = new BufferedInputStream(urlConn.getInputStream());
 
-        String path =outputstring;
+        String path = outputstring;
         File file = new File(path);
         if (!file.getParentFile().exists()) {
             file.getParentFile().mkdirs();
@@ -86,6 +113,12 @@ public class HttpUrlConnectUtil {
         return outputstring;
     }
 
+    /**
+     * 准备参数
+     *
+     * @param paramMap
+     * @return
+     */
     private static String prepareParam(Map<String, Object> paramMap) {
         StringBuffer sb = new StringBuffer();
         if (paramMap.isEmpty()) {
@@ -240,7 +273,7 @@ public class HttpUrlConnectUtil {
         return result;
     }
 
-    public synchronized static String downloadFile(String urlStr,Map<String, Object> paramMap,String cookie,String outputstring) throws IOException{
+    public synchronized static String downloadFile(String urlStr, Map<String, Object> paramMap, String cookie, String outputstring) throws IOException {
         paramMap = checkMap(paramMap, urlStr);
         urlStr = checkUrl(urlStr);
         URL url = new URL(urlStr);
@@ -263,11 +296,12 @@ public class HttpUrlConnectUtil {
         os.close();
         String result = "";
         if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
-            result = getResponeFile(conn,outputstring);
+            result = getResponeFile(conn, outputstring);
         }
         System.out.println(result);
         return result;
     }
+
     public synchronized static String uploadFile(String urlStr, Map<String, Object> paramMap, String cookie) throws IOException {
         paramMap = checkMap(paramMap, urlStr);
         urlStr = checkUrl(urlStr);

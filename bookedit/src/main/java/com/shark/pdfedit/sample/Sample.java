@@ -14,7 +14,7 @@ public class Sample extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Base_Entity base_entity=new Entity_Book_2017_0();
-        bookFragment = BookFragment.getInstance(base_entity,BookFragment.TYPE_ADD);
+        bookFragment = BookFragment.getInstance2017(base_entity,BookFragment.TYPE_ADD);
         getFragmentManager().beginTransaction().replace(1, bookFragment).commitAllowingStateLoss();
     }
 

@@ -5,10 +5,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
+import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import com.businessframehelp.app.FrameActivity;
 import com.businessframehelp.enums.ORIENTATION;
@@ -179,14 +181,25 @@ import java.util.List;
     public void logout(){
 
     }
-
-
+    long[] mHits = new long[2];
+    boolean needdoubleclick=true;
     @Override
     public void onBackPressed() {
         if(!menu.isMenuHidden()){
             menu.closeMenu();
         }else{
-            moveTaskToBack(true);
+            if(needdoubleclick){
+                System.arraycopy(mHits, 1, mHits, 0, mHits.length-1);
+                mHits[mHits.length-1] = SystemClock.uptimeMillis();
+                if (mHits[0] >= (SystemClock.uptimeMillis()-700)) {
+                    super.onBackPressed();
+                }else{
+                    Toast.makeText(this,"再按一次退出程序",Toast.LENGTH_SHORT).show();
+                }
+            }else{
+                moveTaskToBack(true);
+            }
+
 //            super.onBackPressed();
         }
 

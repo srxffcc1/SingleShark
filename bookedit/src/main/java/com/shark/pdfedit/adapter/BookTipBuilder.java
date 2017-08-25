@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.shark.pdfedit.R;
+import com.shark.pdfedit.utils.TextColorUtil;
 import com.wisdomregulation.data.entitybase.Base_Entity;
 
 import java.util.HashMap;
@@ -95,6 +96,7 @@ public class BookTipBuilder {
 		View view= LayoutInflater.from(context).inflate(R.layout.item_book_tipcontent,null);
 		LinearLayout linearLayout= (LinearLayout) view.findViewById(R.id.veraddtip);
 		BookTipDetailBuilder adapter_bookDetail=new BookTipDetailBuilder(context,detailMapData.get(position), linearLayout).build();
+		TextColorUtil.fixTextColor(view);
 		return view;
 	}
 

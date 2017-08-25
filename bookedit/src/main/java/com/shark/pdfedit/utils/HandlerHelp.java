@@ -10,7 +10,7 @@ import java.util.Map;
  * Created by King6rf on 2017/7/6.
  */
 
-public class DebugHandler {
+public class HandlerHelp {
     private static Handler handler=new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -28,26 +28,26 @@ public class DebugHandler {
     public interface HandlerListener {
         void hand(Message msg);
     }
-    private static final DebugHandler instance=new DebugHandler();
-    private DebugHandler(){
+    private static final HandlerHelp instance=new HandlerHelp();
+    private HandlerHelp(){
     }
-    public static DebugHandler instance(){
+    public static HandlerHelp instance(){
         return instance;
     }
-    public  DebugHandler sendMessage(Message msg){
+    public HandlerHelp sendMessage(Message msg){
         handler.sendMessage(msg);
         return instance;
     }
-    public  DebugHandler sendEmptyMessage(int what){
+    public HandlerHelp sendEmptyMessage(int what){
         handler.sendEmptyMessage(what);
         return instance;
     }
-    public  DebugHandler addListener(int key,HandlerListener value){
+    public HandlerHelp addListener(int key, HandlerListener value){
 //        Log.v("DebugHandler","注册:"+key);
         handlerListenerMap.put(key,value);
         return instance;
     }
-    public  DebugHandler removeListener(int... key){
+    public HandlerHelp removeListener(int... key){
 //        Log.v("DebugHandler","移除:"+key);
         for (int i : key) {
             handlerListenerMap.remove(i);

@@ -1,11 +1,13 @@
 package com.shark.pdfedit.fragment;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,7 +43,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
-import static android.R.attr.type;
 import static android.content.Context.INPUT_METHOD_SERVICE;
 
 /**
@@ -87,7 +88,6 @@ public class BookFragment extends Fragment implements View.OnClickListener{
     /**
      * @param flag      2017 2014 km
      * @param webobject pc端直接流过来的实体
-     * @param type      ADD UPDATE SEE ->BookFragment.ADD
      * @param ip        ip地址
      * @param cookie    cookie
      * @return
@@ -108,7 +108,6 @@ public class BookFragment extends Fragment implements View.OnClickListener{
     /**
      * @param flag      2017 2014 km
      * @param webobject pc端直接流过来的实体
-     * @param type      ADD UPDATE SEE ->BookFragment.ADD
      * @param ip        ip地址
      * @param cookie    cookie
      * @return
@@ -129,7 +128,6 @@ public class BookFragment extends Fragment implements View.OnClickListener{
     /**
      * @param flag      2017 2014 km
      * @param webobject pc端直接流过来的实体
-     * @param type      ADD UPDATE SEE ->BookFragment.ADD
      * @param ip        ip地址
      * @param cookie    cookie
      * @return
@@ -155,7 +153,7 @@ public class BookFragment extends Fragment implements View.OnClickListener{
      * @param cookie    cookie
      * @return
      */
-    public static BookFragment getInstance(int flag, int type, String ip, String cookie,BasePojo webobject,HashMap<String,Object> othermap) {
+    public static BookFragment getInstance2017(int flag, int type, String ip, String cookie, BasePojo webobject, HashMap<String,Object> othermap) {
         BookFragment bookFragment = new BookFragment();
         Bundle bundle = new Bundle();
         bundle.putSerializable("flag", flag);
@@ -176,7 +174,7 @@ public class BookFragment extends Fragment implements View.OnClickListener{
      * @param cookie     cookie
      * @return
      */
-    public static BookFragment getInstance(int flag, int type, String ip, String cookie, Base_Entity bookentity,HashMap<String,Object> othermap) {
+    public static BookFragment getInstance2017(int flag, int type, String ip, String cookie, Base_Entity bookentity, HashMap<String,Object> othermap) {
         BookFragment bookFragment = new BookFragment();
         Bundle bundle = new Bundle();
         bundle.putSerializable("ip", ip);
@@ -191,20 +189,32 @@ public class BookFragment extends Fragment implements View.OnClickListener{
 
 
     @Deprecated  //只是用来测试得不推荐使用因为无效
-    public static BookFragment getInstance(Base_Entity bookentity) {
+    public static BookFragment getInstance2017(Base_Entity bookentity) {
         BookFragment bookFragment = new BookFragment();
         Bundle bundle = new Bundle();
         bundle.putSerializable("ip", "");
         bundle.putSerializable("flag", FLAG_2017);
-        bundle.putSerializable("type", TYPE_ADD);
+        bundle.putSerializable("type", TYPE_SEE);
         bundle.putSerializable("bookentity", bookentity);
+        bundle.putSerializable("cookie", "");
+        bookFragment.setArguments(bundle);
+        return bookFragment;
+    }
+    @Deprecated //只是用来测试得不推荐使用因为无效
+    public static BookFragment getInstance2017(BasePojo webobject, int type) {
+        BookFragment bookFragment = new BookFragment();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("ip", "");
+        bundle.putSerializable("flag", FLAG_2017);
+        bundle.putSerializable("type", type);
+        bundle.putSerializable("webobject", webobject);
         bundle.putSerializable("cookie", "");
         bookFragment.setArguments(bundle);
         return bookFragment;
     }
 
     @Deprecated //只是用来测试得不推荐使用因为无效
-    public static BookFragment getInstance(Base_Entity bookentity,int type) {
+    public static BookFragment getInstance2017(Base_Entity bookentity, int type) {
         BookFragment bookFragment = new BookFragment();
         Bundle bundle = new Bundle();
         bundle.putSerializable("ip", "");
@@ -215,7 +225,18 @@ public class BookFragment extends Fragment implements View.OnClickListener{
         bookFragment.setArguments(bundle);
         return bookFragment;
     }
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        getActivity().getTheme().applyStyle(R.style.BookTheme, true);
+        final Context contextThemeWrapper = new ContextThemeWrapper(getActivity(), R.style.BookTheme);
 
+        // clone the inflater using the ContextThemeWrapper
+        LayoutInflater localInflater = inflater.cloneInContext(contextThemeWrapper);
+        BookStatic.getInstance().init(getActivity().getApplicationContext());
+        ZipTask.checkTTF(getActivity().getApplicationContext());
+        return inflater.inflate(R.layout.book_detail, container, false);
+    }
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -244,7 +265,10 @@ public class BookFragment extends Fragment implements View.OnClickListener{
         LinearLayout lastline= (LinearLayout) view.findViewById(R.id.lastline);
         pdfcontent = (LinearLayout) view.findViewById(R.id.pdfcontent);
         pdfview = (PDFView) view.findViewById(R.id.pdfview);
-        pdfcontent.setVisibility(View.GONE);
+        if(mtype!=TYPE_SEE){
+            pdfcontent.setVisibility(View.GONE);
+        }
+
         if(mtype==2){
             lastline.setVisibility(View.GONE);
         }
@@ -310,15 +334,14 @@ public class BookFragment extends Fragment implements View.OnClickListener{
         bookDetailBuilder = new BookDetailBuilder(this.getActivity(), mbasebok, bookcontent);
         bookDetailBuilder.setEditState(mtype == 2 ? false : true);
         bookDetailBuilder.build();
+        if(mtype==TYPE_SEE){
+            reviewNow();
+            exit.setVisibility(View.INVISIBLE);
+            exit.setEnabled(false);
+        }
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        BookStatic.getInstance().init(getActivity().getApplicationContext());
-        ZipTask.checkTTF(getActivity().getApplicationContext());
-        return inflater.inflate(R.layout.book_detail, container, false);
-    }
+
     public void printer(){
         Toast.makeText(getActivity(),"文书生成中",Toast.LENGTH_SHORT).show();
         pdfpath=Environment.getExternalStorageDirectory()+"/at.pdf";
@@ -445,6 +468,35 @@ public class BookFragment extends Fragment implements View.OnClickListener{
             e.printStackTrace();
         }
     }
+    public void reviewNow(){
+        Toast.makeText(this.getActivity(),"文书生成中",Toast.LENGTH_SHORT).show();
+        pdfpath=Environment.getExternalStorageDirectory()+"/at.pdf";
+        Base_Entity booktmp=mbasebok;
+        PdfFactory2017.create().setTimeout(1000).setTTFpath(Environment.getExternalStorageDirectory()+"/TTFS").setFileout(pdfpath).open().printerMaster(booktmp).close(new IPdfBack() {
+            @Override
+            public void writeError() {
+                Toast.makeText(getActivity(),"操作过快请等待1秒",Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void writeStart() {
+
+            }
+
+            @Override
+            public void writeEnd() {
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        hideSoftInputFromWindow();
+                        pdfcontent.setVisibility(View.VISIBLE);
+                        pdfview.fromFile(new File(pdfpath)).load();
+                    }
+                });
+
+            }
+        });
+    }
     public void review(){
         Toast.makeText(this.getActivity(),"文书生成中",Toast.LENGTH_SHORT).show();
         pdfpath=Environment.getExternalStorageDirectory()+"/at.pdf";
@@ -473,7 +525,8 @@ public class BookFragment extends Fragment implements View.OnClickListener{
 
             }
         });
-    }public void exitpdf(){
+    }
+    public void exitpdf(){
         pdfview.recycle();
         pdfcontent.setVisibility(View.GONE);
     }
@@ -543,6 +596,9 @@ public class BookFragment extends Fragment implements View.OnClickListener{
 
     public boolean onBackPressed() {
         if(pdfcontent.getVisibility()==View.VISIBLE){
+            if(mtype==TYPE_SEE){
+                return false;
+            }
             exitpdf();
             return true;
         }else{

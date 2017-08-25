@@ -101,7 +101,7 @@ public class AssetCopyTaskS extends AsyncTask<String, Long, Long> {
             ZipFile zipFile=new ZipFile(Environment.getExternalStorageDirectory()+"/TTFS"+"/Font.zip");
             int zipnumber=zipFile.getFileHeaders().size();
             new UnZipTask(context, Environment.getExternalStorageDirectory()+"/TTFS/", zipnumber).execute(new ZipFile[]{zipFile});
-            DebugHandler.instance().sendEmptyMessage(12359);
+            HandlerHelp.instance().sendEmptyMessage(12359);
         } catch (ZipException e) {
             e.printStackTrace();
         }
@@ -121,11 +121,11 @@ public class AssetCopyTaskS extends AsyncTask<String, Long, Long> {
             Message message = Message.obtain();
             message.what = 12358;
             message.obj = getjindu;
-            DebugHandler.instance().sendMessage(message);
+            HandlerHelp.instance().sendMessage(message);
             Message message2= Message.obtain();
             message2.what=12360;
             message2.obj=getjindu;
-            DebugHandler.instance().sendMessage(message2);
+            HandlerHelp.instance().sendMessage(message2);
             old=now;
 
         }

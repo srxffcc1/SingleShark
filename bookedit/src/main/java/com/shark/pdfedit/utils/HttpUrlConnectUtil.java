@@ -51,7 +51,7 @@ public class HttpUrlConnectUtil {
             String split = array[1];
             String[] splits = split.split("&");
             for (int i = 0; i < splits.length; i++) {
-                orgmap.put(splits[i].split("=")[0], splits[i].split("=")[1]);
+                orgmap.put(splits[i].split("=")[0],splits[i].split("=").length<2?"":splits[i].split("=")[1]);
             }
         } else {
 
