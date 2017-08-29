@@ -1,5 +1,5 @@
-//include ':bookedit'
-//include ':app'
+include ':bookedit'
+include ':app'
 
 
 //include ':sharkapp'
@@ -8,7 +8,7 @@
 //include ':moduleresource'
 //include ':moduleclone'
 //include ':moduleapk'
-include ':common'
+//include ':common'
 
 
 
