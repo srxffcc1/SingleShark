@@ -46,7 +46,7 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':blackframe')
-    compile project(':common')
+//    compile project(':common')
     //----------------------------------------------------
     compile('com.android.support:design:' + rootProject.supportVersion)//design包
     compile('com.android.support:cardview-v7:' + rootProject.supportVersion)//card包
@@ -64,7 +64,7 @@ dependencies {
     }//解压文件
 //    compile 'com.sixdown.opencamera:opencamera:+'//opencamera 库
     compile 'com.sixdown.soundrecord:soundrecord:+'//录音
-//    compile 'com.sixdown.common:common:+'//通用工具集
+    compile 'com.sixdown.common:common:+'//通用工具集
     compile 'com.sixdown.verticalrefreshlayout:verticalrefreshlayout:+'//下拉刷新
     compile 'com.sixdown.kjhttp:kjhttp:+'//网络请求包
     compile 'com.sixdown.kvplayer:kvplayer:+'//金山云视频
