@@ -12,6 +12,3 @@ include ':moduleapk'
 
 
 
-//include ':virtualapp'
-//include ':androidSDKDemos30'
-//include ':choosePDFActivity'
