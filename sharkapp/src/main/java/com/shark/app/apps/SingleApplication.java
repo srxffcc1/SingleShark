@@ -10,6 +10,9 @@ import com.businessframehelp.staticlib.StaticAppInfo;
 import com.businessframehelp.utils.ClassUtil;
 import com.igexin.sdk.PushManager;
 import com.shark.app.R;
+import com.shark.app.business.utils.SpHome;
+
+import org.kymjs.kjframe.http.HttpConfig;
 
 /**
  * Created by Administrator on 2017/5/9.
@@ -27,6 +30,9 @@ public class SingleApplication extends BusinessApplication {
         // AndroidManifest 对应保留一个即可(如果注册 DemoIntentService, 可以去掉 PushDemoReceiver, 如果注册了
         // IntentService, 必须在 AndroidManifest 中声明)
         PushManager.getInstance().registerPushIntentService(this.getApplicationContext(), GeTIntentService.class);
+        SpHome.getSpHome().setMcontext(this);//初始化sp
+        HttpConfig.needPHPSESSID=false;
+        HttpConfig.TIMEOUT=2000;
     }
 
 

@@ -1,5 +1,6 @@
 package com.shark.app.business.singleactivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 import android.support.annotation.Nullable;
@@ -25,6 +26,7 @@ import java.util.List;
 public class ActivityEnterpriseMesh extends FrameActivity {
 
     private List<ImageTextMenuEntity> list_1;
+    public String qyid;
     @Override
     public ORIENTATION getORIENTATION() {
         return null;
@@ -44,10 +46,13 @@ public class ActivityEnterpriseMesh extends FrameActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.include_recycle);
+        qyid=getIntent().getStringExtra("qyid");
         GridLayoutManager manager=new GridLayoutManager(this,3, LinearLayoutManager.VERTICAL,false);
         RecyclerView recycler_view= (RecyclerView) findViewById(R.id.recycler_view);
         list_1 = new ArrayList<>();
-        list_1.add(new ImageTextMenuEntity("基本信息").setImageRid(R.drawable.mesh_xx).setClickpassclass(ActivityEnterpriseBaseDetail.class));
+        list_1.add(new ImageTextMenuEntity("基本信息").setImageRid(R.drawable.mesh_xx).setClickpassclass(ActivityEnterpriseBaseDetail.class)
+                .setIntent(new Intent(this,ActivityEnterpriseBaseDetail.class)
+                        .putExtra("qyid",qyid)));
         list_1.add(new ImageTextMenuEntity("处罚记录").setImageRid(R.drawable.mesh_cfjl).setClickpassclass(null));
         list_1.add(new ImageTextMenuEntity("隐患排查").setImageRid(R.drawable.mesh_yhpc).setClickpassclass(null));
         list_1.add(new ImageTextMenuEntity("检查情况").setImageRid(R.drawable.mesh_jcjl).setClickpassclass(null));

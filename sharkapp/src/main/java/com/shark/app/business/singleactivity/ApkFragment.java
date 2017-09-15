@@ -185,7 +185,7 @@ public class ApkFragment extends Fragment //implements ServiceConnection
 //                    handler.post(new Runnable() {
 //                        @Override
 //                        public void run() {
-//                            adapteralready.clear();
+//                            adapteralready.remove();
 //                        }
 //                    });
 //                    for (final PackageInfo info : infos) {
@@ -231,7 +231,7 @@ public class ApkFragment extends Fragment //implements ServiceConnection
 //                handler.post(new Runnable() {
 //                    @Override
 //                    public void run() {
-//                        adapterall.clear();
+//                        adapterall.remove();
 //                    }
 //                });
 //

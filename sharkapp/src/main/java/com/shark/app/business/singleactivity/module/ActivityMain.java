@@ -191,7 +191,7 @@ import java.util.List;
             if(needdoubleclick){
                 System.arraycopy(mHits, 1, mHits, 0, mHits.length-1);
                 mHits[mHits.length-1] = SystemClock.uptimeMillis();
-                if (mHits[0] >= (SystemClock.uptimeMillis()-700)) {
+                if (mHits[0] >= (SystemClock.uptimeMillis()-1000)) {//1秒内按两次都是有效的
                     super.onBackPressed();
                 }else{
                     Toast.makeText(this,"再按一次退出程序",Toast.LENGTH_SHORT).show();

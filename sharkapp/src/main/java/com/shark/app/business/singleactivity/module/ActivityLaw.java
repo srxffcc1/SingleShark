@@ -64,6 +64,16 @@ public class ActivityLaw extends AbstractActivitySearchList {
 
     }
 
+    @Override
+    public void toNext() {
+
+    }
+
+    @Override
+    public void toPrevious() {
+
+    }
+
     class LawAdapter extends RecyclerView.Adapter<LawAdapter.SingelViewHolder>{
         public Activity mactivity;
         public Fragment mfragment;

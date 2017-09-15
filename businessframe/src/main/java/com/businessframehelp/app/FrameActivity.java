@@ -33,6 +33,7 @@ import org.kymjs.kjframe.KJHttp;
 import org.kymjs.kjframe.http.HttpCallBack;
 import org.kymjs.kjframe.http.HttpParams;
 
+import java.util.Map;
 import java.util.UUID;
 
 import butterknife.ButterKnife;
@@ -67,6 +68,13 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
         }
     };
 
+    /**
+     * 重写此方法去掉标题栏
+     * @return
+     */
+    public boolean needActionBar(){
+        return true;
+    }
     @Override
     protected void onStart() {
         super.onStart();
@@ -85,20 +93,7 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
         mLocalActivityManager.dispatchCreate(savedInstanceState);
         BroadCastManager.getInstance().registerListtener(this);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        if(!getIntent().getBooleanExtra("needActionBar",true)){
-            try {
-//                //System.out.println("要去掉suactionbar咯");
-            getSupportActionBar().hide();
-            } catch (Exception e) {
-            e.printStackTrace();
-            }
-            try {
-//                //System.out.println("要去掉actionbar咯");
-                getActionBar().hide();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+        checkActionBar();
 
         super.onCreate(savedInstanceState);
         kjHttp = new KJHttp();
@@ -183,20 +178,7 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
 
         ButterKnife.bind(this) ;
         supportToolbar=BarUtil.initBar(this);
-        if(!getIntent().getBooleanExtra("needActionBar",true)){
-            try {
-//                //System.out.println("要去掉suactionbar咯");
-                getSupportActionBar().hide();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            try {
-//                //System.out.println("要去掉actionbar咯");
-                getActionBar().hide();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+        checkActionBar();
     }
 
     @Override
@@ -209,20 +191,7 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
 
         ButterKnife.bind(this) ;
         supportToolbar=BarUtil.initBar(this);
-        if(!getIntent().getBooleanExtra("needActionBar",true)){
-            try {
-                ////System.out.println("要去掉suactionbar咯");
-                getSupportActionBar().hide();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            try {
-                ////System.out.println("要去掉actionbar咯");
-                getActionBar().hide();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+        checkActionBar();
     }
 
     @Override
@@ -236,7 +205,11 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
 
         ButterKnife.bind(this);
         supportToolbar=BarUtil.initBar(this);
-        if(!getIntent().getBooleanExtra("needActionBar",true)){
+        checkActionBar();
+    }
+
+    private void checkActionBar() {
+        if(!getIntent().getBooleanExtra("needActionBar",true)||!needActionBar()){
             try {
                 ////System.out.println("要去掉suactionbar咯");
                 getSupportActionBar().hide();
@@ -251,6 +224,7 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
             }
         }
     }
+
     @Override
     final public View getIntentContentView(String mTag, Intent mIntent) {
         if (mLocalActivityManager == null) {
@@ -305,6 +279,33 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
     }
     final public boolean checkNet(){
         return NetworkUtils.checkNet(this);
+    }
+    final public void httpPost(final String url, final Map<String,String> map, final HttpCallBack httpCallBack){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                HttpParams httpParams=new HttpParams();
+                for (Map.Entry<String, String> entry : map.entrySet()) {
+                    System.out.println(entry.getKey()+":"+entry.getValue());
+                    httpParams.put(entry.getKey(),entry.getValue());
+                }
+                kjHttp.post(url,httpParams,false,httpCallBack);
+            }
+        }).start();
+
+    }
+    final public void httpGet(final String url, final Map<String,String> map, final HttpCallBack httpCallBack){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                HttpParams httpParams=new HttpParams();
+                for (Map.Entry<String, String> entry : map.entrySet()) {
+                    httpParams.put(entry.getKey(),entry.getValue());
+                }
+                kjHttp.get(url,httpParams,false,httpCallBack);
+            }
+        }).start();
+
     }
     final public void httpPost(final String url, final HttpParams httpParams, final HttpCallBack httpCallBack){
         new Thread(new Runnable() {
@@ -451,6 +452,8 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
         super.finish();
     }
 
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId()==android.R.id.home){
@@ -468,7 +471,7 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
         return true;
     }
     public Context getContext(){
-        return getBaseContext();
+        return this;
     }
 
 }

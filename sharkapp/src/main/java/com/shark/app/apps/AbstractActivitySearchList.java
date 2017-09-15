@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.businessframehelp.adapter.QuerySuggestionsAdapter;
@@ -34,13 +35,16 @@ import com.zhy.autolayout.utils.AutoUtils;
  * 带查找的activity
  */
 
-abstract public class AbstractActivitySearchList extends FrameActivity implements ISearch,VRefreshLayout.OnRefreshListener,SearchView.OnQueryTextListener,SearchView.OnSuggestionListener {
+abstract public class AbstractActivitySearchList extends FrameActivity implements View.OnClickListener,ISearch,VRefreshLayout.OnRefreshListener,SearchView.OnQueryTextListener,SearchView.OnSuggestionListener {
     private static final String[] COLUMNS = { BaseColumns._ID, SearchManager.SUGGEST_COLUMN_TEXT_1, };
-    private SearchView searchView;
-    private MenuItem seachmenuItem;
-    private EditText searchEditText;
-    private RecyclerView recycler_view;
-    private VRefreshLayout mRefreshLayout;
+    public SearchView searchView;
+    public MenuItem seachmenuItem;
+    public EditText searchEditText;
+    public RecyclerView recycler_view;
+    public VRefreshLayout mRefreshLayout;
+    public RecyclerView.Adapter adapter;
+    public TextView patetext;
+    public TextView totaltext;
 
     @Override
     public ORIENTATION getORIENTATION() {
@@ -56,15 +60,20 @@ abstract public class AbstractActivitySearchList extends FrameActivity implement
     final protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.setContentView(R.layout.include_pageturnfreshlist);
+        patetext= (TextView) findViewById(R.id.pagetext);
+        totaltext= (TextView) findViewById(R.id.totaltext);
         recycler_view = (RecyclerView) findViewById(R.id.recycler_view);
         recycler_view.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
-        RecyclerView.Adapter adapter=getRecycleAdapter();
-        if(adapter==null){
+        adapter = getRecycleAdapter();
+        if(adapter ==null){
 //            //System.out.println("测试列表");
-            adapter=new TmpAdapter(this);
+            adapter =new TmpAdapter(this);
+
         }
         recycler_view.setAdapter(adapter);
         mRefreshLayout = (VRefreshLayout) findViewById(R.id.vrefresh);
+        findViewById(R.id.previous).setOnClickListener(this);
+        findViewById(R.id.next).setOnClickListener(this);
         mRefreshLayout.addOnRefreshListener(this);
         onCreateImp(savedInstanceState);
     }
@@ -75,6 +84,19 @@ abstract public class AbstractActivitySearchList extends FrameActivity implement
             clickMultiSearch();
         }
         return super.onOptionsItemSelected(item);
+    }
+    abstract public void toNext();
+    abstract public void toPrevious();
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.previous:
+                toPrevious();
+                break;
+            case R.id.next:
+                toNext();
+                break;
+        }
     }
 
     @Override

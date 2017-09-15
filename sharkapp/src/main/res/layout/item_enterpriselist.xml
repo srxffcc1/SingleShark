@@ -16,21 +16,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <TextView
+                android:id="@+id/qymc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:text="测试"/>
+                android:text="企业名称" />
+
             <TextView
+                android:id="@+id/fddbr"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:text="测试"/>
+                android:text="法定代表人" />
+
             <TextView
+                android:id="@+id/lxdh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:text="测试"/>
+                android:text="联系电话" />
         </LinearLayout>
 
     </android.support.v7.widget.CardView>

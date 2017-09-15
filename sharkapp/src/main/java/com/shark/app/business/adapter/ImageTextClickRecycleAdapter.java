@@ -3,7 +3,6 @@ package com.shark.app.business.adapter;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -94,11 +93,11 @@ abstract  public class ImageTextClickRecycleAdapter extends RecyclerView.Adapter
             Class desclass=mlist.get(getAdapterPosition()).getClickpassclass();
             if(desclass!=null){
                 if(mactivity!=null){
-                    mactivity.startActivity(new Intent(mcontext,desclass));
+                    mactivity.startActivity(mlist.get(getAdapterPosition()).getIntent());
                 }else if(mfragment!=null){
-                    mfragment.startActivity(new Intent(mcontext,desclass));
+                    mfragment.startActivity(mlist.get(getAdapterPosition()).getIntent());
                 }else{
-                    msupportfragment.startActivity(new Intent(mcontext,desclass));
+                    msupportfragment.startActivity(mlist.get(getAdapterPosition()).getIntent());
                 }
             }
         }

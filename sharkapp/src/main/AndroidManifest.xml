@@ -42,29 +42,29 @@
 
         </activity>
 
-        <activity android:name=".test.ListTestActivity" />
-        <activity android:name=".business.singleactivity.module.ActivityLogin" android:theme="@style/FrameAppTheme.NoActionBarNoSoftInput"/>
-        <activity android:name=".business.singleactivity.module.ActivityMain" android:theme="@style/FrameAppTheme.Navigation"/>
-        <activity android:name=".business.singleactivity.tab.ActivityCheckUpList" />
-        <activity android:name=".business.singleactivity.module.ActivityEnterpriseList" />
-        <activity android:name=".business.singleactivity.tab.ActivityPdfBook" />
-        <activity android:name=".business.singleactivity.module.ActivityBook" />
-        <activity android:name=".business.singleactivity.module.ActivityAutoLogin" />
-        <activity android:name=".business.singleactivity.ActivityEnterpriseMesh" />
-        <activity android:name=".business.singleactivity.module.ActivityCollect" />
-        <activity android:name=".business.singleactivity.module.ActivityLaw" />
-        <activity android:name=".business.singleactivity.ActivityLawDetail" />
-        <activity android:name=".business.singleactivity.ActivityEnterpriseBaseDetail" />
-        <activity android:name=".business.singleactivity.module.ActivityHazardsList" />
-        <activity android:name=".business.singleactivity.module.ActivityRecordList" />
-        <activity android:name=".business.singleactivity.module.ActivityPrinterList" />
-        <activity android:name=".business.singleactivity.module.ActivityTroubleInvestigation" />
-        <activity android:name=".business.singleactivity.library.ActivityAqscbz" />
-        <activity android:name=".business.singleactivity.library.ActivityAqscflfg" />
-        <activity android:name=".business.singleactivity.library.ActivityDxsgal" />
-        <activity android:name=".business.singleactivity.library.ActivityWxhxptz" />
-        <activity android:name=".business.singleactivity.library.ActivityYhpcbz" />
-        <activity android:name=".business.singleactivity.library.ActivityZfyj" />
+        <activity android:name=".test.ListTestActivity" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.module.ActivityLogin" android:theme="@style/FrameAppTheme.NoActionBarNoSoftInput" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.module.ActivityMain" android:theme="@style/FrameAppTheme.Navigation" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.tab.ActivityCheckUpList" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.module.ActivityEnterpriseList" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.tab.ActivityPdfBook" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.module.ActivityBook" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.module.ActivityAutoLogin" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.ActivityEnterpriseMesh" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.module.ActivityCollect" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.module.ActivityLaw" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.ActivityLawDetail" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.ActivityEnterpriseBaseDetail" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.module.ActivityHazardsList" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.module.ActivityRecordList" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.module.ActivityPrinterList" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.module.ActivityTroubleInvestigation" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.library.ActivityAqscbz" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.library.ActivityAqscflfg" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.library.ActivityDxsgal" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.library.ActivityWxhxptz" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.library.ActivityYhpcbz" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.library.ActivityZfyj" android:launchMode="singleTop"/>
     </application>
 
 </manifest>

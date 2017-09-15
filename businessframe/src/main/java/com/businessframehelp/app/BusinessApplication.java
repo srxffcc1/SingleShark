@@ -6,6 +6,7 @@ import android.content.Context;
 import android.os.Bundle;
 
 import com.blackframehelp.utils.BlackApplication;
+import com.hss01248.dialog.StyledDialog;
 import com.kymjs.common.Log;
 import com.kymjs.common.SystemTool;
 
@@ -18,6 +19,7 @@ public class BusinessApplication extends BlackApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+        StyledDialog.init(getApplicationContext());
         Log.mLogEnable= SystemTool.isApkDebugable(this);
         this.registerActivityLifecycleCallbacks(new BusinessActivityLifecycleCallbacks());
 

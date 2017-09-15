@@ -24,12 +24,21 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.businessframehelp.app.FrameActivity;
 import com.businessframehelp.enums.ORIENTATION;
 import com.hss01248.dialog.StyledDialog;
 import com.hss01248.dialog.interfaces.MyDialogListener;
 import com.shark.app.R;
+import com.shark.app.business.statich.UrlHome;
+import com.shark.app.business.urlentity.ELogin;
+import com.shark.app.business.utils.SpHome;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.kymjs.kjframe.http.HttpCallBack;
+import org.kymjs.kjframe.http.HttpConfig;
 
 /**
  * Created by King6rf on 2017/5/17.
@@ -49,7 +58,7 @@ public class ActivityLogin extends FrameActivity implements View.OnClickListener
     }
     private ImageView logo;
     private ScrollView scrollView;
-    private EditText et_mobile;
+    private EditText et_username;
     private EditText et_password;
     private ImageView iv_clean_phone;
     private ImageView clean_password;
@@ -80,7 +89,7 @@ public class ActivityLogin extends FrameActivity implements View.OnClickListener
     private void intiView() {
         logo = (ImageView) findViewById(R.id.logo);
         scrollView = (ScrollView) findViewById(R.id.scrollView);
-        et_mobile = (EditText) findViewById(R.id.et_mobile);
+        et_username = (EditText) findViewById(R.id.et_mobile);
         et_password = (EditText) findViewById(R.id.et_password);
         iv_clean_phone = (ImageView) findViewById(R.id.iv_clean_phone);
         clean_password = (ImageView) findViewById(R.id.clean_password);
@@ -100,7 +109,7 @@ boolean needscale=true;
         iv_clean_phone.setOnClickListener(this);
         clean_password.setOnClickListener(this);
         iv_show_pwd.setOnClickListener(this);
-        et_mobile.addTextChangedListener(new TextWatcher() {
+        et_username.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -282,13 +291,46 @@ boolean needscale=true;
         mAnimatorSet.setDuration(200);
         mAnimatorSet.start();
     }
+    public synchronized void toLogin(){
+        HttpConfig.sCookie="";
+        Toast.makeText(getContext(),"正在登录",Toast.LENGTH_SHORT).show();
+        ELogin eLogin=new ELogin(et_username.getText().toString(),et_password.getText().toString());
+        SpHome.getSpHome().put("username",et_username.getText().toString());
+        SpHome.getSpHome().put("password",et_password.getText().toString());
+        httpGet(UrlHome.getUrl(this, UrlHome.login), UrlHome.entity2MapHashClassNoPrefix(eLogin), new HttpCallBack() {
+            @Override
+            public void onSuccess(String t) {
+          super.onSuccess(t);
+                try {
+                    JSONObject jsonObject=new JSONObject(t);
+                    if(jsonObject.getBoolean("status")){
+                        String sessionid=jsonObject.getString("sessionId");
+                        HttpConfig.sCookie=sessionid;
+                        startActivity(new Intent(getContext(),ActivityMain.class));
+                        finish();
+                    }else{
+                        Toast.makeText(getContext(),jsonObject.getString("message"),Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onFailure(int errorNo, String strMsg) {
+                super.onFailure(errorNo, strMsg);
+            }
+        });
+
+    }
 
     @Override
     public void onClick(View v) {
         int id = v.getId();
         switch (id) {
             case R.id.iv_clean_phone:
-                et_mobile.setText("");
+                et_username.setText("");
                 break;
             case R.id.clean_password:
                 et_password.setText("");
@@ -306,8 +348,7 @@ boolean needscale=true;
                     et_password.setSelection(pwd.length());
                 break;
             case R.id.btn_login:
-                startActivity(new Intent(this,ActivityMain.class));
-                finish();
+                toLogin();
                 break;
             case R.id.logo:
                 startMenuDialogImp();

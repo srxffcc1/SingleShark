@@ -1,7 +1,7 @@
 package com.shark.app.business.statich;
 
 /**
- * Created by Administrator on 2017/8/11.
+ * Created by Administrator on 2017/8/11.存档action的 可能是广播
  */
 
 public class ActionHome {
