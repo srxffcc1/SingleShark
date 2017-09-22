@@ -138,6 +138,7 @@ public class HttpConnectStack implements HttpStack {
 
         int timeoutMs = request.getTimeoutMs();
         if(HttpConfig.sCookie!=null&&!HttpConfig.sCookie.equals("")){
+            System.out.println("Cookie:"+HttpConfig.sCookie);
             if(HttpConfig.needJSESSIONID){
 
                 connection.setRequestProperty("cookie", "JSESSIONID=" + HttpConfig.sCookie);

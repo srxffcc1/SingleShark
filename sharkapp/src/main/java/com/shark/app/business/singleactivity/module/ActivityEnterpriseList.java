@@ -16,7 +16,6 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.hss01248.dialog.StyledDialog;
 import com.shark.app.R;
 import com.shark.app.apps.AbstractActivitySearchList;
 import com.shark.app.business.resultentity.Enterprise;
@@ -54,7 +53,7 @@ public class ActivityEnterpriseList extends AbstractActivitySearchList {
     @Override
     public void onCreateImp(@Nullable Bundle savedInstanceState) {
 
-        StyledDialog.buildLoading().show();
+//        StyledDialog.buildLoading().show();
         getEnterpriseList(new EEnterprise().setPage(page+"").setRows(rows+""));
     }
     public void getEnterpriseList(EEnterprise eEnterprise){
@@ -84,7 +83,7 @@ public class ActivityEnterpriseList extends AbstractActivitySearchList {
                     e.printStackTrace();
                 }
 
-                StyledDialog.dismissLoading();
+//                StyledDialog.dismissLoading();
                 mRefreshLayout.refreshComplete();
 
             }
@@ -129,7 +128,7 @@ public class ActivityEnterpriseList extends AbstractActivitySearchList {
     public void toNext() {
         if(page<totalpage){
             page++;
-            StyledDialog.buildLoading("载入中").show();
+//            StyledDialog.buildLoading("载入中").show();
             getEnterpriseList(new EEnterprise().setPage(page+"").setRows(rows+""));
         }else{
             Toast.makeText(this,"已经是最后一页了",Toast.LENGTH_SHORT).show();
@@ -140,7 +139,7 @@ public class ActivityEnterpriseList extends AbstractActivitySearchList {
     public void toPrevious() {
         if(page>1){
             page--;
-            StyledDialog.buildLoading().show();
+//            StyledDialog.buildLoading().show();
             getEnterpriseList(new EEnterprise().setPage(page+"").setRows(rows+""));
         }else{
             Toast.makeText(this,"已经是第一页了",Toast.LENGTH_SHORT).show();
