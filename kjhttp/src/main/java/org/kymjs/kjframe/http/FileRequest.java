@@ -171,11 +171,6 @@ public class FileRequest extends Request<byte[]> {
             }
         } finally {
             in.close();
-            try {
-                response.getContentStream().close();
-            } catch (Exception e) {
-                KJLoger.debug("Error occured when calling consumingContent");
-            }
             tmpFileRaf.close();
         }
         return null;

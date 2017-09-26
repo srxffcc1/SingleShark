@@ -5,6 +5,6 @@ include ':moduleresource'
 include ':moduleclone'
 include ':moduleapk'
 include ':kjhttp'
-
+include ':stepview'
 
 

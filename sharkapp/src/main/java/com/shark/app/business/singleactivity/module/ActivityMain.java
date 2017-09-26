@@ -21,7 +21,7 @@ import com.hss01248.dialog.StyledDialog;
 import com.hss01248.dialog.interfaces.MyItemDialogListener;
 import com.shark.app.R;
 import com.shark.app.business.entity.TabEntity;
-import com.shark.app.business.fragment.FragmentManager;
+import com.shark.app.business.fragment.FragmentManagers;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 
@@ -149,7 +149,7 @@ import java.util.List;
                 .withMenuLayout(R.layout.activity_leftmenu)
                 .inject();
         for (String title : mTitles) {
-            mFragments.add(FragmentManager.getInstance().factory(title));
+            mFragments.add(FragmentManagers.getInstance().factory(title));
         }
 
 

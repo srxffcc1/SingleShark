@@ -35,7 +35,7 @@ public class ActivityEnterpriseBaseDetail extends FrameActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.include_refresh);
+        setContentView(R.layout.include_recyclerefresh);
         VRefreshLayout vRefreshLayout= (VRefreshLayout) findViewById(R.id.vrefresh);
 
     }

@@ -14,7 +14,7 @@ import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.shark.app.R;
 import com.shark.app.business.entity.TabEntity;
-import com.shark.app.business.fragment.FragmentManager;
+import com.shark.app.business.fragment.FragmentManagers;
 
 import java.util.ArrayList;
 
@@ -55,7 +55,7 @@ public class ActivityCheckUpList extends FrameActivity {
         setContentView(R.layout.include_tab);
         BarUtil.initBar(this,"执法任务");
         for (String title : mTitles) {
-            mFragments.add(FragmentManager.getInstance().factory(title));
+            mFragments.add(FragmentManagers.getInstance().factory(title));
         }
         for (int i = 0; i < mTitles.length; i++) {
             mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));

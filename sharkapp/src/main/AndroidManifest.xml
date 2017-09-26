@@ -65,6 +65,7 @@
         <activity android:name=".business.singleactivity.library.ActivityWxhxptz" android:launchMode="singleTop"/>
         <activity android:name=".business.singleactivity.library.ActivityYhpcbz" android:launchMode="singleTop"/>
         <activity android:name=".business.singleactivity.library.ActivityZfyj" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.ActivityCheck" android:launchMode="singleTop"/>
     </application>
 
 </manifest>

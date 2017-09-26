@@ -96,18 +96,24 @@ public class HttpConnectStack implements HttpStack {
 
     private KJHttpResponse responseFromConnection(HttpURLConnection connection) throws IOException {
         KJHttpResponse response = new KJHttpResponse();
+        System.out.println("startrequest1");
         //contentStream
         InputStream inputStream;
         try {
+            System.out.println("startrequest-2");
+            connection.setReadTimeout(HttpConfig.TIMEOUT);
             inputStream = connection.getInputStream();
+            System.out.println("startrequest-3");
         } catch (IOException ioe) {
             inputStream = connection.getErrorStream();
         }
         int responseCode = connection.getResponseCode();
         if (responseCode == -1) {
+            System.out.println("startrequest-1");
             throw new IOException(
                     "Could not retrieve response code from HttpUrlConnection.");
         }
+        System.out.println("startrequest2");
         response.setResponseCode(responseCode);
         response.setResponseMessage(connection.getResponseMessage());
         
@@ -116,6 +122,7 @@ public class HttpConnectStack implements HttpStack {
         response.setContentLength(connection.getContentLength());
         response.setContentEncoding(connection.getContentEncoding());
         response.setContentType(connection.getContentType());
+        System.out.println("startrequest3");
         //header
         Map<String, String> headerMap = new HashMap<String, String>();
         for (Entry<String, List<String>> header : connection.getHeaderFields()
@@ -128,6 +135,7 @@ public class HttpConnectStack implements HttpStack {
                 headerMap.put(header.getKey(), value);
             }
         }
+        System.out.println("startrequest4");
         response.setHeaders(headerMap);
         return response;
     }

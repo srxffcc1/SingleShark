@@ -5,12 +5,12 @@ import android.support.v4.app.Fragment;
 
 
 @SuppressLint("ValidFragment")
-public class FragmentManager{
-    public static final FragmentManager instance=new FragmentManager();
-    private FragmentManager(){
+public class FragmentManagers {
+    public static final FragmentManagers instance=new FragmentManagers();
+    private FragmentManagers(){
 
     }
-    public static FragmentManager getInstance(){
+    public static FragmentManagers getInstance(){
         return instance;
     }
     public Fragment factory(String tag){

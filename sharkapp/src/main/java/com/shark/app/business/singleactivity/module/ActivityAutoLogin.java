@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
-import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.businessframehelp.app.FrameActivity;
@@ -26,19 +25,26 @@ import org.kymjs.kjframe.http.HttpConfig;
  */
 
 public class ActivityAutoLogin extends FrameActivity {
+    boolean islogin=false;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_autologin);
         ProgressWheel progressWheel = (ProgressWheel) findViewById(R.id.progress_wheel);
         progressWheel.spin();
+        toLogin();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                toLogin();
+                if(!islogin){
+                    Toast.makeText(getContext(),"自动登录失败尝试手动登录",Toast.LENGTH_SHORT).show();
+                    finish();
+                    startActivity(new Intent(getContext(),ActivityLogin.class));
+                }
+
             }
-        },300);
+        },2000);
 
     }
 
@@ -60,6 +66,7 @@ public class ActivityAutoLogin extends FrameActivity {
                     if(jsonObject.getBoolean("status")){
                         String sessionid=jsonObject.getString("sessionId");
                         HttpConfig.sCookie=sessionid;
+                        islogin=true;
                         startActivity(new Intent(getContext(),ActivityMain.class));
                         finish();
                     }else{

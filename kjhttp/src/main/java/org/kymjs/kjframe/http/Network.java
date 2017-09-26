@@ -84,6 +84,13 @@ public class Network {
                 } else {
                     responseContents = new byte[0];
                 }
+                try {
+                    System.out.println("关闭net");
+                    httpResponse.getContentStream().close();
+                } catch (Exception e) {
+                    KJLoger.debug("Error occured when calling consumingContent");
+                }
+
 
                 if (statusCode < 200 || statusCode > 299) {
                     throw new IOException();

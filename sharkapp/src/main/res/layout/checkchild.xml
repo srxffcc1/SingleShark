@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="#00BEAF"
+    android:layout_height="match_parent">
+    <com.baoyachi.stepview.VerticalStepView
+        android:id="@+id/step_child"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="vertical setpview"
+        />
+</LinearLayout>

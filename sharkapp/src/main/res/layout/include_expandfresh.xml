@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.leelay.freshlayout.verticalre.VRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/vrefresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#808080"
+    android:enabled="false"
+    android:orientation="vertical">
+    <ExpandableListView
+        android:id="@+id/expand_view"
+        android:background="#FFF"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </ExpandableListView>
+</com.leelay.freshlayout.verticalre.VRefreshLayout>
