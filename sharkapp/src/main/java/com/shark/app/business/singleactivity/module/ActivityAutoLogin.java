@@ -44,7 +44,7 @@ public class ActivityAutoLogin extends FrameActivity {
                 }
 
             }
-        },2000);
+        },3000);
 
     }
 

@@ -1,15 +1,20 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/card_title_tv"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_margin="10dp"
-        android:background="@drawable/background_card"
-        android:gravity="center"
-        android:textSize="18sp"/>
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        android:background="@drawable/background_card">
+
+        <TextView
+            android:id="@+id/card_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:gravity="center"
+            android:textSize="18sp" />
+    </FrameLayout>
+
 
 </RelativeLayout>

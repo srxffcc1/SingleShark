@@ -34,7 +34,7 @@ public class FragmentHostCheck extends BaseSupportFragment {
         super.onViewCreated(view, savedInstanceState);
         expand_view= (ExpandableListView) view.findViewById(R.id.expand_view);
         List<Check> checkList=new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 30; i++) {
             checkList.add(new Check());
         }
         expand_view.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {

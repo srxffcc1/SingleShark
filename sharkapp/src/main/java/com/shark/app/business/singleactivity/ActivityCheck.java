@@ -25,7 +25,7 @@ public class ActivityCheck extends FrameActivity {
     private String[] mTitles_3 ;
     private ArrayList<Fragment> mFragments = new ArrayList<>();
     private SegmentTabLayout mTabLayout_3;
-    int testlengtht=4;
+    int testlengtht=17;
     @Override
     public ORIENTATION getORIENTATION() {
         return null;
