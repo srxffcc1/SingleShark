@@ -26,18 +26,19 @@ import com.businessframehelp.enums.ORIENTATION;
 import com.businessframehelp.inter.IFrameActivity;
 import com.businessframehelp.listen.IBroadCastListener;
 import com.businessframehelp.utils.BarUtil;
+import com.businessframehelp.utils.HttpUrlConnectUtil;
 import com.kymjs.common.NetworkUtils;
 import com.zhy.autolayout.AutoLayoutActivity;
 
 import org.kymjs.kjframe.KJHttp;
 import org.kymjs.kjframe.http.HttpCallBack;
+import org.kymjs.kjframe.http.HttpConfig;
 import org.kymjs.kjframe.http.HttpParams;
 
 import java.util.Map;
 import java.util.UUID;
 
 import butterknife.ButterKnife;
-
 
 
 /**
@@ -280,49 +281,104 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
     final public boolean checkNet(){
         return NetworkUtils.checkNet(this);
     }
-    final public void httpPost(final String url, final Map<String,String> map, final HttpCallBack httpCallBack){
+    final public void httpPost(final String url, final Map<String,Object> map, final HttpCallBack httpCallBack){
         new Thread(new Runnable() {
             @Override
             public void run() {
-                HttpParams httpParams=new HttpParams();
-                for (Map.Entry<String, String> entry : map.entrySet()) {
-                    System.out.println(entry.getKey()+":"+entry.getValue());
-                    httpParams.put(entry.getKey(),entry.getValue());
+                try {
+                    System.out.println("请求参数"+url);
+                    final String result=HttpUrlConnectUtil.doPost(url,map, HttpConfig.sCookie);
+                    if("".equals(result)){
+                        httpCallBack.onFailure(000,"出错了");
+                    }else{
+                        if(result.contains("login.jsp")){
+                            httpCallBack.onCookieTimeOut();
+                        }else{
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    httpCallBack.onSuccess(result);
+                                }
+                            });
+
+                        }
+                    }
+                    System.out.println("直连返回"+result);
+                } catch (Exception e) {
+                    httpCallBack.onFailure(000,"出错了");
+                    e.printStackTrace();
                 }
-                kjHttp.post(url,httpParams,false,httpCallBack);
             }
         }).start();
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                HttpParams httpParams=new HttpParams();
+//                for (Map.Entry<String, String> entry : map.entrySet()) {
+//                    System.out.println(entry.getKey()+":"+entry.getValue());
+//                    httpParams.put(entry.getKey(),entry.getValue());
+//                }
+//                kjHttp.post(url,httpParams,false,httpCallBack);
+//            }
+//        }).start();
 
     }
-    final public void httpGet(final String url, final Map<String,String> map, final HttpCallBack httpCallBack){
+    final public void httpGet(final String url, final Map<String,Object> map, final HttpCallBack httpCallBack){
         new Thread(new Runnable() {
             @Override
             public void run() {
-                HttpParams httpParams=new HttpParams();
-                for (Map.Entry<String, String> entry : map.entrySet()) {
-                    httpParams.put(entry.getKey(),entry.getValue());
+                try {
+                    System.out.println("请求参数"+url);
+                    final String result=HttpUrlConnectUtil.doPost(url,map, HttpConfig.sCookie);
+                    if("".equals(result)){
+                        httpCallBack.onFailure(000,"出错了");
+                    }else{
+                        if(result.contains("login.jsp")){
+                            httpCallBack.onCookieTimeOut();
+                        }else{
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    httpCallBack.onSuccess(result);
+                                }
+                            });
+                        }
+                    }
+                    System.out.println("直连返回"+result);
+                } catch (Exception e) {
+                    httpCallBack.onFailure(000,"出错了");
+                    e.printStackTrace();
                 }
-                kjHttp.get(url,httpParams,false,httpCallBack);
             }
         }).start();
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                HttpParams httpParams=new HttpParams();
+//                for (Map.Entry<String, String> entry : map.entrySet()) {
+//                    httpParams.put(entry.getKey(),entry.getValue());
+//                }
+//                kjHttp.get(url,httpParams,false,httpCallBack);
+//            }
+//        }).start();
 
     }
     final public void httpPost(final String url, final HttpParams httpParams, final HttpCallBack httpCallBack){
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                kjHttp.post(url,httpParams,false,httpCallBack);
-            }
-        }).start();
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                kjHttp.post(url,httpParams,false,httpCallBack);
+//            }
+//        }).start();
 
     }
     final public void httpGet(final String url, final HttpParams httpParams, final HttpCallBack httpCallBack){
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                kjHttp.get(url,httpParams,false,httpCallBack);
-            }
-        }).start();
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                kjHttp.get(url,httpParams,false,httpCallBack);
+//            }
+//        }).start();
 
     }
     final public void sendMessage(Message message){

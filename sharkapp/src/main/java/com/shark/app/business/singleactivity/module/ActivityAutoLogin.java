@@ -2,7 +2,6 @@ package com.shark.app.business.singleactivity.module;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.widget.Toast;
@@ -34,17 +33,17 @@ public class ActivityAutoLogin extends FrameActivity {
         ProgressWheel progressWheel = (ProgressWheel) findViewById(R.id.progress_wheel);
         progressWheel.spin();
         toLogin();
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if(!islogin){
-                    Toast.makeText(getContext(),"自动登录失败尝试手动登录",Toast.LENGTH_SHORT).show();
-                    finish();
-                    startActivity(new Intent(getContext(),ActivityLogin.class));
-                }
-
-            }
-        },3000);
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                if(!islogin){
+//                    Toast.makeText(getContext(),"自动登录失败尝试手动登录",Toast.LENGTH_SHORT).show();
+//                    finish();
+//                    startActivity(new Intent(getContext(),ActivityLogin.class));
+//                }
+//
+//            }
+//        },3000);
 
     }
 
@@ -84,6 +83,11 @@ public class ActivityAutoLogin extends FrameActivity {
             @Override
             public void onFailure(int errorNo, String strMsg) {
                 super.onFailure(errorNo, strMsg);
+            }
+
+            @Override
+            public void onCookieTimeOut() {
+
             }
         });
 

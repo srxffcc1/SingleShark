@@ -92,6 +92,12 @@ public class ActivityEnterpriseList extends AbstractActivitySearchList {
             public void onFailure(int errorNo, String strMsg) {
                 super.onFailure(errorNo, strMsg);
             }
+
+            @Override
+            public void onCookieTimeOut() {
+                finish();
+                startActivity(new Intent(getContext(), ActivityLogin.class));
+            }
         });
     }
     @Override

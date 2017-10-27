@@ -31,7 +31,7 @@
         android:supportsRtl="true" android:theme="@style/SharkAppBaseTheme" tools:replace="android:icon,android:theme,android:name">
         <activity
             android:theme="@style/FirstActivityTheme"
-            android:name=".business.singleactivity.module.ActivitySplash" >
+            android:name=".business.singleactivity.module.ActivitySplash" android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -55,7 +55,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  *
  * @author kymjs (https://www.kymjs.com/)
  */
-public class KJHttp {
+public  class KJHttp {
 
     public interface ContentType {
         int FORM = 0;

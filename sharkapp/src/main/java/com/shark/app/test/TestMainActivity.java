@@ -30,6 +30,7 @@ import com.kymjs.common.FileUtils;
 import com.kymjs.common.Log;
 import com.shark.app.R;
 import com.shark.app.business.singleactivity.ApkFragment;
+import com.shark.app.business.singleactivity.module.ActivityLogin;
 import com.shark.app.business.singleactivity.tab.ActivityPdfBook;
 
 import org.json.JSONArray;
@@ -248,6 +249,12 @@ public class TestMainActivity extends FrameActivity {
                 super.onSuccess(t);
 //                //System.out.println("新耗时:"+(System.currentTimeMillis()-oldtime));
                 Log.d("log:" + t.toString());
+            }
+
+            @Override
+            public void onCookieTimeOut() {
+                finish();
+                startActivity(new Intent(getContext(), ActivityLogin.class));
             }
         });
     }

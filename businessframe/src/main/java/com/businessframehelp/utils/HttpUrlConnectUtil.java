@@ -16,7 +16,7 @@ import java.util.UUID;
 
 
 public class HttpUrlConnectUtil {
-    public static int TIMEOUT = 2 * 1000; // 超时时间
+    public static int TIMEOUT = 5 * 1000; // 超时时间
     public static final String CHARSET = "utf-8"; // 设置编码
 
     private static final String SERVLET_POST = "POST";
@@ -153,6 +153,7 @@ public class HttpUrlConnectUtil {
         conn.setReadTimeout(TIMEOUT);
         conn.setConnectTimeout(TIMEOUT);
         if (!"".equals(cookie)) {
+            System.out.println("设置cookie"+cookie);
             conn.setRequestProperty("Cookie", "PHPSESSID=" + cookie);
             conn.setRequestProperty("Cookie", "JSESSIONID=" + cookie);
 
@@ -193,6 +194,7 @@ public class HttpUrlConnectUtil {
         conn.setReadTimeout(TIMEOUT);
         conn.setConnectTimeout(TIMEOUT);
         if (!"".equals(cookie)) {
+            System.out.println("设置cookie"+cookie);
             conn.setRequestProperty("Cookie", "PHPSESSID=" + cookie);
             conn.setRequestProperty("Cookie", "JSESSIONID=" + cookie);
 

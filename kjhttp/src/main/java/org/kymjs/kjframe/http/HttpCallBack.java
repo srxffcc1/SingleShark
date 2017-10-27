@@ -61,8 +61,14 @@ public abstract class HttpCallBack {
      */
     public void onSuccess(byte[] t) {
         if (t != null) {
-            Log.v("HttpRespone",new String(t));
-            onSuccess(new String(t));
+            if(new String(t).contains("login.jsp")){
+                //cookie失效
+                onCookieTimeOut();
+            }else{
+                Log.v("HttpRespone",new String(t));
+                onSuccess(new String(t));
+            }
+
         }
     }
 
@@ -111,4 +117,6 @@ public abstract class HttpCallBack {
      *            当前进度
      */
     public void onLoading(long count, long current) {}
+
+    public abstract void onCookieTimeOut();
 }

@@ -170,6 +170,7 @@ public class Network {
 
                 jsonResults.append(buff, 0, read);
             }
+            in.reset();
             in.close();
 //        try {
 //            BufferedReader in = new BufferedReader (new InputStreamReader(kjHttpResponse.getContentStream()));

@@ -40,8 +40,8 @@ public class UrlHome {
      * @param entity
      * @return
      */
-    public static Map<String,String> entity2MapHashClassNoPrefix(Object entity){
-        Map<String,String> result=new HashMap<>();
+    public static Map<String,Object> entity2MapHashClassNoPrefix(Object entity){
+        Map<String,Object> result=new HashMap<>();
         String classname = entity.getClass().getSimpleName();
         Field[] declaredFields = entity.getClass().getDeclaredFields();//全反射防止出现字段保护的时候出现看不懂的bug 比如请求无效
 

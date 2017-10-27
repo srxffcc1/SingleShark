@@ -321,6 +321,11 @@ boolean needscale=true;
             public void onFailure(int errorNo, String strMsg) {
                 super.onFailure(errorNo, strMsg);
             }
+
+            @Override
+            public void onCookieTimeOut() {
+
+            }
         });
 
     }
