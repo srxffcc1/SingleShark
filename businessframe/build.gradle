@@ -49,47 +49,67 @@ dependencies {
     compile project(':kjhttp')
     compile project(':stepview')
     //----------------------------------------------------
-    compile('com.android.support:design:' + rootProject.supportVersion)//design包
-    compile('com.android.support:cardview-v7:' + rootProject.supportVersion)//card包
+    compile('com.android.support:design:' + rootProject.supportVersion)
+    //design包
+    compile('com.android.support:cardview-v7:' + rootProject.supportVersion)
+    //card包
     //----------------------------------------------------
-    compile 'com.jakewharton:butterknife:8.5.1'    //butterknife包
-    annotationProcessor('com.jakewharton:butterknife-compiler:8.5.1')    //butterknife包
+    compile 'com.jakewharton:butterknife:8.5.1'
+    //butterknife包
+    annotationProcessor('com.jakewharton:butterknife-compiler:8.5.1')
+    //butterknife包
     //-----------------------------------------------------
-//    compile 'com.github.barteksc:android-pdf-viewer:2.6.1'//pdf 预览
-    compile 'com.sixdown.mupdf:mupdf:+'//pdf预览
-    compile 'com.sixdown.voicerecog:voicerecog:+'//语音包
-    compile 'com.sixdown.amapfix:amapfix:+'//地图包
+    //    compile 'com.github.barteksc:android-pdf-viewer:2.6.1'//pdf 预览
+    compile 'com.sixdown.mupdf:mupdf:+'
+    //pdf预览
+    compile 'com.sixdown.voicerecog:voicerecog:+'
+    //语音包
+    compile 'com.sixdown.amapfix:amapfix:+'
+    //地图包
     compile('com.sixdown.unzip:unzip:+') {
         exclude group: 'com.android.support'
         exclude group: 'commons-logging', module: 'commons-logging'
-    }//解压文件
-//    compile 'com.sixdown.opencamera:opencamera:+'//opencamera 库
-    compile 'com.sixdown.soundrecord:soundrecord:+'//录音
-    compile 'com.sixdown.common:common:+'//通用工具集
-    compile 'com.sixdown.verticalrefreshlayout:verticalrefreshlayout:+'//下拉刷新
-//    compile 'com.sixdown.kjhttp:kjhttp:1.0.5'//网络请求包
-    compile 'com.sixdown.kvplayer:kvplayer:+'//金山云视频
+    }
+    //解压文件
+    //    compile 'com.sixdown.opencamera:opencamera:+'//opencamera 库
+    compile 'com.sixdown.soundrecord:soundrecord:+'
+    //录音
+    compile 'com.sixdown.common:common:+'
+    //通用工具集
+    compile 'com.sixdown.verticalrefreshlayout:verticalrefreshlayout:+'
+    //下拉刷新
+    //    compile 'com.sixdown.kjhttp:kjhttp:1.0.5'//网络请求包
+    compile 'com.sixdown.kvplayer:kvplayer:+'
+    //金山云视频
     compile('com.sixdown.navslidelibrary:navslidelibrary:+') {
         exclude group: 'com.android.support'
-    }//侧滑
-
+    }
+    //侧滑
     compile('com.sixdown.helppdf:helppdf:+') {
         exclude group: 'net.lingala.zip4j'
         exclude group: 'commons-logging', module: 'commons-logging'
-    }//pdf生成
+    }
+    //pdf生成
     compile 'com.sixdown.bookentity:bookentity:+'
-//    compile project(':navlibrary')
+    //    compile project(':navlibrary')
     //--------------------------------------------------
-    compile 'com.github.promeg:tinypinyin:2.0.3' // TinyPinyin核心包，约80KB
-    compile 'com.github.promeg:tinypinyin-lexicons-java-cncity:2.0.3' // 可选，适用于Java的中国地区词典
-    compile 'com.github.promeg:tinypinyin-lexicons-android-cncity:2.0.3' // 可选，适用于Android的中国地区词典
-    compile 'com.getui:sdk:2.10.2.0'//个推包
-    compile('com.sandrios.android:sandriosCamera:1.0.9') { exclude module: 'ucrop' }//相机+录像
-//    compile 'com.mindorks:paracamera:0.2.2'//相机+录像备选
-    compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'//图表库
-//    compile 'com.github.bumptech.glide:glide:3.7.0'//图片加载库
-//    compile 'com.google.zxing:core:3.3.0'//zxing
-    compile('cn.yipianfengye.android:zxing-library:2.1')  //二维码扫描
+    compile 'com.github.promeg:tinypinyin:2.0.3'
+    // TinyPinyin核心包，约80KB
+    compile 'com.github.promeg:tinypinyin-lexicons-java-cncity:2.0.3'
+    // 可选，适用于Java的中国地区词典
+    compile 'com.github.promeg:tinypinyin-lexicons-android-cncity:2.0.3'
+    // 可选，适用于Android的中国地区词典
+    compile 'com.getui:sdk:2.10.2.0'
+    //个推包
+    compile('com.sandrios.android:sandriosCamera:1.0.9') { exclude module: 'ucrop' }
+    //相机+录像
+    //    compile 'com.mindorks:paracamera:0.2.2'//相机+录像备选
+    compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'
+    //图表库
+    //    compile 'com.github.bumptech.glide:glide:3.7.0'//图片加载库
+    //    compile 'com.google.zxing:core:3.3.0'//zxing
+    compile 'cn.yipianfengye.android:zxing-library:2.1'
+    //二维码扫描
     compile('com.github.yalantis:ucrop:2.2.1') {//图片裁剪
         exclude group: 'com.android.support'
         exclude group: 'com.squareup'
@@ -97,7 +117,8 @@ dependencies {
         exclude group: 'com.squareup.okhttp3'
         exclude group: 'com.squareup.okio'
     }
-    compile 'com.wangdafa:PausableRecordLib:1.0.1'//一个可以暂停-继续的音频录制库
+    compile 'com.wangdafa:PausableRecordLib:1.0.1'
+    //一个可以暂停-继续的音频录制库
     compile('com.github.yalantis:ucrop:2.2.1-native') {//图片裁剪
         exclude group: 'com.android.support'
         exclude group: 'com.squareup'
@@ -108,18 +129,23 @@ dependencies {
     compile('com.github.adrielcafe:AndroidAudioRecorder:0.3.0') {//录音
         exclude group: 'com.android.support'
     }
-    compile('com.zhihu.android:matisse:0.4.3') { exclude group: 'com.android.support' }//相册
+    compile('com.zhihu.android:matisse:0.4.3') { exclude group: 'com.android.support' }
+    //相册
     compile('com.nbsp:library:1.2') { exclude group: 'com.android.support' }
-    compile('com.zhy:autolayout:1.4.5') { exclude group: 'com.android.support' }//适配库
-//    compile('com.airbnb.android:lottie:1.5.3') { exclude group: 'com.android.support' }//ae动画库
+    compile('com.zhy:autolayout:1.4.5') { exclude group: 'com.android.support' }
+    //适配库
+    //    compile('com.airbnb.android:lottie:1.5.3') { exclude group: 'com.android.support' }//ae动画库
     compile('me.shaohui.advancedluban:library:1.3.5') {//图片压缩库
         exclude group: 'io.reactivex'
         exclude group: 'com.android.support'
     }
-    compile 'io.reactivex.rxjava2:rxjava:2.1.0'//rxjava
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'//rxandroid
-    compile('q.rorbin:badgeview:1.1.0') { exclude group: 'com.android.support' }//红点库
-    compile ( 'com.contrarywind:Android-PickerView:3.2.5'){//时间选择器
+    compile 'io.reactivex.rxjava2:rxjava:2.1.0'
+    //rxjava
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    //rxandroid
+    compile('q.rorbin:badgeview:1.1.0') { exclude group: 'com.android.support' }
+    //红点库
+    compile('com.contrarywind:Android-PickerView:3.2.5') {//时间选择器
         exclude group: 'com.android.support'
     }
     compile('com.github.hss01248:DialogUtil:1.1.4') {//dialog库
@@ -129,29 +155,31 @@ dependencies {
         exclude group: 'io.reactivex'
         exclude group: 'com.android.support'
     }
-
-//    compile group: 'com.itextpdf', name: 'itextpdf', version: '5.5.11'//itxt库 写pdf用
+    //    compile group: 'com.itextpdf', name: 'itextpdf', version: '5.5.11'//itxt库 写pdf用
     compile('com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2') {//tab按钮
         exclude group: 'com.android.support'
     }
-    compile('com.google.android:flexbox:0.3.0') { exclude group: 'com.android.support' }//谷歌流式布局
-    compile('q.rorbin:VerticalTabLayout:1.2.2') { exclude group: 'com.android.support' }//竖直tab
-//    compile ("de.mrmaffen:vlc-android-sdk:2.0.6"){ exclude group: 'com.android.support' }
+    compile('com.google.android:flexbox:0.3.0') { exclude group: 'com.android.support' }
+    //谷歌流式布局
+    compile('q.rorbin:VerticalTabLayout:1.2.2') { exclude group: 'com.android.support' }
+    //竖直tab
+    //    compile ("de.mrmaffen:vlc-android-sdk:2.0.6"){ exclude group: 'com.android.support' }
     // https://mvnrepository.com/artifact/com.google.code.gson/gson
-    compile group: 'com.google.code.gson', name: 'gson', version: '+'
+    compile 'com.google.code.gson:gson:+'
     // https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple
-    compile (group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'){
+    compile('com.googlecode.json-simple:json-simple:1.1.1') {
         exclude module: 'hamcrest-core'
     }
-    compile ('com.pnikosis:materialish-progress:1.7'){
+    compile('com.pnikosis:materialish-progress:1.7') {
         exclude group: 'com.android.support'
     }
-//    compile ('com.github.Jay-Goo:MultiSelectPopWindow:v1.0.1'){
-//        exclude group: 'com.android.support'
-//    }
-    compile ('de.hdodenhof:circleimageview:2.1.0'){
+    //    compile ('com.github.Jay-Goo:MultiSelectPopWindow:v1.0.1'){
+    //        exclude group: 'com.android.support'
+    //    }
+    compile('de.hdodenhof:circleimageview:2.1.0') {
         exclude group: 'com.android.support'
-    }//圆形头像
-
+    }
+    //圆形头像
+    compile files('libs/cglib-nodep-2.2.2.jar')
 }
 
