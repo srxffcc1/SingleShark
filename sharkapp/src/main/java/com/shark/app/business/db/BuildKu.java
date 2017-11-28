@@ -124,6 +124,8 @@ public class BuildKu {
                     intent.putExtra("current", cishu);
                     intent.putExtra("all", count % size == 0 ? count / size
                             : count / size + 1);
+                    System.out.println("SRX:数据库初始化"+cishu+":"+(count % size == 0 ? count / size
+                            : count / size + 1));
                     context.sendBroadcast(intent);
                     if (count - cishu * size <= 0) {
                         break aa;
@@ -138,6 +140,7 @@ public class BuildKu {
             }
         }
         DBConn.dataLock = true;
+
 
     }
 

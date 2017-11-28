@@ -1,5 +1,7 @@
 package com.businessframehelp.utils;
 
+import org.kymjs.kjframe.http.HttpConfig;
+
 import java.io.BufferedInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
@@ -149,15 +151,22 @@ public class HttpUrlConnectUtil {
         urlStr = checkUrl(urlStr);
         URL url = new URL(urlStr);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        if (!"".equals(cookie)) {
+            System.out.println(cookie);
+            if(HttpConfig.needJSESSIONID){
+
+                conn.setRequestProperty("cookie", "JSESSIONID=" + HttpConfig.sCookie);
+            }
+            if(HttpConfig.needPHPSESSID){
+
+                conn.setRequestProperty("cookie", "PHPSESSID=" + HttpConfig.sCookie);
+            }
+
+        }
         conn.setRequestProperty("Charset", CHARSET); // 设置编码
         conn.setReadTimeout(TIMEOUT);
         conn.setConnectTimeout(TIMEOUT);
-        if (!"".equals(cookie)) {
-            System.out.println("设置cookie"+cookie);
-            conn.setRequestProperty("Cookie", "PHPSESSID=" + cookie);
-            conn.setRequestProperty("Cookie", "JSESSIONID=" + cookie);
 
-        }
         conn.setRequestMethod(SERVLET_POST);
 
         String paramStr = prepareParam(paramMap);
@@ -172,7 +181,7 @@ public class HttpUrlConnectUtil {
 
             result = getRespone(conn);
         }
-        System.out.println(result);
+        System.out.println(urlStr+"\n"+result);
         return result;
 
     }
@@ -190,16 +199,23 @@ public class HttpUrlConnectUtil {
         System.out.println(urlStr);
         URL url = new URL(urlStr);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        if (!"".equals(cookie)) {
+            System.out.println(cookie);
+            if(HttpConfig.needJSESSIONID){
+
+                conn.setRequestProperty("cookie", "JSESSIONID=" + HttpConfig.sCookie);
+            }
+            if(HttpConfig.needPHPSESSID){
+
+                conn.setRequestProperty("cookie", "PHPSESSID=" + HttpConfig.sCookie);
+            }
+
+        }
         conn.setRequestProperty("Charset", CHARSET); // 设置编码
         conn.setReadTimeout(TIMEOUT);
         conn.setConnectTimeout(TIMEOUT);
-        if (!"".equals(cookie)) {
-            System.out.println("设置cookie"+cookie);
-            conn.setRequestProperty("Cookie", "PHPSESSID=" + cookie);
-            conn.setRequestProperty("Cookie", "JSESSIONID=" + cookie);
 
-        }
-        conn.setRequestMethod(SERVLET_PUT);
+        conn.setRequestMethod(SERVLET_GET);
         conn.setRequestProperty("Content-Type", "text/html; charset=UTF-8");
 
         conn.connect();
@@ -208,7 +224,7 @@ public class HttpUrlConnectUtil {
 
             result = getRespone(conn);
         }
-        System.out.println(result);
+        System.out.println(urlStr+"\n"+result);
         return result;
     }
 
@@ -217,14 +233,21 @@ public class HttpUrlConnectUtil {
         urlStr = checkUrl(urlStr);
         URL url = new URL(urlStr);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        if (!"".equals(cookie)) {
+            if(HttpConfig.needJSESSIONID){
+
+                conn.setRequestProperty("cookie", "JSESSIONID=" + HttpConfig.sCookie);
+            }
+            if(HttpConfig.needPHPSESSID){
+
+                conn.setRequestProperty("cookie", "PHPSESSID=" + HttpConfig.sCookie);
+            }
+
+        }
         conn.setRequestProperty("Charset", CHARSET); // 设置编码
         conn.setReadTimeout(TIMEOUT);
         conn.setConnectTimeout(TIMEOUT);
-        if (!"".equals(cookie)) {
-            conn.setRequestProperty("Cookie", "PHPSESSID=" + cookie);
-            conn.setRequestProperty("Cookie", "JSESSIONID=" + cookie);
 
-        }
         conn.setRequestMethod(SERVLET_PUT);
         String paramStr = prepareParam(paramMap);
         conn.setDoInput(true);
@@ -255,14 +278,21 @@ public class HttpUrlConnectUtil {
         System.out.println(urlStr);
         URL url = new URL(urlStr);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        if (!"".equals(cookie)) {
+            if(HttpConfig.needJSESSIONID){
+
+                conn.setRequestProperty("cookie", "JSESSIONID=" + HttpConfig.sCookie);
+            }
+            if(HttpConfig.needPHPSESSID){
+
+                conn.setRequestProperty("cookie", "PHPSESSID=" + HttpConfig.sCookie);
+            }
+
+        }
         conn.setRequestProperty("Charset", CHARSET); // 设置编码
         conn.setReadTimeout(TIMEOUT);
         conn.setConnectTimeout(TIMEOUT);
-        if (!"".equals(cookie)) {
-            conn.setRequestProperty("Cookie", "PHPSESSID=" + cookie);
-            conn.setRequestProperty("Cookie", "JSESSIONID=" + cookie);
 
-        }
         conn.setDoOutput(true);
         conn.setRequestMethod(SERVLET_DELETE);
 
@@ -280,14 +310,21 @@ public class HttpUrlConnectUtil {
         urlStr = checkUrl(urlStr);
         URL url = new URL(urlStr);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        if (!"".equals(cookie)) {
+            if(HttpConfig.needJSESSIONID){
+
+                conn.setRequestProperty("cookie", "JSESSIONID=" + HttpConfig.sCookie);
+            }
+            if(HttpConfig.needPHPSESSID){
+
+                conn.setRequestProperty("cookie", "PHPSESSID=" + HttpConfig.sCookie);
+            }
+
+        }
         conn.setRequestProperty("Charset", CHARSET); // 设置编码
         conn.setReadTimeout(TIMEOUT);
         conn.setConnectTimeout(TIMEOUT);
-        if (!"".equals(cookie)) {
-            conn.setRequestProperty("Cookie", "PHPSESSID=" + cookie);
-            conn.setRequestProperty("Cookie", "JSESSIONID=" + cookie);
 
-        }
         conn.setRequestMethod(SERVLET_POST);
 
         String paramStr = prepareParam(paramMap);
@@ -312,6 +349,17 @@ public class HttpUrlConnectUtil {
         String contentType = "multipart/form-data"; // 内容类型
         URL url = new URL(urlStr);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        if (!"".equals(cookie)) {
+            if(HttpConfig.needJSESSIONID){
+
+                conn.setRequestProperty("cookie", "JSESSIONID=" + HttpConfig.sCookie);
+            }
+            if(HttpConfig.needPHPSESSID){
+
+                conn.setRequestProperty("cookie", "PHPSESSID=" + HttpConfig.sCookie);
+            }
+
+        }
         conn.setReadTimeout(TIMEOUT);
         conn.setConnectTimeout(TIMEOUT);
         conn.setDoInput(true); // 允许输入流

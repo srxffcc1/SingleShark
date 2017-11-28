@@ -13,17 +13,28 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.businessframehelp.app.FrameActivity;
+import com.businessframehelp.db.ay.ITableDao;
+import com.businessframehelp.db.ay.ITableDaoImp;
 import com.businessframehelp.enums.ORIENTATION;
+import com.businessframehelp.utils.HttpUrlConnectUtil;
 import com.businessframehelp.utils.ViewFindUtils;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.hss01248.dialog.StyledDialog;
 import com.hss01248.dialog.interfaces.MyItemDialogListener;
+import com.kymjs.common.NetworkUtils;
+import com.kymjs.common.SystemTool;
 import com.shark.app.R;
+import com.shark.app.business.db.BuildKu;
 import com.shark.app.business.entity.TabEntity;
 import com.shark.app.business.fragment.FragmentManagers;
+import com.shark.app.business.statich.UrlHome;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.kymjs.kjframe.http.HttpConfig;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -162,6 +173,7 @@ import java.util.List;
         mTabLayout_3 = ViewFindUtils.find(mDecorView, R.id.tl_3);
         mTabLayout_3.setTabData(mTabEntities, this, R.id.fl_change, mFragments);
         mTabLayout_3.setVisibility(View.GONE);
+        buildsixlibrary();
     }
     public void syncBackGround(){
 
@@ -204,5 +216,37 @@ import java.util.List;
         }
 
 
+    }
+    private void buildsixlibrary() {//构建6大库
+        if (NetworkUtils.checkNet(this)) {
+            ITableDao mTableRecords = new ITableDaoImp(this);
+            // 加载执法依据库
+            String lastResponseTime = mTableRecords.getFormTime("ZhiFaYiJuK",
+                    "all");
+            final String urlTimeRecord = "zhiFaYiJuKu/zhiFaYiJuKuAction!isUpdateDate?version="
+                    + lastResponseTime;
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Boolean status = true;
+                        try {
+                            final String result= HttpUrlConnectUtil.doGet(UrlHome.getUrl(getContext(), urlTimeRecord),null, HttpConfig.sCookie);
+
+                            JSONObject jsonObject = new JSONObject(result);
+                            status = jsonObject.getBoolean("status");
+                        } catch (Exception e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
+                        if (status == true) {
+                            BuildKu builder = new BuildKu(getContext());
+                            builder.bulid();
+                        }
+                    }
+                }).start();
+
+
+
+        }
     }
 }
