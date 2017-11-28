@@ -35,9 +35,6 @@ import com.shark.app.business.singleactivity.tab.ActivityPdfBook;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.kymjs.kjframe.KJHttp;
-import org.kymjs.kjframe.http.HttpCallBack;
-import org.kymjs.kjframe.http.HttpParams;
 
 import java.util.ArrayList;
 
@@ -238,25 +235,25 @@ public class TestMainActivity extends FrameActivity {
     }
 
     public void testWeb(View view){
-        KJHttp http=new KJHttp();
-        HttpParams params = new HttpParams();
-//        params.put("yhjck.yhmc", "今年"); //传递参数
-        final long oldtime=System.currentTimeMillis();
-        http.post("http://116.52.6.33:8080/kmzzhaj/yhjck/yhjckAction!listByYhmc?yhjck.yhmc=今年",params,false,new HttpCallBack() {
-
-            @Override
-            public void onSuccess(String t) {
-                super.onSuccess(t);
-//                //System.out.println("新耗时:"+(System.currentTimeMillis()-oldtime));
-                Log.d("log:" + t.toString());
-            }
-
-            @Override
-            public void onCookieTimeOut() {
-                finish();
-                startActivity(new Intent(getContext(), ActivityLogin.class));
-            }
-        });
+//        KJHttp http=new KJHttp();
+//        HttpParams params = new HttpParams();
+////        params.put("yhjck.yhmc", "今年"); //传递参数
+//        final long oldtime=System.currentTimeMillis();
+//        http.post("http://116.52.6.33:8080/kmzzhaj/yhjck/yhjckAction!listByYhmc?yhjck.yhmc=今年",params,false,new HttpCallBack() {
+//
+//            @Override
+//            public void onSuccess(String t) {
+//                super.onSuccess(t);
+////                //System.out.println("新耗时:"+(System.currentTimeMillis()-oldtime));
+//                Log.d("log:" + t.toString());
+//            }
+//
+//            @Override
+//            public void onCookieTimeOut() {
+//                finish();
+//                startActivity(new Intent(getContext(), ActivityLogin.class));
+//            }
+//        });
     }
     public void testWeb2(View view){
         new Thread(new Runnable() {

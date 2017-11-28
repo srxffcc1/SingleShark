@@ -30,10 +30,8 @@ import com.businessframehelp.utils.HttpUrlConnectUtil;
 import com.kymjs.common.NetworkUtils;
 import com.zhy.autolayout.AutoLayoutActivity;
 
-import org.kymjs.kjframe.KJHttp;
 import org.kymjs.kjframe.http.HttpCallBack;
 import org.kymjs.kjframe.http.HttpConfig;
-import org.kymjs.kjframe.http.HttpParams;
 
 import java.util.Map;
 import java.util.UUID;
@@ -51,7 +49,6 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
     private LocalActivityManager mLocalActivityManager;
     private boolean cantoast=true;
     private boolean isTabChild=false;
-    private KJHttp kjHttp;
     private ORIENTATION newstatus;
     private ORIENTATION nowstatus;
     private boolean isauthentic=false;
@@ -97,7 +94,6 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
         checkActionBar();
 
         super.onCreate(savedInstanceState);
-        kjHttp = new KJHttp();
         if(savedInstanceState!=null&&savedInstanceState.getSerializable("newstatus")!=null){
             newstatus= (ORIENTATION) savedInstanceState.getSerializable("newstatus");
         }
@@ -168,7 +164,6 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        kjHttp=null;
     }
     @Override
     final public void setContentView(@LayoutRes int layoutResID) {
@@ -358,24 +353,6 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
 //                for (Map.Entry<String, String> entry : map.entrySet()) {
 //                    httpParams.put(entry.getKey(),entry.getValue());
 //                }
-//                kjHttp.get(url,httpParams,false,httpCallBack);
-//            }
-//        }).start();
-
-    }
-    final public void httpPost(final String url, final HttpParams httpParams, final HttpCallBack httpCallBack){
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                kjHttp.post(url,httpParams,false,httpCallBack);
-//            }
-//        }).start();
-
-    }
-    final public void httpGet(final String url, final HttpParams httpParams, final HttpCallBack httpCallBack){
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
 //                kjHttp.get(url,httpParams,false,httpCallBack);
 //            }
 //        }).start();
