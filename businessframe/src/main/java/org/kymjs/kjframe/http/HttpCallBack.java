@@ -48,10 +48,10 @@ public abstract class HttpCallBack {
     /**
      * Http请求成功时回调
      * 
-     * @param t
+     * @param str
      *            HttpRequest返回信息
      */
-    public void onSuccess(String t) {}
+    public void onSuccess(String str) {}
 
     /**
      * Http请求成功时回调

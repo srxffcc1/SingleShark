@@ -210,13 +210,13 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
                 ////System.out.println("要去掉suactionbar咯");
                 getSupportActionBar().hide();
             } catch (Exception e) {
-                e.printStackTrace();
+//                e.printStackTrace();
             }
             try {
                 ////System.out.println("要去掉actionbar咯");
                 getActionBar().hide();
             } catch (Exception e) {
-                e.printStackTrace();
+//                e.printStackTrace();
             }
         }
     }
