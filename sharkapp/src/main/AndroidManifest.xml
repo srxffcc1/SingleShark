@@ -45,7 +45,7 @@
         <activity android:name=".test.ListTestActivity" android:launchMode="singleTop"/>
         <activity android:name=".business.singleactivity.module.ActivityLogin" android:theme="@style/FrameAppTheme.NoActionBarNoSoftInput" android:launchMode="singleTop"/>
         <activity android:name=".business.singleactivity.module.ActivityMain" android:theme="@style/FrameAppTheme.Navigation" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.tab.ActivityCheckUpList" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.tab.ActivityCheckUpList" android:launchMode="singleTop"         android:windowSoftInputMode="adjustNothing"/>
         <activity android:name=".business.singleactivity.module.ActivityEnterpriseList" android:launchMode="singleTop"/>
         <activity android:name=".business.singleactivity.tab.ActivityPdfBook" android:launchMode="singleTop"/>
         <activity android:name=".business.singleactivity.module.ActivityBook" android:launchMode="singleTop"/>
@@ -58,6 +58,9 @@
         <activity android:name=".business.singleactivity.module.ActivityHazardsList" android:launchMode="singleTop"/>
         <activity android:name=".business.singleactivity.module.ActivityRecordList" android:launchMode="singleTop"/>
         <activity android:name=".business.singleactivity.module.ActivityPrinterList" android:launchMode="singleTop"/>
+
+
+
         <activity android:name=".business.singleactivity.module.ActivityTroubleInvestigation" android:launchMode="singleTop"/>
         <activity android:name=".business.singleactivity.library.ActivityAqscbz" android:launchMode="singleTop"/>
         <activity android:name=".business.singleactivity.library.ActivityAqscflfg" android:launchMode="singleTop"/>
@@ -65,7 +68,7 @@
         <activity android:name=".business.singleactivity.library.ActivityWxhxptz" android:launchMode="singleTop"/>
         <activity android:name=".business.singleactivity.library.ActivityYhpcbz" android:launchMode="singleTop"/>
         <activity android:name=".business.singleactivity.library.ActivityZfyj" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.ActivityCheck" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.ActivityCheckMenu" android:launchMode="singleTop"/>
     </application>
 
 </manifest>

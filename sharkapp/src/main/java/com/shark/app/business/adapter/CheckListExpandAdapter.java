@@ -12,7 +12,7 @@ import android.widget.ExpandableListView;
 import com.baoyachi.stepview.VerticalStepView;
 import com.shark.app.R;
 import com.shark.app.business.resultentity.Check;
-import com.shark.app.business.singleactivity.ActivityCheck;
+import com.shark.app.business.singleactivity.ActivityCheckMenu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,7 +82,7 @@ public class CheckListExpandAdapter extends BaseExpandableListAdapter {
         convertView.findViewById(R.id.passcheck).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mcontext.startActivity(new Intent(mcontext, ActivityCheck.class));
+                mcontext.startActivity(new Intent(mcontext, ActivityCheckMenu.class));
             }
         });
         return convertView;

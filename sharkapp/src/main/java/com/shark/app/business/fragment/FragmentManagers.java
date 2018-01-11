@@ -26,7 +26,7 @@ public class FragmentManagers {
                 fragment=new FragmentHostCheck();
                 break;
             case "我的协办":
-                fragment=new FragmentJoinCheck();
+                fragment=new FragmentHostCheck();//FragmentHostCheck  FragmentJoinCheck
                 break;
             default:
                 fragment=new FragmentError();
