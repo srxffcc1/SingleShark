@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="languages">
+        <item>来自方案</item>
+        <item>现场</item>
+        <item>基础</item>
+    </string-array>
+</resources>

@@ -16,7 +16,6 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:id="@+id/jihual"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#F3F3F3"
@@ -54,7 +53,6 @@
                 android:background="#FFF"></LinearLayout>
 
             <LinearLayout
-                android:id="@+id/fanganl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#F3F3F3"
@@ -97,7 +95,6 @@
 
 
             <LinearLayout
-                android:id="@+id/xianchangl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#F3F3F3"
@@ -135,7 +132,6 @@
 
 
             <LinearLayout
-                android:id="@+id/cuoshil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#F3F3F3"
@@ -173,7 +169,6 @@
                 android:background="#FFF"></LinearLayout>
 
             <LinearLayout
-                android:id="@+id/zelingl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#F3F3F3"
@@ -211,7 +206,6 @@
                 android:background="#FFF"></LinearLayout>
 
             <LinearLayout
-                android:id="@+id/fuchal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#F3F3F3"
@@ -250,7 +244,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"></LinearLayout>
             <LinearLayout
-                android:id="@+id/chufal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#F3F3F3"
@@ -286,7 +279,6 @@
                 android:layout_height="2dp"
                 android:background="#FFF"></LinearLayout>
             <LinearLayout
-                android:id="@+id/guidangl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#F3F3F3"
