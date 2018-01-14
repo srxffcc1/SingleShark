@@ -5,4 +5,9 @@
         <item>现场</item>
         <item>基础</item>
     </string-array>
+    <string-array name="change">
+        <item>转责令</item>
+        <item>转现场措施</item>
+        <item>转并处</item>
+    </string-array>
 </resources>
