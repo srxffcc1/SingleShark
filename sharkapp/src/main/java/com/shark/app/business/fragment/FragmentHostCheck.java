@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import com.businessframehelp.app.BaseSupportFragment;
 import com.leelay.freshlayout.verticalre.VRefreshLayout;
 import com.shark.app.R;
-import com.shark.app.business.adapter.BianhaoRecycleAdapter;
+import com.shark.app.business.adapter.BianHaoRecycleAdapter;
 
 /**
  * Created by Administrator on 2017/5/25.
@@ -31,7 +31,7 @@ public class FragmentHostCheck extends BaseSupportFragment {
         super.onViewCreated(view, savedInstanceState);
         recycler_view = (RecyclerView) findViewById(R.id.recycler_view);
         recycler_view.setLayoutManager(new LinearLayoutManager(this.getActivity(),LinearLayoutManager.VERTICAL,false));
-        recycler_view.setAdapter(new BianhaoRecycleAdapter(this));
+        recycler_view.setAdapter(new BianHaoRecycleAdapter(this));
         mRefreshLayout = (VRefreshLayout) findViewById(R.id.vrefresh);
         mRefreshLayout.addOnRefreshListener(new VRefreshLayout.OnRefreshListener() {
             @Override

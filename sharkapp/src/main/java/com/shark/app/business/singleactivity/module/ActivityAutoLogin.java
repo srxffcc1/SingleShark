@@ -83,6 +83,8 @@ public class ActivityAutoLogin extends FrameActivity {
             @Override
             public void onFailure(int errorNo, String strMsg) {
                 super.onFailure(errorNo, strMsg);
+                finish();
+                startActivity(new Intent(getContext(),ActivityLogin.class));
             }
 
             @Override

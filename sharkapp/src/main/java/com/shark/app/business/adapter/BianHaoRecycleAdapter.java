@@ -18,23 +18,23 @@ import com.zhy.autolayout.utils.AutoUtils;
  * 执法编号的list
  */
 
-public class BianhaoRecycleAdapter extends RecyclerView.Adapter<BianhaoRecycleAdapter.SingelViewHolder>{
+public class BianHaoRecycleAdapter extends RecyclerView.Adapter<BianHaoRecycleAdapter.SingelViewHolder>{
     public Activity mactivity;
     public Fragment mfragment;
     public android.support.v4.app.Fragment msupportfragment;
     Context mcontext;
 
-    public BianhaoRecycleAdapter(Fragment mfragment) {
+    public BianHaoRecycleAdapter(Fragment mfragment) {
         this.mfragment = mfragment;
         mcontext=mfragment.getActivity();
     }
 
-    public BianhaoRecycleAdapter(android.support.v4.app.Fragment msupportfragment) {
+    public BianHaoRecycleAdapter(android.support.v4.app.Fragment msupportfragment) {
         this.msupportfragment = msupportfragment;
         mcontext=msupportfragment.getActivity();
     }
 
-    public BianhaoRecycleAdapter(Activity mactivity) {
+    public BianHaoRecycleAdapter(Activity mactivity) {
         this.mactivity = mactivity;
         mcontext=mactivity;
     }

@@ -23,7 +23,6 @@ import com.flyco.tablayout.listener.CustomTabEntity;
 import com.hss01248.dialog.StyledDialog;
 import com.hss01248.dialog.interfaces.MyItemDialogListener;
 import com.kymjs.common.NetworkUtils;
-import com.kymjs.common.SystemTool;
 import com.shark.app.R;
 import com.shark.app.business.db.BuildKu;
 import com.shark.app.business.entity.TabEntity;
@@ -32,7 +31,6 @@ import com.shark.app.business.statich.UrlHome;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.kymjs.kjframe.http.HttpConfig;
 
@@ -173,7 +171,7 @@ import java.util.List;
         mTabLayout_3 = ViewFindUtils.find(mDecorView, R.id.tl_3);
         mTabLayout_3.setTabData(mTabEntities, this, R.id.fl_change, mFragments);
         mTabLayout_3.setVisibility(View.GONE);
-        buildsixlibrary();
+//        buildsixlibrary();
     }
     public void syncBackGround(){
 

@@ -13,7 +13,7 @@ import com.shark.app.R;
  * Created by Administrator on 2017/5/25. 临时模板复制就用
  */
 
-public class ActivityTmp extends FrameActivity {
+public class ActivityZhengGai extends FrameActivity {
 
 
     @Override
@@ -34,7 +34,7 @@ public class ActivityTmp extends FrameActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_zhenggai);
 
 
     }

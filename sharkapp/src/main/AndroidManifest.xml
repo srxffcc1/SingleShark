@@ -45,7 +45,7 @@
         <activity android:name=".test.ListTestActivity" android:launchMode="singleTop"/>
         <activity android:name=".business.singleactivity.module.ActivityLogin" android:theme="@style/FrameAppTheme.NoActionBarNoSoftInput" android:launchMode="singleTop"/>
         <activity android:name=".business.singleactivity.module.ActivityMain" android:theme="@style/FrameAppTheme.Navigation" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.tab.ActivityCheckUpList" android:launchMode="singleTop"         android:windowSoftInputMode="adjustNothing"/>
+        <activity android:name=".business.singleactivity.tab.ActivityCheckHost2Guest" android:launchMode="singleTop"         android:windowSoftInputMode="adjustNothing"/>
         <activity android:name=".business.singleactivity.module.ActivityEnterpriseList" android:launchMode="singleTop"/>
         <activity android:name=".business.singleactivity.tab.ActivityPdfBook" android:launchMode="singleTop"/>
         <activity android:name=".business.singleactivity.module.ActivityBook" android:launchMode="singleTop"/>
@@ -69,7 +69,19 @@
         <activity android:name=".business.singleactivity.library.ActivityYhpcbz" android:launchMode="singleTop"/>
         <activity android:name=".business.singleactivity.library.ActivityZfyj" android:launchMode="singleTop"/>
         <activity android:name=".business.singleactivity.ActivityCheckMenu" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.ActivityXianChangJianCha" />
+        <activity android:name=".business.singleactivity.ActivityXianChangJianCha" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.ActivityChuFa" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.ActivityChuFaList" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.ActivityChuFaMenu" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.ActivityChuLiCuoShi" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.ActivityFangAn" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.ActivityJiHua" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.ActivityTmp" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.ActivityZeLing" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.ActivityZhengGai" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.ActivityZhengGaiList" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.ActivityZhengGaiMenu" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.ActivityGuiDang" android:launchMode="singleTop"/>
     </application>
 
 </manifest>

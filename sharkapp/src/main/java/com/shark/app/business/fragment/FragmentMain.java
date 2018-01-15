@@ -28,7 +28,7 @@ import com.shark.app.business.singleactivity.module.ActivityLaw;
 import com.shark.app.business.singleactivity.module.ActivityPrinterList;
 import com.shark.app.business.singleactivity.module.ActivityRecordList;
 import com.shark.app.business.singleactivity.module.ActivityTroubleInvestigation;
-import com.shark.app.business.singleactivity.tab.ActivityCheckUpList;
+import com.shark.app.business.singleactivity.tab.ActivityCheckHost2Guest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,7 +60,7 @@ public class FragmentMain extends BaseSupportFragment {
         list_1 = new ArrayList<>();
         list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_enterpiseinfo).setClickpassclass(ActivityEnterpriseList.class));
         list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_printer).setClickpassclass(ActivityPrinterList.class));
-        list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_checkup).setClickpassclass(ActivityCheckUpList.class));
+        list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_checkup).setClickpassclass(ActivityCheckHost2Guest.class));
         list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_checkuprecord).setClickpassclass(ActivityRecordList.class));
         list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_law).setClickpassclass(ActivityLaw.class));
         list_1.add(new ImageMenuEntity().setImageRid(R.drawable.main_collect).setClickpassclass(ActivityCollect.class));

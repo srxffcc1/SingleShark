@@ -12,11 +12,19 @@
         android:background="?attr/colorPrimary"
         app:popupTheme="@style/FrameAppTheme.PopupOverlay"
         app:theme="@style/FrameAppTheme.NoActionBar" />
-
+    <!--用来使得一进去不直接弹出键盘的隐藏设置-->
+    <TextView
+        android:id="@+id/text_notuseorg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true" />
+    <!--用来使得一进去不直接弹出键盘的隐藏设置-->
     <FrameLayout
         android:id="@+id/frameorg"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
 
     </FrameLayout>
 </LinearLayout>

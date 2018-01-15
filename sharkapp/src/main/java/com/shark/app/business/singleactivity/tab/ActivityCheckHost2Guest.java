@@ -22,7 +22,7 @@ import java.util.ArrayList;
  * Created by Administrator on 2017/5/25.
  */
 
-public class ActivityCheckUpList extends FrameActivity {
+public class ActivityCheckHost2Guest extends FrameActivity {
     private ArrayList<Fragment> mFragments = new ArrayList<>();
     private String[] mTitles = {"我的主办", "我的协办"};
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();

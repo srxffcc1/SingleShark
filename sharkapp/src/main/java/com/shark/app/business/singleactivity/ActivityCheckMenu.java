@@ -6,7 +6,7 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.View;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.businessframehelp.app.FrameActivity;
 import com.businessframehelp.enums.ORIENTATION;
@@ -24,14 +24,14 @@ public class ActivityCheckMenu extends FrameActivity {
     private ArrayList<Fragment> mFragments = new ArrayList<>();
     private SegmentTabLayout mTabLayout_3;
     int testlengtht=17;
-    public LinearLayout jihual;
-    public LinearLayout fanganl;
-    public LinearLayout xianchangl;
-    public LinearLayout cuoshil;
-    public LinearLayout zelingl;
-    public LinearLayout fuchal;
-    public LinearLayout chufal;
-    public LinearLayout guidangl;
+    public RelativeLayout jihual;
+    public RelativeLayout fanganl;
+    public RelativeLayout xianchangl;
+    public RelativeLayout chulicuoshil;
+    public RelativeLayout zelingl;
+    public RelativeLayout zhenggaifuchal;
+    public RelativeLayout chufal;
+    public RelativeLayout guidangl;
 
     @Override
     public ORIENTATION getORIENTATION() {
@@ -40,7 +40,7 @@ public class ActivityCheckMenu extends FrameActivity {
 
     @Override
     public int getMenuid() {
-        return -1;
+        return R.menu.place_menu;
     }
 
     @Override
@@ -57,19 +57,54 @@ public class ActivityCheckMenu extends FrameActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkmenu);
-        jihual= (LinearLayout) findViewById(R.id.jihual);
-        fanganl= (LinearLayout) findViewById(R.id.fanganl);
-        xianchangl= (LinearLayout) findViewById(R.id.xianchangl);
+        jihual= (RelativeLayout) findViewById(R.id.jihual);
+        jihual.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(),ActivityJiHua.class));
+            }
+        });
+        fanganl= (RelativeLayout) findViewById(R.id.fanganl);
+        fanganl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(),ActivityFangAn.class));
+            }
+        });
+        xianchangl= (RelativeLayout) findViewById(R.id.xianchangl);
         xianchangl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getContext(),ActivityXianChangJianCha.class));
             }
         });
-        cuoshil= (LinearLayout) findViewById(R.id.cuoshil);
-        zelingl= (LinearLayout) findViewById(R.id.zelingl);
-        fuchal= (LinearLayout) findViewById(R.id.fuchal);
-        chufal= (LinearLayout) findViewById(R.id.chufal);
-        guidangl= (LinearLayout) findViewById(R.id.guidangl);
+        chulicuoshil = (RelativeLayout) findViewById(R.id.chulicuoshil);
+        chulicuoshil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(),ActivityChuLiCuoShi.class));
+            }
+        });
+        zelingl= (RelativeLayout) findViewById(R.id.zelingl);
+        zelingl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(),ActivityZeLing.class));
+            }
+        });
+        zhenggaifuchal= (RelativeLayout) findViewById(R.id.zhenggaifuchal);
+        zhenggaifuchal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(),ActivityZhengGaiMenu.class));
+            }
+        });
+        chufal= (RelativeLayout) findViewById(R.id.chufal);
+        chufal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(),ActivityChuFaMenu.class));
+            }
+        });
     }
 }

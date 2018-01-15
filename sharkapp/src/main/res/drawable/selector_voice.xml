@@ -2,5 +2,4 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true" android:drawable="@drawable/collect_voice_s"/>
     <item android:state_focused="false"  android:drawable="@drawable/collect_voice"/>
-    <item  android:drawable="@drawable/collect_voice_s" />
 </selector>
