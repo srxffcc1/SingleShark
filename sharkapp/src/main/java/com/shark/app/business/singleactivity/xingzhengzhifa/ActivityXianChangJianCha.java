@@ -1,4 +1,4 @@
-package com.shark.app.business.singleactivity;
+package com.shark.app.business.singleactivity.xingzhengzhifa;
 
 import android.os.Bundle;
 import android.os.Message;
@@ -7,13 +7,15 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.Display;
+import android.view.WindowManager;
 
 import com.businessframehelp.app.FrameActivity;
 import com.businessframehelp.enums.ORIENTATION;
 import com.flyco.tablayout.SegmentTabLayout;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.shark.app.R;
-import com.shark.app.business.fragment.SimpleCardFragment;
+import com.shark.app.business.fragment.JianChaXiangCardFragment;
 
 import java.util.ArrayList;
 
@@ -43,7 +45,7 @@ public class ActivityXianChangJianCha extends FrameActivity {
 
     @Override
     public boolean needActionBar() {
-        return true;
+        return false;
     }
 
 
@@ -51,10 +53,15 @@ public class ActivityXianChangJianCha extends FrameActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_xianchangjiancha);
+        WindowManager m = getWindowManager();
+        Display d = m.getDefaultDisplay(); // 为获取屏幕宽、高
+        android.view.WindowManager.LayoutParams p = getWindow().getAttributes();
+        p.width = (int) (d.getWidth() * 0.9); // 宽度设置为屏幕的0.7
+        getWindow().setAttributes(p);
         mTitles_3=new String[testlengtht];
         for (int i = 0; i < testlengtht; i++) {
             mTitles_3[i]="检查项 " +(i+1);
-            mFragments.add(SimpleCardFragment.getInstance("检查项 " +(i+1) ));
+            mFragments.add(JianChaXiangCardFragment.getInstance("检查项 " +(i+1) ));
         }
 
         final ViewPager vp_3 = (ViewPager) findViewById(R.id.vp_2);

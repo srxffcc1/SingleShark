@@ -68,20 +68,18 @@
         <activity android:name=".business.singleactivity.library.ActivityWxhxptz" android:launchMode="singleTop"/>
         <activity android:name=".business.singleactivity.library.ActivityYhpcbz" android:launchMode="singleTop"/>
         <activity android:name=".business.singleactivity.library.ActivityZfyj" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.ActivityCheckMenu" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.ActivityXianChangJianCha" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.ActivityChuFa" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.ActivityChuFaList" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.ActivityChuFaMenu" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.ActivityChuLiCuoShi" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.ActivityFangAn" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.ActivityJiHua" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.xingzhengzhifa.ActivityCheckMenu" android:launchMode="singleTop"/>
         <activity android:name=".business.singleactivity.ActivityTmp" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.ActivityZeLing" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.ActivityZhengGai" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.ActivityZhengGaiList" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.ActivityZhengGaiMenu" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.ActivityGuiDang" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.xingzhengzhifa.ActivityXianChangJianCha" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
+        <activity android:name=".business.singleactivity.xingzhengzhifa.ActivityChuFa" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
+        <activity android:name=".business.singleactivity.xingzhengzhifa.ActivityChuFaList" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
+        <activity android:name=".business.singleactivity.xingzhengzhifa.ActivityChuLiCuoShi" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
+        <activity android:name=".business.singleactivity.xingzhengzhifa.ActivityFangAn" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
+        <activity android:name=".business.singleactivity.xingzhengzhifa.ActivityJiHua" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
+        <activity android:name=".business.singleactivity.xingzhengzhifa.ActivityZeLing" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
+        <activity android:name=".business.singleactivity.xingzhengzhifa.ActivityZhengGai" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
+        <activity android:name=".business.singleactivity.xingzhengzhifa.ActivityZhengGaiList" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
+        <activity android:name=".business.singleactivity.xingzhengzhifa.ActivityGuiDang" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
     </application>
 
 </manifest>

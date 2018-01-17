@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.shark.app.R;
-import com.shark.app.business.singleactivity.ActivityCheckMenu;
+import com.shark.app.business.singleactivity.xingzhengzhifa.ActivityCheckMenu;
 import com.zhy.autolayout.utils.AutoUtils;
 
 /**

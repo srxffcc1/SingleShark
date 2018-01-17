@@ -1,4 +1,4 @@
-package com.shark.app.business.singleactivity;
+package com.shark.app.business.singleactivity.xingzhengzhifa;
 
 import android.os.Bundle;
 import android.os.Message;
@@ -13,7 +13,7 @@ import com.shark.app.R;
  * Created by Administrator on 2017/5/25. 临时模板复制就用
  */
 
-public class ActivityZhengGai extends FrameActivity {
+public class ActivityGuiDang extends FrameActivity {
 
 
     @Override
@@ -34,7 +34,7 @@ public class ActivityZhengGai extends FrameActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_zhenggai);
+        setContentView(R.layout.activity_guidang);
 
 
     }

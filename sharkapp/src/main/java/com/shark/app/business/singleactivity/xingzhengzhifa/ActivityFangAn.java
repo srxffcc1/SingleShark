@@ -1,9 +1,11 @@
-package com.shark.app.business.singleactivity;
+package com.shark.app.business.singleactivity.xingzhengzhifa;
 
 import android.os.Bundle;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.view.Display;
 import android.view.MenuItem;
+import android.view.WindowManager;
 
 import com.businessframehelp.app.FrameActivity;
 import com.businessframehelp.enums.ORIENTATION;
@@ -27,6 +29,11 @@ public class ActivityFangAn extends FrameActivity {
     }
 
     @Override
+    public boolean needActionBar() {
+        return false;
+    }
+
+    @Override
     public int getMenuid() {
         return 0;
     }
@@ -35,7 +42,11 @@ public class ActivityFangAn extends FrameActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fangan);
-
+        WindowManager m = getWindowManager();
+        Display d = m.getDefaultDisplay(); // 为获取屏幕宽、高
+        android.view.WindowManager.LayoutParams p = getWindow().getAttributes();
+        p.width = (int) (d.getWidth() * 0.9); // 宽度设置为屏幕的0.7
+        getWindow().setAttributes(p);
 
     }
 

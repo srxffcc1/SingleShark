@@ -33,6 +33,7 @@
                     android:text="计划"></TextView>
 
                 <TextView
+                    android:id="@+id/jihuaaddt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/seach_linearlayoutbg4"
@@ -70,7 +71,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="被检查企业" />
+                            android:text="计划名称" />
 
                         <EditText
                             android:layout_width="0dp"
@@ -89,15 +90,13 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="地址" />
+                            android:text="计划类型" />
 
                         <EditText
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1" />
                     </LinearLayout>
-
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -108,7 +107,24 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="法定代表人" />
+                            android:text="计划负责人" />
+
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="计划成员" />
 
                         <EditText
                             android:layout_width="0dp"
@@ -127,7 +143,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
                             android:layout_weight="1"
-                            android:background="@drawable/seach_linearlayoutbg4"
+                            android:background="@drawable/seach_linearlayoutbg4_1"
                             android:clickable="true"
                             android:gravity="center"
                             android:paddingBottom="5dp"
@@ -142,7 +158,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
                             android:layout_weight="1"
-                            android:background="@drawable/seach_linearlayoutbg4"
+                            android:background="@drawable/seach_linearlayoutbg4_1"
                             android:clickable="true"
                             android:gravity="center"
                             android:paddingBottom="5dp"
@@ -157,7 +173,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
                             android:layout_weight="1"
-                            android:background="@drawable/seach_linearlayoutbg4"
+                            android:background="@drawable/seach_linearlayoutbg4_1"
                             android:clickable="true"
                             android:gravity="center"
                             android:paddingBottom="5dp"
@@ -172,7 +188,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
                             android:layout_weight="1"
-                            android:background="@drawable/seach_linearlayoutbg4"
+                            android:background="@drawable/seach_linearlayoutbg4_1"
                             android:clickable="true"
                             android:gravity="center"
                             android:paddingBottom="5dp"
@@ -207,6 +223,8 @@
                     android:text="检查方案"></TextView>
 
                 <TextView
+
+                    android:id="@+id/fanganaddt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/seach_linearlayoutbg4"
@@ -263,7 +281,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="地址" />
+                            android:text="执法人员" />
 
                         <EditText
                             android:layout_width="0dp"
@@ -282,14 +300,47 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="法定代表人" />
+                            android:text="检查方式" />
 
                         <EditText
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1" />
                     </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="审批人" />
+
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="审核人" />
+
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+                    </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -301,7 +352,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
                             android:layout_weight="1"
-                            android:background="@drawable/seach_linearlayoutbg4"
+                            android:background="@drawable/seach_linearlayoutbg4_1"
                             android:clickable="true"
                             android:gravity="center"
                             android:paddingBottom="5dp"
@@ -316,7 +367,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
                             android:layout_weight="1"
-                            android:background="@drawable/seach_linearlayoutbg4"
+                            android:background="@drawable/seach_linearlayoutbg4_1"
                             android:clickable="true"
                             android:gravity="center"
                             android:paddingBottom="5dp"
@@ -331,7 +382,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
                             android:layout_weight="1"
-                            android:background="@drawable/seach_linearlayoutbg4"
+                            android:background="@drawable/seach_linearlayoutbg4_1"
                             android:clickable="true"
                             android:gravity="center"
                             android:paddingBottom="5dp"
@@ -346,7 +397,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
                             android:layout_weight="1"
-                            android:background="@drawable/seach_linearlayoutbg4"
+                            android:background="@drawable/seach_linearlayoutbg4_1"
                             android:clickable="true"
                             android:gravity="center"
                             android:paddingBottom="5dp"
@@ -382,6 +433,7 @@
                     android:text="现场检查"></TextView>
 
                 <TextView
+                    android:id="@+id/xianchangaddt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/seach_linearlayoutbg4"
@@ -438,7 +490,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="地址" />
+                            android:text="检查场所" />
 
                         <EditText
                             android:layout_width="0dp"
@@ -457,14 +509,30 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="法定代表人" />
+                            android:text="检查时间" />
 
                         <EditText
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1" />
                     </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
 
+                        <TextView
+                            android:gravity="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="检查记录" />
+                        <com.businessframehelp.widget.ListViewForScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"></com.businessframehelp.widget.ListViewForScrollView>
+
+                    </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -476,7 +544,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
                             android:layout_weight="1"
-                            android:background="@drawable/seach_linearlayoutbg4"
+                            android:background="@drawable/seach_linearlayoutbg4_1"
                             android:clickable="true"
                             android:gravity="center"
                             android:paddingBottom="5dp"
@@ -491,7 +559,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
                             android:layout_weight="1"
-                            android:background="@drawable/seach_linearlayoutbg4"
+                            android:background="@drawable/seach_linearlayoutbg4_1"
                             android:clickable="true"
                             android:gravity="center"
                             android:paddingBottom="5dp"
@@ -506,7 +574,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
                             android:layout_weight="1"
-                            android:background="@drawable/seach_linearlayoutbg4"
+                            android:background="@drawable/seach_linearlayoutbg4_1"
                             android:clickable="true"
                             android:gravity="center"
                             android:paddingBottom="5dp"
@@ -521,7 +589,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
                             android:layout_weight="1"
-                            android:background="@drawable/seach_linearlayoutbg4"
+                            android:background="@drawable/seach_linearlayoutbg4_1"
                             android:clickable="true"
                             android:gravity="center"
                             android:paddingBottom="5dp"
@@ -557,6 +625,8 @@
                     android:text="现场处理措施"></TextView>
 
                 <TextView
+
+                    android:id="@+id/chulicuoshiaddt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/seach_linearlayoutbg4"
@@ -602,44 +672,23 @@
                             android:layout_weight="1" />
                     </LinearLayout>
 
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:gravity="center_vertical"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:gravity="center"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="地址" />
+                            android:text="事故隐患" />
+                        <com.businessframehelp.widget.ListViewForScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"></com.businessframehelp.widget.ListViewForScrollView>
 
-                        <EditText
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1" />
                     </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="法定代表人" />
-
-                        <EditText
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1" />
-                    </LinearLayout>
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -651,7 +700,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
                             android:layout_weight="1"
-                            android:background="@drawable/seach_linearlayoutbg4"
+                            android:background="@drawable/seach_linearlayoutbg4_1"
                             android:clickable="true"
                             android:gravity="center"
                             android:paddingBottom="5dp"
@@ -666,7 +715,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
                             android:layout_weight="1"
-                            android:background="@drawable/seach_linearlayoutbg4"
+                            android:background="@drawable/seach_linearlayoutbg4_1"
                             android:clickable="true"
                             android:gravity="center"
                             android:paddingBottom="5dp"
@@ -681,7 +730,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
                             android:layout_weight="1"
-                            android:background="@drawable/seach_linearlayoutbg4"
+                            android:background="@drawable/seach_linearlayoutbg4_1"
                             android:clickable="true"
                             android:gravity="center"
                             android:paddingBottom="5dp"
@@ -696,7 +745,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
                             android:layout_weight="1"
-                            android:background="@drawable/seach_linearlayoutbg4"
+                            android:background="@drawable/seach_linearlayoutbg4_1"
                             android:clickable="true"
                             android:gravity="center"
                             android:paddingBottom="5dp"
@@ -731,6 +780,7 @@
                     android:text="责令限期整改"></TextView>
 
                 <TextView
+                    android:id="@+id/zelingaddt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/seach_linearlayoutbg4"
@@ -782,37 +832,20 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:gravity="center_vertical"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:gravity="center"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="地址" />
+                            android:text="存在问题" />
+                        <com.businessframehelp.widget.ListViewForScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"></com.businessframehelp.widget.ListViewForScrollView>
 
-                        <EditText
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1" />
                     </LinearLayout>
 
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="法定代表人" />
-
-                        <EditText
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1" />
-                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -825,7 +858,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
                             android:layout_weight="1"
-                            android:background="@drawable/seach_linearlayoutbg4"
+                            android:background="@drawable/seach_linearlayoutbg4_1"
                             android:clickable="true"
                             android:gravity="center"
                             android:paddingBottom="5dp"
@@ -840,7 +873,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
                             android:layout_weight="1"
-                            android:background="@drawable/seach_linearlayoutbg4"
+                            android:background="@drawable/seach_linearlayoutbg4_1"
                             android:clickable="true"
                             android:gravity="center"
                             android:paddingBottom="5dp"
@@ -855,7 +888,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
                             android:layout_weight="1"
-                            android:background="@drawable/seach_linearlayoutbg4"
+                            android:background="@drawable/seach_linearlayoutbg4_1"
                             android:clickable="true"
                             android:gravity="center"
                             android:paddingBottom="5dp"
@@ -870,7 +903,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
                             android:layout_weight="1"
-                            android:background="@drawable/seach_linearlayoutbg4"
+                            android:background="@drawable/seach_linearlayoutbg4_1"
                             android:clickable="true"
                             android:gravity="center"
                             android:paddingBottom="5dp"
@@ -905,6 +938,7 @@
                     android:text="整改复查"></TextView>
 
                 <TextView
+                    android:id="@+id/zhenggaifuchaaddt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/seach_linearlayoutbg4"
@@ -951,41 +985,23 @@
                     </LinearLayout>
 
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="地址" />
-
-                        <EditText
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1" />
-                    </LinearLayout>
-
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:gravity="center_vertical"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:gravity="center"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="法定代表人" />
+                            android:text="复查意见" />
 
                         <EditText
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1" />
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -1000,7 +1016,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
                             android:layout_weight="1"
-                            android:background="@drawable/seach_linearlayoutbg4"
+                            android:background="@drawable/seach_linearlayoutbg4_1"
                             android:clickable="true"
                             android:gravity="center"
                             android:paddingBottom="5dp"
@@ -1015,7 +1031,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
                             android:layout_weight="1"
-                            android:background="@drawable/seach_linearlayoutbg4"
+                            android:background="@drawable/seach_linearlayoutbg4_1"
                             android:clickable="true"
                             android:gravity="center"
                             android:paddingBottom="5dp"
@@ -1030,7 +1046,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
                             android:layout_weight="1"
-                            android:background="@drawable/seach_linearlayoutbg4"
+                            android:background="@drawable/seach_linearlayoutbg4_1"
                             android:clickable="true"
                             android:gravity="center"
                             android:paddingBottom="5dp"
@@ -1045,7 +1061,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
                             android:layout_weight="1"
-                            android:background="@drawable/seach_linearlayoutbg4"
+                            android:background="@drawable/seach_linearlayoutbg4_1"
                             android:clickable="true"
                             android:gravity="center"
                             android:paddingBottom="5dp"
@@ -1080,6 +1096,7 @@
                     android:text="处罚"></TextView>
 
                 <TextView
+                    android:id="@+id/chufaaddt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/seach_linearlayoutbg4"
@@ -1126,23 +1143,7 @@
                     </LinearLayout>
 
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="地址" />
-
-                        <EditText
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1" />
-                    </LinearLayout>
 
 
                     <LinearLayout
@@ -1150,17 +1151,17 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:gravity="center_vertical"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:gravity="center"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="法定代表人" />
+                            android:text="违法列表" />
+                        <com.businessframehelp.widget.ListViewForScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"></com.businessframehelp.widget.ListViewForScrollView>
 
-                        <EditText
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -1174,7 +1175,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
                             android:layout_weight="1"
-                            android:background="@drawable/seach_linearlayoutbg4"
+                            android:background="@drawable/seach_linearlayoutbg4_1"
                             android:clickable="true"
                             android:gravity="center"
                             android:paddingBottom="5dp"
@@ -1189,7 +1190,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
                             android:layout_weight="1"
-                            android:background="@drawable/seach_linearlayoutbg4"
+                            android:background="@drawable/seach_linearlayoutbg4_1"
                             android:clickable="true"
                             android:gravity="center"
                             android:paddingBottom="5dp"
@@ -1204,7 +1205,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
                             android:layout_weight="1"
-                            android:background="@drawable/seach_linearlayoutbg4"
+                            android:background="@drawable/seach_linearlayoutbg4_1"
                             android:clickable="true"
                             android:gravity="center"
                             android:paddingBottom="5dp"
@@ -1219,7 +1220,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
                             android:layout_weight="1"
-                            android:background="@drawable/seach_linearlayoutbg4"
+                            android:background="@drawable/seach_linearlayoutbg4_1"
                             android:clickable="true"
                             android:gravity="center"
                             android:paddingBottom="5dp"

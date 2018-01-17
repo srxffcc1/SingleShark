@@ -12,7 +12,7 @@ import android.widget.ExpandableListView;
 import com.baoyachi.stepview.VerticalStepView;
 import com.shark.app.R;
 import com.shark.app.business.resultentity.Check;
-import com.shark.app.business.singleactivity.ActivityCheckMenu;
+import com.shark.app.business.singleactivity.xingzhengzhifa.ActivityCheckMenu;
 
 import java.util.ArrayList;
 import java.util.List;
