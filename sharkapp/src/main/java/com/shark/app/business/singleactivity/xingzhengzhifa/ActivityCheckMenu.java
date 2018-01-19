@@ -9,7 +9,10 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.view.View;
+import android.view.ViewTreeObserver;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.businessframehelp.app.FrameActivity;
@@ -18,7 +21,15 @@ import com.flyco.tablayout.SegmentTabLayout;
 import com.hss01248.dialog.StyledDialog;
 import com.hss01248.dialog.interfaces.MyItemDialogListener;
 import com.shark.app.R;
+import com.shark.app.business.entity.Entity_ChuFa;
+import com.shark.app.business.entity.Entity_JianChaFangAn;
+import com.shark.app.business.entity.Entity_XianChangChuLiCuoShi;
+import com.shark.app.business.entity.Entity_XianChangJianCha;
+import com.shark.app.business.entity.Entity_ZeLingZhengGai;
+import com.shark.app.business.entity.Entity_ZhengGaiFuCha;
 import com.shark.app.business.entity.Entity_ZhiFaBianHao;
+import com.shark.app.business.entity.Entity_ZhiFaJiHua;
+import com.wisdomregulation.data.entitybase.DateBase_Entity;
 import com.wisdomregulation.help.Demo_DBManager;
 
 import java.util.ArrayList;
@@ -67,6 +78,23 @@ public class ActivityCheckMenu extends FrameActivity {
     CardView card5;
     CardView card6;
     CardView card7;
+    private EditText jihuamingcheng;
+    private EditText jihualeixing;
+    private EditText jihuafuzeren;
+    private EditText jihuachengyuan;
+    private EditText fanganbeijianchaqiye;
+    private EditText fanganzhifarenyuan;
+    private EditText fanganjianchafangshi;
+    private EditText fanganshenpiren;
+    private EditText fanganshenheren;
+    private EditText xianchangjianchaqiye;
+    private EditText xianchangjianchachangsuo;
+    private EditText xianchangjianchashijian;
+    private EditText xianchangchulicuoshiqiye;
+    private EditText zelingqiye;
+    private EditText zhenggaiqiye;
+    private EditText chufaqiye;
+    private ScrollView scrollviewt;
 
     @Override
     public ORIENTATION getORIENTATION() {
@@ -87,7 +115,8 @@ public class ActivityCheckMenu extends FrameActivity {
     public boolean needActionBar() {
         return true;
     }
-
+    String jihuaid;
+    String bianhaoid;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,12 +124,102 @@ public class ActivityCheckMenu extends FrameActivity {
         initData();
         initLayout();
         initListener();
+        initJihua();
+        initFangan();
+        initXianChangJianCha();
+        initXianChangChuLiCuoShi();
+        initZeLingZhengGai();
+        initZhengGaiFuCha();
+        initChuFa();
+    }
+    public void initJihua(){
+        DateBase_Entity entitytmp=Demo_DBManager.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_ZhiFaJiHua().setId(jihuaid)));
+        jihuamingcheng.setText(entitytmp.getValue(0));
+        jihualeixing.setText(entitytmp.getValue(2));
+        jihuafuzeren.setText(entitytmp.getValue(3));
+        jihuachengyuan.setText(entitytmp.getValue(4));
+        if(entitytmp.getId().equals("-1")){
+            card1.setVisibility(View.GONE);
+        }else{
+            jihuaaddt.setVisibility(View.GONE);
+        }
 
     }
+    public void initFangan(){
+        DateBase_Entity entitytmp=Demo_DBManager.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_JianChaFangAn().putlogic2value("关联的执法编号id","=",bianhaoid)));
+
+        fanganbeijianchaqiye.setText(entitytmp.getValue(2));
+        fanganzhifarenyuan.setText(entitytmp.getValue("行政执法人员"));
+        fanganjianchafangshi.setText(entitytmp.getValue("检查方式"));
+        fanganshenpiren.setText(entitytmp.getValue("审批人"));
+        fanganshenheren.setText(entitytmp.getValue("审核人"));
+        if(entitytmp.getId().equals("-1")){
+            card2.setVisibility(View.GONE);
+        }else{
+            fanganaddt.setVisibility(View.GONE);
+        }
+    }
+    public void initXianChangJianCha(){
+        DateBase_Entity entitytmp=Demo_DBManager.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_XianChangJianCha().putlogic2value("关联的执法编号id","=",bianhaoid)));
+
+        xianchangjianchaqiye.setText(entitytmp.getValue("被检查企业名称"));
+        xianchangjianchachangsuo.setText(entitytmp.getValue("检查场所"));
+        xianchangjianchashijian.setText(entitytmp.getValue("检查时间"));
+        if(entitytmp.getId().equals("-1")){
+            card3.setVisibility(View.GONE);
+        }else{
+            xianchangaddt.setVisibility(View.GONE);
+        }
+    }
+    public void initXianChangChuLiCuoShi(){
+        DateBase_Entity entitytmp=Demo_DBManager.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_XianChangChuLiCuoShi().putlogic2value("关联的执法编号id","=",bianhaoid)));
+
+        xianchangchulicuoshiqiye.setText(entitytmp.getValue("被检查企业名称"));
+        if(entitytmp.getId().equals("-1")){
+            card4.setVisibility(View.GONE);
+        }else{
+            chulicuoshiaddt.setVisibility(View.GONE);
+        }
+    }
+
+    public void initZeLingZhengGai(){
+        DateBase_Entity entitytmp=Demo_DBManager.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_ZeLingZhengGai().putlogic2value("关联的执法编号id","=",bianhaoid)));
+
+        zelingqiye.setText(entitytmp.getValue("被检查企业名称"));
+        if(entitytmp.getId().equals("-1")){
+            card5.setVisibility(View.GONE);
+        }else{
+            zelingaddt.setVisibility(View.GONE);
+        }
+    }
+    public void initZhengGaiFuCha(){
+        DateBase_Entity entitytmp=Demo_DBManager.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_ZhengGaiFuCha().putlogic2value("关联的执法编号id","=",bianhaoid)));
+
+        zhenggaiqiye.setText(entitytmp.getValue("被检查企业名称"));
+        if(entitytmp.getId().equals("-1")){
+            card6.setVisibility(View.GONE);
+        }else{
+            zhenggaifuchaaddt.setVisibility(View.GONE);
+        }
+    }
+
+    public void initChuFa(){
+        DateBase_Entity entitytmp=Demo_DBManager.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_ChuFa().putlogic2value("关联的执法编号id","=",bianhaoid)));
+
+        chufaqiye.setText(entitytmp.getValue("被检查企业名称"));
+        if(entitytmp.getId().equals("-1")){
+            card7.setVisibility(View.GONE);
+        }else{
+            chufaaddt.setVisibility(View.GONE);
+        }
+    }
     public void initData(){
+        bianhaoid=getIntent().getStringExtra("bianhaoid");
+        jihuaid=getIntent().getStringExtra("jihuaid");
         Demo_DBManager.build().search(new Entity_ZhiFaBianHao());
     }
     public void initLayout() {
+        scrollviewt = (ScrollView) findViewById(R.id.scrollviewt);
         jihual= (RelativeLayout) findViewById(R.id.jihual);
         fanganl= (RelativeLayout) findViewById(R.id.fanganl);
         xianchangl= (RelativeLayout) findViewById(R.id.xianchangl);
@@ -133,8 +252,39 @@ public class ActivityCheckMenu extends FrameActivity {
         card5= (CardView) findViewById(R.id.card5);
         card6= (CardView) findViewById(R.id.card6);
         card7= (CardView) findViewById(R.id.card7);
+
+        jihuamingcheng = (EditText) findViewById(R.id.jihuamingcheng);
+        jihualeixing = (EditText) findViewById(R.id.jihualeixing);
+        jihuafuzeren = (EditText) findViewById(R.id.jihuafuzeren);
+        jihuachengyuan = (EditText) findViewById(R.id.jihuachengyuan);
+
+        fanganbeijianchaqiye = (EditText) findViewById(R.id.fanganbeijianchaqiye);
+        fanganzhifarenyuan = (EditText) findViewById(R.id.fanganzhifarenyuan);
+        fanganjianchafangshi = (EditText) findViewById(R.id.fanganjianchafangshi);
+        fanganshenpiren = (EditText) findViewById(R.id.fanganshenpiren);
+        fanganshenheren = (EditText) findViewById(R.id.fanganshenheren);
+
+        xianchangjianchaqiye = (EditText) findViewById(R.id.xianchangjianchaqiye);
+        xianchangjianchachangsuo = (EditText) findViewById(R.id.xianchangjianchachangsuo);
+        xianchangjianchashijian = (EditText) findViewById(R.id.xianchangjianchashijian);
+
+        xianchangchulicuoshiqiye = (EditText) findViewById(R.id.xianchangchulisuochiqiye);
+        zelingqiye = (EditText) findViewById(R.id.zelingqiye);
+        zhenggaiqiye = (EditText) findViewById(R.id.zhenggaiqiye);
+        chufaqiye = (EditText) findViewById(R.id.chufaqiye);
+
     }
     public void initListener() {
+        scrollviewt.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                scrollviewt.post(new Runnable() {
+                    public void run() {
+                        scrollviewt.fullScroll(View.FOCUS_DOWN);
+                    }
+                });
+            }
+        });
         yincang1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -143,6 +293,7 @@ public class ActivityCheckMenu extends FrameActivity {
                 }else{
                     card1.setVisibility(View.VISIBLE);
                 }
+
             }
         });
         jihual.setOnClickListener(new View.OnClickListener() {

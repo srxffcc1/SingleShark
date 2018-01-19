@@ -23,5 +23,6 @@ public class Entity_XianChangJianCha extends DateBase_Entity {
         fieldnamelsitchinese.add("检查场所");//2
         fieldnamelsitchinese.add("检查时间");//2
         fieldnamelsitchinese.add("关联检查方案id");//2
+        fieldnamelsitchinese.add("关联的执法编号id");//2
     }
 }

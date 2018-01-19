@@ -15,7 +15,9 @@ public class Entity_ZhengGaiFuCha extends DateBase_Entity {
     }
     {
         fieldnamelsitchinese.clear();
+        fieldnamelsitchinese.add("关联的执法编号id");//0
         fieldnamelsitchinese.add("被检查企业id");//0
+        fieldnamelsitchinese.add("被检查企业名称");//1
         fieldnamelsitchinese.add("复查意见");//1
         fieldnamelsitchinese.add("关联处罚决定书类型id");//2
         fieldnamelsitchinese.add("关联处罚决定书id");//2

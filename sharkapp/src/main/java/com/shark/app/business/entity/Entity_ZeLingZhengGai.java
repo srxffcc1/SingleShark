@@ -1,13 +1,13 @@
 package com.shark.app.business.entity;
 
-import com.wisdomregulation.data.entitybase.Base_Entity;
+import com.wisdomregulation.data.entitybase.DateBase_Entity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Entity_ZeLingZhengGai extends Base_Entity {
+public class Entity_ZeLingZhengGai extends DateBase_Entity {
     private List<String> fieldnamelsitchinese=new ArrayList<String>();
     private Map<String,String> fieldvaluemap=new HashMap<String, String>();
     public Entity_ZeLingZhengGai(){
@@ -15,6 +15,7 @@ public class Entity_ZeLingZhengGai extends Base_Entity {
     }
     {
         fieldnamelsitchinese.clear();
+        fieldnamelsitchinese.add("关联的执法编号id");//0
         fieldnamelsitchinese.add("被检查企业id");//0
         fieldnamelsitchinese.add("被检查企业名称");//1
         fieldnamelsitchinese.add("被检查企业地址");//2

@@ -15,6 +15,7 @@ public class Entity_XianChangChuLiCuoShi extends DateBase_Entity {
     }
     {
         fieldnamelsitchinese.clear();
+        fieldnamelsitchinese.add("关联的执法编号id");//0
         fieldnamelsitchinese.add("被检查企业id");//0
         fieldnamelsitchinese.add("被检查企业名称");//1
         fieldnamelsitchinese.add("被检查企业地址");//2

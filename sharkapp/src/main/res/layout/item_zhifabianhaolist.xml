@@ -23,6 +23,7 @@
                 android:orientation="vertical"
                 android:layout_weight="750">
                 <TextView
+                    android:id="@+id/bianhaotext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
@@ -30,12 +31,14 @@
                     android:text="执法编号" />
 
                 <TextView
+                    android:id="@+id/suoshujihuatext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
                     android:textColor="#019BFD"
                     android:text="所属计划" />
                 <TextView
+                    android:id="@+id/qiyemingchengtext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="5dp"

@@ -1957,7 +1957,7 @@ public class Demo_DBManager {
         if (org1 != null && org1.size() > 0) {
             result = getSearchResult(org).get(0);
         } else {
-            result = new DateBase_Entity();
+            result = new DateBase_Entity().setId("-1");//用来证明数据不存在
         }
 
         return result;

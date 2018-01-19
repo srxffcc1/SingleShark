@@ -8,10 +8,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.shark.app.R;
 import com.shark.app.business.singleactivity.xingzhengzhifa.ActivityCheckMenu;
+import com.wisdomregulation.data.entitybase.DateBase_Entity;
 import com.zhy.autolayout.utils.AutoUtils;
+
+import java.util.List;
 
 /**
  * Created by King6rf on 2017/8/10.
@@ -23,7 +27,7 @@ public class BianHaoRecycleAdapter extends RecyclerView.Adapter<BianHaoRecycleAd
     public Fragment mfragment;
     public android.support.v4.app.Fragment msupportfragment;
     Context mcontext;
-
+    List<DateBase_Entity> resultlist;
     public BianHaoRecycleAdapter(Fragment mfragment) {
         this.mfragment = mfragment;
         mcontext=mfragment.getActivity();
@@ -38,16 +42,14 @@ public class BianHaoRecycleAdapter extends RecyclerView.Adapter<BianHaoRecycleAd
         this.mactivity = mactivity;
         mcontext=mactivity;
     }
+    public BianHaoRecycleAdapter setList(List<DateBase_Entity> resultlist){
+        this.resultlist=resultlist;
+        return this;
 
+    }
     @Override
     public SingelViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView= LayoutInflater.from(mcontext).inflate(R.layout.item_zhifabianhaolist,parent,false);
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mcontext.startActivity(new Intent(mcontext, ActivityCheckMenu.class));
-            }
-        });
         AutoUtils.autoSize(itemView);
         return new SingelViewHolder(itemView);
     }
@@ -56,28 +58,34 @@ public class BianHaoRecycleAdapter extends RecyclerView.Adapter<BianHaoRecycleAd
 
     @Override
     public void onBindViewHolder(SingelViewHolder holder, int position) {
+        final DateBase_Entity entity=resultlist.get(position);
+        holder.bianhaotext.setText("执法编号："+entity.getValue("执法编号"));
+        holder.suoshujihuatext.setText("所属计划："+entity.getValue("所属计划名称"));
+        holder.qiyemingchengtext.setText("企业名称："+entity.getValue("企业名称"));
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                mcontext.startActivity(new Intent(mcontext, ActivityCheckMenu.class).putExtra("bianhaoid",entity.getId()).putExtra("jihuaid",entity.getValue("所属计划id")));
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        return resultlist.size();
     }
 
-    public class SingelViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnLongClickListener {
+    public class SingelViewHolder extends RecyclerView.ViewHolder {
+        public TextView bianhaotext;
+        public TextView suoshujihuatext;
+        public TextView qiyemingchengtext;
         public SingelViewHolder(View itemView) {
             super(itemView);
-
+            bianhaotext= (TextView) itemView.findViewById(R.id.bianhaotext);
+            suoshujihuatext= (TextView) itemView.findViewById(R.id.suoshujihuatext);
+            qiyemingchengtext= (TextView) itemView.findViewById(R.id.qiyemingchengtext);
         }
 
-        @Override
-        public void onClick(View v) {
-
-        }
-
-        @Override
-        public boolean onLongClick(View v) {
-            return false;
-        }
     }
 }
