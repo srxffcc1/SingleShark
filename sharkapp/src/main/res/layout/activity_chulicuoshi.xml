@@ -16,6 +16,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -29,6 +31,7 @@
                     android:text="被检查企业" />
 
                 <EditText
+                    android:id="@+id/beijianchaqiye"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
@@ -48,6 +51,7 @@
                     android:text="地址" />
 
                 <EditText
+                    android:id="@+id/dizhi"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
@@ -67,6 +71,7 @@
                     android:text="法定代表人" />
 
                 <EditText
+                    android:id="@+id/fadingdaibiaoren"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
@@ -85,6 +90,7 @@
                     android:text="联系电话" />
 
                 <EditText
+                    android:id="@+id/lianxidianhua"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
@@ -103,6 +109,7 @@
                     android:text="检查场所" />
 
                 <EditText
+                    android:id="@+id/jianchachangsuo"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
@@ -121,7 +128,7 @@
                     android:text="检查时间" />
 
                 <EditText
-                    android:id="@+id/editText"
+                    android:id="@+id/jianchashijian"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />

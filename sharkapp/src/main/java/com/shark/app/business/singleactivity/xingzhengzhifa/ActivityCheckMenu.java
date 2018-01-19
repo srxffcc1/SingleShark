@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -124,6 +125,12 @@ public class ActivityCheckMenu extends FrameActivity {
         initData();
         initLayout();
         initListener();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         initJihua();
         initFangan();
         initXianChangJianCha();
@@ -132,6 +139,7 @@ public class ActivityCheckMenu extends FrameActivity {
         initZhengGaiFuCha();
         initChuFa();
     }
+
     public void initJihua(){
         DateBase_Entity entitytmp=Demo_DBManager.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_ZhiFaJiHua().setId(jihuaid)));
         jihuamingcheng.setText(entitytmp.getValue(0));
@@ -140,7 +148,9 @@ public class ActivityCheckMenu extends FrameActivity {
         jihuachengyuan.setText(entitytmp.getValue(4));
         if(entitytmp.getId().equals("-1")){
             card1.setVisibility(View.GONE);
+            card1.setTag("no");
         }else{
+            card1.setVisibility(View.VISIBLE);
             jihuaaddt.setVisibility(View.GONE);
         }
 
@@ -155,7 +165,9 @@ public class ActivityCheckMenu extends FrameActivity {
         fanganshenheren.setText(entitytmp.getValue("审核人"));
         if(entitytmp.getId().equals("-1")){
             card2.setVisibility(View.GONE);
+            card2.setTag("no");
         }else{
+            card2.setVisibility(View.VISIBLE);
             fanganaddt.setVisibility(View.GONE);
         }
     }
@@ -167,7 +179,9 @@ public class ActivityCheckMenu extends FrameActivity {
         xianchangjianchashijian.setText(entitytmp.getValue("检查时间"));
         if(entitytmp.getId().equals("-1")){
             card3.setVisibility(View.GONE);
+            card3.setTag("no");
         }else{
+            card3.setVisibility(View.VISIBLE);
             xianchangaddt.setVisibility(View.GONE);
         }
     }
@@ -177,7 +191,9 @@ public class ActivityCheckMenu extends FrameActivity {
         xianchangchulicuoshiqiye.setText(entitytmp.getValue("被检查企业名称"));
         if(entitytmp.getId().equals("-1")){
             card4.setVisibility(View.GONE);
+            card4.setTag("no");
         }else{
+            card4.setVisibility(View.VISIBLE);
             chulicuoshiaddt.setVisibility(View.GONE);
         }
     }
@@ -188,7 +204,9 @@ public class ActivityCheckMenu extends FrameActivity {
         zelingqiye.setText(entitytmp.getValue("被检查企业名称"));
         if(entitytmp.getId().equals("-1")){
             card5.setVisibility(View.GONE);
+            card5.setTag("no");
         }else{
+            card5.setVisibility(View.VISIBLE);
             zelingaddt.setVisibility(View.GONE);
         }
     }
@@ -198,7 +216,9 @@ public class ActivityCheckMenu extends FrameActivity {
         zhenggaiqiye.setText(entitytmp.getValue("被检查企业名称"));
         if(entitytmp.getId().equals("-1")){
             card6.setVisibility(View.GONE);
+            card6.setTag("no");
         }else{
+            card6.setVisibility(View.VISIBLE);
             zhenggaifuchaaddt.setVisibility(View.GONE);
         }
     }
@@ -209,7 +229,9 @@ public class ActivityCheckMenu extends FrameActivity {
         chufaqiye.setText(entitytmp.getValue("被检查企业名称"));
         if(entitytmp.getId().equals("-1")){
             card7.setVisibility(View.GONE);
+            card7.setTag("no");
         }else{
+            card7.setVisibility(View.VISIBLE);
             chufaaddt.setVisibility(View.GONE);
         }
     }
@@ -274,13 +296,17 @@ public class ActivityCheckMenu extends FrameActivity {
         chufaqiye = (EditText) findViewById(R.id.chufaqiye);
 
     }
+    int nowtag=0;
     public void initListener() {
         scrollviewt.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
                 scrollviewt.post(new Runnable() {
                     public void run() {
-                        scrollviewt.fullScroll(View.FOCUS_DOWN);
+                        if(nowtag>2){
+                            scrollviewt.fullScroll(View.FOCUS_DOWN);
+                        }
+
                     }
                 });
             }
@@ -288,6 +314,7 @@ public class ActivityCheckMenu extends FrameActivity {
         yincang1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                nowtag=0;
                 if(card1.getVisibility()==View.VISIBLE){
                     card1.setVisibility(View.GONE);
                 }else{
@@ -299,6 +326,7 @@ public class ActivityCheckMenu extends FrameActivity {
         jihual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                nowtag=0;
                 if(card1.getVisibility()==View.VISIBLE){
                     card1.setVisibility(View.GONE);
                 }else{
@@ -309,6 +337,7 @@ public class ActivityCheckMenu extends FrameActivity {
         yincang2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                nowtag=1;
                 if(card2.getVisibility()==View.VISIBLE){
                     card2.setVisibility(View.GONE);
                 }else{
@@ -319,6 +348,7 @@ public class ActivityCheckMenu extends FrameActivity {
         fanganl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                nowtag=1;
                 if(card2.getVisibility()==View.VISIBLE){
                     card2.setVisibility(View.GONE);
                 }else{
@@ -329,6 +359,7 @@ public class ActivityCheckMenu extends FrameActivity {
         yincang3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                nowtag=2;
                 if(card3.getVisibility()==View.VISIBLE){
                     card3.setVisibility(View.GONE);
                 }else{
@@ -340,6 +371,7 @@ public class ActivityCheckMenu extends FrameActivity {
         xianchangl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                nowtag=2;
                 if(card3.getVisibility()==View.VISIBLE){
                     card3.setVisibility(View.GONE);
                 }else{
@@ -350,6 +382,7 @@ public class ActivityCheckMenu extends FrameActivity {
         yincang4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                nowtag=3;
                 if(card4.getVisibility()==View.VISIBLE){
                     card4.setVisibility(View.GONE);
                 }else{
@@ -360,16 +393,7 @@ public class ActivityCheckMenu extends FrameActivity {
         chulicuoshil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(card4.getVisibility()==View.VISIBLE){
-                    card4.setVisibility(View.GONE);
-                }else{
-                    card4.setVisibility(View.VISIBLE);
-                }
-            }
-        });
-        yincang4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                nowtag=3;
                 if(card4.getVisibility()==View.VISIBLE){
                     card4.setVisibility(View.GONE);
                 }else{
@@ -380,6 +404,7 @@ public class ActivityCheckMenu extends FrameActivity {
         yincang5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                nowtag=4;
                 if(card5.getVisibility()==View.VISIBLE){
                     card5.setVisibility(View.GONE);
                 }else{
@@ -390,6 +415,7 @@ public class ActivityCheckMenu extends FrameActivity {
         zelingl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                nowtag=4;
                 if(card5.getVisibility()==View.VISIBLE){
                     card5.setVisibility(View.GONE);
                 }else{
@@ -400,6 +426,7 @@ public class ActivityCheckMenu extends FrameActivity {
         yincang6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                nowtag=5;
                 if(card6.getVisibility()==View.VISIBLE){
                     card6.setVisibility(View.GONE);
                 }else{
@@ -410,6 +437,7 @@ public class ActivityCheckMenu extends FrameActivity {
         zhenggaifuchal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                nowtag=5;
                 if(card6.getVisibility()==View.VISIBLE){
                     card6.setVisibility(View.GONE);
                 }else{
@@ -420,6 +448,7 @@ public class ActivityCheckMenu extends FrameActivity {
         yincang7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                nowtag=6;
                 if(card7.getVisibility()==View.VISIBLE){
                     card7.setVisibility(View.GONE);
                 }else{
@@ -430,6 +459,7 @@ public class ActivityCheckMenu extends FrameActivity {
         chufal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                nowtag=6;
                 if(card7.getVisibility()==View.VISIBLE){
                     card7.setVisibility(View.GONE);
                 }else{
@@ -440,35 +470,35 @@ public class ActivityCheckMenu extends FrameActivity {
         jihuaaddt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(),ActivityJiHua.class));
+                startActivityForResult(new Intent(getContext(),ActivityJiHua.class).putExtra("bianhaoid",bianhaoid),111);
             }
         });
 
         fanganaddt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(),ActivityFangAn.class));
+                startActivityForResult(new Intent(getContext(),ActivityFangAn.class).putExtra("bianhaoid",bianhaoid),111);
             }
         });
 
         xianchangaddt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(),ActivityXianChangJianCha.class));
+                startActivityForResult(new Intent(getContext(),ActivityXianChangJianCha.class).putExtra("bianhaoid",bianhaoid),111);
             }
         });
 
         chulicuoshiaddt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(),ActivityChuLiCuoShi.class));
+                startActivityForResult(new Intent(getContext(),ActivityChuLiCuoShi.class).putExtra("bianhaoid",bianhaoid),111);
             }
         });
 
         zelingaddt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(),ActivityZeLing.class));
+                startActivityForResult(new Intent(getContext(),ActivityZeLing.class).putExtra("bianhaoid",bianhaoid),111);
             }
         });
 
@@ -496,7 +526,7 @@ public class ActivityCheckMenu extends FrameActivity {
                 StyledDialog.buildBottomItemDialog( strings, "cancle",  new MyItemDialogListener() {
                     @Override
                     public void onItemClick(CharSequence text, int position) {
-                        startActivity(new Intent(getContext(),ActivityZhengGai.class));
+                        startActivityForResult(new Intent(getContext(),ActivityZhengGai.class).putExtra("bianhaoid",bianhaoid),111);
                     }
 
                     @Override
@@ -521,7 +551,7 @@ public class ActivityCheckMenu extends FrameActivity {
                 StyledDialog.buildBottomItemDialog( strings, "cancle",  new MyItemDialogListener() {
                     @Override
                     public void onItemClick(CharSequence text, int position) {
-                        startActivity(new Intent(getContext(),ActivityChuFa.class));
+                        startActivityForResult(new Intent(getContext(),ActivityChuFa.class).putExtra("bianhaoid",bianhaoid),111);
                     }
 
                     @Override
@@ -535,5 +565,24 @@ public class ActivityCheckMenu extends FrameActivity {
                 chufamenudialog=null;
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        initJihua();
+        initFangan();
+        initXianChangJianCha();
+        initXianChangChuLiCuoShi();
+        initZeLingZhengGai();
+        initZhengGaiFuCha();
+        initChuFa();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                scrollviewt.fullScroll(View.FOCUS_DOWN);
+            }
+        },300);
     }
 }

@@ -19,6 +19,7 @@ public class Entity_ChuFa extends DateBase_Entity {
         fieldnamelsitchinese.add("被检查企业id");//0
         fieldnamelsitchinese.add("被检查企业名称");//0
         fieldnamelsitchinese.add("企业地址");//1
+        fieldnamelsitchinese.add("法定代表人");
         fieldnamelsitchinese.add("缴纳罚金数量");//2
         fieldnamelsitchinese.add("缴纳罚金账号");//2
     }

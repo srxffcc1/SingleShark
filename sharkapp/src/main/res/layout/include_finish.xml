@@ -8,12 +8,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:onClick="buttonSubmit"
         android:text="提交"/>
     <Button
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:onClick="buttonFinish"
+        android:onClick="buttonCancel"
         android:text="取消"/>
 
 </LinearLayout>

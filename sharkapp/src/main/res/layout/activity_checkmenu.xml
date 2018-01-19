@@ -8,6 +8,8 @@
 
     <ScrollView
         android:id="@+id/scrollviewt"
+        android:scrollbars="vertical"
+        android:fadeScrollbars="false"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -36,6 +38,7 @@
                     android:text="计划"></TextView>
 
                 <TextView
+                    android:visibility="gone"
                     android:id="@+id/jihuaaddt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

@@ -8,14 +8,18 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.Display;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.EditText;
 
 import com.businessframehelp.app.FrameActivity;
 import com.businessframehelp.enums.ORIENTATION;
 import com.flyco.tablayout.SegmentTabLayout;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.shark.app.R;
+import com.shark.app.business.entity.Entity_XianChangJianCha;
 import com.shark.app.business.fragment.JianChaXiangCardFragment;
+import com.wisdomregulation.help.Demo_DBManager;
 
 import java.util.ArrayList;
 
@@ -28,6 +32,8 @@ public class ActivityXianChangJianCha extends FrameActivity {
     private ArrayList<Fragment> mFragments = new ArrayList<>();
     private SegmentTabLayout mTabLayout_3;
     int testlengtht=7;
+
+
     @Override
     public ORIENTATION getORIENTATION() {
         return null;
@@ -101,6 +107,38 @@ public class ActivityXianChangJianCha extends FrameActivity {
             }
         });
         vp_3.setCurrentItem(1);
+        initData();
+        initLayout();
+    }
+    private String bianhaoid;
+    private EditText beijianchaqiye;
+    private EditText dizhi;
+    private EditText fadingdaibiaoren;
+    private EditText lianxidianhua;
+    private EditText jianchachangsuo;
+    private EditText jianchashijian;
+    public void initData(){
+        bianhaoid = getIntent().getStringExtra("bianhaoid");
+    }
+    public void initLayout(){
+        beijianchaqiye = (EditText) findViewById(R.id.beijianchaqiye);
+        dizhi = (EditText) findViewById(R.id.dizhi);
+        fadingdaibiaoren = (EditText) findViewById(R.id.fadingdaibiaoren);
+        lianxidianhua = (EditText) findViewById(R.id.lianxidianhua);
+        jianchachangsuo = (EditText) findViewById(R.id.jianchachangsuo);
+        jianchashijian = (EditText) findViewById(R.id.jianchashijian);
+    }
+    public void buttonSubmit(View view){
+        Demo_DBManager.build().save2update(new Entity_XianChangJianCha()
+                .put("关联的执法编号id",bianhaoid)
+                .put("被检查企业名称",beijianchaqiye.getText().toString())
+                .put("被检查企业地址",dizhi.getText().toString())
+                .put("法定代表人",fadingdaibiaoren.getText().toString())
+                .put("联系电话",lianxidianhua.getText().toString())
+                .put("检查场所",jianchachangsuo.getText().toString())
+                .put("检查时间",jianchashijian.getText().toString())
+        );
+        finish();
     }
     class MyPagerAdapter extends FragmentPagerAdapter {
         public MyPagerAdapter(FragmentManager fm) {

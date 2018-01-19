@@ -23,5 +23,6 @@ public class Entity_ZeLingZhengGai extends DateBase_Entity {
         fieldnamelsitchinese.add("联系电话");//2
         fieldnamelsitchinese.add("检查场所");//2
         fieldnamelsitchinese.add("检查时间");//2
+
     }
 }
