@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
     android:orientation="vertical">
 
     <ScrollView
@@ -16,6 +17,7 @@
 
             <RelativeLayout
                 android:id="@+id/jihual"
+                android:background="#F3F3F3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -49,12 +51,15 @@
                     android:layout_alignParentEnd="true" />
 
             </RelativeLayout>
+
             <android.support.v7.widget.CardView
+                android:id="@+id/card1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
                 android:layout_margin="5dp"
+                android:padding="5dp"
                 app:cardElevation="2.0dip">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -97,6 +102,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -114,6 +120,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -139,6 +146,7 @@
                         android:padding="6dp">
 
                         <TextView
+                            android:id="@+id/chakan1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
@@ -154,6 +162,7 @@
                             android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/bianji1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
@@ -169,6 +178,7 @@
                             android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/shanchu1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
@@ -184,6 +194,7 @@
                             android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/yincang1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
@@ -205,6 +216,7 @@
 
             <RelativeLayout
                 android:id="@+id/fanganl"
+                android:background="#F3F3F3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 
@@ -240,12 +252,15 @@
                     android:layout_alignParentEnd="true" />
 
             </RelativeLayout>
+
             <android.support.v7.widget.CardView
+                android:id="@+id/card2"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
                 android:layout_margin="5dp"
+                android:padding="5dp"
                 app:cardElevation="2.0dip">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -307,6 +322,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -324,6 +340,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -341,6 +358,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -348,6 +366,7 @@
                         android:padding="6dp">
 
                         <TextView
+                            android:id="@+id/chakan2"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
@@ -363,6 +382,7 @@
                             android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/bianji2"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
@@ -378,6 +398,7 @@
                             android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/shanchu2"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
@@ -393,6 +414,7 @@
                             android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/yincang2"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
@@ -449,12 +471,15 @@
                     android:layout_alignParentEnd="true" />
 
             </RelativeLayout>
+
             <android.support.v7.widget.CardView
+                android:id="@+id/card3"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
                 android:layout_margin="5dp"
+                android:padding="5dp"
                 app:cardElevation="2.0dip">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -516,6 +541,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -524,15 +550,17 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:gravity="center"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:gravity="center"
                             android:text="检查记录" />
+
                         <com.businessframehelp.widget.ListViewForScrollView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"></com.businessframehelp.widget.ListViewForScrollView>
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -540,6 +568,7 @@
                         android:padding="6dp">
 
                         <TextView
+                            android:id="@+id/chakan3"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
@@ -555,6 +584,7 @@
                             android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/bianji3"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
@@ -570,6 +600,7 @@
                             android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/shanchu3"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
@@ -585,6 +616,7 @@
                             android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/yincang3"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
@@ -642,12 +674,15 @@
                     android:layout_alignParentEnd="true" />
 
             </RelativeLayout>
+
             <android.support.v7.widget.CardView
+                android:id="@+id/card4"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
                 android:layout_margin="5dp"
+                android:padding="5dp"
                 app:cardElevation="2.0dip">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -680,15 +715,17 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:gravity="center"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:gravity="center"
                             android:text="事故隐患" />
+
                         <com.businessframehelp.widget.ListViewForScrollView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"></com.businessframehelp.widget.ListViewForScrollView>
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -696,6 +733,7 @@
                         android:padding="6dp">
 
                         <TextView
+                            android:id="@+id/chakan4"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
@@ -711,6 +749,7 @@
                             android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/bianji4"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
@@ -726,6 +765,7 @@
                             android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/shanchu4"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
@@ -741,6 +781,7 @@
                             android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/yincang4"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
@@ -796,12 +837,15 @@
                     android:layout_alignParentEnd="true" />
 
             </RelativeLayout>
+
             <android.support.v7.widget.CardView
+                android:id="@+id/card5"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
                 android:layout_margin="5dp"
+                android:padding="5dp"
                 app:cardElevation="2.0dip">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -835,16 +879,16 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:gravity="center"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:gravity="center"
                             android:text="存在问题" />
+
                         <com.businessframehelp.widget.ListViewForScrollView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"></com.businessframehelp.widget.ListViewForScrollView>
 
                     </LinearLayout>
-
 
 
                     <LinearLayout
@@ -854,6 +898,7 @@
                         android:padding="6dp">
 
                         <TextView
+                            android:id="@+id/chakan5"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
@@ -869,6 +914,7 @@
                             android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/bianji5"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
@@ -884,6 +930,7 @@
                             android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/shanchu5"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
@@ -899,6 +946,7 @@
                             android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/yincang5"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
@@ -954,12 +1002,15 @@
                     android:layout_alignParentEnd="true" />
 
             </RelativeLayout>
+
             <android.support.v7.widget.CardView
+                android:id="@+id/card6"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
                 android:layout_margin="5dp"
+                android:padding="5dp"
                 app:cardElevation="2.0dip">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -985,7 +1036,6 @@
                     </LinearLayout>
 
 
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -994,9 +1044,9 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:gravity="center"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:gravity="center"
                             android:text="复查意见" />
 
                         <EditText
@@ -1011,7 +1061,7 @@
                         android:padding="6dp">
 
                         <TextView
-                            android:id="@+id/textView7"
+                            android:id="@+id/chakan6"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
@@ -1027,6 +1077,7 @@
                             android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/bianji6"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
@@ -1042,6 +1093,7 @@
                             android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/shanchu6"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
@@ -1057,6 +1109,7 @@
                             android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/yincang6"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
@@ -1112,12 +1165,15 @@
                     android:layout_alignParentEnd="true" />
 
             </RelativeLayout>
+
             <android.support.v7.widget.CardView
+                android:id="@+id/card7"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
                 android:layout_margin="5dp"
+                android:padding="5dp"
                 app:cardElevation="2.0dip">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -1143,9 +1199,6 @@
                     </LinearLayout>
 
 
-
-
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -1154,10 +1207,11 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:gravity="center"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:gravity="center"
                             android:text="违法列表" />
+
                         <com.businessframehelp.widget.ListViewForScrollView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"></com.businessframehelp.widget.ListViewForScrollView>
@@ -1171,6 +1225,7 @@
                         android:padding="6dp">
 
                         <TextView
+                            android:id="@+id/chakan7"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
@@ -1186,6 +1241,7 @@
                             android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/bianji7"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
@@ -1201,6 +1257,7 @@
                             android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/shanchu7"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
@@ -1216,6 +1273,7 @@
                             android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/yincang7"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"

@@ -1,6 +1,7 @@
 package com.shark.app.apps;
 
 import android.content.Context;
+import android.os.Environment;
 import android.support.multidex.MultiDex;
 
 import com.businessframehelp.app.BusinessApplication;
@@ -11,6 +12,7 @@ import com.businessframehelp.utils.ClassUtil;
 import com.igexin.sdk.PushManager;
 import com.shark.app.R;
 import com.shark.app.business.utils.SpHome;
+import com.wisdomregulation.help.Demo_DBManager;
 
 import org.kymjs.kjframe.http.HttpConfig;
 
@@ -33,6 +35,7 @@ public class SingleApplication extends BusinessApplication {
         SpHome.getSpHome().setMcontext(this);//初始化sp
         HttpConfig.needPHPSESSID=false;
         HttpConfig.TIMEOUT=2000;
+        Demo_DBManager.build().init(getApplicationContext(), Environment.getExternalStorageDirectory().toString(),"releaseIII.db");
     }
 
 

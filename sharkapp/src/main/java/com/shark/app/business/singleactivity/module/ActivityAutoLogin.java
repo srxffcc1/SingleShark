@@ -53,45 +53,50 @@ public class ActivityAutoLogin extends FrameActivity {
     }
 
     public void toLogin(){
-        HttpConfig.sCookie="";
-        Toast.makeText(getContext(),"正在登录",Toast.LENGTH_SHORT).show();
-        ELogin eLogin=new ELogin(SpHome.getSpHome().getString("username"),SpHome.getSpHome().getString("password"));
-        httpGet(UrlHome.getUrl(this, UrlHome.login), UrlHome.entity2MapHashClassNoPrefix(eLogin), new HttpCallBack() {
-            @Override
-            public void onSuccess(String t) {
-                super.onSuccess(t);
-                try {
-                    JSONObject jsonObject=new JSONObject(t);
-                    if(jsonObject.getBoolean("status")){
-                        String sessionid=jsonObject.getString("sessionId");
-                        HttpConfig.sCookie=sessionid;
-                        islogin=true;
-                        startActivity(new Intent(getContext(),ActivityMain.class));
-                        finish();
-                    }else{
-                        SpHome.getSpHome().remove("username","password");
-                        Toast.makeText(getContext(),"自动登录失败尝试手动登录",Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getContext(),ActivityLogin.class));
-                        finish();
+        if(!SpHome.needlogin){
+            startActivity(new Intent(getContext(),ActivityMain.class));
+            finish();
+        }else {
+            HttpConfig.sCookie = "";
+            Toast.makeText(getContext(), "正在登录", Toast.LENGTH_SHORT).show();
+            ELogin eLogin = new ELogin(SpHome.getSpHome().getString("username"), SpHome.getSpHome().getString("password"));
+            httpGet(UrlHome.getUrl(this, UrlHome.login), UrlHome.entity2MapHashClassNoPrefix(eLogin), new HttpCallBack() {
+                @Override
+                public void onSuccess(String t) {
+                    super.onSuccess(t);
+                    try {
+                        JSONObject jsonObject = new JSONObject(t);
+                        if (jsonObject.getBoolean("status")) {
+                            String sessionid = jsonObject.getString("sessionId");
+                            HttpConfig.sCookie = sessionid;
+                            islogin = true;
+                            startActivity(new Intent(getContext(), ActivityMain.class));
+                            finish();
+                        } else {
+                            SpHome.getSpHome().remove("username", "password");
+                            Toast.makeText(getContext(), "自动登录失败尝试手动登录", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getContext(), ActivityLogin.class));
+                            finish();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
-                } catch (JSONException e) {
-                    e.printStackTrace();
+
                 }
 
-            }
+                @Override
+                public void onFailure(int errorNo, String strMsg) {
+                    super.onFailure(errorNo, strMsg);
+                    finish();
+                    startActivity(new Intent(getContext(), ActivityLogin.class));
+                }
 
-            @Override
-            public void onFailure(int errorNo, String strMsg) {
-                super.onFailure(errorNo, strMsg);
-                finish();
-                startActivity(new Intent(getContext(),ActivityLogin.class));
-            }
+                @Override
+                public void onCookieTimeOut() {
 
-            @Override
-            public void onCookieTimeOut() {
-
-            }
-        });
+                }
+            });
+        }
 
     }
 

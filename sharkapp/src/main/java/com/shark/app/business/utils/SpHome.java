@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
  */
 
 public class SpHome {
+    public static boolean needlogin=false;
     private Context mcontext;
     public static final SpHome SP_HOME=new SpHome();
     public static SpHome getSpHome(){

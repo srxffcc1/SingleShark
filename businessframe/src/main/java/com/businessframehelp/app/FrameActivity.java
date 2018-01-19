@@ -398,7 +398,9 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
     final public void sendFrameBroadCast(Intent intent){
         BroadCastManager.getInstance().sendBroadCast(intent);
     }
-
+    public void buttonFinish(View view){
+        super.finish();
+    }
     /**
      * 应用内接收广播
      * @param action

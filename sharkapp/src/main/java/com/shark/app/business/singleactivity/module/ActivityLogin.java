@@ -292,41 +292,46 @@ boolean needscale=true;
         mAnimatorSet.start();
     }
     public synchronized void toLogin(){
-        HttpConfig.sCookie="";
-        Toast.makeText(getContext(),"正在登录",Toast.LENGTH_SHORT).show();
-        ELogin eLogin=new ELogin(et_username.getText().toString(),et_password.getText().toString());
-        SpHome.getSpHome().put("username",et_username.getText().toString());
-        SpHome.getSpHome().put("password",et_password.getText().toString());
-        httpGet(UrlHome.getUrl(this, UrlHome.login), UrlHome.entity2MapHashClassNoPrefix(eLogin), new HttpCallBack() {
-            @Override
-            public void onSuccess(String t) {
-          super.onSuccess(t);
-                try {
-                    JSONObject jsonObject=new JSONObject(t);
-                    if(jsonObject.getBoolean("status")){
-                        String sessionid=jsonObject.getString("sessionId");
-                        HttpConfig.sCookie=sessionid;
-                        startActivity(new Intent(getContext(),ActivityMain.class));
-                        finish();
-                    }else{
-                        Toast.makeText(getContext(),jsonObject.getString("message"),Toast.LENGTH_SHORT).show();
+        if(!SpHome.needlogin){
+            startActivity(new Intent(getContext(),ActivityMain.class));
+            finish();
+        }else {
+            HttpConfig.sCookie = "";
+            Toast.makeText(getContext(), "正在登录", Toast.LENGTH_SHORT).show();
+            ELogin eLogin = new ELogin(et_username.getText().toString(), et_password.getText().toString());
+            SpHome.getSpHome().put("username", et_username.getText().toString());
+            SpHome.getSpHome().put("password", et_password.getText().toString());
+            httpGet(UrlHome.getUrl(this, UrlHome.login), UrlHome.entity2MapHashClassNoPrefix(eLogin), new HttpCallBack() {
+                @Override
+                public void onSuccess(String t) {
+                    super.onSuccess(t);
+                    try {
+                        JSONObject jsonObject = new JSONObject(t);
+                        if (jsonObject.getBoolean("status")) {
+                            String sessionid = jsonObject.getString("sessionId");
+                            HttpConfig.sCookie = sessionid;
+                            startActivity(new Intent(getContext(), ActivityMain.class));
+                            finish();
+                        } else {
+                            Toast.makeText(getContext(), jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
-                } catch (JSONException e) {
-                    e.printStackTrace();
+
                 }
 
-            }
+                @Override
+                public void onFailure(int errorNo, String strMsg) {
+                    super.onFailure(errorNo, strMsg);
+                }
 
-            @Override
-            public void onFailure(int errorNo, String strMsg) {
-                super.onFailure(errorNo, strMsg);
-            }
+                @Override
+                public void onCookieTimeOut() {
 
-            @Override
-            public void onCookieTimeOut() {
-
-            }
-        });
+                }
+            });
+        }
 
     }
 

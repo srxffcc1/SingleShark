@@ -27,38 +27,36 @@ import java.util.UUID;
 
 public class Demo_DBManager {
     public static final int anjiandbversion = 1;
-    public Context mcontext;
+    public Context mcontext;//*****必须初始化
     private static Demo_DBManager dbhelper;
     public String limit = null;// 分页
-    public String dbdir;//初始化db地址名字
+    public String dbdir;//初始化db地址名字*******必须初始化
+    public String databasename = "";//初始化db名字*****必须初始化
     public boolean needcount = false;// 需返回全部页数
     public boolean isregex = false;// 是否模糊匹配 2016.6.18 修改为实体自己决定  如果设置也行 默认为false
     public boolean isfull = true;//   是否结果完整 行完整行 为了缩小返回集 * 还是只有 id，name,xxx
     public String logic = "";//or and
     public String order = "";//排序
     public SQLiteDatabase sqldb;
-    public String databasename = "";//初始化db名字
     public int syncint = 0;
-    public Demo_DBManager setDatabasename(String databasename) {
+
+    public Demo_DBManager init(Context context, String dbdir, String databasename) {
+        this.mcontext = context;
+        this.dbdir = dbdir;
         this.databasename = databasename;
+        getDataBaseIn();
         return this;
     }
 
+    public static void main(String[] args) {
+
+    }
 
 
     private Demo_DBManager() {
 
     }
 
-    public Demo_DBManager setDbdir(String dbdir) {
-        this.dbdir = dbdir;
-        return this;
-    }
-
-    private Demo_DBManager setContext(Context context) {
-        this.mcontext = context;
-        return this;
-    }
 
     /**
      * 是否需要知道总数据数 为了分页
@@ -130,19 +128,20 @@ public class Demo_DBManager {
      *
      * @return
      */
-    public static Demo_DBManager create() {
+    public static Demo_DBManager build() {
         Demo_DBManager result = null;
         if (dbhelper != null) {
             result = dbhelper;
         } else {
-            result = new Demo_DBManager();
+            dbhelper = new Demo_DBManager();
+            result = dbhelper;
         }
         dbhelper.init();
         return result;
 
     }
 
-    public static Demo_DBManager createS() {
+    public static Demo_DBManager lowbuild() {
         return dbhelper;
     }
 
@@ -159,23 +158,23 @@ public class Demo_DBManager {
         return dbhelper;
     }
 
-    /**
-     * 单例数据库操作类初始化
-     *
-     * @param context
-     * @param nowdatabasename
-     * @return
-     */
-    public static Demo_DBManager create(Context context, String nowdatabasename) {
-        if (dbhelper == null) {
-            dbhelper = new Demo_DBManager();
-            dbhelper.clear();
-        } else {
-            dbhelper.clear();
-        }
-        dbhelper.databasename = nowdatabasename;
-        return dbhelper;
-    }
+//    /**
+//     * 单例数据库操作类初始化
+//     *
+//     * @param context
+//     * @param nowdatabasename
+//     * @return
+//     */
+//    public static Demo_DBManager build(Context context, String nowdatabasename) {
+//        if (dbhelper == null) {
+//            dbhelper = new Demo_DBManager();
+//            dbhelper.clear();
+//        } else {
+//            dbhelper.clear();
+//        }
+//        dbhelper.databasename = nowdatabasename;
+//        return dbhelper;
+//    }
 
     /**
      * 设置查询limit
@@ -293,7 +292,6 @@ public class Demo_DBManager {
      */
     public static String getFileName(String databasepath) {
         String[] datapatharray = databasepath.split(File.separator);
-
         return datapatharray[datapatharray.length - 1].trim();
     }
 
@@ -304,7 +302,7 @@ public class Demo_DBManager {
      */
     public List<String> getAllTableName() {
         List<String> list = new ArrayList<String>();
-        String dbpath = new File(dbdir + "/ZhiDbhome" + "/" + databasename).getAbsolutePath();
+        String dbpath = new File(dbdir + "/" + databasename).getAbsolutePath();
         //System.out.println("可能出错的数据库path:"+dbpath);
         SQLiteDatabase db = SQLiteDatabase.openDatabase(dbpath,
                 null, SQLiteDatabase.ENABLE_WRITE_AHEAD_LOGGING);
@@ -329,8 +327,11 @@ public class Demo_DBManager {
      */
     @SuppressLint("InlinedApi")
     public SQLiteDatabase getDataBaseIn() {
+        Log.i("Demo_DB", "开始写入数据库");
         SQLiteDatabase db;
         if (isDataBaseExists(dbdir + "/" + databasename)) {
+
+            Log.i("Demo_DB", "存在数据库");
             if (sqldb != null) {
                 List<String> datanamelist = getAllTableName();
                 if (datanamelist.size() < 1) {
@@ -404,6 +405,7 @@ public class Demo_DBManager {
 
             db.enableWriteAheadLogging();
         } else {
+            Log.i("Demo_DB", "不存在数据库");
             String datapathfilename = getFileName(dbdir + "/" + databasename);
             try {
                 InputStream is = mcontext.getAssets().open("" + databasename + "");
@@ -453,6 +455,7 @@ public class Demo_DBManager {
 //		}else{
 //
 //		}
+        Log.i("Demo_DB", "写入完毕");
         return db;
     }
 
@@ -517,7 +520,7 @@ public class Demo_DBManager {
             values.put("updatadate", (entity.getUpDatadate().equals("") ? new Date().getTime() + "" : entity.getUpDatadate()));
             values.put("tableid", tablename);
             values.put("isadd", "1");
-//			values.put("created", Static_InfoApp.create().getAccountId());
+//			values.put("created", Static_InfoApp.build().getAccountId());
             String id = entity.getId();
             String isthis = "0";
             isthis = ((List<Object>) searchOnId(entity.setId(values.get("id").toString())).get(1)).size() + "";
@@ -899,6 +902,7 @@ public class Demo_DBManager {
 
     /**
      * 差集
+     * A差集B 结果为B中没有的集合
      *
      * @param object
      * @return
@@ -906,7 +910,7 @@ public class Demo_DBManager {
     public String justgetSqlExcept(Object... object) {
         String sqls = "";
         for (int i = 0; i < object.length; i++) {
-            String sqlObject = justgetSql(object[i]);
+            String sqlObject = justgetSelectSql(object[i]);
             //System.out.println("查询分"+i+":"+sqlObject);
             sqls = sqls + sqlObject + " EXCEPT ";
         }
@@ -926,7 +930,7 @@ public class Demo_DBManager {
     public String justgetSqlINTERSECT(Object... object) {
         String sqls = "";
         for (int i = 0; i < object.length; i++) {
-            String sqlObject = justgetSql(object[i]);
+            String sqlObject = justgetSelectSql(object[i]);
             //System.out.println("查询分"+i+":"+sqlObject);
             sqls = sqls + sqlObject + " INTERSECT ";
         }
@@ -946,7 +950,7 @@ public class Demo_DBManager {
     public String justgetSqlUNION(Object... object) {
         String sqls = "";
         for (int i = 0; i < object.length; i++) {
-            String sqlObject = justgetSql(object[i]);
+            String sqlObject = justgetSelectSql(object[i]);
             //System.out.println("查询分"+i+":"+sqlObject);
             sqls = sqls + sqlObject + " UNION ";
         }
@@ -957,7 +961,7 @@ public class Demo_DBManager {
         return "" + sqls + "";
     }
 
-    public String justgetSql(Object object) {
+    public String justgetSelectSql(Object object) {
         String sqls = "";
         if (object.getClass().getSimpleName().equals(String.class.getSimpleName())) {
             sqls = (String) object;
@@ -1612,7 +1616,7 @@ public class Demo_DBManager {
         }
 //		database.execSQL(createsql);
 //		database.execSQL("insert into tb_law_info select * from source2.tb_law_info");
-        database.execSQL("create table tb_law_info as select * from source2.tb_law_info");//优化语句
+        database.execSQL("build table tb_law_info as select * from source2.tb_law_info");//优化语句
         //System.out.println("接触成功finish");
     }
 

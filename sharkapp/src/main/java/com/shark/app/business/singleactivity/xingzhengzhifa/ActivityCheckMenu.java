@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -17,6 +18,8 @@ import com.flyco.tablayout.SegmentTabLayout;
 import com.hss01248.dialog.StyledDialog;
 import com.hss01248.dialog.interfaces.MyItemDialogListener;
 import com.shark.app.R;
+import com.shark.app.business.entity.Entity_ZhiFaBianHao;
+import com.wisdomregulation.help.Demo_DBManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +51,23 @@ public class ActivityCheckMenu extends FrameActivity {
     public TextView zhenggaifuchaaddt;
     public TextView chufaaddt;
 
+
+    TextView yincang1;
+    TextView yincang2;
+    TextView yincang3;
+    TextView yincang4;
+    TextView yincang5;
+    TextView yincang6;
+    TextView yincang7;
+
+    CardView card1;
+    CardView card2;
+    CardView card3;
+    CardView card4;
+    CardView card5;
+    CardView card6;
+    CardView card7;
+
     @Override
     public ORIENTATION getORIENTATION() {
         return null;
@@ -72,56 +92,242 @@ public class ActivityCheckMenu extends FrameActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkmenu);
+        initData();
+        initLayout();
+        initListener();
+
+    }
+    public void initData(){
+        Demo_DBManager.build().search(new Entity_ZhiFaBianHao());
+    }
+    public void initLayout() {
         jihual= (RelativeLayout) findViewById(R.id.jihual);
+        fanganl= (RelativeLayout) findViewById(R.id.fanganl);
+        xianchangl= (RelativeLayout) findViewById(R.id.xianchangl);
+        chulicuoshil = (RelativeLayout) findViewById(R.id.chulicuoshil);
+        zelingl= (RelativeLayout) findViewById(R.id.zelingl);
+        zhenggaifuchal= (RelativeLayout) findViewById(R.id.zhenggaifuchal);
+        chufal= (RelativeLayout) findViewById(R.id.chufal);
+
+
         jihuaaddt= (TextView) findViewById(R.id.jihuaaddt);
+        fanganaddt= (TextView) findViewById(R.id.fanganaddt);
+        xianchangaddt= (TextView) findViewById(R.id.xianchangaddt);
+        chulicuoshiaddt= (TextView) findViewById(R.id.chulicuoshiaddt);
+        zhenggaifuchaaddt= (TextView) findViewById(R.id.zhenggaifuchaaddt);
+        zelingaddt= (TextView) findViewById(R.id.zelingaddt);
+        chufaaddt= (TextView) findViewById(R.id.chufaaddt);
+
+        yincang1= (TextView) findViewById(R.id.yincang1);
+        yincang2= (TextView) findViewById(R.id.yincang2);
+        yincang3= (TextView) findViewById(R.id.yincang3);
+        yincang4= (TextView) findViewById(R.id.yincang4);
+        yincang5= (TextView) findViewById(R.id.yincang5);
+        yincang6= (TextView) findViewById(R.id.yincang6);
+        yincang7= (TextView) findViewById(R.id.yincang7);
+
+        card1= (CardView) findViewById(R.id.card1);
+        card2= (CardView) findViewById(R.id.card2);
+        card3= (CardView) findViewById(R.id.card3);
+        card4= (CardView) findViewById(R.id.card4);
+        card5= (CardView) findViewById(R.id.card5);
+        card6= (CardView) findViewById(R.id.card6);
+        card7= (CardView) findViewById(R.id.card7);
+    }
+    public void initListener() {
+        yincang1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(card1.getVisibility()==View.VISIBLE){
+                    card1.setVisibility(View.GONE);
+                }else{
+                    card1.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        jihual.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(card1.getVisibility()==View.VISIBLE){
+                    card1.setVisibility(View.GONE);
+                }else{
+                    card1.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        yincang2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(card2.getVisibility()==View.VISIBLE){
+                    card2.setVisibility(View.GONE);
+                }else{
+                    card2.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        fanganl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(card2.getVisibility()==View.VISIBLE){
+                    card2.setVisibility(View.GONE);
+                }else{
+                    card2.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        yincang3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(card3.getVisibility()==View.VISIBLE){
+                    card3.setVisibility(View.GONE);
+                }else{
+                    card3.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        xianchangl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(card3.getVisibility()==View.VISIBLE){
+                    card3.setVisibility(View.GONE);
+                }else{
+                    card3.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        yincang4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(card4.getVisibility()==View.VISIBLE){
+                    card4.setVisibility(View.GONE);
+                }else{
+                    card4.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        chulicuoshil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(card4.getVisibility()==View.VISIBLE){
+                    card4.setVisibility(View.GONE);
+                }else{
+                    card4.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        yincang4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(card4.getVisibility()==View.VISIBLE){
+                    card4.setVisibility(View.GONE);
+                }else{
+                    card4.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        yincang5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(card5.getVisibility()==View.VISIBLE){
+                    card5.setVisibility(View.GONE);
+                }else{
+                    card5.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        zelingl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(card5.getVisibility()==View.VISIBLE){
+                    card5.setVisibility(View.GONE);
+                }else{
+                    card5.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        yincang6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(card6.getVisibility()==View.VISIBLE){
+                    card6.setVisibility(View.GONE);
+                }else{
+                    card6.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        zhenggaifuchal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(card6.getVisibility()==View.VISIBLE){
+                    card6.setVisibility(View.GONE);
+                }else{
+                    card6.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        yincang7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(card7.getVisibility()==View.VISIBLE){
+                    card7.setVisibility(View.GONE);
+                }else{
+                    card7.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        chufal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(card7.getVisibility()==View.VISIBLE){
+                    card7.setVisibility(View.GONE);
+                }else{
+                    card7.setVisibility(View.VISIBLE);
+                }
+            }
+        });
         jihuaaddt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getContext(),ActivityJiHua.class));
             }
         });
-        fanganl= (RelativeLayout) findViewById(R.id.fanganl);
-        fanganaddt= (TextView) findViewById(R.id.fanganaddt);
+
         fanganaddt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getContext(),ActivityFangAn.class));
             }
         });
-        xianchangl= (RelativeLayout) findViewById(R.id.xianchangl);
-        xianchangaddt= (TextView) findViewById(R.id.xianchangaddt);
+
         xianchangaddt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getContext(),ActivityXianChangJianCha.class));
             }
         });
-        chulicuoshil = (RelativeLayout) findViewById(R.id.chulicuoshil);
-        chulicuoshiaddt= (TextView) findViewById(R.id.chulicuoshiaddt);
+
         chulicuoshiaddt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getContext(),ActivityChuLiCuoShi.class));
             }
         });
-        zelingl= (RelativeLayout) findViewById(R.id.zelingl);
-        zelingaddt= (TextView) findViewById(R.id.zelingaddt);
+
         zelingaddt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getContext(),ActivityZeLing.class));
             }
         });
-        zhenggaifuchal= (RelativeLayout) findViewById(R.id.zhenggaifuchal);
-        zhenggaifuchaaddt= (TextView) findViewById(R.id.zhenggaifuchaaddt);
+
         zhenggaifuchaaddt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startZhengGaiMenuDialog();
             }
         });
-        chufal= (RelativeLayout) findViewById(R.id.chufal);
-        chufaaddt= (TextView) findViewById(R.id.chufaaddt);
+
         chufaaddt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
