@@ -60,37 +60,37 @@ dependencies {
     //butterknife包
     //-----------------------------------------------------
     //    compile 'com.github.barteksc:android-pdf-viewer:2.6.1'//pdf 预览
-    compile 'com.sixdown.mupdf:mupdf:+'
+    compile 'com.sixdown.mupdf:mupdf:1.0.0'
     //pdf预览
-    compile 'com.sixdown.voicerecog:voicerecog:+'
+    compile 'com.sixdown.voicerecog:voicerecog:1.0.0'
     //语音包
-    compile 'com.sixdown.amapfix:amapfix:+'
+    compile 'com.sixdown.amapfix:amapfix:1.0.1'
     //地图包
-    compile('com.sixdown.unzip:unzip:+') {
+    compile('com.sixdown.unzip:unzip:1.0.0') {
         exclude group: 'com.android.support'
         exclude group: 'commons-logging', module: 'commons-logging'
     }
     //解压文件
     //    compile 'com.sixdown.opencamera:opencamera:+'//opencamera 库
-    compile 'com.sixdown.soundrecord:soundrecord:+'
+    compile 'com.sixdown.soundrecord:soundrecord:1.0.8'
     //录音
-    compile 'com.sixdown.common:common:+'
+    compile 'com.sixdown.common:common:1.0.1'
     //通用工具集
-    compile 'com.sixdown.verticalrefreshlayout:verticalrefreshlayout:+'
+    compile 'com.sixdown.verticalrefreshlayout:verticalrefreshlayout:1.0.2'
     //下拉刷新
     //    compile 'com.sixdown.kjhttp:kjhttp:1.0.5'//网络请求包
-    compile 'com.sixdown.kvplayer:kvplayer:+'
+    compile 'com.sixdown.kvplayer:kvplayer:1.0.1'
     //金山云视频
-    compile('com.sixdown.navslidelibrary:navslidelibrary:+') {
+    compile('com.sixdown.navslidelibrary:navslidelibrary:1.0.0') {
         exclude group: 'com.android.support'
     }
     //侧滑
-    compile('com.sixdown.helppdf:helppdf:+') {
+    compile('com.sixdown.helppdf:helppdf:1.4.0') {
         exclude group: 'net.lingala.zip4j'
         exclude group: 'commons-logging', module: 'commons-logging'
     }
     //pdf生成
-    compile 'com.sixdown.bookentity:bookentity:+'
+    compile 'com.sixdown.bookentity:bookentity:1.4.0'
     //    compile project(':navlibrary')
     //--------------------------------------------------
     compile 'com.github.promeg:tinypinyin:2.0.3'
