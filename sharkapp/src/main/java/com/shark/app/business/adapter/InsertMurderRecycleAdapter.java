@@ -73,6 +73,7 @@ public class InsertMurderRecycleAdapter extends RecyclerView.Adapter<InsertMurde
         }
         holder.optionvalue.setText(entity.getValue("隐患级别"));
         holder.optionname.setText(entity.getValue("检查项三级"));
+        holder.chulijueding.setText(entity.getValue("处罚决定"));
         holder.chulijueding.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -86,7 +87,7 @@ public class InsertMurderRecycleAdapter extends RecyclerView.Adapter<InsertMurde
 
             @Override
             public void afterTextChanged(Editable s) {
-                Demo_DBManager.build().save2update(entity.put("处理决定",s.toString()));
+                Demo_DBManager.build().save2update(entity.put("处罚决定",s.toString()));
             }
         });
 

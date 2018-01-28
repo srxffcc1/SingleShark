@@ -13,6 +13,7 @@ import com.businessframehelp.app.FrameActivity;
 import com.businessframehelp.enums.ORIENTATION;
 import com.shark.app.R;
 import com.shark.app.business.entity.Entity_ZhengGaiFuCha;
+import com.wisdomregulation.data.entitybase.Base_Entity;
 import com.wisdomregulation.help.Demo_DBManager;
 
 /**
@@ -63,17 +64,29 @@ public class ActivityZhengGai extends FrameActivity {
     }
     private String beijianchaqiyetext;
     private String bianhaoid;
+    private Base_Entity beanentity;
     public void initData(){
+        if(getIntent().getBooleanExtra("see",false)){
+            findViewById(R.id.showfinish).setVisibility(View.GONE);
+        }
         beijianchaqiyetext = getIntent().getStringExtra("beijianchaqiyetext");
         bianhaoid = getIntent().getStringExtra("bianhaoid");
         chulijueding = getIntent().getStringExtra("chulijueding");
+        if(bianhaoid.equals("-1")){
+            beanentity=new Base_Entity();
+        }else{
+            beanentity = Demo_DBManager.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_ZhengGaiFuCha().put("关联的执法编号id",bianhaoid)));
+        }
     }
     public void initLayout(){
         beijianchaqiye = (EditText) findViewById(R.id.beijianchaqiye);
         beijianchaqiye.setText(beijianchaqiyetext);
         fuchayijian = (EditText) findViewById(R.id.fuchayijian);
+        fuchayijian.setText(beanentity.getValue("复查意见"));
         chufajuedingshu = (EditText) findViewById(R.id.chufajuedingwenshu);
+        chufajuedingshu.setText(beanentity.getValue("关联处罚决定书"));
         jiancharen = (EditText) findViewById(R.id.jiancharen);
+        jiancharen.setText(beanentity.getValue("检查人"));
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

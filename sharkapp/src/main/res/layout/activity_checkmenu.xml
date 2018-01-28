@@ -412,6 +412,7 @@
                                 android:textColor="@color/white" />
 
                             <TextView
+                                android:visibility="gone"
                                 android:id="@+id/bianji2"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -626,6 +627,7 @@
                                 android:textColor="@color/white" />
 
                             <TextView
+                                android:visibility="gone"
                                 android:id="@+id/bianji3"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -800,6 +802,7 @@
                                 android:textColor="@color/white" />
 
                             <TextView
+                                android:visibility="gone"
                                 android:id="@+id/bianji4"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -975,6 +978,7 @@
                                 android:textColor="@color/white" />
 
                             <TextView
+                                android:visibility="gone"
                                 android:id="@+id/bianji5"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -1149,6 +1153,7 @@
 
                             <TextView
                                 android:id="@+id/bianji6"
+                                android:visibility="gone"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="2dp"
@@ -1164,6 +1169,7 @@
                                 android:textColor="@color/white" />
 
                             <TextView
+                                android:visibility="gone"
                                 android:id="@+id/shanchu6"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -1290,7 +1296,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="违法列表" />
+                                android:text="现场检查中发现的违法行为" />
 
                             <android.support.v7.widget.RecyclerView
                                 android:id="@+id/chufarecycleview"
@@ -1298,7 +1304,29 @@
                                 android:layout_height="wrap_content" />
 
                         </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:background="#000"
+                            android:layout_height="2px"></LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical">
 
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="整改复查中发现的违法行为" />
+
+                            <android.support.v7.widget.RecyclerView
+                                android:id="@+id/chufarecycleview2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+
+                        </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -1323,6 +1351,7 @@
 
                             <TextView
                                 android:id="@+id/bianji7"
+                                android:visibility="gone"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="2dp"
@@ -1339,6 +1368,7 @@
 
                             <TextView
                                 android:id="@+id/shanchu7"
+                                android:visibility="gone"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="2dp"

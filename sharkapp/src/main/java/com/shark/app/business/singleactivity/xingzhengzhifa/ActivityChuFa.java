@@ -19,6 +19,7 @@ import com.shark.app.R;
 import com.shark.app.business.adapter.InsertMurderRecycleAdapter;
 import com.shark.app.business.entity.Entity_ChuFa;
 import com.shark.app.business.entity.Entity_JianChaXiang;
+import com.wisdomregulation.data.entitybase.Base_Entity;
 import com.wisdomregulation.data.entitybase.DateBase_Entity;
 import com.wisdomregulation.help.Demo_DBManager;
 
@@ -84,11 +85,20 @@ public class ActivityChuFa extends FrameActivity {
     }
     private String beijianchaqiyetext;
     private String bianhaoid;
+    private Base_Entity beanentity;
     public void initData(){
+        if(getIntent().getBooleanExtra("see",false)){
+            findViewById(R.id.showfinish).setVisibility(View.GONE);
+        }
         beijianchaqiyetext = getIntent().getStringExtra("beijianchaqiyetext");
 
         bianhaoid = getIntent().getStringExtra("bianhaoid");
         chulijueding = getIntent().getStringExtra("chulijueding");
+        if(bianhaoid.equals("-1")){
+            beanentity=new Base_Entity();
+        }else{
+            beanentity = Demo_DBManager.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_ChuFa().put("关联的执法编号id",bianhaoid)));
+        }
     }
     private EditText beijianchaqiye;
     private EditText dizhi;
@@ -97,9 +107,13 @@ public class ActivityChuFa extends FrameActivity {
         beijianchaqiye = (EditText) findViewById(R.id.beijianchaqiye);
         beijianchaqiye.setText(beijianchaqiyetext);
         dizhi = (EditText) findViewById(R.id.dizhi);
+        dizhi.setText(beanentity.getValue("企业地址"));
         fadingdaibiaoren = (EditText) findViewById(R.id.fadingdaibiaoren);
+        fadingdaibiaoren.setText(beanentity.getValue("法定代表人"));
         jiaonafajingshuliang = (EditText) findViewById(R.id.jiaonafajingshuliang);
+        jiaonafajingshuliang.setText(beanentity.getValue("缴纳罚金数量"));
         jiaonafajinzhanghao = (EditText) findViewById(R.id.jiaonazhanghao);
+        jiaonafajinzhanghao.setText(beanentity.getValue("缴纳罚金账号"));
     }
     public void buttonSubmit(View view){
         Demo_DBManager.build().save2update(new Entity_ChuFa()

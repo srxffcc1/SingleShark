@@ -73,6 +73,7 @@ public class InsertDecideRecycleAdapter extends RecyclerView.Adapter<InsertDecid
         }
         holder.optionvalue.setText(entity.getValue("隐患级别"));
         holder.optionname.setText(entity.getValue("检查项三级"));
+        holder.chulijueding.setText(entity.getValue("处理决定"));
         holder.chulijueding.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

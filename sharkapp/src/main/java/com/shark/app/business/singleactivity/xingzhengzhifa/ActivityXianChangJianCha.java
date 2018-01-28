@@ -21,6 +21,7 @@ import com.shark.app.R;
 import com.shark.app.business.entity.Entity_JianChaFangAn;
 import com.shark.app.business.entity.Entity_XianChangJianCha;
 import com.shark.app.business.fragment.JianChaXiangCardFragment;
+import com.wisdomregulation.data.entitybase.Base_Entity;
 import com.wisdomregulation.data.entitybase.DateBase_Entity;
 import com.wisdomregulation.help.Demo_DBManager;
 
@@ -78,27 +79,44 @@ public class ActivityXianChangJianCha extends FrameActivity {
     private EditText lianxidianhua;
     private EditText jianchachangsuo;
     private EditText jianchashijian;
+    private String beanid;
+    private Base_Entity beanentity;
     public void initData(){
+        if(getIntent().getBooleanExtra("see",false)){
+            findViewById(R.id.showfinish).setVisibility(View.GONE);
+            findViewById(R.id.fromfangan).setVisibility(View.GONE);
+        }
         bianhaoid = getIntent().getStringExtra("bianhaoid");
         beijianchaqiyetext = getIntent().getStringExtra("beijianchaqiyetext");
         DateBase_Entity fanganentity=Demo_DBManager.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_JianChaFangAn().putlogic2value("关联的执法编号id","=",bianhaoid)));
         laizifangancheck = fanganentity.getValue("检查内容");
+        beanid = getIntent().getStringExtra("beanid")==null?"-1":getIntent().getStringExtra("beanid");
+        if(beanid==null||beanid.equals("-1")){
+            beanentity=new Base_Entity();
+        }else{
+            beanentity = Demo_DBManager.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_XianChangJianCha().setId(beanid)));
+        }
     }
     public void initLayout(){
         mTabLayout_3= (SegmentTabLayout) findViewById(R.id.tl_3);
         beijianchaqiye = (EditText) findViewById(R.id.beijianchaqiye);
+        beijianchaqiye.setText(beanentity.getValue("被检查企业名称"));
         beijianchaqiye.setText(beijianchaqiyetext);
         dizhi = (EditText) findViewById(R.id.dizhi);
+        dizhi.setText(beanentity.getValue("被检查企业地址"));
         fadingdaibiaoren = (EditText) findViewById(R.id.fadingdaibiaoren);
+        fadingdaibiaoren.setText(beanentity.getValue("法定代表人"));
         lianxidianhua = (EditText) findViewById(R.id.lianxidianhua);
+        lianxidianhua.setText(beanentity.getValue("联系电话"));
         jianchachangsuo = (EditText) findViewById(R.id.jianchachangsuo);
+        jianchachangsuo.setText("检查场所");
         jianchashijian = (EditText) findViewById(R.id.jianchashijian);
-
+        jianchashijian.setText(beanentity.getValue("检查时间"));
         String[] laizifangancheckarray=laizifangancheck.split(",");
         mTitles_3=new String[laizifangancheckarray.length];
         for (int i = 0; i < mTitles_3.length; i++) {
             mTitles_3[i]="检查项 " +(i+1);
-            mFragments.add(JianChaXiangCardFragment.getInstance(laizifangancheckarray[i],bianhaoid));
+            mFragments.add(JianChaXiangCardFragment.getInstance(laizifangancheckarray[i],bianhaoid,getIntent().getBooleanExtra("see",false)));
         }
 
         final ViewPager vp_3 = (ViewPager) findViewById(R.id.vp_2);

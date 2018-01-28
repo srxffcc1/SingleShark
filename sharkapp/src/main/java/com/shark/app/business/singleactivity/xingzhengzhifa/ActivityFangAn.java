@@ -15,6 +15,7 @@ import com.businessframehelp.app.FrameActivity;
 import com.businessframehelp.enums.ORIENTATION;
 import com.shark.app.R;
 import com.shark.app.business.entity.Entity_JianChaFangAn;
+import com.wisdomregulation.data.entitybase.Base_Entity;
 import com.wisdomregulation.help.Demo_DBManager;
 
 /**
@@ -68,12 +69,19 @@ public class ActivityFangAn extends FrameActivity {
     }
     public void initLayout(){
         beijianchaqiye = (EditText) findViewById(R.id.beijianchaqiye);
+        beijianchaqiye.setText(beanentity.getValue("被检查企业名称"));
         dizhi = (EditText) findViewById(R.id.dizhi);
+        dizhi.setText(beanentity.getValue("被检查企业地址"));
         fadingdaibiaoren = (EditText) findViewById(R.id.fadingdaibiaoren);
+        fadingdaibiaoren.setText(beanentity.getValue("法定代表人"));
         lianxidianhua= (EditText) findViewById(R.id.lianxidianhua);
+        lianxidianhua.setText(beanentity.getValue("联系电话"));
         jianchachangsuo = (EditText) findViewById(R.id.jianchachangsuo);
+        jianchachangsuo.setText(beanentity.getValue("检查场所"));
         jianchashijian = (EditText) findViewById(R.id.jianchashijian);
+        jianchashijian.setText(beanentity.getValue("检查时间"));
         isselectchecktext= (TextView) findViewById(R.id.isselectchecktext);
+        isselectchecktext.setText(beanentity.getValue("检查内容"));
         findViewById(R.id.selectcheckoption).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,8 +89,19 @@ public class ActivityFangAn extends FrameActivity {
             }
         });
     }
+    private String beanid;
+    private Base_Entity beanentity;
     public void initData(){
+        if(getIntent().getBooleanExtra("see",false)){
+            findViewById(R.id.showfinish).setVisibility(View.GONE);
+        }
         bianhaoid = getIntent().getStringExtra("bianhaoid");
+        beanid = getIntent().getStringExtra("beanid")==null?"-1":getIntent().getStringExtra("beanid");
+        if(beanid==null||beanid.equals("-1")){
+            beanentity=new Base_Entity();
+        }else{
+            beanentity = Demo_DBManager.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_JianChaFangAn().setId(beanid)));
+        }
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

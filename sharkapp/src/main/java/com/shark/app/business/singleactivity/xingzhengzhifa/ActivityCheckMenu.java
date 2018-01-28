@@ -135,9 +135,17 @@ public class ActivityCheckMenu extends FrameActivity{
     private RecyclerView chulirecycleview;
     private RecyclerView zelingrecycleview;
     private RecyclerView chufarecycleview;
+    private RecyclerView chufarecycleview2;
     private String chufachulijueding;
     String beijianchaqiyetext;
     private TextView fuchayijian;
+    private TextView chakan1;
+    private TextView chakan2;
+    private TextView chakan3;
+    private TextView chakan4;
+    private TextView chakan5;
+    private TextView chakan6;
+    private TextView chakan7;
 
     @Override
     public ORIENTATION getORIENTATION() {
@@ -301,12 +309,22 @@ public class ActivityCheckMenu extends FrameActivity{
 
     }
     private void initChuFaList1() {
-        List<DateBase_Entity> showlist= Demo_DBManager.getSearchResult(Demo_DBManager.build().search(new Entity_JianChaXiang()
+        List<DateBase_Entity> showlist1= Demo_DBManager.getSearchResult(Demo_DBManager.build().search(new Entity_JianChaXiang()
                 .putlogic2value("隐患级别","<>","无隐患")
-                .putlogic2value("进行的阶段转化id","=","责令限期整改")
+                .putlogic2value("进行的阶段转化id","=","并处")
                 .putlogic2value("关联的执法编号id","=",bianhaoid)));
         chufarecycleview.setLayoutManager(new ScrollLinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
-        chufarecycleview.setAdapter(new ChoseCheckRecycleAdapter(this,showlist).setCanedit(false));
+        chufarecycleview.setAdapter(new ChoseCheckRecycleAdapter(this,showlist1).setCanedit(false));
+
+        if(!entityZhengGai.getId().equals("-1")){
+            List<DateBase_Entity> showlist2= Demo_DBManager.getSearchResult(Demo_DBManager.build().search(new Entity_JianChaXiang()
+                    .putlogic2value("隐患级别","<>","无隐患")
+                    .putlogic2value("进行的阶段转化id","=",entityZhengGai.getValue("关联处罚决定书"))
+                    .putlogic2value("关联的执法编号id","=",bianhaoid)));
+            chufarecycleview2.setLayoutManager(new ScrollLinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
+            chufarecycleview2.setAdapter(new ChoseCheckRecycleAdapter(this,showlist2).setCanedit(false));
+        }
+
 
     }
 
@@ -477,7 +495,13 @@ public class ActivityCheckMenu extends FrameActivity{
         linearpart7 = (LinearLayout) findViewById(R.id.linearpart7);
 
 
-
+        chakan1 = (TextView) findViewById(R.id.chakan1);
+        chakan2 = (TextView) findViewById(R.id.chakan2);
+        chakan3 = (TextView) findViewById(R.id.chakan3);
+        chakan4 = (TextView) findViewById(R.id.chakan4);
+        chakan5 = (TextView) findViewById(R.id.chakan5);
+        chakan6 = (TextView) findViewById(R.id.chakan6);
+        chakan7 = (TextView) findViewById(R.id.chakan7);
 
 
         shanchu1= (TextView) findViewById(R.id.shanchu1);
@@ -521,6 +545,7 @@ public class ActivityCheckMenu extends FrameActivity{
         chulirecycleview = (RecyclerView) findViewById(R.id.chulirecycleview);
         zelingrecycleview = (RecyclerView) findViewById(R.id.zelingrecycleview);
         chufarecycleview = (RecyclerView) findViewById(R.id.chufarecycleview);
+        chufarecycleview2 = (RecyclerView) findViewById(R.id.chufarecycleview2);
 
     }
     int nowtag=0;
@@ -746,6 +771,56 @@ public class ActivityCheckMenu extends FrameActivity{
             @Override
             public void onClick(View v) {
                 startChuFaMenuDialog();
+            }
+        });
+
+        chakan1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult(new Intent(getContext(),ActivityJiHua.class)
+                        .putExtra("beijianchaqiyetext",beijianchaqiyetext).putExtra("beanid",entityJihua.getId()).putExtra("see",true),111);
+            }
+        });
+        chakan2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult(new Intent(getContext(),ActivityFangAn.class)
+                        .putExtra("beijianchaqiyetext",beijianchaqiyetext).putExtra("beanid",entityFangAn.getId()).putExtra("see",true),111);
+            }
+        });
+        chakan3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult(new Intent(getContext(),ActivityXianChangJianCha.class)
+                        .putExtra("beijianchaqiyetext",beijianchaqiyetext).putExtra("beanid",entityJianCha.getId()).putExtra("see",true),111);
+            }
+        });
+        chakan4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult(new Intent(getContext(),ActivityChuLiCuoShi.class)
+                        .putExtra("beijianchaqiyetext",beijianchaqiyetext).putExtra("beanid",entityChuLi.getId()).putExtra("see",true),111);
+            }
+        });
+        chakan5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult(new Intent(getContext(),ActivityZeLing.class)
+                        .putExtra("beijianchaqiyetext",beijianchaqiyetext).putExtra("beanid",entityZeLing.getId()).putExtra("see",true),111);
+            }
+        });
+        chakan6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult(new Intent(getContext(),ActivityZhengGai.class)
+                        .putExtra("beijianchaqiyetext",beijianchaqiyetext).putExtra("bianhaoid",bianhaoid).putExtra("see",true),111);
+            }
+        });
+        chakan7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult(new Intent(getContext(),ActivityChuFa.class)
+                        .putExtra("beijianchaqiyetext",beijianchaqiyetext).putExtra("bianhaoid",bianhaoid).putExtra("see",true),111);
             }
         });
     }

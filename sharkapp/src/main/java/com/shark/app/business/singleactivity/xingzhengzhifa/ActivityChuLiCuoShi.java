@@ -18,6 +18,7 @@ import com.shark.app.R;
 import com.shark.app.business.adapter.InsertDecideRecycleAdapter;
 import com.shark.app.business.entity.Entity_JianChaXiang;
 import com.shark.app.business.entity.Entity_XianChangChuLiCuoShi;
+import com.wisdomregulation.data.entitybase.Base_Entity;
 import com.wisdomregulation.data.entitybase.DateBase_Entity;
 import com.wisdomregulation.help.Demo_DBManager;
 
@@ -82,18 +83,36 @@ public class ActivityChuLiCuoShi extends FrameActivity {
     private EditText jianchachangsuo;
     private EditText jianchashijian;
     private String beijianchaqiyetext;
+
+
+    private String beanid;
+    private Base_Entity beanentity;
     public void initData(){
+        if(getIntent().getBooleanExtra("see",false)){
+            findViewById(R.id.showfinish).setVisibility(View.GONE);
+        }
         bianhaoid = getIntent().getStringExtra("bianhaoid");
         beijianchaqiyetext = getIntent().getStringExtra("beijianchaqiyetext");
+        beanid =getIntent().getStringExtra("beanid")==null?"-1":getIntent().getStringExtra("beanid");
+        if(beanid==null||beanid.equals("-1")){
+            beanentity=new Base_Entity();
+        }else{
+            beanentity = Demo_DBManager.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_XianChangChuLiCuoShi().setId(beanid)));
+        }
     }
     public void initLayout(){
         beijianchaqiye = (EditText) findViewById(R.id.beijianchaqiye);
         beijianchaqiye.setText(beijianchaqiyetext);
         dizhi = (EditText) findViewById(R.id.dizhi);
+        dizhi.setText(beanentity.getValue("被检查企业地址"));
         fadingdaibiaoren = (EditText) findViewById(R.id.fadingdaibiaoren);
+        fadingdaibiaoren.setText(beanentity.getValue("法定代表人"));
         lianxidianhua = (EditText) findViewById(R.id.lianxidianhua);
+        lianxidianhua.setText(beanentity.getValue("联系电话"));
         jianchachangsuo = (EditText) findViewById(R.id.jianchachangsuo);
+        jianchachangsuo.setText(beanentity.getValue("检查场所"));
         jianchashijian = (EditText) findViewById(R.id.jianchashijian);
+        jianchashijian.setText(beanentity.getValue("检查时间"));
     }
     public void buttonSubmit(View view){
         Demo_DBManager.build().save2update(new Entity_XianChangChuLiCuoShi()

@@ -27,9 +27,28 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="计划名称" />
+                    android:text="计划名称:" />
 
-                <EditText
+                <TextView
+                    android:layout_width="0dp"
+                    android:id="@+id/jihuamingcheng"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="计划来源:" />
+
+                <TextView
+                    android:id="@+id/jihualaiyuan"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
@@ -44,9 +63,28 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="计划来源" />
+                    android:text="计划类型:" />
 
-                <EditText
+                <TextView
+                    android:layout_width="0dp"
+                    android:id="@+id/jihualeixing"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="计划负责人:" />
+
+                <TextView
+                    android:id="@+id/jihuafuzeren"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
@@ -61,10 +99,29 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="计划完成时间" />
+                    android:text="计划成员:" />
 
-                <EditText
+                <TextView
                     android:layout_width="0dp"
+                    android:id="@+id/jihuachengyuan"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="计划完成时间:" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:id="@+id/jihuawanchengshijian"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
             </LinearLayout>
@@ -72,6 +129,6 @@
         </LinearLayout>
 
     </ScrollView>
-    <include layout="@layout/include_finish"/>
 
+    <include layout="@layout/include_finish" />
 </LinearLayout>

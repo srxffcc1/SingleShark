@@ -24,6 +24,7 @@ public class JianChaXiangCardFragment extends Fragment {
     private String bianhaoid;
     private TextView submittext;
     private TextView deletetext;
+    private boolean see=false;
     String sanji;
     String siji;
     private DateBase_Entity xianchangjianchaoption;
@@ -39,6 +40,15 @@ public class JianChaXiangCardFragment extends Fragment {
         sf.bianhaoid=bianhaoid;
         return sf;
     }
+    public static JianChaXiangCardFragment getInstance(String title,String bianhaoid,boolean see) {
+        JianChaXiangCardFragment sf = new JianChaXiangCardFragment();
+        sf.mTitle = title;
+        sf.sanji=title.split("-")[0];
+        sf.siji=title.split("-")[1];
+        sf.bianhaoid=bianhaoid;
+        sf.see=see;
+        return sf;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,8 +58,16 @@ public class JianChaXiangCardFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_card_checkoption, null);
+        if(see){
+            v.findViewById(R.id.showfinish2).setVisibility(View.GONE);
+        }
         final TextView tv= (TextView) v.findViewById(R.id.checkclass);
         yinhuangroup = (RadioGroup) v.findViewById(R.id.yinhuangroup);
+        if(see){
+            for (int i = 0; i < yinhuangroup.getChildCount(); i++) {
+                yinhuangroup.getChildAt(i).setEnabled(false);
+            }
+        }
         submittext= (TextView) v.findViewById(R.id.submitmark);
         deletetext= (TextView) v.findViewById(R.id.deletemark);
         yinhuanmiaoshu = (EditText) v.findViewById(R.id.yinhuanmiaoshu);
@@ -68,14 +86,16 @@ public class JianChaXiangCardFragment extends Fragment {
             submittext.setText("更新");
             if(xianchangjianchaoption.getValue("隐患级别").equals("无隐患")){
                 yinhuangroup.check(R.id.yinhuanlevel1);
-
+                linkradio.setVisibility(View.INVISIBLE);
             }
             else if(xianchangjianchaoption.getValue("隐患级别").equals("一般隐患")){
                 yinhuangroup.check(R.id.yinhuanlevel2);
+                linkradio.setVisibility(View.VISIBLE);
 
             }
             else if(xianchangjianchaoption.getValue("隐患级别").equals("重大隐患")){
                 yinhuangroup.check(R.id.yinhuanlevel3);
+                linkradio.setVisibility(View.VISIBLE);
 
             }else{
                 yinhuangroup.check(R.id.yinhuanlevel1);
@@ -85,6 +105,8 @@ public class JianChaXiangCardFragment extends Fragment {
             submittext.setText("提交");
             yinhuangroup.check(R.id.yinhuanlevel1);
         }
+
+        yinhuanmiaoshu.setText(xianchangjianchaoption.getValue("描述"));
         yinhuangroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
