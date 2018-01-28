@@ -1,5 +1,6 @@
 package com.shark.app.business.singleactivity.xingzhengzhifa;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 import android.support.annotation.Nullable;
@@ -17,8 +18,10 @@ import com.businessframehelp.enums.ORIENTATION;
 import com.flyco.tablayout.SegmentTabLayout;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.shark.app.R;
+import com.shark.app.business.entity.Entity_JianChaFangAn;
 import com.shark.app.business.entity.Entity_XianChangJianCha;
 import com.shark.app.business.fragment.JianChaXiangCardFragment;
+import com.wisdomregulation.data.entitybase.DateBase_Entity;
 import com.wisdomregulation.help.Demo_DBManager;
 
 import java.util.ArrayList;
@@ -31,7 +34,8 @@ public class ActivityXianChangJianCha extends FrameActivity {
     private String[] mTitles_3 ;
     private ArrayList<Fragment> mFragments = new ArrayList<>();
     private SegmentTabLayout mTabLayout_3;
-    int testlengtht=7;
+    private String laizifangancheck;
+    private String beijianchaqiyetext;
 
 
     @Override
@@ -64,20 +68,47 @@ public class ActivityXianChangJianCha extends FrameActivity {
         android.view.WindowManager.LayoutParams p = getWindow().getAttributes();
         p.width = (int) (d.getWidth() * 0.9); // 宽度设置为屏幕的0.7
         getWindow().setAttributes(p);
-        mTitles_3=new String[testlengtht];
-        for (int i = 0; i < testlengtht; i++) {
+        initData();
+        initLayout();
+    }
+    private String bianhaoid;
+    private EditText beijianchaqiye;
+    private EditText dizhi;
+    private EditText fadingdaibiaoren;
+    private EditText lianxidianhua;
+    private EditText jianchachangsuo;
+    private EditText jianchashijian;
+    public void initData(){
+        bianhaoid = getIntent().getStringExtra("bianhaoid");
+        beijianchaqiyetext = getIntent().getStringExtra("beijianchaqiyetext");
+        DateBase_Entity fanganentity=Demo_DBManager.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_JianChaFangAn().putlogic2value("关联的执法编号id","=",bianhaoid)));
+        laizifangancheck = fanganentity.getValue("检查内容");
+    }
+    public void initLayout(){
+        mTabLayout_3= (SegmentTabLayout) findViewById(R.id.tl_3);
+        beijianchaqiye = (EditText) findViewById(R.id.beijianchaqiye);
+        beijianchaqiye.setText(beijianchaqiyetext);
+        dizhi = (EditText) findViewById(R.id.dizhi);
+        fadingdaibiaoren = (EditText) findViewById(R.id.fadingdaibiaoren);
+        lianxidianhua = (EditText) findViewById(R.id.lianxidianhua);
+        jianchachangsuo = (EditText) findViewById(R.id.jianchachangsuo);
+        jianchashijian = (EditText) findViewById(R.id.jianchashijian);
+
+        String[] laizifangancheckarray=laizifangancheck.split(",");
+        mTitles_3=new String[laizifangancheckarray.length];
+        for (int i = 0; i < mTitles_3.length; i++) {
             mTitles_3[i]="检查项 " +(i+1);
-            mFragments.add(JianChaXiangCardFragment.getInstance("检查项 " +(i+1) ));
+            mFragments.add(JianChaXiangCardFragment.getInstance(laizifangancheckarray[i],bianhaoid));
         }
 
         final ViewPager vp_3 = (ViewPager) findViewById(R.id.vp_2);
         vp_3.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
-        String[] data=new String[testlengtht];
+        String[] data=new String[laizifangancheckarray.length];
         for (int i = 0; i <data.length ; i++) {
             data[i]=(i+1)+"";
         }
 
-        mTabLayout_3= (SegmentTabLayout) findViewById(R.id.tl_3);
+
         mTabLayout_3.setTabData(data);
         mTabLayout_3.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
@@ -106,27 +137,7 @@ public class ActivityXianChangJianCha extends FrameActivity {
 
             }
         });
-        vp_3.setCurrentItem(1);
-        initData();
-        initLayout();
-    }
-    private String bianhaoid;
-    private EditText beijianchaqiye;
-    private EditText dizhi;
-    private EditText fadingdaibiaoren;
-    private EditText lianxidianhua;
-    private EditText jianchachangsuo;
-    private EditText jianchashijian;
-    public void initData(){
-        bianhaoid = getIntent().getStringExtra("bianhaoid");
-    }
-    public void initLayout(){
-        beijianchaqiye = (EditText) findViewById(R.id.beijianchaqiye);
-        dizhi = (EditText) findViewById(R.id.dizhi);
-        fadingdaibiaoren = (EditText) findViewById(R.id.fadingdaibiaoren);
-        lianxidianhua = (EditText) findViewById(R.id.lianxidianhua);
-        jianchachangsuo = (EditText) findViewById(R.id.jianchachangsuo);
-        jianchashijian = (EditText) findViewById(R.id.jianchashijian);
+        vp_3.setCurrentItem(0);
     }
     public void buttonSubmit(View view){
         Demo_DBManager.build().save2update(new Entity_XianChangJianCha()
@@ -138,8 +149,18 @@ public class ActivityXianChangJianCha extends FrameActivity {
                 .put("检查场所",jianchachangsuo.getText().toString())
                 .put("检查时间",jianchashijian.getText().toString())
         );
-        finish();
+        startActivityForResult(new Intent(getContext(),ActivityCheckChose.class).putExtra("bianhaoid",bianhaoid),1000);
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode==1001){
+            finish();
+        }
+
+    }
+
     class MyPagerAdapter extends FragmentPagerAdapter {
         public MyPagerAdapter(FragmentManager fm) {
             super(fm);

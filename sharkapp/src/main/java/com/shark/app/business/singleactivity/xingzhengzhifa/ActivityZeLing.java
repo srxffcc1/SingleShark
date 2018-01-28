@@ -3,6 +3,8 @@ package com.shark.app.business.singleactivity.xingzhengzhifa;
 import android.os.Bundle;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Display;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,9 +13,15 @@ import android.widget.EditText;
 
 import com.businessframehelp.app.FrameActivity;
 import com.businessframehelp.enums.ORIENTATION;
+import com.businessframehelp.widget.ScrollLinearLayoutManager;
 import com.shark.app.R;
+import com.shark.app.business.adapter.ChoseCheckRecycleAdapter;
+import com.shark.app.business.entity.Entity_JianChaXiang;
 import com.shark.app.business.entity.Entity_ZeLingZhengGai;
+import com.wisdomregulation.data.entitybase.DateBase_Entity;
 import com.wisdomregulation.help.Demo_DBManager;
+
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/5/25. 临时模板复制就用
@@ -53,9 +61,19 @@ public class ActivityZeLing extends FrameActivity {
         getWindow().setAttributes(p);
         initData();
         initLayout();
-
+        initView();
     }
-
+    public List<DateBase_Entity> showlist;
+    private void initView() {
+        showlist= Demo_DBManager.getSearchResult(Demo_DBManager.build().search(new Entity_JianChaXiang()
+                .putlogic2value("隐患级别","<>","无隐患")
+                .putlogic2value("进行的阶段转化id","=","责令限期整改")
+                .putlogic2value("关联的执法编号id","=",bianhaoid)));
+        RecyclerView recycler_view = (RecyclerView) findViewById(R.id.recycler_view);
+        recycler_view.setLayoutManager(new ScrollLinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+        recycler_view.setAdapter(new ChoseCheckRecycleAdapter(this,showlist).setCanedit(false));
+    }
+    private String beijianchaqiyetext;
     private String bianhaoid;
     private EditText beijianchaqiye;
     private EditText dizhi;
@@ -65,9 +83,11 @@ public class ActivityZeLing extends FrameActivity {
     private EditText jianchashijian;
     public void initData(){
         bianhaoid = getIntent().getStringExtra("bianhaoid");
+        beijianchaqiyetext = getIntent().getStringExtra("beijianchaqiyetext");
     }
     public void initLayout(){
         beijianchaqiye = (EditText) findViewById(R.id.beijianchaqiye);
+        beijianchaqiye.setText(beijianchaqiyetext);
         dizhi = (EditText) findViewById(R.id.dizhi);
         fadingdaibiaoren = (EditText) findViewById(R.id.fadingdaibiaoren);
         lianxidianhua = (EditText) findViewById(R.id.lianxidianhua);
@@ -82,7 +102,7 @@ public class ActivityZeLing extends FrameActivity {
                 .put("法定代表人",fadingdaibiaoren.getText().toString())
                 .put("联系电话",lianxidianhua.getText().toString())
                 .put("检查场所",jianchachangsuo.getText().toString())
-                .put("检查时间",jianchashijian.getText().toString())
+                .put("整改期限",jianchashijian.getText().toString())
         );
         finish();
     }

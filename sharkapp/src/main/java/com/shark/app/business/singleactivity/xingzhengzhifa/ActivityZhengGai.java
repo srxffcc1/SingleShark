@@ -26,6 +26,7 @@ public class ActivityZhengGai extends FrameActivity {
     private EditText fuchayijian;
     private EditText chufajuedingshu;
     private EditText jiancharen;
+    private String chulijueding;
 
     @Override
     public ORIENTATION getORIENTATION() {
@@ -60,12 +61,16 @@ public class ActivityZhengGai extends FrameActivity {
         initLayout();
 
     }
+    private String beijianchaqiyetext;
     private String bianhaoid;
     public void initData(){
+        beijianchaqiyetext = getIntent().getStringExtra("beijianchaqiyetext");
         bianhaoid = getIntent().getStringExtra("bianhaoid");
+        chulijueding = getIntent().getStringExtra("chulijueding");
     }
     public void initLayout(){
         beijianchaqiye = (EditText) findViewById(R.id.beijianchaqiye);
+        beijianchaqiye.setText(beijianchaqiyetext);
         fuchayijian = (EditText) findViewById(R.id.fuchayijian);
         chufajuedingshu = (EditText) findViewById(R.id.chufajuedingwenshu);
         jiancharen = (EditText) findViewById(R.id.jiancharen);
@@ -80,8 +85,9 @@ public class ActivityZhengGai extends FrameActivity {
     public void buttonSubmit(View view){
         Demo_DBManager.build().save2update(new Entity_ZhengGaiFuCha()
                 .put("关联的执法编号id",bianhaoid)
+                .put("复查意见",fuchayijian.getText().toString())
                 .put("被检查企业名称",beijianchaqiye.getText().toString())
-                .put("关联处罚决定书",chufajuedingshu.getText().toString())
+                .put("关联处罚决定书",chulijueding)
                 .put("检查人",jiancharen.getText().toString())
 
         );

@@ -630,48 +630,47 @@ public class Demo_DBManager {
      */
 
     public int delete(Object object) {
-//		try {
-//			DateBase_Entity entity=(DateBase_Entity)object;
-//			String where="";
-//			String id="";
-//			id=entity.getId();
-//			String[] whereArgs = null;
-//			ContentValues values = new ContentValues();
-//			if(!entity.getId().equals("")){
-//				where=where+" id = ?";
-//				whereArgs=arrayaddarray(whereArgs, entity.getId());
-//			}
+		try {
+			DateBase_Entity entity=(DateBase_Entity)object;
+			String where="";
+			String id="";
+			id=entity.getId();
+			String[] whereArgs = null;
+			ContentValues values = new ContentValues();
+			if(!entity.getId().equals("")){
+				where=where+" id = ?";
+				whereArgs=arrayaddarray(whereArgs, entity.getId());
+			}
 //			values.put("status","0");
-////			for (int i = 0; i < entity.size(); i++) {
-////				if(!entity.getValue(i).equals(" ")){
-////					where=where+" "+entity.getField(i)+" = ? and";
-////					whereArgs=arrayaddarray(whereArgs, entity.getValue(i));
-////				}
-////
-////			}
-////			if(where.length()>3){
-////				where=where.substring(0, where.length()-3);
-////			}
-////			for (int i = 0; i < whereArgs.length; i++) {
-////				com.wisdomregulation.utils.Log.v("DeleteTag", whereArgs[i]);
-////			}
-//			Log.v("DeleteTag", where);
-//			SQLiteDatabase database = getDataBase();
-//			String tablename = getTableName(entity);
+//			for (int i = 0; i < entity.size(); i++) {
+//				if(!entity.getValue(i).equals(" ")){
+//					where=where+" "+entity.getField(i)+" = ? and";
+//					whereArgs=arrayaddarray(whereArgs, entity.getValue(i));
+//				}
+//
+//			}
+//			if(where.length()>3){
+//				where=where.substring(0, where.length()-3);
+//			}
+//			for (int i = 0; i < whereArgs.length; i++) {
+//				com.wisdomregulation.utils.Log.v("DeleteTag", whereArgs[i]);
+//			}
+			Log.v("DeleteTag", where);
+			SQLiteDatabase database = getDataBase();
+			String tablename = getTableName(entity);
 //			if(!id.equals("")){
 //				DateBase_Entity entityadd=new Entity_DeleteHistory().put(0, tablename).put(1, id);
 //				save2update(entityadd);
-//
 //			}
 //			database.update(tablename, values, "id = ? ", whereArgs);
-////			long result = database.delete(tablename, where,
-////					whereArgs);
-//			close(database);
-//			return (int) 1;
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			Log.v("SqliteError",e.toString());
-//		}
+			long result = database.delete(tablename, where,
+					whereArgs);
+			close(database);
+			return (int) 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+			Log.v("SqliteError",e.toString());
+		}
         return 0;
     }
 //	public  int deleteSimple(Object object) {
@@ -1162,7 +1161,7 @@ public class Demo_DBManager {
         String limittmp = limit;
         Cursor allcur = null;
         Cursor cur = null;
-        sql = sql + " INTERSECT " + "SELECT * from " + object.getClass().getSimpleName() + " WHERE " + object.getClass().getSimpleName() + ".status <> 0";
+//        sql = sql + " INTERSECT " + "SELECT * from " + object.getClass().getSimpleName() + " WHERE " + object.getClass().getSimpleName() + ".status <> 0";
         Log.v("Cur", "1123:" + sql);
         cur = database.rawQuery(sql + " limit " + limittmp, null);
         if (needcount) {
@@ -1195,13 +1194,16 @@ public class Demo_DBManager {
 
 
                     }
-                    tmpentity.setId(cur.getString(cur.getColumnIndex("id")));
-                    tmpentity.setHashid(cur.getString(cur.getColumnIndex("hashid")));
-                    tmpentity.setDatastate(cur.getString(cur.getColumnIndex("datastate")));
-                    tmpentity.setCreatedatadate(cur.getString(cur.getColumnIndex("createdatadate")));
-                    tmpentity.setUpDatadate(cur.getString(cur.getColumnIndex("updatadate")));
-                    tmpentity.setTableid(cur.getString(cur.getColumnIndex("tableid")));
-                    tmpentity.setCreated(cur.getString(cur.getColumnIndex("created")));
+                    try {
+                        tmpentity.setId(cur.getString(cur.getColumnIndex("id")));
+                        tmpentity.setHashid(cur.getString(cur.getColumnIndex("hashid")));
+                        tmpentity.setDatastate(cur.getString(cur.getColumnIndex("datastate")));
+                        tmpentity.setCreatedatadate(cur.getString(cur.getColumnIndex("createdatadate")));
+                        tmpentity.setUpDatadate(cur.getString(cur.getColumnIndex("updatadate")));
+                        tmpentity.setTableid(cur.getString(cur.getColumnIndex("tableid")));
+                        tmpentity.setCreated(cur.getString(cur.getColumnIndex("created")));
+                    } catch (Exception e) {
+                    }
                     entitylist.add(tmpentity);
                 }
 

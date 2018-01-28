@@ -22,7 +22,7 @@ public class Entity_ZeLingZhengGai extends DateBase_Entity {
         fieldnamelsitchinese.add("法定代表人");//2
         fieldnamelsitchinese.add("联系电话");//2
         fieldnamelsitchinese.add("检查场所");//2
-        fieldnamelsitchinese.add("检查时间");//2
+        fieldnamelsitchinese.add("整改期限");//2
 
     }
 }

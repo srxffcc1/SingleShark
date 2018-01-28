@@ -18,14 +18,16 @@ public class Entity_JianChaXiang extends DateBase_Entity {
 
         fieldnamelsitchinese.add("关联的执法编号id");//0
         fieldnamelsitchinese.add("关联的检查项模板id");//0
-        fieldnamelsitchinese.add("进行的阶段转化id");//0
+        fieldnamelsitchinese.add("进行的阶段转化id");//02//转责令 转现场 转并处
         fieldnamelsitchinese.add("检查项一级");//1
         fieldnamelsitchinese.add("检查项二级");//2
         fieldnamelsitchinese.add("检查项三级");//2
         fieldnamelsitchinese.add("相关法律");//2
         fieldnamelsitchinese.add("相关依据");//2
         fieldnamelsitchinese.add("检查部位");//2
+        fieldnamelsitchinese.add("描述");//2
         fieldnamelsitchinese.add("隐患级别");//2
-        fieldnamelsitchinese.add("处理决定");//2
+        fieldnamelsitchinese.add("处理决定");//
+        fieldnamelsitchinese.add("处罚决定");//
     }
 }

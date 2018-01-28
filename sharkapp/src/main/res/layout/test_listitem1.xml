@@ -5,6 +5,7 @@
     android:addStatesFromChildren="true"
     android:layout_height="match_parent">
     <Button
+        android:id="@+id/buttonTitle"
         android:padding="10dp"
         android:text="一层"
         android:focusable="false"

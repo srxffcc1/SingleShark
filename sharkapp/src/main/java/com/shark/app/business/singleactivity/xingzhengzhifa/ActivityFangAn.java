@@ -1,5 +1,6 @@
 package com.shark.app.business.singleactivity.xingzhengzhifa;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 import android.support.annotation.Nullable;
@@ -8,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.businessframehelp.app.FrameActivity;
 import com.businessframehelp.enums.ORIENTATION;
@@ -29,6 +31,7 @@ public class ActivityFangAn extends FrameActivity {
     private EditText jianchachangsuo;
     private EditText jianchashijian;
     private String bianhaoid;
+    TextView isselectchecktext;
 
     @Override
     public ORIENTATION getORIENTATION() {
@@ -70,6 +73,13 @@ public class ActivityFangAn extends FrameActivity {
         lianxidianhua= (EditText) findViewById(R.id.lianxidianhua);
         jianchachangsuo = (EditText) findViewById(R.id.jianchachangsuo);
         jianchashijian = (EditText) findViewById(R.id.jianchashijian);
+        isselectchecktext= (TextView) findViewById(R.id.isselectchecktext);
+        findViewById(R.id.selectcheckoption).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult(new Intent(getContext(),ActivityCheckOptionSelect.class),1000);
+            }
+        });
     }
     public void initData(){
         bianhaoid = getIntent().getStringExtra("bianhaoid");
@@ -90,8 +100,20 @@ public class ActivityFangAn extends FrameActivity {
                 .put("联系电话",lianxidianhua.getText().toString())
                 .put("检查场所",jianchachangsuo.getText().toString())
                 .put("检查时间",jianchashijian.getText().toString())
+                .put("行政执法人员","王建国")
+                .put("检查方式","政府抽查")
+                .put("检查内容",isselectchecktext.getText().toString().replace("\n",","))
         );
         finish();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        try {
+            isselectchecktext.setText(data.getStringExtra("result"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

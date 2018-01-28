@@ -1,10 +1,13 @@
-package com.shark.app.test;
+package com.shark.app.business.singleactivity.xingzhengzhifa;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.view.Display;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ListView;
@@ -26,8 +29,7 @@ import butterknife.BindView;
 /**
  * Created by Administrator on 2017/5/13.
  */
-@Deprecated
-public class ListTestActivity extends FrameActivity {
+public class ActivityCheckOptionSelect extends FrameActivity {
     @BindView(R.id.testlist)
     ListView mTestlist;
     private List<ListTreeAdapter.ListItem> alllist;
@@ -36,7 +38,10 @@ public class ListTestActivity extends FrameActivity {
     public ORIENTATION getORIENTATION() {
         return null;
     }
-
+    @Override
+    public boolean needActionBar() {
+        return false;
+    }
     @Override
     public int getMenuid() {
         return 0;
@@ -45,15 +50,43 @@ public class ListTestActivity extends FrameActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.test_list);
+        setContentView(R.layout.checkoption_select_list);
+        WindowManager m = getWindowManager();
+        Display d = m.getDefaultDisplay(); // 为获取屏幕宽、高
+        android.view.WindowManager.LayoutParams p = getWindow().getAttributes();
+        p.width = (int) (d.getWidth() * 0.9); // 宽度设置为屏幕的0.7
+        getWindow().setAttributes(p);
         alllist = new ArrayList<>();
         List<DateBase_Entity> optionlist= Demo_DBManager.getSearchResult(Demo_DBManager.build().query("select distinct jianchaxiangmusanji from `Entity_LibraryLawDependence`",new Entity_LibraryLawDependence()));
         for (int i = 0; i <optionlist.size() ; i++) {
-            alllist.add(new ListTreeAdapter.ListItem().setShowtitle(optionlist.get(i).getValue("检查项目三级")).setLevel(1));
+            alllist.add(new ListTreeAdapter.ListItem().setShowtitle("检查项分类:"+optionlist.get(i).getValue("检查项目三级")).setLevel(1).setIncludeobj(optionlist.get(i)));
         }
-        TestListAdapter adapter=new TestListAdapter(this, alllist,3);
+        AppTreeListAdapter adapter=new AppTreeListAdapter(this, alllist,3);
         mTestlist.setAdapter(adapter);
 
+
+    }
+    public String  getResult(){
+        String result="";
+        for (int i = 0; i <alllist.size() ; i++) {
+            if(alllist.get(i).isselect()){
+                DateBase_Entity entity= (DateBase_Entity) alllist.get(i).getIncludeobj();
+                String three2f=entity.getValue("检查项目三级")+"-"+entity.getValue("检查项目四级");
+                result=result+three2f.replace("检查项分类:","")+",";
+            }
+
+        }
+        return result.substring(0,result.length()-1);
+    }
+    @Override
+    public void buttonSubmit(View view) {
+        setResult(1002,new Intent().putExtra("result",getResult().replace(",","\n")));
+        finish();
+    }
+
+    @Override
+    public void buttonCancel(View view) {
+        finish();
     }
 
     @Override
@@ -61,14 +94,14 @@ public class ListTestActivity extends FrameActivity {
 
     }
 
-    class TestListAdapter extends ListTreeAdapter{
+    class AppTreeListAdapter extends ListTreeAdapter{
 
         /**
          * @param context         context
          * @param alllist         一层目录
          * @param whillclicklevel 需要进行跳转反馈的层级
          */
-        public TestListAdapter(Activity context, List<ListTreeAdapter.ListItem> alllist, int whillclicklevel) {
+        public AppTreeListAdapter(Activity context, List<ListItem> alllist, int whillclicklevel) {
             super(context, alllist, whillclicklevel);
         }
 
@@ -96,7 +129,7 @@ public class ListTestActivity extends FrameActivity {
         }
 
         @Override
-        public ListTreeAdapter.ListViewHolder getHolder() {
+        public ListViewHolder getHolder() {
             return new ListViewHolder() {
 
                 @Override
@@ -125,14 +158,14 @@ public class ListTestActivity extends FrameActivity {
         }
 
         @Override
-        public List<ListTreeAdapter.ListItem> loaddatafromserverImp(View v, int position,int level) {
+        public List<ListItem> loaddatafromserverImp(View v, int position,int level) {
             if(level==2){
                 return null;
             }
-            List<DateBase_Entity> optionlist= Demo_DBManager.getSearchResult(Demo_DBManager.build().search(new Entity_LibraryLawDependence().putlogic2value("jianchaxiangmusanji","=",alllist.get(position).getShowtitle())));
-            List<ListTreeAdapter.ListItem> tmplist=new ArrayList<>();
+            List<DateBase_Entity> optionlist= Demo_DBManager.getSearchResult(Demo_DBManager.build().search(new Entity_LibraryLawDependence().putlogic2value("jianchaxiangmusanji","=",alllist.get(position).getShowtitle().replace("检查项分类:",""))));
+            List<ListItem> tmplist=new ArrayList<>();
             for (int i = 0; i <optionlist.size() ; i++) {
-                tmplist.add(new ListTreeAdapter.ListItem().setShowtitle(optionlist.get(i).getValue("jianchaxiangmusiji")).setLevel(2));
+                tmplist.add(new ListItem().setShowtitle(optionlist.get(i).getValue("jianchaxiangmusiji")).setLevel(2).setIncludeobj(optionlist.get(i)));
             }
             return tmplist;
         }

@@ -19,6 +19,7 @@
                 android:layout_height="wrap_content"
                 android:text="检查项类别:"></TextView>
             <TextView
+                android:id="@+id/checkclass"
                 android:padding="4dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -82,22 +83,27 @@
                 android:layout_height="wrap_content"
                 android:text="是否发现隐患:"></TextView>
             <RadioGroup
+                android:id="@+id/yinhuangroup"
                 android:padding="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_weight="1">
                 <RadioButton
+                    android:id="@+id/yinhuanlevel1"
                     android:layout_weight="1"
                     android:layout_width="0dp"
+                    android:checked="true"
                     android:layout_height="wrap_content"
                     android:text="无隐患"/>
                 <RadioButton
+                    android:id="@+id/yinhuanlevel2"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="一般隐患"/>
                 <RadioButton
+                    android:id="@+id/yinhuanlevel3"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -105,37 +111,62 @@
             </RadioGroup>
         </LinearLayout>
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:padding="4dp"
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="相关附件:"></TextView>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/seach_linearlayoutbg4"
-                android:clickable="true"
-                android:gravity="center"
-                android:paddingBottom="5dp"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:paddingTop="5dp"
-                android:text="添加"
-                android:textColor="@color/white"
-                android:layout_centerInParent="true"
-                android:layout_alignParentEnd="true"
-                />
-        </LinearLayout>
-        <FrameLayout
-            android:minHeight="100dp"
+            android:id="@+id/linkradio"
+            android:visibility="invisible"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:padding="4dp"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="隐患描述:"></TextView>
+            </LinearLayout>
+            <EditText
+                android:id="@+id/yinhuanmiaoshu"
+                android:minHeight="50dp"
+                android:gravity="left"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:padding="4dp"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="相关附件:"></TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/seach_linearlayoutbg4"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="5dp"
+                    android:text="添加"
+                    android:textColor="@color/white"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentEnd="true"
+                    />
+            </LinearLayout>
+            <FrameLayout
+                android:minHeight="100dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        </FrameLayout>
+            </FrameLayout>
+
+        </LinearLayout>
         <include layout="@layout/include_finish2"/>
     </LinearLayout>
 

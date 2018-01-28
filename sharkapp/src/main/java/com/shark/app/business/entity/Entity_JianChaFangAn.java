@@ -24,6 +24,7 @@ public class Entity_JianChaFangAn extends DateBase_Entity {
         fieldnamelsitchinese.add("检查场所");//2
         fieldnamelsitchinese.add("检查时间");//2
         fieldnamelsitchinese.add("行政执法人员");//2
+        fieldnamelsitchinese.add("检查内容");//2
         fieldnamelsitchinese.add("检查方式");//2
         fieldnamelsitchinese.add("审批人");//2
         fieldnamelsitchinese.add("审核人");//2

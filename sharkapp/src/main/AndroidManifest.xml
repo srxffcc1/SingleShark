@@ -72,14 +72,14 @@
         <activity android:name=".business.singleactivity.ActivityTmp" android:launchMode="singleTop"/>
         <activity android:name=".business.singleactivity.xingzhengzhifa.ActivityXianChangJianCha" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
         <activity android:name=".business.singleactivity.xingzhengzhifa.ActivityChuFa" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
-        <activity android:name=".business.singleactivity.xingzhengzhifa.ActivityChuFaList" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
         <activity android:name=".business.singleactivity.xingzhengzhifa.ActivityChuLiCuoShi" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
         <activity android:name=".business.singleactivity.xingzhengzhifa.ActivityFangAn" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
         <activity android:name=".business.singleactivity.xingzhengzhifa.ActivityJiHua" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
         <activity android:name=".business.singleactivity.xingzhengzhifa.ActivityZeLing" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
         <activity android:name=".business.singleactivity.xingzhengzhifa.ActivityZhengGai" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
-        <activity android:name=".business.singleactivity.xingzhengzhifa.ActivityZhengGaiList" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
         <activity android:name=".business.singleactivity.xingzhengzhifa.ActivityGuiDang" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
+        <activity android:name=".business.singleactivity.xingzhengzhifa.ActivityCheckOptionSelect" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
+        <activity android:name=".business.singleactivity.xingzhengzhifa.ActivityCheckChose" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
     </application>
 
 </manifest>

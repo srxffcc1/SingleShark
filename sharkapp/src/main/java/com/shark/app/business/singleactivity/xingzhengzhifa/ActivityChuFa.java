@@ -3,17 +3,26 @@ package com.shark.app.business.singleactivity.xingzhengzhifa;
 import android.os.Bundle;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Display;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.businessframehelp.app.FrameActivity;
 import com.businessframehelp.enums.ORIENTATION;
+import com.businessframehelp.widget.ScrollLinearLayoutManager;
 import com.shark.app.R;
+import com.shark.app.business.adapter.InsertMurderRecycleAdapter;
 import com.shark.app.business.entity.Entity_ChuFa;
+import com.shark.app.business.entity.Entity_JianChaXiang;
+import com.wisdomregulation.data.entitybase.DateBase_Entity;
 import com.wisdomregulation.help.Demo_DBManager;
+
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/5/25. 临时模板复制就用
@@ -22,9 +31,9 @@ import com.wisdomregulation.help.Demo_DBManager;
 public class ActivityChuFa extends FrameActivity {
 
 
-    private EditText weifaliebiao;
     private EditText jiaonafajingshuliang;
     private EditText jiaonafajinzhanghao;
+    private String chulijueding;
 
     @Override
     public ORIENTATION getORIENTATION() {
@@ -57,21 +66,38 @@ public class ActivityChuFa extends FrameActivity {
         getWindow().setAttributes(p);
         initData();
         initLayout();
-
+        initView();
     }
-
+    public List<DateBase_Entity> showlist;
+    private void initView() {
+        showlist= Demo_DBManager.getSearchResult(Demo_DBManager.build().search(new Entity_JianChaXiang()
+                .putlogic2value("隐患级别","<>","无隐患")
+                .putlogic2value("进行的阶段转化id","=",chulijueding)
+                .putlogic2value("关联的执法编号id","=",bianhaoid)));
+        if(showlist.size()<1){
+            Toast.makeText(getContext(),"暂无违法记录,选择其他来源",Toast.LENGTH_SHORT).show();
+            finish();
+        }
+        RecyclerView recycler_view = (RecyclerView) findViewById(R.id.recycler_view);
+        recycler_view.setLayoutManager(new ScrollLinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
+        recycler_view.setAdapter(new InsertMurderRecycleAdapter(this,showlist).setCanedit(false));
+    }
+    private String beijianchaqiyetext;
     private String bianhaoid;
     public void initData(){
+        beijianchaqiyetext = getIntent().getStringExtra("beijianchaqiyetext");
+
         bianhaoid = getIntent().getStringExtra("bianhaoid");
+        chulijueding = getIntent().getStringExtra("chulijueding");
     }
     private EditText beijianchaqiye;
     private EditText dizhi;
     private EditText fadingdaibiaoren;
     public void initLayout(){
         beijianchaqiye = (EditText) findViewById(R.id.beijianchaqiye);
+        beijianchaqiye.setText(beijianchaqiyetext);
         dizhi = (EditText) findViewById(R.id.dizhi);
         fadingdaibiaoren = (EditText) findViewById(R.id.fadingdaibiaoren);
-        weifaliebiao = (EditText) findViewById(R.id.weifaliebiao);
         jiaonafajingshuliang = (EditText) findViewById(R.id.jiaonafajingshuliang);
         jiaonafajinzhanghao = (EditText) findViewById(R.id.jiaonazhanghao);
     }

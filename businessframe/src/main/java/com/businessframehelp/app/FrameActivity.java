@@ -40,7 +40,7 @@ import butterknife.ButterKnife;
 
 
 /**
- * Created by Administrator on 2017/5/10.
+ * Created by Administrator on 2017/5/10. buttonCancel buttonSubmit
  * 基Activity 带有 LocalActivityManager 可以实现抽离出Intent转化为view
  * 注意重写 onCreateOptionsMenu
  */

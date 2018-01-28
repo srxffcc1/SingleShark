@@ -12,7 +12,6 @@ import com.businessframehelp.inter.IListTreeAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Created by KingGT80 on 2017/3/15.
@@ -101,19 +100,25 @@ abstract public class ListTreeAdapter extends BaseAdapter implements IListTreeAd
         }
 
         holder.canvasView(convertView,entity);
-//        convertView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                checktoshowchild(v,position);
-//            }
-//        });
         return convertView;
     }
     public abstract ListViewHolder getHolder();
 
     public abstract class ListViewHolder {
         public int level;
+
+        /**
+         * 绑定view 给控件进行绑定
+         * @param view
+         * @param entity
+         */
         public abstract void bindView(View view,ListItem entity);
+
+        /**
+         * 给这些控件进行赋值
+         * @param view
+         * @param entity
+         */
         public abstract void canvasView(View view,ListItem entity);
 //界面绑定
     }
@@ -137,23 +142,23 @@ abstract public class ListTreeAdapter extends BaseAdapter implements IListTreeAd
                 pressenent(v,position);
             }else{
                 if(position==getCount() - 1||nowlevel==showlist.get(position+1).getLevel()){//说明有下级且没有进行过载入 需要进行网络请求进行载入
-                    loaddatafromserver(v,position);
+                    loaddatafromserver(v,position,nowlevel);
                 }
             }
         }
 
     }
-    abstract public List<ListItem> loaddatafromserverImp(final View v, final int position);
-    final public void loaddatafromserver(final View v, final int position){
+    abstract public List<ListItem> loaddatafromserverImp(final View v, final int position,int level);
+    final public void loaddatafromserver(final View v, final int position,final int level){
         new Thread(new Runnable() {
             @Override
             public void run() {
-                List<ListItem> tmplist=loaddatafromserverImp(v,position);
+                List<ListItem> tmplist=loaddatafromserverImp(v,showlist.get(position).getPostionorg(),level);
                 if(tmplist!=null&&tmplist.size()>0){
                     for (int i = 0; i <tmplist.size() ; i++) {
                         tmplist.get(i).setIsshow(true);
                     }
-                    alllist.addAll(position,tmplist);//将数据插入到完整list 再执行changedata操作；
+                    alllist.addAll(showlist.get(position).getPostionorg()+1,tmplist);//将数据插入到完整list 再执行changedata操作；
                     changeData();
                 }
 
@@ -211,9 +216,17 @@ abstract public class ListTreeAdapter extends BaseAdapter implements IListTreeAd
         for (int i = 0; i <alllist.size() ; i++) {
             if(alllist.get(i).isshow()){
                 showlist.add(alllist.get(i).setPostionorg(i));
+            }else{
+                alllist.get(i).setPostionorg(i);
             }
         }
-        notifyDataSetChanged();
+        context.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+
+                notifyDataSetChanged();
+            }
+        });
     }
 
     /**
@@ -227,9 +240,19 @@ abstract public class ListTreeAdapter extends BaseAdapter implements IListTreeAd
     public static class ListItem {
         public int postionorg;
         public int level;
+        public boolean isselect=false;
         public boolean isshow=true;
-        public Objects includeobj;
+        public Object includeobj;
         public String showtitle;
+
+        public boolean isselect() {
+            return isselect;
+        }
+
+        public ListItem setIsselect(boolean isselect) {
+            this.isselect = isselect;
+            return this;
+        }
 
         public int getLevel() {
             return level;
@@ -258,11 +281,11 @@ abstract public class ListTreeAdapter extends BaseAdapter implements IListTreeAd
             return  this;
         }
 
-        public Objects getIncludeobj() {
+        public Object getIncludeobj() {
             return includeobj;
         }
 
-        public ListItem setIncludeobj(Objects includeobj) {
+        public ListItem setIncludeobj(Object includeobj) {
             this.includeobj = includeobj;
             return  this;
         }
