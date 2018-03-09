@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.businessframehelp.app.FrameActivity;
@@ -118,6 +119,7 @@ public class ActivityCheckMenu extends FrameActivity{
     private ScrollView scrollviewt;
 
     private RecyclerView jianchajilurecycleview;
+    private RecyclerView jianchajilurecycleview2;
     private DateBase_Entity entityJihua;
     private DateBase_Entity entityFangAn;
     private DateBase_Entity entityJianCha;
@@ -175,6 +177,7 @@ public class ActivityCheckMenu extends FrameActivity{
         initData();
         initLayout();
         initListener();
+        Switch ss;
 
     }
 
@@ -280,12 +283,16 @@ public class ActivityCheckMenu extends FrameActivity{
         jianchajilurecycleview.setLayoutManager(new ScrollLinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
         jianchajilurecycleview.setAdapter(new ChoseCheckRecycleAdapter(this,showlist).setCanedit(false));
 
+
     }
     private void initChuLiList() {
-        List<DateBase_Entity> showlist= Demo_DBManager.getSearchResult(Demo_DBManager.build().search(new Entity_JianChaXiang()
+        List<DateBase_Entity> showlist= Demo_DBManager.getSearchResult(Demo_DBManager.build().query(Demo_DBManager.lowbuild().justgetSqlUNION(new Entity_JianChaXiang()
                 .putlogic2value("隐患级别","<>","无隐患")
                 .putlogic2value("进行的阶段转化id","=","现场处理措施")
-                .putlogic2value("关联的执法编号id","=",bianhaoid)));
+                .putlogic2value("关联的执法编号id","=",bianhaoid),new Entity_JianChaXiang()
+                .putlogic2value("隐患级别","<>","无隐患")
+                .putlogic2value("进行的阶段转化id","=","并处")
+                .putlogic2value("关联的执法编号id","=",bianhaoid)),new Entity_JianChaXiang()));
         if(showlist.size()<1){
             Demo_DBManager.build().delete(entityChuLi);
             linearpart4.setVisibility(View.GONE);
@@ -823,6 +830,12 @@ public class ActivityCheckMenu extends FrameActivity{
                         .putExtra("beijianchaqiyetext",beijianchaqiyetext).putExtra("bianhaoid",bianhaoid).putExtra("see",true),111);
             }
         });
+        findViewById(R.id.passcheck).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult(new Intent(getContext(),ActivityCheckChose.class).putExtra("bianhaoid",bianhaoid),1000);
+            }
+        });
     }
     Dialog zhenggaimenudialog;
     public void startZhengGaiMenuDialog() {
@@ -870,7 +883,7 @@ public class ActivityCheckMenu extends FrameActivity{
         if(!entityJianCha.getId().equals("-1")){
             strings.add("处罚来源:现场检查");
         }
-        if(!entityZhengGai.getId().equals("-1")){
+        if(!entityZhengGai.getId().equals("-1")&&entityZhengGai.getValue("复查结果").equals("不通过")){
             strings.add("处罚来源:整改复查");
             chufachulijueding=entityZhengGai.getValue("关联处罚决定书");
         }

@@ -29,6 +29,8 @@ public class ChoseCheckRecycleAdapter extends RecyclerView.Adapter<ChoseCheckRec
     public android.support.v4.app.Fragment msupportfragment;
     Context mcontext;
     public List<DateBase_Entity> showlist;
+    public FinishTransfer back;
+
 
     public ChoseCheckRecycleAdapter(Fragment mfragment) {
         this.mfragment = mfragment;
@@ -40,12 +42,17 @@ public class ChoseCheckRecycleAdapter extends RecyclerView.Adapter<ChoseCheckRec
         mcontext=msupportfragment.getActivity();
     }
 
+    public ChoseCheckRecycleAdapter(Activity mactivity,List<DateBase_Entity> showlist,FinishTransfer back) {
+        this.mactivity = mactivity;
+        this.showlist=showlist;
+        mcontext=mactivity;
+        this.back=back;
+    }
     public ChoseCheckRecycleAdapter(Activity mactivity,List<DateBase_Entity> showlist) {
         this.mactivity = mactivity;
         this.showlist=showlist;
         mcontext=mactivity;
     }
-
     @Override
     public SingelViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView= LayoutInflater.from(mcontext).inflate(R.layout.item_activity_check_spinner,parent,false);
@@ -65,6 +72,7 @@ public class ChoseCheckRecycleAdapter extends RecyclerView.Adapter<ChoseCheckRec
     @Override
     public void onBindViewHolder(SingelViewHolder holder, int position) {
         final Base_Entity entity=showlist.get(position);
+        holder.optionspinner.setOnItemSelectedListener(null);
         if(canedit){
             holder.optionspinner.setVisibility(View.VISIBLE);
             holder.optionvalue.setVisibility(View.GONE);
@@ -85,6 +93,7 @@ public class ChoseCheckRecycleAdapter extends RecyclerView.Adapter<ChoseCheckRec
             holder.optionspinner.setSelection(2);
 
         }
+
         holder.optionspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, final int positionchild, long id) {
@@ -112,6 +121,9 @@ public class ChoseCheckRecycleAdapter extends RecyclerView.Adapter<ChoseCheckRec
 //                        if(backfragment!=null){
 //                            backfragment.back();
 //                        }
+                        if(back!=null){
+                            back.back();
+                        }
                     }
                 }).start();
 

@@ -22,7 +22,7 @@ public class BusinessApplication extends BlackApplication {
         StyledDialog.init(getApplicationContext());
         Log.mLogEnable= SystemTool.isApkDebugable(this);
         this.registerActivityLifecycleCallbacks(new BusinessActivityLifecycleCallbacks());
-
+        FrameActivityManager.instance().setApplication(this);
 
     }
     @Override

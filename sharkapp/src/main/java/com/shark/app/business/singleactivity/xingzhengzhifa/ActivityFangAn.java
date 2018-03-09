@@ -81,7 +81,7 @@ public class ActivityFangAn extends FrameActivity {
         jianchashijian = (EditText) findViewById(R.id.jianchashijian);
         jianchashijian.setText(beanentity.getValue("检查时间"));
         isselectchecktext= (TextView) findViewById(R.id.isselectchecktext);
-        isselectchecktext.setText(beanentity.getValue("检查内容"));
+        isselectchecktext.setText(beanentity.getValue("检查内容").replace(",","\n"));
         findViewById(R.id.selectcheckoption).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -130,7 +130,7 @@ public class ActivityFangAn extends FrameActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         try {
-            isselectchecktext.setText(data.getStringExtra("result"));
+            isselectchecktext.setText(data.getStringExtra("result").replace(",","\n"));
         } catch (Exception e) {
             e.printStackTrace();
         }

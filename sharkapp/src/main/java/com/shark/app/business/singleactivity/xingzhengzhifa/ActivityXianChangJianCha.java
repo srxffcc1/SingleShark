@@ -158,15 +158,7 @@ public class ActivityXianChangJianCha extends FrameActivity {
         vp_3.setCurrentItem(0);
     }
     public void buttonSubmit(View view){
-        Demo_DBManager.build().save2update(new Entity_XianChangJianCha()
-                .put("关联的执法编号id",bianhaoid)
-                .put("被检查企业名称",beijianchaqiye.getText().toString())
-                .put("被检查企业地址",dizhi.getText().toString())
-                .put("法定代表人",fadingdaibiaoren.getText().toString())
-                .put("联系电话",lianxidianhua.getText().toString())
-                .put("检查场所",jianchachangsuo.getText().toString())
-                .put("检查时间",jianchashijian.getText().toString())
-        );
+
         startActivityForResult(new Intent(getContext(),ActivityCheckChose.class).putExtra("bianhaoid",bianhaoid),1000);
     }
 
@@ -174,6 +166,15 @@ public class ActivityXianChangJianCha extends FrameActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode==1001){
+            Demo_DBManager.build().save2update(new Entity_XianChangJianCha()
+                    .put("关联的执法编号id",bianhaoid)
+                    .put("被检查企业名称",beijianchaqiye.getText().toString())
+                    .put("被检查企业地址",dizhi.getText().toString())
+                    .put("法定代表人",fadingdaibiaoren.getText().toString())
+                    .put("联系电话",lianxidianhua.getText().toString())
+                    .put("检查场所",jianchachangsuo.getText().toString())
+                    .put("检查时间",jianchashijian.getText().toString())
+            );
             finish();
         }
 

@@ -22,11 +22,11 @@ import com.shark.app.business.resultentity.Enterprise;
 import com.shark.app.business.singleactivity.ActivityEnterpriseMesh;
 import com.shark.app.business.statich.UrlHome;
 import com.shark.app.business.urlentity.EEnterprise;
+import com.shark.app.business.utils.DefaultHttpCallBack;
 import com.zhy.autolayout.utils.AutoUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.kymjs.kjframe.http.HttpCallBack;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -57,7 +57,7 @@ public class ActivityEnterpriseList extends AbstractActivitySearchList {
         getEnterpriseList(new EEnterprise().setPage(page+"").setRows(rows+""));
     }
     public void getEnterpriseList(EEnterprise eEnterprise){
-        httpPost(UrlHome.getUrl(this, UrlHome.enterpriselist), UrlHome.entity2MapHashClassNoPrefix(eEnterprise), new HttpCallBack() {
+        httpPost(UrlHome.getUrl(this, UrlHome.enterpriselist), UrlHome.entity2MapHashClassNoPrefix(eEnterprise), new DefaultHttpCallBack() {
             @Override
             public void onSuccess(String t) {
                 super.onSuccess(t);
@@ -93,11 +93,7 @@ public class ActivityEnterpriseList extends AbstractActivitySearchList {
                 super.onFailure(errorNo, strMsg);
             }
 
-            @Override
-            public void onCookieTimeOut() {
-                finish();
-                startActivity(new Intent(getContext(), ActivityLogin.class));
-            }
+
         });
     }
     @Override

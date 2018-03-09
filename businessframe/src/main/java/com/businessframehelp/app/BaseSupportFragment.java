@@ -32,8 +32,8 @@ public class BaseSupportFragment extends Fragment{
             mRequestCode = bundle.getInt("mRequestCode");
 
     }
-    public View findViewById(@IdRes int id) {
-        return getView().findViewById(id);
+    public <T extends View> T findViewById(@IdRes int id) {
+        return (T) getView().findViewById(id);
     }
     public final void setResult(int resultCode) {
         synchronized (this) {

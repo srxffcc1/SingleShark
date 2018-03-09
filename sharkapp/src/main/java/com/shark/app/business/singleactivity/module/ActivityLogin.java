@@ -31,6 +31,7 @@ import com.businessframehelp.enums.ORIENTATION;
 import com.hss01248.dialog.StyledDialog;
 import com.hss01248.dialog.interfaces.MyDialogListener;
 import com.shark.app.R;
+import com.shark.app.business.singleactivity.home.smp.TabMainActivity;
 import com.shark.app.business.statich.UrlHome;
 import com.shark.app.business.urlentity.ELogin;
 import com.shark.app.business.utils.SpHome;
@@ -293,7 +294,7 @@ boolean needscale=true;
     }
     public synchronized void toLogin(){
         if(!SpHome.needlogin){
-            startActivity(new Intent(getContext(),ActivityMain.class));
+            startActivity(new Intent(getContext(),TabMainActivity.class));
             finish();
         }else {
             HttpConfig.sCookie = "";
@@ -310,7 +311,7 @@ boolean needscale=true;
                         if (jsonObject.getBoolean("status")) {
                             String sessionid = jsonObject.getString("sessionId");
                             HttpConfig.sCookie = sessionid;
-                            startActivity(new Intent(getContext(), ActivityMain.class));
+                            startActivity(new Intent(getContext(), TabMainActivity.class));
                             finish();
                         } else {
                             Toast.makeText(getContext(), jsonObject.getString("message"), Toast.LENGTH_SHORT).show();

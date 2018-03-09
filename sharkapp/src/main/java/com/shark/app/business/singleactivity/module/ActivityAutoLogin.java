@@ -10,6 +10,7 @@ import com.businessframehelp.app.FrameActivity;
 import com.businessframehelp.enums.ORIENTATION;
 import com.pnikosis.materialishprogress.ProgressWheel;
 import com.shark.app.R;
+import com.shark.app.business.singleactivity.home.smp.TabMainActivity;
 import com.shark.app.business.statich.UrlHome;
 import com.shark.app.business.urlentity.ELogin;
 import com.shark.app.business.utils.SpHome;
@@ -54,7 +55,7 @@ public class ActivityAutoLogin extends FrameActivity {
 
     public void toLogin(){
         if(!SpHome.needlogin){
-            startActivity(new Intent(getContext(),ActivityMain.class));
+            startActivity(new Intent(getContext(),TabMainActivity.class));
             finish();
         }else {
             HttpConfig.sCookie = "";
@@ -70,7 +71,7 @@ public class ActivityAutoLogin extends FrameActivity {
                             String sessionid = jsonObject.getString("sessionId");
                             HttpConfig.sCookie = sessionid;
                             islogin = true;
-                            startActivity(new Intent(getContext(), ActivityMain.class));
+                            startActivity(new Intent(getContext(), TabMainActivity.class));
                             finish();
                         } else {
                             SpHome.getSpHome().remove("username", "password");

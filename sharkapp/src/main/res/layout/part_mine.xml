@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ffF5F6F8"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/mine"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#fff"
+                android:scaleType="fitXY" />
+
+            <RelativeLayout
+                android:id="@+id/mine_head"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp">
+
+                <com.shark.app.business.singleactivity.home.view.CircleImageView
+                    android:id="@+id/iv_mine_head"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@mipmap/ic_launcher"
+                    app:border_color="#ccc"
+                    app:border_width="2dp" />
+
+                <TextView
+                    android:id="@+id/login_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="头像"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/mine_head"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="超级管理员"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/safety_bureau"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawableLeft="@mipmap/icon2_gongwenbao"
+                    android:drawablePadding="3dp"
+                    android:gravity="center"
+                    android:text="南京市安监局监管一处"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/update_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="30dp"
+            android:background="#fff"
+            android:drawableLeft="@mipmap/icon2_xiugaimima"
+            android:drawablePadding="15dp"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:text="修改密码"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/mine_info_settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="30dp"
+            android:background="#fff"
+            android:drawableLeft="@mipmap/icon2_gerenxinxishezhi"
+            android:drawablePadding="15dp"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:text="个人信息设置"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E7E7E7" />
+
+        <TextView
+            android:id="@+id/portrait_settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="#fff"
+            android:drawableLeft="@mipmap/icon2_touxiangshezhi"
+            android:drawablePadding="15dp"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:text="头像设置"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E7E7E7" />
+
+        <TextView
+            android:id="@+id/custom_settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="#fff"
+            android:drawableLeft="@mipmap/icon2_shouyekuaijiejianshezhi"
+            android:drawablePadding="15dp"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:text="首页快捷模块设置"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/exit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="30dp"
+            android:background="#fff"
+            android:drawableLeft="@mipmap/icon2_tuichu"
+            android:drawablePadding="15dp"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:text="退出"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="#E7E7E7" />
+
+    </LinearLayout>
+</LinearLayout>

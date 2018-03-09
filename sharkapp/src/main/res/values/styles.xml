@@ -9,7 +9,19 @@
         <item name="windowNoTitle">true</item>
         <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item>
     </style>
+    <style name="Bottom_Tab_Style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:button">@null</item>
+        <item name="android:drawablePadding">3dp</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textColor">@drawable/txt_tab_selector</item>
+        <item name="android:gravity">center</item>
+    </style>
 
+    <style name="SMPActivityTheme" parent="AppThemeTab"></style>
     <style name="SharkAppTheme" parent="SharkAppBaseTheme">
         <item name="android:listDivider">@drawable/divider_bg</item>
         <item name="android:windowBackground">@color/bcwhite</item>
@@ -37,5 +49,11 @@
     <style name="YellowButton" parent="RecordAppTheme">
         <item name="buttonStyle">@style/Widget.AppCompat.Button</item>
         <item name="colorButtonNormal">@color/yellow</item>
+    </style>
+    <style name="AppThemeTab" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
 </resources>

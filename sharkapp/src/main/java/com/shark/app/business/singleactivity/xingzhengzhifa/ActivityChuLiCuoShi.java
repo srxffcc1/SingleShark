@@ -66,10 +66,13 @@ public class ActivityChuLiCuoShi extends FrameActivity {
     }
     public List<DateBase_Entity> showlist;
     private void initView() {
-        showlist= Demo_DBManager.getSearchResult(Demo_DBManager.build().search(new Entity_JianChaXiang()
+        showlist= Demo_DBManager.getSearchResult(Demo_DBManager.build().query(Demo_DBManager.lowbuild().justgetSqlUNION(new Entity_JianChaXiang()
                 .putlogic2value("隐患级别","<>","无隐患")
                 .putlogic2value("进行的阶段转化id","=","现场处理措施")
-                .putlogic2value("关联的执法编号id","=",bianhaoid)));
+                .putlogic2value("关联的执法编号id","=",bianhaoid),new Entity_JianChaXiang()
+                .putlogic2value("隐患级别","<>","无隐患")
+                .putlogic2value("进行的阶段转化id","=","并处")
+                .putlogic2value("关联的执法编号id","=",bianhaoid)),new Entity_JianChaXiang()));
         RecyclerView recycler_view = (RecyclerView) findViewById(R.id.recycler_view);
         recycler_view.setLayoutManager(new ScrollLinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         recycler_view.setAdapter(new InsertDecideRecycleAdapter(this,showlist).setCanedit(false));

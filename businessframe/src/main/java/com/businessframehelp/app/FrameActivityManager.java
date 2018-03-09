@@ -2,10 +2,14 @@ package com.businessframehelp.app;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Looper;
+import android.widget.Toast;
 
 import com.kymjs.common.Log;
 
 import java.util.Stack;
+
 
 /**
  * Created by Administrator on 2017/5/10.
@@ -14,11 +18,23 @@ import java.util.Stack;
 
 public class FrameActivityManager {
     private static Stack<Activity> activityStack;
+    private static Context application;
+
+    public static void setApplication(Context application) {
+        FrameActivityManager.application = application;
+    }
+    public void startActivity(Class clas){
+        application.startActivity(new Intent(application,clas).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+    }
     private static final FrameActivityManager instance = new FrameActivityManager();
 
     private FrameActivityManager() {
     }
+    public void showToast(String message){
 
+        Toast.makeText(application,message,Toast.LENGTH_SHORT).show();
+
+    }
     public static FrameActivityManager instance() {
         return instance;
     }
@@ -153,7 +169,7 @@ public class FrameActivityManager {
      * 结束所有Activity
      */
     public void finishAllActivity() {
-        for (int i = 0, size = activityStack.size(); i < size; i++) {
+        for (int i = 0; i < activityStack.size(); i++) {
             if (null != activityStack.get(i)) {
                 ((Activity) activityStack.get(i)).finish();
             }

@@ -2,12 +2,14 @@ package com.shark.app.business.singleactivity.xingzhengzhifa;
 
 import android.os.Bundle;
 import android.os.Message;
+import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.view.Display;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 
 import com.businessframehelp.app.FrameActivity;
 import com.businessframehelp.enums.ORIENTATION;
@@ -28,6 +30,8 @@ public class ActivityZhengGai extends FrameActivity {
     private EditText chufajuedingshu;
     private EditText jiancharen;
     private String chulijueding;
+    private RadioGroup yinhuangroup;
+    private String fuchajieguo;
 
     @Override
     public ORIENTATION getORIENTATION() {
@@ -87,6 +91,19 @@ public class ActivityZhengGai extends FrameActivity {
         chufajuedingshu.setText(beanentity.getValue("关联处罚决定书"));
         jiancharen = (EditText) findViewById(R.id.jiancharen);
         jiancharen.setText(beanentity.getValue("检查人"));
+        yinhuangroup = (RadioGroup) findViewById(R.id.yinhuangroup);
+        yinhuangroup.check(beanentity.getValue("复查结果").equals("通过")?R.id.yinhuanlevel1:R.id.yinhuanlevel2);
+        fuchajieguo = "通过";
+        yinhuangroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if(checkedId==R.id.yinhuanlevel1){
+                    fuchajieguo="通过";
+                }else{
+                    fuchajieguo="不通过";
+                }
+            }
+        });
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -102,6 +119,7 @@ public class ActivityZhengGai extends FrameActivity {
                 .put("被检查企业名称",beijianchaqiye.getText().toString())
                 .put("关联处罚决定书",chulijueding)
                 .put("检查人",jiancharen.getText().toString())
+                .put("复查结果",fuchajieguo)
 
         );
         finish();

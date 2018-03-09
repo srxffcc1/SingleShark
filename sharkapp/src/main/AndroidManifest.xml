@@ -38,6 +38,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.shark.app.business.singleactivity.home.smp.TabMainActivity" android:launchMode="singleTop"
+            android:theme="@style/SMPActivityTheme">
+
+        </activity>
         <activity android:name=".test.TestMainActivity">
 
         </activity>

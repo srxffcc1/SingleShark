@@ -115,6 +115,37 @@
                     android:text="选择"
                     android:textColor="@color/white" />
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:padding="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="复查结果:"></TextView>
+                <RadioGroup
+                    android:id="@+id/yinhuangroup"
+                    android:padding="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+                    <RadioButton
+                        android:id="@+id/yinhuanlevel1"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:checked="true"
+                        android:layout_height="wrap_content"
+                        android:text="通过"/>
+                    <RadioButton
+                        android:id="@+id/yinhuanlevel2"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="不通过"/>
+                </RadioGroup>
+            </LinearLayout>
         </LinearLayout>
 
 

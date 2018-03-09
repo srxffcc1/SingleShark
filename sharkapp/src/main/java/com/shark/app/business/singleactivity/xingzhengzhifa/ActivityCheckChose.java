@@ -60,6 +60,7 @@ public class ActivityCheckChose extends FrameActivity {
                 .putlogic2value("隐患级别","<>","无隐患")
                 .putlogic2value("关联的执法编号id","=",bianhaoid)));
         if(showlist.size()<1){
+            setResult(1001);
             finish();
         }
         RecyclerView recycler_view = (RecyclerView) findViewById(R.id.recycler_view);
