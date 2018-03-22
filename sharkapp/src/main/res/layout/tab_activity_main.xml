@@ -4,13 +4,30 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:orientation="vertical">
-
-    <com.shark.app.business.singleactivity.home.view.NoScrollViewPager
-        android:id="@+id/vp_content"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:fitsSystemWindows="true"
-        android:layout_weight="1" />
+        android:layout_weight="1">
+        <com.shark.app.business.singleactivity.home.view.NoScrollViewPager
+            android:id="@+id/vp_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_alignParentBottom="true"
+            android:gravity="bottom">
+            <TextView
+                android:id="@+id/testshow"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:visibility="gone"
+                android:background="#000"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
 
     <RadioGroup
         android:id="@+id/rg_group"
@@ -32,7 +49,11 @@
             style="@style/Bottom_Tab_Style"
             android:drawableTop="@mipmap/icon2_tool"
             android:text="工具" />
-
+        <Button
+            android:id="@+id/rb_center"
+            style="@style/Bottom_Tab_Style"
+            android:drawableTop="@mipmap/icon2_tool"
+            android:text="中" />
         <RadioButton
             android:id="@+id/rb_count"
             style="@style/Bottom_Tab_Style"

@@ -7,7 +7,10 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.RadioGroup;
 
 import com.githang.statusbar.StatusBarCompat;
@@ -22,6 +25,7 @@ public class TabMainActivity extends AppCompatActivity {
     private MyAdapter mAdapter;
     private NoScrollViewPager mViewPager;
     private RadioGroup rgGroup;
+    private boolean isshow=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +37,27 @@ public class TabMainActivity extends AppCompatActivity {
 
         mViewPager = (NoScrollViewPager) findViewById(R.id.vp_content);
         rgGroup = (RadioGroup) findViewById(R.id.rg_group);
+        final Animation mShowAction = AnimationUtils.loadAnimation(this,R.anim.photo_dialog_in_anim);
+
+        final Animation mHiddenAction = AnimationUtils.loadAnimation(this,R.anim.photo_dialog_out_anim);
 
         mAdapter = new MyAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(mAdapter);
 
+        View center=findViewById(R.id.testshow);
+        center.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isshow){
+                    v.startAnimation(mHiddenAction);
+                    v.setVisibility(View.GONE);
+                }else{
+                    v.startAnimation(mShowAction);
+                    v.setVisibility(View.VISIBLE);
+                }
+                isshow=!isshow;
+            }
+        });
         // 底栏标签切换监听
         rgGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 
@@ -55,7 +76,6 @@ public class TabMainActivity extends AppCompatActivity {
                     case R.id.rb_mine:
                         mViewPager.setCurrentItem(3, false);
                         break;
-
                     default:
                         break;
                 }

@@ -18,7 +18,7 @@ public abstract class DefaultHttpCallBack extends HttpCallBack {
         FrameActivityManager.instance().finishAllActivity();
         FrameActivityManager.instance().startActivity(ActivityLogin.class);
         Looper.loop();
-        
+
 
 
     }

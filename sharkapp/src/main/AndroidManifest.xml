@@ -32,11 +32,7 @@
         <activity
             android:theme="@style/FirstActivityTheme"
             android:name=".business.singleactivity.module.ActivitySplash" android:launchMode="singleTop">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name="com.shark.app.business.singleactivity.home.smp.TabMainActivity" android:launchMode="singleTop"
             android:theme="@style/SMPActivityTheme">
@@ -84,6 +80,13 @@
         <activity android:name=".business.singleactivity.xingzhengzhifa.ActivityGuiDang" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
         <activity android:name=".business.singleactivity.xingzhengzhifa.ActivityCheckOptionSelect" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
         <activity android:name=".business.singleactivity.xingzhengzhifa.ActivityCheckChose" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
+        <activity android:name=".business.singleactivity.ex.ExActivityLogin" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
