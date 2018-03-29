@@ -1,71 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:orientation="vertical">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="#999"
         android:layout_weight="1">
+
         <com.shark.app.business.singleactivity.home.view.NoScrollViewPager
             android:id="@+id/vp_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fitsSystemWindows="true"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_alignParentBottom="true"
-            android:gravity="bottom">
-            <TextView
-                android:id="@+id/testshow"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:visibility="gone"
-                android:background="#000"/>
-        </LinearLayout>
+            android:fitsSystemWindows="true" />
 
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFF">
+
+        </FrameLayout>
+        <RadioGroup
+            android:id="@+id/rg_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/bottom_line"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_home"
+                style="@style/Bottom_Tab_Style"
+                android:checked="true"
+                android:button="@drawable/selector_bottom1"
+                android:text="工作台" />
+
+            <RadioButton
+                android:id="@+id/rb_tools"
+                style="@style/Bottom_Tab_Style"
+                android:drawableTop="@mipmap/icon2_tool"
+                android:text="沟通室" />
+
+            <TextView
+                android:id="@+id/empty"
+                style="@style/Bottom_Tab_Style"
+                android:text="" />
+
+            <RadioButton
+                android:id="@+id/rb_count"
+                style="@style/Bottom_Tab_Style"
+                android:drawableTop="@mipmap/icon2_sum"
+                android:text="分析台" />
+
+            <RadioButton
+                android:id="@+id/rb_mine"
+                style="@style/Bottom_Tab_Style"
+                android:drawableTop="@mipmap/icon2_my"
+                android:text="我的" />
+
+        </RadioGroup>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/rb_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="16dp"
+            android:scaleType="center"
+            android:src="@drawable/ex_centerfb"
+            app:backgroundTint="#00000000"
+            app:borderWidth="0dp"
+            app:elevation="4dp"
+            app:fabSize="normal"
+            />
+
+        <RelativeLayout
+            android:id="@+id/outside"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/rg_group">
+
+            <LinearLayout
+                android:id="@+id/needshow"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_alignParentBottom="true"
+                android:background="#000"
+                android:orientation="vertical"
+                android:visibility="gone"></LinearLayout>
+        </RelativeLayout>
     </RelativeLayout>
 
-
-    <RadioGroup
-        android:id="@+id/rg_group"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#999"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/rb_home"
-            style="@style/Bottom_Tab_Style"
-            android:checked="true"
-            android:drawableTop="@mipmap/icon2_home"
-            android:text="首页" />
-
-        <RadioButton
-            android:id="@+id/rb_tools"
-            style="@style/Bottom_Tab_Style"
-            android:drawableTop="@mipmap/icon2_tool"
-            android:text="工具" />
-        <Button
-            android:id="@+id/rb_center"
-            style="@style/Bottom_Tab_Style"
-            android:drawableTop="@mipmap/icon2_tool"
-            android:text="中" />
-        <RadioButton
-            android:id="@+id/rb_count"
-            style="@style/Bottom_Tab_Style"
-            android:drawableTop="@mipmap/icon2_sum"
-            android:text="统计" />
-
-        <RadioButton
-            android:id="@+id/rb_mine"
-            style="@style/Bottom_Tab_Style"
-            android:drawableTop="@mipmap/icon2_my"
-            android:text="我的" />
-
-    </RadioGroup>
 
 </LinearLayout>

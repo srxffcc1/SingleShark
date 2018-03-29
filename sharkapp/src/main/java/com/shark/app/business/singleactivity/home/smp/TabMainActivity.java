@@ -11,7 +11,10 @@ import android.view.View;
 import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 
 import com.githang.statusbar.StatusBarCompat;
 import com.shark.app.R;
@@ -25,7 +28,13 @@ public class TabMainActivity extends AppCompatActivity {
     private MyAdapter mAdapter;
     private NoScrollViewPager mViewPager;
     private RadioGroup rgGroup;
+    private boolean animcan=true;
     private boolean isshow=false;
+    private Animation mShowAction;
+    private Animation mHiddenAction;
+    private RelativeLayout outside;
+    private LinearLayout needshow;
+    private ImageView rb_center;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,30 +43,107 @@ public class TabMainActivity extends AppCompatActivity {
         setContentView(R.layout.tab_activity_main);
         StatusBarCompat.setStatusBarColor(this, getResources().getColor(R.color.colorPrimary), true);
         Log.i("----------------", "主Activity");
+        mShowAction = AnimationUtils.loadAnimation(this, R.anim.photo_dialog_in_anim);
 
+        mHiddenAction = AnimationUtils.loadAnimation(this, R.anim.photo_dialog_out_anim);
         mViewPager = (NoScrollViewPager) findViewById(R.id.vp_content);
         rgGroup = (RadioGroup) findViewById(R.id.rg_group);
-        final Animation mShowAction = AnimationUtils.loadAnimation(this,R.anim.photo_dialog_in_anim);
+         mShowAction = AnimationUtils.loadAnimation(this,R.anim.photo_dialog_in_anim);
 
-        final Animation mHiddenAction = AnimationUtils.loadAnimation(this,R.anim.photo_dialog_out_anim);
+         mHiddenAction = AnimationUtils.loadAnimation(this,R.anim.photo_dialog_out_anim);
+        outside = (RelativeLayout) findViewById(R.id.outside);
+        needshow = (LinearLayout) findViewById(R.id.needshow);
+        rb_center = (ImageView) findViewById(R.id.rb_center);
 
+        outside.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(needshow.getVisibility()==View.VISIBLE){
+                    needshow.startAnimation(mHiddenAction);
+                    needshow.setVisibility(View.GONE);
+                    mHiddenAction.setAnimationListener(new Animation.AnimationListener() {
+                        @Override
+                        public void onAnimationStart(Animation animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animation animation) {
+
+                            outside.setVisibility(View.GONE);
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animation animation) {
+
+                        }
+                    });
+                    isshow=false;
+                }
+
+            }
+        });
+        needshow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        rb_center.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(animcan){
+                    if(isshow){
+                        needshow.startAnimation(mHiddenAction);
+                        needshow.setVisibility(View.GONE);
+                        mHiddenAction.setAnimationListener(new Animation.AnimationListener() {
+                            @Override
+                            public void onAnimationStart(Animation animation) {
+                                animcan=false;
+                            }
+
+                            @Override
+                            public void onAnimationEnd(Animation animation) {
+
+                                animcan=true;
+                                outside.setVisibility(View.GONE);
+                            }
+
+                            @Override
+                            public void onAnimationRepeat(Animation animation) {
+
+                            }
+                        });
+                    }else{
+                        needshow.startAnimation(mShowAction);
+                        mShowAction.setAnimationListener(new Animation.AnimationListener() {
+                            @Override
+                            public void onAnimationStart(Animation animation) {
+                                animcan=false;
+                            }
+
+                            @Override
+                            public void onAnimationEnd(Animation animation) {
+                                animcan=true;
+                            }
+
+                            @Override
+                            public void onAnimationRepeat(Animation animation) {
+
+                            }
+                        });
+                        needshow.setVisibility(View.VISIBLE);
+                        outside.setVisibility(View.VISIBLE);
+                    }
+                    isshow=!isshow;
+                }
+
+
+            }
+        });
         mAdapter = new MyAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(mAdapter);
 
-        View center=findViewById(R.id.testshow);
-        center.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(isshow){
-                    v.startAnimation(mHiddenAction);
-                    v.setVisibility(View.GONE);
-                }else{
-                    v.startAnimation(mShowAction);
-                    v.setVisibility(View.VISIBLE);
-                }
-                isshow=!isshow;
-            }
-        });
         // 底栏标签切换监听
         rgGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 

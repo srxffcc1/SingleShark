@@ -33,7 +33,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
      */
     private boolean mHasLoaded;
 
-    private TextView title, enterprise_info, law_enforcement, latent_danger, case_handling, notice, publisher, time, danger_type, danger_level, law_enforcement_time, law_enforcer;
+    private View title, enterprise_info, law_enforcement, latent_danger, case_handling, notice, publisher, time, danger_type, danger_level, law_enforcement_time, law_enforcer;
     private Toolbar toolbar;
     private ImageView iv_more;
 
@@ -67,9 +67,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     private void initView() {
         toolbar = find(R.id.toolbar);
         title = find(R.id.title);
-        title.setText("移动智慧安监平台");
+        ((TextView)title).setText("移动智慧安监平台");
         iv_more = find(R.id.iv_more);
-        iv_more.setVisibility(View.VISIBLE);
+//        iv_more.setVisibility(View.VISIBLE);
         enterprise_info = find(R.id.enterprise_info);
         law_enforcement = find(R.id.law_enforcement);
         latent_danger = find(R.id.latent_danger);
