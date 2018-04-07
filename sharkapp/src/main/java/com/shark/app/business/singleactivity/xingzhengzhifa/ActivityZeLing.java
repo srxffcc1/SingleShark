@@ -86,9 +86,7 @@ public class ActivityZeLing extends FrameActivity {
     private String beanid;
     private Base_Entity beanentity;
     public void initData(){
-        if(getIntent().getBooleanExtra("see",false)){
-            findViewById(R.id.showfinish).setVisibility(View.GONE);
-        }
+
         bianhaoid = getIntent().getStringExtra("bianhaoid");
         beijianchaqiyetext = getIntent().getStringExtra("beijianchaqiyetext");
         beanid = getIntent().getStringExtra("beanid")==null?"-1":getIntent().getStringExtra("beanid");
@@ -111,6 +109,15 @@ public class ActivityZeLing extends FrameActivity {
         jianchachangsuo.setText("检查场所");
         jianchashijian = (EditText) findViewById(R.id.jianchashijian);
         jianchashijian.setText(beanentity.getValue("整改期限"));
+        if(getIntent().getBooleanExtra("see",false)){
+            findViewById(R.id.showfinish).setVisibility(View.GONE);
+            beijianchaqiye.setEnabled(false);
+            lianxidianhua.setEnabled(false);
+            dizhi.setEnabled(false);
+            fadingdaibiaoren.setEnabled(false);
+            jianchachangsuo.setEnabled(false);
+            jianchashijian.setEnabled(false);
+        }
     }
     public void buttonSubmit(View view){
         Demo_DBManager.build().save2update(new Entity_ZeLingZhengGai()

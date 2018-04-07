@@ -71,9 +71,7 @@ public class ActivityZhengGai extends FrameActivity {
     private String bianhaoid;
     private Base_Entity beanentity;
     public void initData(){
-        if(getIntent().getBooleanExtra("see",false)){
-            findViewById(R.id.showfinish).setVisibility(View.GONE);
-        }
+
         beijianchaqiyetext = getIntent().getStringExtra("beijianchaqiyetext");
         bianhaoid = getIntent().getStringExtra("bianhaoid");
         chulijueding = getIntent().getStringExtra("chulijueding");
@@ -105,6 +103,14 @@ public class ActivityZhengGai extends FrameActivity {
                 }
             }
         });
+        if(getIntent().getBooleanExtra("see",false)){
+            findViewById(R.id.showfinish).setVisibility(View.GONE);
+            beijianchaqiye.setEnabled(false);
+            fuchayijian.setEnabled(false);
+            chufajuedingshu.setEnabled(false);
+            jiancharen.setEnabled(false);
+            yinhuangroup.setEnabled(false);
+        }
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

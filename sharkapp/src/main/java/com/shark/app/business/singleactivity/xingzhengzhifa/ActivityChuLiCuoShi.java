@@ -92,9 +92,7 @@ public class ActivityChuLiCuoShi extends FrameActivity {
     private String beanid;
     private Base_Entity beanentity;
     public void initData(){
-        if(getIntent().getBooleanExtra("see",false)){
-            findViewById(R.id.showfinish).setVisibility(View.GONE);
-        }
+
         bianhaoid = getIntent().getStringExtra("bianhaoid");
         beijianchaqiyetext = getIntent().getStringExtra("beijianchaqiyetext");
         beanid =getIntent().getStringExtra("beanid")==null?"-1":getIntent().getStringExtra("beanid");
@@ -117,6 +115,15 @@ public class ActivityChuLiCuoShi extends FrameActivity {
         jianchachangsuo.setText(beanentity.getValue("检查场所"));
         jianchashijian = (EditText) findViewById(R.id.jianchashijian);
         jianchashijian.setText(beanentity.getValue("检查时间"));
+        if(getIntent().getBooleanExtra("see",false)){
+            findViewById(R.id.showfinish).setVisibility(View.GONE);
+            beijianchaqiye.setEnabled(false);
+            lianxidianhua.setEnabled(false);
+            dizhi.setEnabled(false);
+            fadingdaibiaoren.setEnabled(false);
+            jianchachangsuo.setEnabled(false);
+            jianchashijian.setEnabled(false);
+        }
     }
     public void buttonSubmit(View view){
         Demo_DBManager.build().save2update(new Entity_XianChangChuLiCuoShi()

@@ -83,10 +83,7 @@ public class ActivityXianChangJianCha extends FrameActivity {
     private String beanid;
     private Base_Entity beanentity;
     public void initData(){
-        if(getIntent().getBooleanExtra("see",false)){
-            findViewById(R.id.showfinish).setVisibility(View.GONE);
-            findViewById(R.id.fromfangan).setVisibility(View.GONE);
-        }
+
         bianhaoid = getIntent().getStringExtra("bianhaoid");
         beijianchaqiyetext = getIntent().getStringExtra("beijianchaqiyetext");
         DateBase_Entity fanganentity= Demo_DbUtil.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_JianChaFangAn().putlogic2value("关联的执法编号id","=",bianhaoid)));
@@ -119,7 +116,16 @@ public class ActivityXianChangJianCha extends FrameActivity {
             mTitles_3[i]="检查项 " +(i+1);
             mFragments.add(JianChaXiangCardFragment.getInstance(laizifangancheckarray[i],bianhaoid,getIntent().getBooleanExtra("see",false)));
         }
-
+        if(getIntent().getBooleanExtra("see",false)){
+            findViewById(R.id.showfinish).setVisibility(View.GONE);
+            findViewById(R.id.fromfangan).setVisibility(View.GONE);
+            beijianchaqiye.setEnabled(false);
+            lianxidianhua.setEnabled(false);
+            dizhi.setEnabled(false);
+            fadingdaibiaoren.setEnabled(false);
+            jianchachangsuo.setEnabled(false);
+            jianchashijian.setEnabled(false);
+        }
         final ViewPager vp_3 = (ViewPager) findViewById(R.id.vp_2);
         vp_3.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
         String[] data=new String[laizifangancheckarray.length];

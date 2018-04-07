@@ -88,9 +88,7 @@ public class ActivityChuFa extends FrameActivity {
     private String bianhaoid;
     private Base_Entity beanentity;
     public void initData(){
-        if(getIntent().getBooleanExtra("see",false)){
-            findViewById(R.id.showfinish).setVisibility(View.GONE);
-        }
+
         beijianchaqiyetext = getIntent().getStringExtra("beijianchaqiyetext");
 
         bianhaoid = getIntent().getStringExtra("bianhaoid");
@@ -115,6 +113,14 @@ public class ActivityChuFa extends FrameActivity {
         jiaonafajingshuliang.setText(beanentity.getValue("缴纳罚金数量"));
         jiaonafajinzhanghao = (EditText) findViewById(R.id.jiaonazhanghao);
         jiaonafajinzhanghao.setText(beanentity.getValue("缴纳罚金账号"));
+        if(getIntent().getBooleanExtra("see",false)){
+            findViewById(R.id.showfinish).setVisibility(View.GONE);
+            beijianchaqiye.setEnabled(false);
+                    fadingdaibiaoren.setEnabled(false);
+            jiaonafajingshuliang.setEnabled(false);
+                    fadingdaibiaoren.setEnabled(false);
+            jiaonafajinzhanghao.setEnabled(false);
+        }
     }
     public void buttonSubmit(View view){
         Demo_DBManager.build().save2update(new Entity_ChuFa()
