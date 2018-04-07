@@ -37,6 +37,7 @@ import com.shark.app.business.entity.Entity_ZhiFaBianHao;
 import com.shark.app.business.entity.Entity_ZhiFaJiHua;
 import com.wisdomregulation.data.entitybase.DateBase_Entity;
 import com.wisdomregulation.help.Demo_DBManager;
+import com.wisdomregulation.help.Demo_DbUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -156,7 +157,7 @@ public class ActivityCheckMenu extends FrameActivity{
 
     @Override
     public int getMenuid() {
-        return R.menu.place_menu;
+        return -1;
     }
 
     @Override
@@ -202,7 +203,7 @@ public class ActivityCheckMenu extends FrameActivity{
     }
 
     public void initJihua(){
-        entityJihua = Demo_DBManager.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_ZhiFaJiHua().setId(jihuaid)));
+        entityJihua = Demo_DbUtil.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_ZhiFaJiHua().setId(jihuaid)));
         jihuamingcheng.setText(":"+entityJihua.getValue(0));
         jihualeixing.setText(":"+entityJihua.getValue(2));
         jihuafuzeren.setText(":"+entityJihua.getValue(3));
@@ -218,7 +219,7 @@ public class ActivityCheckMenu extends FrameActivity{
 
     }
     public void initFangan(){
-        entityFangAn = Demo_DBManager.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_JianChaFangAn().putlogic2value("关联的执法编号id","=",bianhaoid)));
+        entityFangAn = Demo_DbUtil.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_JianChaFangAn().putlogic2value("关联的执法编号id","=",bianhaoid)));
 
         fanganbeijianchaqiye.setText(":"+entityFangAn.getValue(2));
         beijianchaqiyetext=entityFangAn.getValue(2);
@@ -238,13 +239,13 @@ public class ActivityCheckMenu extends FrameActivity{
             card2.setVisibility(View.VISIBLE);
             fanganaddt.setVisibility(View.GONE);
         }
-//        shanchu2.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Demo_DBManager.build().delete(entityFangAn);
-//                buildView();
-//            }
-//        });
+        shanchu2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Demo_DBManager.build().delete(entityFangAn);
+                buildView();
+            }
+        });
     }
     public void initXianChangJianCha(){
         if(entityFangAn.getId().equals("-1")){
@@ -252,7 +253,7 @@ public class ActivityCheckMenu extends FrameActivity{
         }else{
             linearpart3.setVisibility(View.VISIBLE);
         }
-        entityJianCha = Demo_DBManager.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_XianChangJianCha().putlogic2value("关联的执法编号id","=",bianhaoid)));
+        entityJianCha = Demo_DbUtil.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_XianChangJianCha().putlogic2value("关联的执法编号id","=",bianhaoid)));
 
         xianchangjianchaqiye.setText(":"+entityJianCha.getValue("被检查企业名称"));
         xianchangjianchachangsuo.setText(":"+entityJianCha.getValue("检查场所"));
@@ -277,7 +278,7 @@ public class ActivityCheckMenu extends FrameActivity{
         initJianChaJiLuList();
     }
     private void initJianChaJiLuList() {
-        List<DateBase_Entity> showlist= Demo_DBManager.getSearchResult(Demo_DBManager.build().search(new Entity_JianChaXiang()
+        List<DateBase_Entity> showlist= Demo_DbUtil.getSearchResult(Demo_DBManager.build().search(new Entity_JianChaXiang()
                 .putlogic2value("隐患级别","<>","无隐患")
                 .putlogic2value("关联的执法编号id","=",bianhaoid)));
         jianchajilurecycleview.setLayoutManager(new ScrollLinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
@@ -286,7 +287,7 @@ public class ActivityCheckMenu extends FrameActivity{
 
     }
     private void initChuLiList() {
-        List<DateBase_Entity> showlist= Demo_DBManager.getSearchResult(Demo_DBManager.build().query(Demo_DBManager.lowbuild().justgetSqlUNION(new Entity_JianChaXiang()
+        List<DateBase_Entity> showlist= Demo_DbUtil.getSearchResult(Demo_DBManager.build().query(Demo_DBManager.lowbuild().justgetSqlUNION(new Entity_JianChaXiang()
                 .putlogic2value("隐患级别","<>","无隐患")
                 .putlogic2value("进行的阶段转化id","=","现场处理措施")
                 .putlogic2value("关联的执法编号id","=",bianhaoid),new Entity_JianChaXiang()
@@ -302,7 +303,7 @@ public class ActivityCheckMenu extends FrameActivity{
 
     }
     private void initZeLingList() {
-        List<DateBase_Entity> showlist= Demo_DBManager.getSearchResult(Demo_DBManager.build().search(new Entity_JianChaXiang()
+        List<DateBase_Entity> showlist= Demo_DbUtil.getSearchResult(Demo_DBManager.build().search(new Entity_JianChaXiang()
                 .putlogic2value("隐患级别","<>","无隐患")
                 .putlogic2value("进行的阶段转化id","=","责令限期整改")
                 .putlogic2value("关联的执法编号id","=",bianhaoid)));
@@ -316,7 +317,7 @@ public class ActivityCheckMenu extends FrameActivity{
 
     }
     private void initChuFaList1() {
-        List<DateBase_Entity> showlist1= Demo_DBManager.getSearchResult(Demo_DBManager.build().search(new Entity_JianChaXiang()
+        List<DateBase_Entity> showlist1= Demo_DbUtil.getSearchResult(Demo_DBManager.build().search(new Entity_JianChaXiang()
                 .putlogic2value("隐患级别","<>","无隐患")
                 .putlogic2value("进行的阶段转化id","=","并处")
                 .putlogic2value("关联的执法编号id","=",bianhaoid)));
@@ -324,7 +325,7 @@ public class ActivityCheckMenu extends FrameActivity{
         chufarecycleview.setAdapter(new ChoseCheckRecycleAdapter(this,showlist1).setCanedit(false));
 
         if(!entityZhengGai.getId().equals("-1")){
-            List<DateBase_Entity> showlist2= Demo_DBManager.getSearchResult(Demo_DBManager.build().search(new Entity_JianChaXiang()
+            List<DateBase_Entity> showlist2= Demo_DbUtil.getSearchResult(Demo_DBManager.build().search(new Entity_JianChaXiang()
                     .putlogic2value("隐患级别","<>","无隐患")
                     .putlogic2value("进行的阶段转化id","=",entityZhengGai.getValue("关联处罚决定书"))
                     .putlogic2value("关联的执法编号id","=",bianhaoid)));
@@ -343,7 +344,7 @@ public class ActivityCheckMenu extends FrameActivity{
         }else{
             linearpart4.setVisibility(View.VISIBLE);
         }
-        entityChuLi = Demo_DBManager.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_XianChangChuLiCuoShi().putlogic2value("关联的执法编号id","=",bianhaoid)));
+        entityChuLi = Demo_DbUtil.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_XianChangChuLiCuoShi().putlogic2value("关联的执法编号id","=",bianhaoid)));
 
         xianchangchulicuoshiqiye.setText(":"+entityChuLi.getValue("被检查企业名称"));
         if(entityChuLi.getId().equals("-1")){
@@ -374,7 +375,7 @@ public class ActivityCheckMenu extends FrameActivity{
         }else{
             linearpart5.setVisibility(View.VISIBLE);
         }
-        entityZeLing = Demo_DBManager.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_ZeLingZhengGai().putlogic2value("关联的执法编号id","=",bianhaoid)));
+        entityZeLing = Demo_DbUtil.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_ZeLingZhengGai().putlogic2value("关联的执法编号id","=",bianhaoid)));
 
         zelingqiye.setText(":"+entityZeLing.getValue("被检查企业名称"));
 
@@ -406,7 +407,7 @@ public class ActivityCheckMenu extends FrameActivity{
         }else{
             linearpart6.setVisibility(View.VISIBLE);
         }
-        entityZhengGai = Demo_DBManager.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_ZhengGaiFuCha().putlogic2value("关联的执法编号id","=",bianhaoid)));
+        entityZhengGai = Demo_DbUtil.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_ZhengGaiFuCha().putlogic2value("关联的执法编号id","=",bianhaoid)));
 
         zhenggaiqiye.setText(":"+entityZhengGai.getValue("被检查企业名称"));
         fuchayijian.setText(entityZhengGai.getValue("复查意见"));
@@ -435,7 +436,7 @@ public class ActivityCheckMenu extends FrameActivity{
         }else{
             linearpart7.setVisibility(View.VISIBLE);
         }
-        entityChuFa = Demo_DBManager.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_ChuFa().putlogic2value("关联的执法编号id","=",bianhaoid)));
+        entityChuFa = Demo_DbUtil.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_ChuFa().putlogic2value("关联的执法编号id","=",bianhaoid)));
 
         chufaqiye.setText(":"+entityChuFa.getValue("被检查企业名称"));
         if(entityChuFa.getId().equals("-1")){

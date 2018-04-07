@@ -17,6 +17,7 @@ import com.shark.app.R;
 import com.shark.app.business.entity.Entity_LibraryLawDependence;
 import com.wisdomregulation.data.entitybase.DateBase_Entity;
 import com.wisdomregulation.help.Demo_DBManager;
+import com.wisdomregulation.help.Demo_DbUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +48,7 @@ public class ListTestActivity extends FrameActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.test_list);
         alllist = new ArrayList<>();
-        List<DateBase_Entity> optionlist= Demo_DBManager.getSearchResult(Demo_DBManager.build().query("select distinct jianchaxiangmusanji from `Entity_LibraryLawDependence`",new Entity_LibraryLawDependence()));
+        List<DateBase_Entity> optionlist= Demo_DbUtil.getSearchResult(Demo_DBManager.build().query("select distinct jianchaxiangmusanji from `Entity_LibraryLawDependence`",new Entity_LibraryLawDependence()));
         for (int i = 0; i <optionlist.size() ; i++) {
             alllist.add(new ListTreeAdapter.ListItem().setShowtitle(optionlist.get(i).getValue("检查项目三级")).setLevel(1));
         }
@@ -129,7 +130,7 @@ public class ListTestActivity extends FrameActivity {
             if(level==2){
                 return null;
             }
-            List<DateBase_Entity> optionlist= Demo_DBManager.getSearchResult(Demo_DBManager.build().search(new Entity_LibraryLawDependence().putlogic2value("jianchaxiangmusanji","=",alllist.get(position).getShowtitle())));
+            List<DateBase_Entity> optionlist= Demo_DbUtil.getSearchResult(Demo_DBManager.build().search(new Entity_LibraryLawDependence().putlogic2value("jianchaxiangmusanji","=",alllist.get(position).getShowtitle())));
             List<ListTreeAdapter.ListItem> tmplist=new ArrayList<>();
             for (int i = 0; i <optionlist.size() ; i++) {
                 tmplist.add(new ListTreeAdapter.ListItem().setShowtitle(optionlist.get(i).getValue("jianchaxiangmusiji")).setLevel(2));

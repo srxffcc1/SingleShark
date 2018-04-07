@@ -16,6 +16,8 @@
             android:id="@+id/vp_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_above="@+id/rg_group"
+            android:layout_marginBottom="10dp"
             android:fitsSystemWindows="true" />
 
         <FrameLayout
@@ -37,7 +39,7 @@
                 android:id="@+id/rb_home"
                 style="@style/Bottom_Tab_Style"
                 android:checked="true"
-                android:button="@drawable/selector_bottom1"
+                android:drawableTop="@mipmap/icon2_home"
                 android:text="工作台" />
 
             <RadioButton
@@ -71,7 +73,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="10dp"
             android:scaleType="center"
             android:src="@drawable/ex_centerfb"
             app:backgroundTint="#00000000"

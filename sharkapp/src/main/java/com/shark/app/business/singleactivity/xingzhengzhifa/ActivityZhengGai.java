@@ -17,6 +17,7 @@ import com.shark.app.R;
 import com.shark.app.business.entity.Entity_ZhengGaiFuCha;
 import com.wisdomregulation.data.entitybase.Base_Entity;
 import com.wisdomregulation.help.Demo_DBManager;
+import com.wisdomregulation.help.Demo_DbUtil;
 
 /**
  * Created by Administrator on 2017/5/25. 临时模板复制就用
@@ -79,7 +80,7 @@ public class ActivityZhengGai extends FrameActivity {
         if(bianhaoid.equals("-1")){
             beanentity=new Base_Entity();
         }else{
-            beanentity = Demo_DBManager.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_ZhengGaiFuCha().put("关联的执法编号id",bianhaoid)));
+            beanentity = Demo_DbUtil.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_ZhengGaiFuCha().put("关联的执法编号id",bianhaoid)));
         }
     }
     public void initLayout(){

@@ -33,6 +33,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
                 <TextView
+                    android:id="@+id/selectcompany"
                     android:paddingBottom="5dp"
                     android:paddingTop="5dp"
                     android:paddingLeft="15dp"
@@ -41,6 +42,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/seach_linearlayoutbg4"
                     android:clickable="true"
+                    android:onClick="selectcompany"
                     android:gravity="center"
                     android:text="选择"
                     android:textColor="@color/white" />

@@ -46,7 +46,7 @@
         <activity android:name=".business.singleactivity.module.ActivityLogin" android:theme="@style/FrameAppTheme.NoActionBarNoSoftInput" android:launchMode="singleTop"/>
         <activity android:name=".business.singleactivity.module.ActivityMain" android:theme="@style/FrameAppTheme.Navigation" android:launchMode="singleTop"/>
         <activity android:name=".business.singleactivity.tab.ActivityCheckHost2Guest" android:launchMode="singleTop"         android:windowSoftInputMode="adjustNothing"/>
-        <activity android:name=".business.singleactivity.module.ActivityEnterpriseList" android:launchMode="singleTop"/>
+        <activity android:name=".business.singleactivity.module.ActivityEnterpriseList" android:launchMode="singleTop" android:windowSoftInputMode="adjustPan" />
         <activity android:name=".business.singleactivity.tab.ActivityPdfBook" android:launchMode="singleTop"/>
         <activity android:name=".business.singleactivity.module.ActivityBook" android:launchMode="singleTop"/>
         <activity android:name=".business.singleactivity.module.ActivityAutoLogin" android:launchMode="singleTop"/>
@@ -87,6 +87,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".business.singleactivity.module.ActivityEnterpriseListOffLine" android:launchMode="singleTop" android:windowSoftInputMode="adjustPan" />
     </application>
 
 </manifest>

@@ -21,6 +21,7 @@ import com.shark.app.business.entity.Entity_XianChangChuLiCuoShi;
 import com.wisdomregulation.data.entitybase.Base_Entity;
 import com.wisdomregulation.data.entitybase.DateBase_Entity;
 import com.wisdomregulation.help.Demo_DBManager;
+import com.wisdomregulation.help.Demo_DbUtil;
 
 import java.util.List;
 
@@ -66,7 +67,7 @@ public class ActivityChuLiCuoShi extends FrameActivity {
     }
     public List<DateBase_Entity> showlist;
     private void initView() {
-        showlist= Demo_DBManager.getSearchResult(Demo_DBManager.build().query(Demo_DBManager.lowbuild().justgetSqlUNION(new Entity_JianChaXiang()
+        showlist= Demo_DbUtil.getSearchResult(Demo_DBManager.build().query(Demo_DBManager.lowbuild().justgetSqlUNION(new Entity_JianChaXiang()
                 .putlogic2value("隐患级别","<>","无隐患")
                 .putlogic2value("进行的阶段转化id","=","现场处理措施")
                 .putlogic2value("关联的执法编号id","=",bianhaoid),new Entity_JianChaXiang()
@@ -100,7 +101,7 @@ public class ActivityChuLiCuoShi extends FrameActivity {
         if(beanid==null||beanid.equals("-1")){
             beanentity=new Base_Entity();
         }else{
-            beanentity = Demo_DBManager.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_XianChangChuLiCuoShi().setId(beanid)));
+            beanentity = Demo_DbUtil.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_XianChangChuLiCuoShi().setId(beanid)));
         }
     }
     public void initLayout(){

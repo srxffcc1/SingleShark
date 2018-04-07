@@ -24,6 +24,7 @@ import com.shark.app.business.fragment.JianChaXiangCardFragment;
 import com.wisdomregulation.data.entitybase.Base_Entity;
 import com.wisdomregulation.data.entitybase.DateBase_Entity;
 import com.wisdomregulation.help.Demo_DBManager;
+import com.wisdomregulation.help.Demo_DbUtil;
 
 import java.util.ArrayList;
 
@@ -88,13 +89,13 @@ public class ActivityXianChangJianCha extends FrameActivity {
         }
         bianhaoid = getIntent().getStringExtra("bianhaoid");
         beijianchaqiyetext = getIntent().getStringExtra("beijianchaqiyetext");
-        DateBase_Entity fanganentity=Demo_DBManager.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_JianChaFangAn().putlogic2value("关联的执法编号id","=",bianhaoid)));
+        DateBase_Entity fanganentity= Demo_DbUtil.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_JianChaFangAn().putlogic2value("关联的执法编号id","=",bianhaoid)));
         laizifangancheck = fanganentity.getValue("检查内容");
         beanid = getIntent().getStringExtra("beanid")==null?"-1":getIntent().getStringExtra("beanid");
         if(beanid==null||beanid.equals("-1")){
             beanentity=new Base_Entity();
         }else{
-            beanentity = Demo_DBManager.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_XianChangJianCha().setId(beanid)));
+            beanentity = Demo_DbUtil.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_XianChangJianCha().setId(beanid)));
         }
     }
     public void initLayout(){

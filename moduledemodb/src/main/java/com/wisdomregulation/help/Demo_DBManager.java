@@ -18,11 +18,16 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
+
+import static com.wisdomregulation.help.Demo_DbUtil.arrayaddarray;
+import static com.wisdomregulation.help.Demo_DbUtil.get16Uuid;
+import static com.wisdomregulation.help.Demo_DbUtil.get32Uuid;
+import static com.wisdomregulation.help.Demo_DbUtil.getEntityType;
+import static com.wisdomregulation.help.Demo_DbUtil.getSearchResultOnlyOne;
+import static com.wisdomregulation.help.Demo_DbUtil.washString;
 
 
 public class Demo_DBManager {
@@ -427,34 +432,6 @@ public class Demo_DBManager {
                     null, SQLiteDatabase.ENABLE_WRITE_AHEAD_LOGGING);
             sqldb = db;
         }
-//		List<String> datanamelist=getAllTableName();
-//		if(datanamelist.size()<1){
-//			sqldb.releaseReference();
-//			sqldb=null;
-//
-//			String datapathfilename = getFileName(dbdir+"/"+databasename);
-//			try {
-//				InputStream is = context.getAssets().open(""+databasename+"");
-//				FileOutputStream fos = new FileOutputStream(dbdir+"/"+databasename);
-//				byte[] buffer = new byte[1024];
-//				int byteCount = 0;
-//				while ((byteCount = is.read(buffer)) != -1) {// 循环从输入流读取
-//																// buffer字节
-//					fos.write(buffer, 0, byteCount);// 将读取的输入流写入到输出流
-//				}
-//				fos.flush();// 刷新缓冲区
-//				is.close();
-//				fos.close();
-//			} catch (Exception e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//			db = SQLiteDatabase.openDatabase(new File(dbdir+"/"+databasename).getAbsolutePath(),
-//					null,SQLiteDatabase.ENABLE_WRITE_AHEAD_LOGGING);
-//			sqldb=db;
-//		}else{
-//
-//		}
         Log.i("Demo_DB", "写入完毕");
         return db;
     }
@@ -545,65 +522,6 @@ public class Demo_DBManager {
 
     }
 
-    /**
-     * 保存数据
-     *
-     * @param object
-     * @return
-     */
-//	public  int save(Object object) {
-//		try {
-//			DateBase_Entity entity=(DateBase_Entity)object;
-//			SQLiteDatabase database = getDataBase(entity);
-//			String tablename = getTableName(entity);
-//			ContentValues values = new ContentValues();
-//			for (int i = 0; i < entity.size(); i++) {
-//				String sqlstring1 = entity.getField(i);
-//				String sqlstring2 = entity.getValue(i);
-//				values.put(sqlstring1, sqlstring2);
-//				com.wisdomregulation.utils.Log.v("Save", sqlstring2);
-//
-//			}
-//			if(entity.getId()==null||entity.getId().equals("")){
-//				values.put("id", get16Uuid());
-//			}else{
-//				values.put("id", entity.getId());
-//			}
-//			com.wisdomregulation.utils.Log.v("Save", "ID:"+values.get("id"));
-//			values.put("hashid", get32Uuid());
-//			values.put("datastate", "client");
-//			values.put("datadate", new Date().getTime() + "");
-//			values.put("tableid", tablename);
-//			values.put("isadd", "1");
-//
-//			String id=entity.getId();
-//			String isthis="0";
-//			isthis=((List<Object>)this.searchOnId(entity.setId(values.get("id").toString())).get(1)).size()+"";
-//			long result;
-//			if(isthis.equals("0")){
-//				result= database.insert(tablename, null, values);
-//			}else{
-//				result=0;
-//			}
-//			close(database);
-//			return (int) result;
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			com.wisdomregulation.utils.Log.v("SqliteError",e.toString());
-//		}
-//		return 0;
-//	}
-
-//	public  int delete(Object object) {
-//		DateBase_Entity entity=(DateBase_Entity)object;
-//		String[] whereArgs = { entity.getId(), entity.getHashid() };
-//		SQLiteDatabase database = getDataBase(entity);
-//		String tablename = getTableName(entity);
-//		long result = database.delete(tablename, "id = ? and hashid = ?",
-//				whereArgs);
-//		close(database);
-//		return (int) result;
-//	}
     public int truncate(Object object) {
         try {
             //System.out.println("清空数据库内容");
@@ -641,28 +559,9 @@ public class Demo_DBManager {
 				where=where+" id = ?";
 				whereArgs=arrayaddarray(whereArgs, entity.getId());
 			}
-//			values.put("status","0");
-//			for (int i = 0; i < entity.size(); i++) {
-//				if(!entity.getValue(i).equals(" ")){
-//					where=where+" "+entity.getField(i)+" = ? and";
-//					whereArgs=arrayaddarray(whereArgs, entity.getValue(i));
-//				}
-//
-//			}
-//			if(where.length()>3){
-//				where=where.substring(0, where.length()-3);
-//			}
-//			for (int i = 0; i < whereArgs.length; i++) {
-//				com.wisdomregulation.utils.Log.v("DeleteTag", whereArgs[i]);
-//			}
 			Log.v("DeleteTag", where);
 			SQLiteDatabase database = getDataBase();
 			String tablename = getTableName(entity);
-//			if(!id.equals("")){
-//				DateBase_Entity entityadd=new Entity_DeleteHistory().put(0, tablename).put(1, id);
-//				save2update(entityadd);
-//			}
-//			database.update(tablename, values, "id = ? ", whereArgs);
 			long result = database.delete(tablename, where,
 					whereArgs);
 			close(database);
@@ -673,30 +572,6 @@ public class Demo_DBManager {
 		}
         return 0;
     }
-//	public  int deleteSimple(Object object) {
-//		DateBase_Entity entity=(DateBase_Entity)object;
-//		String deletestring="";
-//		String deletekey="";
-//		for (int i = 0; i < entity.size(); i++) {
-//					if(entity.getValue(i)!=null&&!entity.equals("")){
-//						deletestring=entity.getValue(i);
-//						deletekey=entity.getField(i);
-//					}
-//		}
-//		if(!entity.getId().equals(" ")){
-//			deletestring=entity.getId();
-//			deletekey="id";
-//		}
-//		String[] whereArgs = {deletestring};
-//
-//		SQLiteDatabase database = getDataBase(entity);
-//		String tablename = getTableName(entity);
-//		long result = database.delete(tablename, ""+deletekey+" = ?",
-//				whereArgs);
-//		close(database);
-//		return (int) result;
-//	}
-
 
     /**
      * 更新数据
@@ -731,7 +606,6 @@ public class Demo_DBManager {
             }
             values.put("updatadate", (entity.getUpDatadate().equals("") ? new Date().getTime() + "" : entity.getUpDatadate()));
             uptablename.add("updatadate");
-//			values.put("datastate", Util_Sync.addclientstring(uptablename, entity2.getDatastate()));
 
 
             long result = database.update(tablename, values,
@@ -865,7 +739,6 @@ public class Demo_DBManager {
             syncint++;
 
         }
-        //System.out.println("完成了数据量:"+syncint);
 
     }
 
@@ -893,10 +766,6 @@ public class Demo_DBManager {
 
     public void endbeginTransaction() {
         syncint = 0;
-//
-//		sqldb.setTransactionSuccessful();
-//		sqldb.endTransaction();
-        //System.out.println("确认关闭事务");
     }
 
     /**
@@ -1487,10 +1356,7 @@ public class Demo_DBManager {
 
 
                 if (needcount) {
-//					if(selection==null||selection.equals("")||selection.equals(" ")){
-//						resultlist.arrayaddarray(0 + "");
-//						return resultlist;
-//					}
+
                     Log.v("Cur", "needcount");
                     allcur = database.query(tablename, new String[]{"COUNT(*)"}, selection, selectionArgs, null, null,
                             ordertmp.equals("") ? null : ordertmp, null);
@@ -1498,10 +1364,7 @@ public class Demo_DBManager {
                 Log.v("Cur", "table:" + tablename);
                 Log.v("Cur", "limit:" + limittmp);
                 Log.v("Order", object.getClass().getSimpleName() + ":" + ordertmp);
-//				if(selection==null||selection.equals("")||selection.equals(" ")){
-//					resultlist.arrayaddarray(0 + "");
-//					return resultlist;
-//				}
+
                 cur = database.query(tablename, searchcolumn, selection, selectionArgs, null, null,
                         ordertmp.equals("") ? null : ordertmp, limittmp);
 
@@ -1570,21 +1433,6 @@ public class Demo_DBManager {
         return resultlist;
 
     }
-//	/**
-//	 * 增加查村数据回调方法
-//	 * @param object
-//	 * @param callback
-//	 * @return
-//	 */
-//	public   List<Object> search(Object object,CallBack callback) {
-//		List resultlist = new ArrayList();
-//		resultlist=search(object);
-//		if(callback!=null){
-//			callback.back(resultlist);
-//		}
-//		return resultlist;
-//
-//	}
 
     /**
      * 按对象获得表名
@@ -1599,7 +1447,6 @@ public class Demo_DBManager {
         }
         tablename = tablename.toLowerCase();
         if (tablename.matches(".*android.*")) {
-            //System.out.println("SRX出错 写入了android");
         }
         return tablename;
     }
@@ -1807,162 +1654,5 @@ public class Demo_DBManager {
      * @param entity
      * @return
      */
-    public DateBase_Entity getEntityType(DateBase_Entity entity) {
-        DateBase_Entity result = null;
-        try {
-            result = entity.getClass().newInstance();
-        } catch (InstantiationException e) {
-            // TODO Auto-generated catch block
-            Log.v("SqliteError", e.toString());
-        } catch (IllegalAccessException e) {
-            // TODO Auto-generated catch block
-            Log.v("SqliteError", e.toString());
-        }
-        return result;
-    }
 
-    public static String getRealTime(String longstr) {
-        String result = "";
-        try {
-            if (longstr.equals("")) {
-                return "";
-            }
-            Date date = new Date(Long.parseLong(longstr));
-
-            result = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
-
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            result = "";
-        }
-        return result;
-
-    }
-
-    /**
-     * 对不可变得数组进行包装 实现可以增加
-     *
-     * @param stringorg
-     * @param target
-     * @return
-     */
-    public static String[] arrayaddarray(String[] stringorg, String target) {
-        String[] result = null;
-        if (stringorg == null) {
-            result = new String[]{target};
-
-        } else {
-            result = new String[stringorg.length + 1];
-            for (int i = 0; i < stringorg.length; i++) {
-                result[i] = stringorg[i];
-            }
-            result[result.length - 1] = target;
-        }
-        return result;
-    }
-
-    /**
-     * 对不可变得数组进行包装 实现可以增加
-     *
-     * @param stringorg
-     * @param target
-     * @return
-     */
-    public static String[] arrayaddarray(String[] stringorg, String[] target) {
-        String[] result = null;
-        if (stringorg == null) {
-            if (target != null) {
-                result = target;
-            } else {
-
-            }
-
-
-        } else {
-            result = new String[stringorg.length + target.length];
-            for (int i = 0; i < stringorg.length; i++) {
-                result[i] = stringorg[i];
-            }
-            for (int i = stringorg.length; i < result.length; i++) {
-                result[i] = target[i - stringorg.length];
-            }
-
-        }
-        return result;
-    }
-
-    /**
-     * 获得16位的uuid
-     *
-     * @return
-     */
-    public static String get16Uuid() {
-        String leastbits = UUID.randomUUID().getLeastSignificantBits() + "";
-        return leastbits;
-    }
-
-    /**
-     * 获得32位的uuid
-     *
-     * @return
-     */
-    public static String get32Uuid() {
-        String leastbits = UUID.randomUUID().toString().replaceAll("-", "");
-        return leastbits;
-    }
-
-    /**
-     * 转义特殊字符
-     *
-     * @param keyword
-     * @return
-     */
-    public static String washString(String keyword) {
-        if (keyword != null && !keyword.equals("")) {
-            String[] fbsArr = {"\\", "$", "(", ")", "*", "+", ".", "[", "]",
-                    "?", "^", "{", "}", "|"};
-            for (String key : fbsArr) {
-                if (keyword.contains(key)) {
-                    keyword = keyword.replace(key, "\\" + key);
-                }
-            }
-        }
-        return keyword;
-    }
-
-    /**
-     * db的帮助类直接获得查询结果集
-     *
-     * @param org
-     * @return
-     */
-    public static List<DateBase_Entity> getSearchResult(List org) {
-        List<DateBase_Entity> result = new ArrayList<DateBase_Entity>();
-        if (org != null && org.size() > 1) {
-            result = (List<DateBase_Entity>) org.get(1);
-        } else {
-        }
-        return result;
-
-    }
-
-    /**
-     * 只获得一个结果
-     *
-     * @param org
-     * @return
-     */
-    public static DateBase_Entity getSearchResultOnlyOne(List org) {
-        DateBase_Entity result = null;
-        List org1 = getSearchResult(org);
-        if (org1 != null && org1.size() > 0) {
-            result = getSearchResult(org).get(0);
-        } else {
-            result = new DateBase_Entity().setId("-1");//用来证明数据不存在
-        }
-
-        return result;
-
-    }
 }

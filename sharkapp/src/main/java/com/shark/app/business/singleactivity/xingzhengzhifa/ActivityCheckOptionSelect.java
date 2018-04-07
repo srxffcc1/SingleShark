@@ -20,6 +20,7 @@ import com.shark.app.R;
 import com.shark.app.business.entity.Entity_LibraryLawDependence;
 import com.wisdomregulation.data.entitybase.DateBase_Entity;
 import com.wisdomregulation.help.Demo_DBManager;
+import com.wisdomregulation.help.Demo_DbUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +58,7 @@ public class ActivityCheckOptionSelect extends FrameActivity {
         p.width = (int) (d.getWidth() * 0.9); // 宽度设置为屏幕的0.7
         getWindow().setAttributes(p);
         alllist = new ArrayList<>();
-        List<DateBase_Entity> optionlist= Demo_DBManager.getSearchResult(Demo_DBManager.build().query("select distinct jianchaxiangmusanji from `Entity_LibraryLawDependence`",new Entity_LibraryLawDependence()));
+        List<DateBase_Entity> optionlist= Demo_DbUtil.getSearchResult(Demo_DBManager.build().query("select distinct jianchaxiangmusanji from `Entity_LibraryLawDependence`",new Entity_LibraryLawDependence()));
         for (int i = 0; i <optionlist.size() ; i++) {
             alllist.add(new ListTreeAdapter.ListItem().setShowtitle("检查项分类:"+optionlist.get(i).getValue("检查项目三级")).setLevel(1).setIncludeobj(optionlist.get(i)));
         }
@@ -162,7 +163,7 @@ public class ActivityCheckOptionSelect extends FrameActivity {
             if(level==2){
                 return null;
             }
-            List<DateBase_Entity> optionlist= Demo_DBManager.getSearchResult(Demo_DBManager.build().search(new Entity_LibraryLawDependence().putlogic2value("jianchaxiangmusanji","=",alllist.get(position).getShowtitle().replace("检查项分类:",""))));
+            List<DateBase_Entity> optionlist= Demo_DbUtil.getSearchResult(Demo_DBManager.build().search(new Entity_LibraryLawDependence().putlogic2value("jianchaxiangmusanji","=",alllist.get(position).getShowtitle().replace("检查项分类:",""))));
             List<ListItem> tmplist=new ArrayList<>();
             for (int i = 0; i <optionlist.size() ; i++) {
                 tmplist.add(new ListItem().setShowtitle(optionlist.get(i).getValue("jianchaxiangmusiji")).setLevel(2).setIncludeobj(optionlist.get(i)));

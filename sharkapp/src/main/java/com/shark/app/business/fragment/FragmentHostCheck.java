@@ -15,6 +15,7 @@ import com.shark.app.business.adapter.BianHaoRecycleAdapter;
 import com.shark.app.business.entity.Entity_ZhiFaBianHao;
 import com.wisdomregulation.data.entitybase.DateBase_Entity;
 import com.wisdomregulation.help.Demo_DBManager;
+import com.wisdomregulation.help.Demo_DbUtil;
 
 import java.util.List;
 
@@ -43,7 +44,7 @@ public class FragmentHostCheck extends BaseSupportFragment {
 
     }
     public void initData(){
-        resultlist= Demo_DBManager.getSearchResult(Demo_DBManager.build().search(new Entity_ZhiFaBianHao()));
+        resultlist= Demo_DbUtil.getSearchResult(Demo_DBManager.build().search(new Entity_ZhiFaBianHao()));
 
     }
     public void initLayout(){

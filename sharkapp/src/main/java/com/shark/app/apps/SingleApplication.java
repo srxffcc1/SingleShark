@@ -34,7 +34,7 @@ public class SingleApplication extends BusinessApplication {
         SpHome.getSpHome().setMcontext(this);//初始化sp
         HttpConfig.needPHPSESSID=false;
         HttpConfig.TIMEOUT=2000;
-        Demo_DBManager.build().init(getApplicationContext(), getApplicationContext().getFilesDir().getAbsolutePath(),"releaseIII.db");
+        Demo_DBManager.build().init(getApplicationContext(), getApplicationContext().getFilesDir().getAbsolutePath(),"releaseIII.db");//注册初始化离线数据库
     }
 
 

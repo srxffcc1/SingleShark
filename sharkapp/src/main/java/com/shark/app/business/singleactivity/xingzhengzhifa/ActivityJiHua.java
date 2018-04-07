@@ -15,6 +15,7 @@ import com.shark.app.R;
 import com.shark.app.business.entity.Entity_ZhiFaJiHua;
 import com.wisdomregulation.data.entitybase.Base_Entity;
 import com.wisdomregulation.help.Demo_DBManager;
+import com.wisdomregulation.help.Demo_DbUtil;
 
 /**
  * Created by Administrator on 2017/5/25. 临时模板复制就用
@@ -73,7 +74,7 @@ public class ActivityJiHua extends FrameActivity {
         if(beanid==null||beanid.equals("-1")){
             beanentity=new Base_Entity();
         }else{
-            beanentity = Demo_DBManager.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_ZhiFaJiHua().setId(beanid)));
+            beanentity = Demo_DbUtil.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_ZhiFaJiHua().setId(beanid)));
         }
 
 

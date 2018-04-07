@@ -1,4 +1,4 @@
-package com.shark.app.apps;
+package com.shark.app.business.singleactivity;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -12,6 +12,7 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +47,8 @@ abstract public class AbstractActivitySearchList extends FrameActivity implement
     public RecyclerView.Adapter adapter;
     public TextView patetext;
     public TextView totaltext;
+    public String queryold="";
+    private ImageView mGoButton;
 
     @Override
     public ORIENTATION getORIENTATION() {
@@ -117,6 +121,7 @@ abstract public class AbstractActivitySearchList extends FrameActivity implement
         seachmenuItem = menu.findItem(R.id.action_seach);
         searchView = (SearchView) MenuItemCompat.getActionView(seachmenuItem);
         searchEditText = (EditText) searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
+        mGoButton = (ImageView)searchView.findViewById(android.support.v7.appcompat.R.id.search_go_btn);
         searchView.setQueryHint(getSearchHint());
         searchView.setOnQueryTextListener(this);
         searchView.setOnSuggestionListener(this);
@@ -128,6 +133,24 @@ abstract public class AbstractActivitySearchList extends FrameActivity implement
             mSuggestionsAdapter = new QuerySuggestionsAdapter(this, cursor);
         }
         searchView.setSuggestionsAdapter(mSuggestionsAdapter);
+        searchView.setOnSearchClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchEditText.setText(queryold);
+            }
+        });
+        searchEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if(searchEditText.isShown()){
+                    queryold=searchEditText.getText().toString();
+                    toSearchResult(queryold);
+                    searchView.onActionViewCollapsed();
+                    searchView.setImeOptions(EditorInfo.IME_ACTION_SEARCH);
+                }
+                return true;
+            }
+        });
         return true;
     }
     @Override
@@ -135,6 +158,7 @@ abstract public class AbstractActivitySearchList extends FrameActivity implement
 //        //System.out.println("查询企业："+query);
         searchView.onActionViewCollapsed();
         searchView.setImeOptions(EditorInfo.IME_ACTION_SEARCH);
+        queryold=query;
         toSearchResult(query);
         return false;
     }

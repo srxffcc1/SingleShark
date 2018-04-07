@@ -41,7 +41,7 @@ public class ActivityCheckHost2Guest extends FrameActivity {
 
     @Override
     public int getMenuid() {
-        return 0;
+        return -1;
     }
 
     @Override

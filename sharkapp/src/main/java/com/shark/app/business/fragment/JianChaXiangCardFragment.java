@@ -16,6 +16,7 @@ import com.shark.app.R;
 import com.shark.app.business.entity.Entity_JianChaXiang;
 import com.wisdomregulation.data.entitybase.DateBase_Entity;
 import com.wisdomregulation.help.Demo_DBManager;
+import com.wisdomregulation.help.Demo_DbUtil;
 
 
 @SuppressLint("ValidFragment")
@@ -78,7 +79,7 @@ public class JianChaXiangCardFragment extends Fragment {
         return v;
     }
     public void initView(){
-        xianchangjianchaoption = Demo_DBManager.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_JianChaXiang().putlogic2value("关联的执法编号id","=",bianhaoid)
+        xianchangjianchaoption = Demo_DbUtil.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_JianChaXiang().putlogic2value("关联的执法编号id","=",bianhaoid)
                 .putlogic2value("检查项三级","=",mTitle)));
         if(!xianchangjianchaoption.getId().equals("-1")){
             //说明存在这个记录

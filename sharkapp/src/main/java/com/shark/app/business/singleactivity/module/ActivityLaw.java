@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.shark.app.R;
-import com.shark.app.apps.AbstractActivitySearchList;
+import com.shark.app.business.singleactivity.AbstractActivitySearchList;
 import com.shark.app.business.singleactivity.ActivityLawDetail;
 import com.zhy.autolayout.utils.AutoUtils;
 

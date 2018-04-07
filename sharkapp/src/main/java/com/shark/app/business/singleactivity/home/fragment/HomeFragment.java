@@ -18,7 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.shark.app.R;
-import com.shark.app.business.singleactivity.module.ActivityEnterpriseList;
+import com.shark.app.business.singleactivity.module.ActivityEnterpriseListOffLine;
 import com.shark.app.business.singleactivity.tab.ActivityCheckHost2Guest;
 
 
@@ -157,7 +157,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 startActivityForResult(new Intent(getContext(), ActivityCheckHost2Guest.class),111);
                 break;
             case R.id.enterprise_info:
-                startActivityForResult(new Intent(getContext(), ActivityEnterpriseList.class),111);
+                startActivityForResult(new Intent(getContext(), ActivityEnterpriseListOffLine.class),111);
                 break;
             default:
                 break;

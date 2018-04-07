@@ -16,6 +16,7 @@ import com.shark.app.business.adapter.ChoseCheckRecycleAdapter;
 import com.shark.app.business.entity.Entity_JianChaXiang;
 import com.wisdomregulation.data.entitybase.DateBase_Entity;
 import com.wisdomregulation.help.Demo_DBManager;
+import com.wisdomregulation.help.Demo_DbUtil;
 
 import java.util.List;
 
@@ -56,7 +57,7 @@ public class ActivityCheckChose extends FrameActivity {
         getWindow().setAttributes(p);
         String bianhaoid=getIntent().getStringExtra("bianhaoid");
         String fanganid=getIntent().getStringExtra("fanganid");
-        showlist= Demo_DBManager.getSearchResult(Demo_DBManager.build().search(new Entity_JianChaXiang()
+        showlist= Demo_DbUtil.getSearchResult(Demo_DBManager.build().search(new Entity_JianChaXiang()
                 .putlogic2value("隐患级别","<>","无隐患")
                 .putlogic2value("关联的执法编号id","=",bianhaoid)));
         if(showlist.size()<1){

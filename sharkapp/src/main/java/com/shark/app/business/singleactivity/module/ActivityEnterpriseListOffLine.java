@@ -14,34 +14,32 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import com.hss01248.dialog.StyledDialog;
 import com.shark.app.R;
+import com.shark.app.business.entity.Entity_Company;
 import com.shark.app.business.singleactivity.AbstractActivitySearchList;
-import com.shark.app.business.resultentity.Enterprise;
 import com.shark.app.business.singleactivity.ActivityEnterpriseMesh;
-import com.shark.app.business.statich.UrlHome;
 import com.shark.app.business.urlentity.EEnterprise;
-import com.shark.app.business.utils.DefaultHttpCallBack;
+import com.wisdomregulation.data.entitybase.DateBase_Entity;
+import com.wisdomregulation.help.Demo_DBManager;
+import com.wisdomregulation.help.Demo_DbUtil;
 import com.zhy.autolayout.utils.AutoUtils;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Administrator on 2017/5/25.
+ * Created by Administrator on 2017/5/25. 离线型
  */
 
-public class ActivityEnterpriseList extends AbstractActivitySearchList {
-    List<Enterprise> showlist=new ArrayList<>();
+public class ActivityEnterpriseListOffLine extends AbstractActivitySearchList {
+    List<DateBase_Entity> showlist=new ArrayList<>();
     int page=1;
     int rows=10;
     int total=0;
     int totalpage=0;
+    DateBase_Entity company;
+    int intenttype=0;
 
     public String activityrole;//列表角色 用来标记当前列表 normalenterpriselist : printerenterpriselist
 
@@ -52,49 +50,42 @@ public class ActivityEnterpriseList extends AbstractActivitySearchList {
 
     @Override
     public void onCreateImp(@Nullable Bundle savedInstanceState) {
-
+        intenttype=getIntent().getIntExtra("intenttype",0);
+        company=new Entity_Company();
+        company.clear();
 //        StyledDialog.buildLoading().show();
         getEnterpriseList(new EEnterprise().setPage(page+"").setRows(rows+""));
     }
     public void getEnterpriseList(EEnterprise eEnterprise){
-        httpPost(UrlHome.getUrl(this, UrlHome.enterpriselist), UrlHome.entity2MapHashClassNoPrefix(eEnterprise), new DefaultHttpCallBack() {
-            @Override
-            public void onSuccess(String t) {
-                super.onSuccess(t);
-                try {
-                    JSONObject jsonObject=new JSONObject(t);
-                    total=jsonObject.getInt("total");
-                    totalpage = (total % rows == 0) ? total / rows : total
-                            / rows + 1;
-                    String array=jsonObject.get("rows").toString();
-                    Type type = new TypeToken<ArrayList<Enterprise>>() {}.getType();
-                    Gson gson=new Gson();
-                    List<Enterprise> tmplist=gson.fromJson(array,type);
 
-                    if(tmplist!=null&&tmplist.size()>0){
+        StyledDialog.buildLoading().show();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                List org=Demo_DBManager.build().setNeedcount(true).setLimit(Demo_DbUtil.getLimit(page,rows)).search(company);
+                final String totalcount=org.get(0).toString();
+                totalpage=Demo_DbUtil.getAllPage(totalcount,rows);
+                final List<DateBase_Entity> tmplist= Demo_DbUtil.getSearchResult(org);
+
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        int presize=showlist.size();
                         showlist.clear();
-                        adapter.notifyItemRangeRemoved(0, tmplist.size());
+                        adapter.notifyItemRangeRemoved(0, presize);
+                        if(tmplist!=null&&tmplist.size()>0){
+                            showlist.addAll(tmplist);
+                        }
+                        adapter.notifyItemRangeInserted(0, showlist.size());
+                        mRefreshLayout.refreshComplete();
+                        patetext.setText(page+"/"+totalpage);
+                        totaltext.setText("总计:"+totalcount);
+                        StyledDialog.dismissLoading();
                     }
-                    showlist.addAll(tmplist);
-                    patetext.setText(page+"/"+totalpage);
-                    totaltext.setText("总计:"+total);
-                    adapter.notifyItemRangeChanged(0, showlist.size());
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-//                StyledDialog.dismissLoading();
-                mRefreshLayout.refreshComplete();
-
+                });
             }
-
-            @Override
-            public void onFailure(int errorNo, String strMsg) {
-                super.onFailure(errorNo, strMsg);
-            }
-
-
-        });
+        }).start();
     }
     @Override
     public void clickMultiSearch() {
@@ -113,6 +104,14 @@ public class ActivityEnterpriseList extends AbstractActivitySearchList {
 
     @Override
     public void toSearchResult(String search) {
+        if("".equals(search)){
+            company.clear();
+        }else{
+            company.clear();
+            company.putlogic2value("企业名称","like",search);
+
+        }
+        getEnterpriseList(new EEnterprise().setPage(page+"").setRows(rows+""));
 
     }
 
@@ -176,11 +175,15 @@ public class ActivityEnterpriseList extends AbstractActivitySearchList {
 
         @Override
         public void onBindViewHolder(SingelViewHolder holder, int position) {
-            Enterprise enterprise=showlist.get(position);
-            holder.qymc.setText(enterprise.getQymc());
-            holder.fddbr.setText("法定代表人:"+(enterprise.getFddbr()+"").replace("null",""));
-            holder.lxdh.setText("联系电话:"+(enterprise.getLxdh()+"").replace("null",""));
-            holder.qyid=showlist.get(position).getId();
+            DateBase_Entity enterprise=showlist.get(position);
+            holder.qymc.setText(enterprise.getValue("企业名称"));
+            holder.fddbr.setText("法定代表人:"+(enterprise.getValue("法定代表人")+"").replace("null",""));
+            holder.lxdh.setText("联系电话:"+(enterprise.getValue("联系电话")+"").replace("null",""));
+            holder.qyid=enterprise.getId();
+            holder.qymcs=enterprise.getValue("企业名称");
+            holder.fddbrs=enterprise.getValue("法定代表人");
+            holder.dzs=enterprise.getValue("生产经营地址");
+            holder.dhs=enterprise.getValue("联系电话");
         }
 
         @Override
@@ -193,6 +196,10 @@ public class ActivityEnterpriseList extends AbstractActivitySearchList {
             public TextView fddbr;
             public TextView lxdh;
             public String qyid;
+            public String qymcs;
+            public String fddbrs;
+            public String dzs;
+            public String dhs;
             public SingelViewHolder(View itemView) {
                 super(itemView);
                 qymc= (TextView) itemView.findViewById(R.id.qymc);
@@ -204,7 +211,19 @@ public class ActivityEnterpriseList extends AbstractActivitySearchList {
 
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getBaseContext(),ActivityEnterpriseMesh.class).putExtra("qyid",qyid));
+                if(intenttype==0){
+
+                    startActivity(new Intent(getBaseContext(),ActivityEnterpriseMesh.class).putExtra("qyid",qyid));
+                }else{
+                    Intent intent=new Intent()
+                            .putExtra("qyid",qyid)
+                            .putExtra("qymc",qymcs)
+                            .putExtra("dz",dzs)
+                            .putExtra("fddbr",fddbrs)
+                            .putExtra("dh",dhs);
+                    setResult(1000,intent);
+                    finish();
+                }
 //                //System.out.println("点击项目"+getAdapterPosition());
 
             }
