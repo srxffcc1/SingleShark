@@ -18,7 +18,7 @@ import com.hss01248.dialog.StyledDialog;
 import com.shark.app.R;
 import com.shark.app.business.entity.Entity_Company;
 import com.shark.app.business.singleactivity.AbstractActivitySearchList;
-import com.shark.app.business.singleactivity.ActivityEnterpriseMesh;
+import com.shark.app.business.singleactivity.ActivityEnterpriseDetailOff;
 import com.shark.app.business.urlentity.EEnterprise;
 import com.wisdomregulation.data.entitybase.DateBase_Entity;
 import com.wisdomregulation.help.Demo_DBManager;
@@ -213,7 +213,7 @@ public class ActivityEnterpriseListOffLine extends AbstractActivitySearchList {
             public void onClick(View v) {
                 if(intenttype==0){
 
-                    startActivity(new Intent(getBaseContext(),ActivityEnterpriseMesh.class).putExtra("qyid",qyid));
+                    startActivity(new Intent(getBaseContext(),ActivityEnterpriseDetailOff.class).putExtra("qyid",qyid));
                 }else{
                     Intent intent=new Intent()
                             .putExtra("qyid",qyid)
