@@ -31,10 +31,10 @@
         android:supportsRtl="true" android:theme="@style/SharkAppBaseTheme" tools:replace="android:icon,android:theme,android:name">
         <activity
             android:theme="@style/FirstActivityTheme"
-            android:name=".business.singleactivity.module.ActivitySplash" android:launchMode="singleTop">
+            android:name=".business.view.module.ActivitySplash" android:launchMode="singleTop">
 
         </activity>
-        <activity android:name="com.shark.app.business.singleactivity.home.smp.TabMainActivity" android:launchMode="singleTop"
+        <activity android:name="com.shark.app.business.view.home.smp.TabMainActivity" android:launchMode="singleTop"
             android:theme="@style/SMPActivityTheme">
 
         </activity>
@@ -43,52 +43,53 @@
         </activity>
 
         <activity android:name=".test.ListTestActivity" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.module.ActivityLogin" android:theme="@style/FrameAppTheme.NoActionBarNoSoftInput" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.module.ActivityMain" android:theme="@style/FrameAppTheme.Navigation" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.tab.ActivityCheckHost2Guest" android:launchMode="singleTop"         android:windowSoftInputMode="adjustNothing"/>
-        <activity android:name=".business.singleactivity.module.ActivityEnterpriseList" android:launchMode="singleTop" android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".business.singleactivity.tab.ActivityPdfBook" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.module.ActivityBook" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.module.ActivityAutoLogin" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.ActivityEnterpriseMesh" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.module.ActivityCollect" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.module.ActivityLaw" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.ActivityLawDetail" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.ActivityEnterpriseBaseDetail" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.module.ActivityHazardsList" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.module.ActivityRecordList" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.module.ActivityPrinterList" android:launchMode="singleTop"/>
+        <activity android:name=".business.view.module.ActivityLogin" android:theme="@style/FrameAppTheme.NoActionBarNoSoftInput" android:launchMode="singleTop"/>
+        <activity android:name=".business.view.module.ActivityMain" android:theme="@style/FrameAppTheme.Navigation" android:launchMode="singleTop"/>
+        <activity android:name=".business.view.tab.ActivityCheckHost2Guest" android:launchMode="singleTop"         android:windowSoftInputMode="adjustNothing"/>
+        <activity android:name=".business.view.module.ActivityEnterpriseList" android:launchMode="singleTop" android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".business.view.tab.ActivityPdfBook" android:launchMode="singleTop"/>
+        <activity android:name=".business.view.module.ActivityBook" android:launchMode="singleTop"/>
+        <activity android:name=".business.view.module.ActivityAutoLogin" android:launchMode="singleTop"/>
+        <activity android:name=".business.view.ActivityEnterpriseMesh" android:launchMode="singleTop"/>
+        <activity android:name=".business.view.module.ActivityCollect" android:launchMode="singleTop"/>
+        <activity android:name=".business.view.module.ActivityLaw" android:launchMode="singleTop"/>
+        <activity android:name=".business.view.ActivityLawDetail" android:launchMode="singleTop"/>
+        <activity android:name=".business.view.ActivityEnterpriseBaseDetail" android:launchMode="singleTop"/>
+        <activity android:name=".business.view.module.ActivityHazardsList" android:launchMode="singleTop"/>
+        <activity android:name=".business.view.module.ActivityRecordList" android:launchMode="singleTop"/>
+        <activity android:name=".business.view.module.ActivityPrinterList" android:launchMode="singleTop"/>
 
 
 
-        <activity android:name=".business.singleactivity.module.ActivityTroubleInvestigation" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.library.ActivityAqscbz" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.library.ActivityAqscflfg" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.library.ActivityDxsgal" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.library.ActivityWxhxptz" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.library.ActivityYhpcbz" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.library.ActivityZfyj" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.xingzhengzhifa.ActivityCheckMenu" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.ActivityTmp" android:launchMode="singleTop"/>
-        <activity android:name=".business.singleactivity.xingzhengzhifa.ActivityXianChangJianCha" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
-        <activity android:name=".business.singleactivity.xingzhengzhifa.ActivityChuFa" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
-        <activity android:name=".business.singleactivity.xingzhengzhifa.ActivityChuLiCuoShi" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
-        <activity android:name=".business.singleactivity.xingzhengzhifa.ActivityFangAn" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
-        <activity android:name=".business.singleactivity.xingzhengzhifa.ActivityJiHua" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
-        <activity android:name=".business.singleactivity.xingzhengzhifa.ActivityZeLing" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
-        <activity android:name=".business.singleactivity.xingzhengzhifa.ActivityZhengGai" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
-        <activity android:name=".business.singleactivity.xingzhengzhifa.ActivityGuiDang" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
-        <activity android:name=".business.singleactivity.xingzhengzhifa.ActivityCheckOptionSelect" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
-        <activity android:name=".business.singleactivity.xingzhengzhifa.ActivityCheckChose" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
-        <activity android:name=".business.singleactivity.ex.ExActivityLogin" >
+        <activity android:name=".business.view.module.ActivityTroubleInvestigation" android:launchMode="singleTop"/>
+        <activity android:name=".business.view.library.ActivityAqscbz" android:launchMode="singleTop"/>
+        <activity android:name=".business.view.library.ActivityAqscflfg" android:launchMode="singleTop"/>
+        <activity android:name=".business.view.library.ActivityDxsgal" android:launchMode="singleTop"/>
+        <activity android:name=".business.view.library.ActivityWxhxptz" android:launchMode="singleTop"/>
+        <activity android:name=".business.view.library.ActivityYhpcbz" android:launchMode="singleTop"/>
+        <activity android:name=".business.view.library.ActivityZfyj" android:launchMode="singleTop"/>
+        <activity android:name=".business.view.xingzhengzhifa.ActivityCheckMenu" android:launchMode="singleTop"/>
+        <activity android:name=".business.view.ActivityTmp" android:launchMode="singleTop"/>
+        <activity android:name=".business.view.xingzhengzhifa.ActivityXianChangJianCha" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
+        <activity android:name=".business.view.xingzhengzhifa.ActivityChuFa" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
+        <activity android:name=".business.view.xingzhengzhifa.ActivityChuLiCuoShi" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
+        <activity android:name=".business.view.xingzhengzhifa.ActivityFangAn" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
+        <activity android:name=".business.view.xingzhengzhifa.ActivityJiHua" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
+        <activity android:name=".business.view.xingzhengzhifa.ActivityZeLing" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
+        <activity android:name=".business.view.xingzhengzhifa.ActivityZhengGai" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
+        <activity android:name=".business.view.xingzhengzhifa.ActivityGuiDang" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
+        <activity android:name=".business.view.xingzhengzhifa.ActivityCheckOptionSelect" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
+        <activity android:name=".business.view.xingzhengzhifa.ActivityCheckChose" android:launchMode="singleTop" android:theme="@style/DialogActivity"/>
+        <activity android:name=".business.view.ex.ExActivityLogin" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".business.singleactivity.module.ActivityEnterpriseListOffLine" android:launchMode="singleTop" android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".business.singleactivity.ActivityEnterpriseDetailOff" android:launchMode="singleTop"/>
+        <activity android:name=".business.view.module.ActivityEnterpriseListOffLine" android:launchMode="singleTop" android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".business.view.ActivityEnterpriseDetailOff" android:launchMode="singleTop"/>
+        <activity android:name=".business.view.xingzhengzhifa.ActivityJiHuaList" android:launchMode="singleTop"/>
     </application>
 
 </manifest>

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 /**
- * Created by King6rf on 2017/9/13.
+ * Created by King6rf on 2017/9/13.处理sp
  */
 
 public class SpHome {

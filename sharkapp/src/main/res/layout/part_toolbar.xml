@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true">
-
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
@@ -31,7 +30,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:paddingRight="20dp"
-            android:src="@mipmap/icon2_more"
+            android:src="@drawable/chat_add"
             android:visibility="gone" />
 
     </RelativeLayout>

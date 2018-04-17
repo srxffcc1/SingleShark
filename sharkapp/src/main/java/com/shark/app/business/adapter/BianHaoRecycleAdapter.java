@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.shark.app.R;
-import com.shark.app.business.singleactivity.xingzhengzhifa.ActivityCheckMenu;
+import com.shark.app.business.view.xingzhengzhifa.ActivityCheckMenu;
 import com.wisdomregulation.data.entitybase.DateBase_Entity;
 import com.zhy.autolayout.utils.AutoUtils;
 
@@ -66,7 +66,7 @@ public class BianHaoRecycleAdapter extends RecyclerView.Adapter<BianHaoRecycleAd
             @Override
             public void onClick(View v) {
 
-                mcontext.startActivity(new Intent(mcontext, ActivityCheckMenu.class).putExtra("bianhaoid",entity.getId()).putExtra("jihuaid",entity.getValue("所属计划id")));
+                ((Activity)mcontext).startActivityForResult(new Intent(mcontext, ActivityCheckMenu.class).putExtra("bianhaoid",entity.getId()).putExtra("jihuaid",entity.getValue("所属计划id")),121);
             }
         });
     }

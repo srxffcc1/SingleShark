@@ -45,23 +45,6 @@
                     android:textColor="#019BFD"
                     android:text="企业名称" />
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:layout_weight="225">
-                <TextView
-                    android:paddingBottom="5dp"
-                    android:paddingTop="5dp"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/seach_linearlayoutbg4"
-                    android:gravity="center"
-                    android:text="详情"
-                    android:textColor="@color/white" />
-            </LinearLayout>
 
         </LinearLayout>
 

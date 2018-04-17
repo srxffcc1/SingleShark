@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 /**
@@ -196,5 +197,13 @@ public class Demo_DbUtil {
             return (int) (total / rows) + 1;
         }
 
+    }
+    public static  String getZZHead(int size){
+        Random rd = new Random();
+        String str = "";
+        for (int i = 0; i < size; i++) {
+            str = str + (char) (Math.random() * 26 + 'a');
+        }
+        return str.toUpperCase();
     }
 }

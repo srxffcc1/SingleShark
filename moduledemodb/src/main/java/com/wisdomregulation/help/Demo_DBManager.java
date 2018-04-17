@@ -29,7 +29,9 @@ import static com.wisdomregulation.help.Demo_DbUtil.getEntityType;
 import static com.wisdomregulation.help.Demo_DbUtil.getSearchResultOnlyOne;
 import static com.wisdomregulation.help.Demo_DbUtil.washString;
 
-
+/**
+ * 离线数据库
+ */
 public class Demo_DBManager {
     public static final int anjiandbversion = 1;
     public Context mcontext;//*****必须初始化
@@ -332,7 +334,7 @@ public class Demo_DBManager {
      */
     @SuppressLint("InlinedApi")
     public SQLiteDatabase getDataBaseIn() {
-        Log.i("Demo_DB", "开始写入数据库");
+        Log.i("Demo_DB", "开始载入数据库");
         SQLiteDatabase db;
         if (isDataBaseExists(dbdir + "/" + databasename)) {
 

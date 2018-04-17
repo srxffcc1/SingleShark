@@ -29,8 +29,7 @@ import com.ksyun.player.disk.ui.activity.player.TextureVideoActivity;
 import com.kymjs.common.FileUtils;
 import com.kymjs.common.Log;
 import com.shark.app.R;
-import com.shark.app.business.singleactivity.ApkFragment;
-import com.shark.app.business.singleactivity.tab.ActivityPdfBook;
+import com.shark.app.business.view.tab.ActivityPdfBook;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -135,7 +134,7 @@ public class TestMainActivity extends FrameActivity {
 
     public void startPlugin(View view) {
 
-        startFragmentForResult(new ApkFragment(), 100);
+//        startFragmentForResult(new ApkFragment(), 100);
     }
 
 

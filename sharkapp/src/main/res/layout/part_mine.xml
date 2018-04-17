@@ -32,7 +32,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp">
 
-                <com.shark.app.business.singleactivity.home.view.CircleImageView
+                <com.shark.app.business.view.home.view.CircleImageView
                     android:id="@+id/iv_mine_head"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
