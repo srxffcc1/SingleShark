@@ -5,6 +5,7 @@ import android.animation.ObjectAnimator;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -31,21 +32,29 @@ import com.businessframehelp.enums.ORIENTATION;
 import com.hss01248.dialog.StyledDialog;
 import com.hss01248.dialog.interfaces.MyDialogListener;
 import com.shark.app.R;
-import com.shark.app.business.view.home.smp.TabMainActivity;
+import com.shark.app.business.entity.Friend;
 import com.shark.app.business.statich.UrlHome;
 import com.shark.app.business.urlentity.ELogin;
 import com.shark.app.business.utils.SpHome;
+import com.shark.app.business.view.home.smp.TabMainActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.kymjs.kjframe.http.HttpCallBack;
 import org.kymjs.kjframe.http.HttpConfig;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import io.rong.imkit.RongIM;
+import io.rong.imlib.RongIMClient;
+import io.rong.imlib.model.UserInfo;
+
 /**
  * Created by King6rf on 2017/5/17.
  */
 
-public class ActivityLogin extends FrameActivity implements View.OnClickListener{
+public class ActivityLogin extends FrameActivity implements View.OnClickListener,RongIM.UserInfoProvider {
 
     @Override
     public ORIENTATION getORIENTATION() {
@@ -57,6 +66,7 @@ public class ActivityLogin extends FrameActivity implements View.OnClickListener
     public void handleMessage(Message msg) {
 
     }
+
     private ImageView logo;
     private ScrollView scrollView;
     private EditText et_username;
@@ -70,8 +80,8 @@ public class ActivityLogin extends FrameActivity implements View.OnClickListener
     private int keyHeight = 0; //软件盘弹起后所占高度
     private float scale = 0.6f; //logo缩放比例
     private View service;
-    private int height = 0 ;
-
+    private int height = 0;
+    String token = "cqBImz2pcE+UD+m+GXgkXVEowCAKPQvMfPzJtgvJ7stwhoUjeP66aC86nnA1mVCidDvbVlbmXXN0WK2Lvp1IPA==";
     @Override
     public int getMenuid() {
         return -1;
@@ -83,6 +93,7 @@ public class ActivityLogin extends FrameActivity implements View.OnClickListener
         //设置输入法不弹起
         setContentView(R.layout.app_activity_login);
         getSupportActionBar().hide();
+        initUserInfo();
 //        AndroidBug5497Workaround.assistActivity(this);
         intiView();
     }
@@ -103,7 +114,9 @@ public class ActivityLogin extends FrameActivity implements View.OnClickListener
         keyHeight = screenHeight / 3;//弹起高度为屏幕高度的1/3
         initListener();
     }
-boolean needscale=true;
+
+    boolean needscale = true;
+
     private void initListener() {
         logo.setOnClickListener(this);
         btn_login.setOnClickListener(this);
@@ -169,37 +182,77 @@ boolean needscale=true;
             public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
               /* old是改变前的左上右下坐标点值，没有old的是改变后的左上右下坐标点值
               现在认为只要控件将Activity向上推的高度超过了1/3屏幕高，就认为软键盘弹起*/
-              if(needscale){
-                  if (oldBottom != 0 && bottom != 0 && (oldBottom - bottom > keyHeight)) {
-                      Log.e("wenzhihao", "up------>"+(oldBottom - bottom));
-                      new Handler().postDelayed(new Runnable() {
-                          @Override
-                          public void run() {
-                              scrollView.smoothScrollTo(0, scrollView.getHeight());
-                          }
-                      }, 0);
-                      zoomIn(logo, (oldBottom - bottom) - keyHeight);
-                      service.setVisibility(View.INVISIBLE);
-                  } else if (oldBottom != 0 && bottom != 0 && (bottom - oldBottom > keyHeight)) {
-                      Log.e("wenzhihao", "down------>"+(bottom - oldBottom));
-                      //键盘收回后，logo恢复原来大小，位置同样回到初始位置
-                      new Handler().postDelayed(new Runnable() {
-                          @Override
-                          public void run() {
-                              scrollView.smoothScrollTo(0, scrollView.getHeight());
-                          }
-                      }, 0);
-                      zoomOut(logo, (bottom - oldBottom) - keyHeight);
-                      service.setVisibility(View.VISIBLE);
-                  }
-              }
+                if (needscale) {
+                    if (oldBottom != 0 && bottom != 0 && (oldBottom - bottom > keyHeight)) {
+                        Log.e("wenzhihao", "up------>" + (oldBottom - bottom));
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                scrollView.smoothScrollTo(0, scrollView.getHeight());
+                            }
+                        }, 0);
+                        zoomIn(logo, (oldBottom - bottom) - keyHeight);
+                        service.setVisibility(View.INVISIBLE);
+                    } else if (oldBottom != 0 && bottom != 0 && (bottom - oldBottom > keyHeight)) {
+                        Log.e("wenzhihao", "down------>" + (bottom - oldBottom));
+                        //键盘收回后，logo恢复原来大小，位置同样回到初始位置
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                scrollView.smoothScrollTo(0, scrollView.getHeight());
+                            }
+                        }, 0);
+                        zoomOut(logo, (bottom - oldBottom) - keyHeight);
+                        service.setVisibility(View.VISIBLE);
+                    }
+                }
 
             }
         });
     }
+    private void connect(String token) {
 
+
+        /**
+         * IMKit SDK调用第二步,建立与服务器的连接
+         */
+        RongIM.connect(token, new RongIMClient.ConnectCallback() {
+
+            /**
+             * Token 错误，在线上环境下主要是因为 Token 已经过期，您需要向 App Server 重新请求一个新的 Token
+             */
+            @Override
+            public void onTokenIncorrect() {
+
+                Log.d("LoginActivity", "--onTokenIncorrect");
+            }
+
+            /**
+             * 连接融云成功
+             * @param userid 当前 token
+             */
+            @Override
+            public void onSuccess(String userid) {
+                startActivity(new Intent(getContext(), TabMainActivity.class));
+                finish();
+                Log.d("LoginActivity", "--onSuccess" + userid);
+            }
+
+            /**
+             * 连接融云失败
+             * @param errorCode 错误码，可到官网 查看错误码对应的注释
+             *                  http://www.rongcloud.cn/docs/android.html#常见错误码
+             */
+            @Override
+            public void onError(RongIMClient.ErrorCode errorCode) {
+
+                Log.d("LoginActivity", "--onError" + errorCode);
+            }
+        });
+    }
     /**
      * 缩小
+     *
      * @param view
      */
     public void zoomIn(final View view, float dist) {
@@ -215,11 +268,13 @@ boolean needscale=true;
         mAnimatorSet.setDuration(200);
         mAnimatorSet.start();
     }
+
     Dialog menudialog;
+
     public void startMenuDialog() {
         StyledDialog.init(getContext());
-        menudialog=
-                StyledDialog.buildNormalInput("修改IP", "请输入IP", "", "确定", "取消",  new MyDialogListener() {
+        menudialog =
+                StyledDialog.buildNormalInput("修改IP", "请输入IP", "", "确定", "取消", new MyDialogListener() {
                     @Override
                     public void onFirst() {
 
@@ -251,24 +306,24 @@ boolean needscale=true;
                         WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
                 getWindow().setSoftInputMode(
                         WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-                menudialog=null;
+                menudialog = null;
             }
         });
     }
 
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
-        if(keyCode== KeyEvent.KEYCODE_MENU){
+        if (keyCode == KeyEvent.KEYCODE_MENU) {
             startMenuDialogImp();
         }
         return super.onKeyUp(keyCode, event);
     }
 
     private void startMenuDialogImp() {
-        if(menudialog==null){
+        if (menudialog == null) {
 
             startMenuDialog();
-        }else {
+        } else {
             StyledDialog.dismiss(menudialog);
             menudialog = null;
         }
@@ -276,6 +331,7 @@ boolean needscale=true;
 
     /**
      * f放大
+     *
      * @param view
      */
     public void zoomOut(final View view, float dist) {
@@ -292,11 +348,18 @@ boolean needscale=true;
         mAnimatorSet.setDuration(200);
         mAnimatorSet.start();
     }
-    public synchronized void toLogin(){
-        if(!SpHome.needlogin){
-            startActivity(new Intent(getContext(),TabMainActivity.class));
-            finish();
-        }else {
+    private List<Friend> userIdList;
+    private void initUserInfo() {
+        userIdList = new ArrayList<>();
+        userIdList.add(new Friend("10010", "联通", "http://www.51zxw.net/bbs/UploadFile/2013-4/201341122335711220.jpg"));     // 联通图标
+        userIdList.add(new Friend("10086", "移动", "http://img02.tooopen.com/Download/2010/5/22/20100522103223994012.jpg"));  // 移动图标
+        userIdList.add(new Friend("95555", "招行", "https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1523504908&di=59baa6d6741947ab9a1474ac5241b6d0&src=http://attachments.gfan.com/forum/201512/31/235848sltzl32tjm02kz3j.jpg"));//招商银行
+        RongIM.setUserInfoProvider(this, true);
+    }
+    public synchronized void toLogin() {
+        if (!SpHome.needlogin) {
+            connect(token);
+        } else {
             HttpConfig.sCookie = "";
             Toast.makeText(getContext(), "正在登录", Toast.LENGTH_SHORT).show();
             ELogin eLogin = new ELogin(et_username.getText().toString(), et_password.getText().toString());
@@ -311,8 +374,7 @@ boolean needscale=true;
                         if (jsonObject.getBoolean("status")) {
                             String sessionid = jsonObject.getString("sessionId");
                             HttpConfig.sCookie = sessionid;
-                            startActivity(new Intent(getContext(), TabMainActivity.class));
-                            finish();
+                            connect(token);
                         } else {
                             Toast.makeText(getContext(), jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
                         }
@@ -365,5 +427,15 @@ boolean needscale=true;
                 startMenuDialogImp();
                 break;
         }
+    }
+
+    @Override
+    public UserInfo getUserInfo(String s) {
+        for (Friend i : userIdList) {
+            if (i.getUserId().equals(s)) {
+                return new UserInfo(i.getUserId(), i.getName(), Uri.parse(i.getPortraitUri()));
+            }
+        }
+        return null;
     }
 }

@@ -15,7 +15,8 @@ android {
                 GETUI_APP_ID    : "WpKCCUBUtJ7qdM7BgwsTLA",
                 GETUI_APP_KEY   : "dVDPLPnamz6arzy4h6hGu2",
                 GETUI_APP_SECRET: "bVoEEya7W37RJ0e2nLg7R6",
-                GD_API_SECRET   : "382c608d07f7b7ca966475479b6e67cd"
+                GD_API_SECRET   : "382c608d07f7b7ca966475479b6e67cd",
+                RONG_CLOUD_APP_KEY   : "mgb7ka1nm4d9g"
         ]
         renderscriptTargetApi 23
         renderscriptSupportModeEnabled true
@@ -181,5 +182,8 @@ dependencies {
     }
     //圆形头像
     compile files('libs/cglib-nodep-2.2.2.jar')
+
+    compile 'cn.rongcloud.android:IMLib:2.8.6'
+    compile 'cn.rongcloud.android:IMKit:2.8.6'
 }
 

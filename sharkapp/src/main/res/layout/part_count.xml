@@ -18,20 +18,68 @@
 
         android:orientation="horizontal">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"></LinearLayout>
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:text="辖区内企业"
+                android:id="@+id/textViewxq" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="28435"
+                android:textColor="#008DDD"
+                android:layout_below="@+id/textViewxq"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"></LinearLayout>
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:text="本月隐患数"
+                android:id="@+id/textViewby" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="28435"
+                android:textColor="#ED6942"
+                android:textStyle="bold"
+                android:layout_below="@+id/textViewby"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"></LinearLayout>
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:text="本月执法"
+                android:id="@+id/textViewzf" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="28435"
+                android:textColor="#19B05F"
+                android:textStyle="bold"
+                android:layout_below="@+id/textViewzf"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -94,7 +142,11 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="86">
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_height="match_parent"
+            android:text="本月"/>
 
     </LinearLayout>
 
@@ -106,18 +158,48 @@
 
         <LinearLayout
             android:layout_width="0dp"
+            android:gravity="center"
             android:layout_height="match_parent"
-            android:layout_weight="1"></LinearLayout>
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="零隐患："/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="243"/>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
+            android:gravity="center"
             android:layout_height="match_parent"
-            android:layout_weight="1"></LinearLayout>
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="一般："/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="243"/>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
+            android:gravity="center"
             android:layout_height="match_parent"
-            android:layout_weight="1"></LinearLayout>
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="重大："/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="243"/>
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -160,7 +242,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="364">
+            android:layout_weight="444">
 
             <com.github.mikephil.charting.charts.PieChart
                 android:id="@+id/chart2"
@@ -170,17 +252,139 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:orientation="vertical"
             android:layout_height="match_parent"
-            android:layout_weight="717">
-            <RelativeLayout
+            android:layout_weight="717"
+            android:orientation="vertical">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"></RelativeLayout>
-            <RelativeLayout
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="115">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="本周" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="60"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:gravity="center_vertical"
+                        android:text="周原计划" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="6"
+                        android:gravity="center_vertical"
+                        android:text="已完成计划" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="60">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:gravity="center_vertical"
+                        android:text="新增计划" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="6"
+                        android:gravity="center_vertical"
+                        android:text="完成率" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="30"></LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"></RelativeLayout>
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="115">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="上周" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="60"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:gravity="center_vertical"
+                        android:text="周原计划" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="6"
+                        android:gravity="center_vertical"
+                        android:text="已完成计划" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="60">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:gravity="center_vertical"
+                        android:text="新增计划" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="6"
+                        android:gravity="center_vertical"
+                        android:text="完成率" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="30"></LinearLayout>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 

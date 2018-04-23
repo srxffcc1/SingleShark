@@ -5,6 +5,7 @@ import android.animation.ObjectAnimator;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -33,21 +34,29 @@ import com.businessframehelp.enums.ORIENTATION;
 import com.hss01248.dialog.StyledDialog;
 import com.hss01248.dialog.interfaces.MyDialogListener;
 import com.shark.app.R;
-import com.shark.app.business.view.home.smp.TabMainActivity;
+import com.shark.app.business.entity.Friend;
 import com.shark.app.business.statich.UrlHome;
 import com.shark.app.business.urlentity.ELogin;
 import com.shark.app.business.utils.SpHome;
+import com.shark.app.business.view.home.smp.TabMainActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.kymjs.kjframe.http.HttpCallBack;
 import org.kymjs.kjframe.http.HttpConfig;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import io.rong.imkit.RongIM;
+import io.rong.imlib.RongIMClient;
+import io.rong.imlib.model.UserInfo;
+
 /**
  * Created by King6rf on 2017/5/17.
  */
 
-public class ExActivityLogin extends FrameActivity implements View.OnClickListener {
+public class ExActivityLogin extends FrameActivity implements View.OnClickListener,RongIM.UserInfoProvider {
 
     private RadioGroup radiogroup1;
 
@@ -76,7 +85,7 @@ public class ExActivityLogin extends FrameActivity implements View.OnClickListen
     private float scale = 0.6f; //logo缩放比例
     private View service;
     private int height = 0;
-
+    String token = "cqBImz2pcE+UD+m+GXgkXVEowCAKPQvMfPzJtgvJ7stwhoUjeP66aC86nnA1mVCidDvbVlbmXXN0WK2Lvp1IPA==";
     @Override
     public int getMenuid() {
         return -1;
@@ -88,6 +97,7 @@ public class ExActivityLogin extends FrameActivity implements View.OnClickListen
         //设置输入法不弹起
         setContentView(R.layout.ex_activity_login);
         getSupportActionBar().hide();
+        initUserInfo();
 //        AndroidBug5497Workaround.assistActivity(this);
         intiView();
     }
@@ -326,11 +336,49 @@ public class ExActivityLogin extends FrameActivity implements View.OnClickListen
         mAnimatorSet.setDuration(200);
         mAnimatorSet.start();
     }
+    private void connect(String token) {
 
+
+        /**
+         * IMKit SDK调用第二步,建立与服务器的连接
+         */
+        RongIM.connect(token, new RongIMClient.ConnectCallback() {
+
+            /**
+             * Token 错误，在线上环境下主要是因为 Token 已经过期，您需要向 App Server 重新请求一个新的 Token
+             */
+            @Override
+            public void onTokenIncorrect() {
+
+                Log.d("LoginActivity", "--onTokenIncorrect");
+            }
+
+            /**
+             * 连接融云成功
+             * @param userid 当前 token
+             */
+            @Override
+            public void onSuccess(String userid) {
+                startActivity(new Intent(getContext(), TabMainActivity.class));
+                finish();
+                Log.d("LoginActivity", "--onSuccess" + userid);
+            }
+
+            /**
+             * 连接融云失败
+             * @param errorCode 错误码，可到官网 查看错误码对应的注释
+             *                  http://www.rongcloud.cn/docs/android.html#常见错误码
+             */
+            @Override
+            public void onError(RongIMClient.ErrorCode errorCode) {
+
+                Log.d("LoginActivity", "--onError" + errorCode);
+            }
+        });
+    }
     public synchronized void toLogin() {
         if(!SpHome.needlogin){
-            startActivity(new Intent(getContext(),TabMainActivity.class));
-            finish();
+            connect(token);
         }else {
             HttpConfig.sCookie = "";
             Toast.makeText(getContext(), "正在登录", Toast.LENGTH_SHORT).show();
@@ -346,8 +394,7 @@ public class ExActivityLogin extends FrameActivity implements View.OnClickListen
                         if (jsonObject.getBoolean("status")) {
                             String sessionid = jsonObject.getString("sessionId");
                             HttpConfig.sCookie = sessionid;
-                            startActivity(new Intent(getContext(), TabMainActivity.class));
-                            finish();
+                            connect(token);
                         } else {
                             Toast.makeText(getContext(), jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
                         }
@@ -400,5 +447,22 @@ public class ExActivityLogin extends FrameActivity implements View.OnClickListen
                 startMenuDialogImp();
                 break;
         }
+    }
+    private List<Friend> userIdList;
+    private void initUserInfo() {
+        userIdList = new ArrayList<>();
+        userIdList.add(new Friend("10010", "联通", "http://www.51zxw.net/bbs/UploadFile/2013-4/201341122335711220.jpg"));     // 联通图标
+        userIdList.add(new Friend("10086", "移动", "http://img02.tooopen.com/Download/2010/5/22/20100522103223994012.jpg"));  // 移动图标
+        userIdList.add(new Friend("95555", "招行", "https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1523504908&di=59baa6d6741947ab9a1474ac5241b6d0&src=http://attachments.gfan.com/forum/201512/31/235848sltzl32tjm02kz3j.jpg"));//招商银行
+        RongIM.setUserInfoProvider(this, true);
+    }
+    @Override
+    public UserInfo getUserInfo(String s) {
+        for (Friend i : userIdList) {
+            if (i.getUserId().equals(s)) {
+                return new UserInfo(i.getUserId(), i.getName(), Uri.parse(i.getPortraitUri()));
+            }
+        }
+        return null;
     }
 }

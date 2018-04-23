@@ -10,6 +10,8 @@ import com.hss01248.dialog.StyledDialog;
 import com.kymjs.common.Log;
 import com.kymjs.common.SystemTool;
 
+import io.rong.imkit.RongIM;
+
 
 /**
  * Created by Administrator on 2017/5/8.

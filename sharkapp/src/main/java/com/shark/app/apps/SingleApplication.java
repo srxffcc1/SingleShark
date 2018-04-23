@@ -15,6 +15,8 @@ import com.wisdomregulation.help.Demo_DBManager;
 
 import org.kymjs.kjframe.http.HttpConfig;
 
+import io.rong.imkit.RongIM;
+
 /**
  * Created by Administrator on 2017/5/9.
  */
@@ -35,6 +37,7 @@ public class SingleApplication extends BusinessApplication {
         HttpConfig.needPHPSESSID=false;
         HttpConfig.TIMEOUT=2000;
         Demo_DBManager.build().init(getApplicationContext(), getApplicationContext().getFilesDir().getAbsolutePath(),"releaseIII.db");//注册初始化离线数据库
+        RongIM.init(this);
     }
 
 
