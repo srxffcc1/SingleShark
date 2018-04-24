@@ -9,7 +9,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="#999"
+        android:background="#FFF"
         android:layout_weight="1">
 
         <com.shark.app.business.view.home.view.NoScrollViewPager
@@ -29,7 +29,7 @@
         <RadioGroup
             android:id="@+id/rg_group"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="154px"
             android:layout_alignParentBottom="true"
             android:background="@drawable/bottom_line"
             android:gravity="center"
@@ -39,13 +39,13 @@
                 android:id="@+id/rb_home"
                 style="@style/Bottom_Tab_Style"
                 android:checked="true"
-                android:drawableTop="@mipmap/icon2_home"
+                android:drawableTop="@drawable/tab1_color_selector"
                 android:text="工作台" />
 
             <RadioButton
                 android:id="@+id/rb_tools"
                 style="@style/Bottom_Tab_Style"
-                android:drawableTop="@mipmap/icon2_tool"
+                android:drawableTop="@drawable/tab2_color_selector"
                 android:text="沟通室" />
 
             <TextView
@@ -56,13 +56,13 @@
             <RadioButton
                 android:id="@+id/rb_count"
                 style="@style/Bottom_Tab_Style"
-                android:drawableTop="@mipmap/icon2_sum"
+                android:drawableTop="@drawable/tab3_color_selector"
                 android:text="分析台" />
 
             <RadioButton
                 android:id="@+id/rb_mine"
                 style="@style/Bottom_Tab_Style"
-                android:drawableTop="@mipmap/icon2_my"
+                android:drawableTop="@drawable/tab4_color_selector"
                 android:text="我的" />
 
         </RadioGroup>
@@ -73,7 +73,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="56px"
             android:scaleType="center"
             android:src="@drawable/ex_centerfb"
             app:backgroundTint="#00000000"

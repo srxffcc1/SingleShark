@@ -10,7 +10,7 @@
         <!--overflow颜色-->
         <item name="android:textColorPrimary">@android:color/white</item>
         <!--标题颜色-->
-        <item name="colorPrimary">#2378BB</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
         <!--标题背景-->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -21,7 +21,7 @@
         <!--overflow颜色-->
         <item name="android:textColorPrimary">@android:color/white</item>
         <!--标题颜色-->
-        <item name="colorPrimary">#2378BB</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
         <!--标题背景-->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
