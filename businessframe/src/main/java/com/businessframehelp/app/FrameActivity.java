@@ -1,5 +1,6 @@
 package com.businessframehelp.app;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.LocalActivityManager;
 import android.content.Context;
@@ -79,6 +80,9 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
 
     }
 
+    public Activity getActivity(){
+        return this;
+    }
     final public void setNewstatus(ORIENTATION newstatus) {
         this.newstatus = newstatus;
         Log.v("SRXCREATE",""+this.newstatus);

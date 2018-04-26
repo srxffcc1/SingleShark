@@ -19,7 +19,7 @@ import java.io.File;
 /**
  * https://github.com/glassLake/CropUtils
  *
- * compile 'com.yalantis:ucrop:2.2.0
+ * implementation 'com.yalantis:ucrop:2.2.0
  *
  * Created by Administrator on 2016/9/23 0004.
  */

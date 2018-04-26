@@ -1,11 +1,16 @@
-include ':sharkapp'
+//include ':myapplication'
+//include ':mylibrary'
+
+
+include ':stepview'
 include ':blackframe'
 include ':businessframe'
 include ':moduleresource'
-include ':moduleclone'
-include ':moduleapk'
-//include ':kjhttp'
-include ':stepview'
+////
 include ':moduledemodb'
+include ':sharkapp'
 
 
+//include ':moduleclone'
+//include ':moduleapk'
+//include ':kjhttp'

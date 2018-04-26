@@ -3,7 +3,7 @@ apply plugin: 'com.android.library'
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
-    enforceUniquePackageName = false
+//    enforceUniquePackageName = false
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
@@ -22,5 +22,5 @@ android {
 }
 
 dependencies {
-    compile 'com.sixdown.bookentity:bookentity:1.4.3'
+    api 'com.sixdown.bookentity:bookentity:1.4.3'
 }

@@ -80,7 +80,7 @@ public class ActivityJiHuaList extends AbstractActivitySearchList {
                         mRefreshLayout.refreshComplete();
                         patetext.setText(page+"/"+totalpage);
                         totaltext.setText("总计:"+totalcount);
-                        StyledDialog.dismissLoading();
+                        StyledDialog.dismissLoading(getActivity());
                     }
                 });
             }

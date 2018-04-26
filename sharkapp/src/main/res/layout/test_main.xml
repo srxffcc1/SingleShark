@@ -244,7 +244,8 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="预留" />
+                    android:onClick="startTestVideo"
+                    android:text="视频" />
 
                 <Button
                     android:layout_width="0dp"

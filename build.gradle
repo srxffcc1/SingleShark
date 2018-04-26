@@ -3,9 +3,11 @@
 buildscript {
     repositories {
         jcenter()
+        mavenLocal()
+        google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.0'
+        classpath 'com.android.tools.build:gradle:3.1.0'
         classpath 'com.jakewharton:butterknife-gradle-plugin:8.5.1'
         classpath 'com.novoda:bintray-release:0.4.0'
         // NOTE: Do not place your application dependencies here; they belong
@@ -16,7 +18,8 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
-//		mavenLocal()
+        google()
+		mavenLocal()
         maven {
             url "https://jitpack.io"
         }
@@ -32,11 +35,11 @@ allprojects {
     }
 }
 ext {
-    compileSdkVersion = 26
-    buildToolsVersion = "25.0.0"
+    compileSdkVersion = 27
+    buildToolsVersion = "27.0.3"
     minSdkVersion = 18
     targetSdkVersion = 22
-    supportVersion = "25.3.1"
+    supportVersion = "27.1.1"
 }
 task clean(type: Delete) {
     delete rootProject.buildDir

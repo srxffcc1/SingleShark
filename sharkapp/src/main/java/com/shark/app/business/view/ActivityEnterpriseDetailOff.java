@@ -72,7 +72,7 @@ public class ActivityEnterpriseDetailOff extends FrameActivity {
                     public void run() {
                         recycler_view.setAdapter(adapter);
                         adapter.notifyDataSetChanged();
-                        StyledDialog.dismissLoading();
+                        StyledDialog.dismissLoading(getActivity());
                     }
                 });
             }

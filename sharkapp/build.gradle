@@ -1,15 +1,15 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.jakewharton.butterknife'
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
-    enforceUniquePackageName = false
+//    enforceUniquePackageName = false
     defaultConfig {
         applicationId "com.shark.app"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        flavorDimensions "versionCode"
         resConfigs "en", "zh"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         manifestPlaceholders = [
@@ -33,25 +33,25 @@ android {
         preDexLibraries = false
         javaMaxHeapSize "2g"
     }
-    signingConfigs {
-        debug {
-            storeFile file("../aycloud_debug.keystore")
-            keyPassword 'android'
-            storePassword 'android'
-            keyAlias 'androiddebugkey'
-        }
-        release {
-            storeFile file("../aycloud.keystore")
-            storePassword "anyuankeji"
-            keyAlias "aycloud"
-            keyPassword "anyuankeji"
-        }
-
-    }
+//    signingConfigs {
+//        debug {
+//            storeFile file("../aycloud_debug.keystore")
+//            keyPassword 'android'
+//            storePassword 'android'
+//            keyAlias 'androiddebugkey'
+//        }
+//        release {
+//            storeFile file("../aycloud.keystore")
+//            storePassword "anyuankeji"
+//            keyAlias "aycloud"
+//            keyPassword "anyuankeji"
+//        }
+//
+//    }
     buildTypes {
-        debug {
-//            applicationIdSuffix ".debug"
-        }
+//        debug {
+////            applicationIdSuffix ".debug"
+//        }
 
         release {
             zipAlignEnabled true
@@ -59,24 +59,26 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
-            signingConfig signingConfigs.release
+//            signingConfig signingConfigs.release
         }
     }
     lintOptions{
         disable 'MissingTranslation'
     }
-
-    productFlavors {
-        flavors_release {}
-    }
-
-    applicationVariants.all { variant ->
-        variant.outputs.each { output ->
-            output.outputFile = new File(
-                    output.outputFile.parent,
-                    output.outputFile.name.replace(output.outputFile.name, "移动3.0" + "_v${variant.versionName}.apk"))
-        }
-    }
+//
+//    android.applicationVariants.all { variant ->
+//        variant.outputs.all {
+//            outputFileName = "移动3.0"+"${variant.name}-${variant.versionName}.apk"
+//        }
+//    }
+//    applicationVariants.all { variant ->
+//        variant.outputs.each { output ->
+////            output.outputFile = new File(
+////                    output.outputFile.parent,
+////                    output.outputFile.name.replace(output.outputFile.name, "移动3.0" + "_v${variant.versionName}.apk"))
+//            outputFileName = "移动3.0"+"${variant.name}-${variant.versionName}.apk"
+//        }
+//    }
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES'
         exclude 'META-INF/NOTICE'
@@ -90,24 +92,21 @@ android {
 
 }
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile('com.android.support:design:' + rootProject.supportVersion)
-    compile('com.android.support.constraint:constraint-layout:1.0.2') {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation('com.android.support:design:' + rootProject.supportVersion)
+    implementation('com.android.support.constraint:constraint-layout:1.0.2') {
         exclude module: 'support-v4'
     }
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.githang:status-bar-compat:latest.integration'
-    compile 'com.jakewharton:butterknife:8.5.1'
-    annotationProcessor('com.jakewharton:butterknife-compiler:8.5.1')
-    compile project(':businessframe')//业务模块
-    compile 'com.android.support:multidex:1.0.0'
-//    compile project(':moduleclone')//克隆模块
-    compile project(':moduleresource')//资源模块1
-//    compile project(':moduleapk')//资源模块2
-    compile project(':moduledemodb')//数据库模块
+    implementation ('com.githang:status-bar-compat:latest.integration')
+    implementation project(':businessframe')//业务模块
+    implementation 'com.android.support:multidex:1.0.2'
+//    implementation project(':moduleclone')//克隆模块
+    implementation project(':moduleresource')//资源模块1
+//    implementation project(':moduleapk')//资源模块2
+    implementation project(':moduledemodb')//数据库模块
 
-//    compile 'com.amap.api:navi-3dmap:latest.integration'//地图包
-//    compile 'com.amap.api:search:latest.integration'//地图包
-//    compile 'com.amap.api:location:latest.integration'//地图包
+//    implementation 'com.amap.api:navi-3dmap:latest.integration'//地图包
+//    implementation 'com.amap.api:search:latest.integration'//地图包
+//    implementation 'com.amap.api:location:latest.integration'//地图包
 
 }

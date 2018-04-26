@@ -6,6 +6,9 @@ import android.graphics.Point;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
+import com.businessframehelp.utils.FileSdk;
+import com.kymjs.common.SystemTool;
+
 import java.io.File;
 
 import static com.kymjs.common.SystemTool.getBigSdCardPath;
@@ -67,6 +70,9 @@ public class StaticAppInfo implements IStaticAppInfo{
 
 		}
 		StaticSdkTool.initDir(mcontext);
+		if(mode==StaticMode.test){
+			FileSdk.getInstance().dispose(mcontext);
+		}
 	}
 	@Override
 	public String getProjcetDir() {
@@ -95,7 +101,7 @@ public class StaticAppInfo implements IStaticAppInfo{
 				if(tmp.exists()){
 
 				}else{//说明又不存在
-					path=getBigSdCardPath(mcontext,tmp);//那就换个大容量地址存储了
+					path= SystemTool.getBigSdCardPath(mcontext,tmp);//那就换个大容量地址存储了
 				}
 				break;
 
@@ -131,7 +137,7 @@ public class StaticAppInfo implements IStaticAppInfo{
 		return mcontext;
 	}
 	public enum  StaticMode {
-		demo, test, online
+		test, demo, online
 	}
 
 }

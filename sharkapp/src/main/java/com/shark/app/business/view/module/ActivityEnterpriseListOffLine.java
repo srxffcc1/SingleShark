@@ -2,6 +2,7 @@ package com.shark.app.business.view.module;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.database.MatrixCursor;
 import android.os.Bundle;
 import android.os.Message;
@@ -19,6 +20,7 @@ import com.shark.app.R;
 import com.shark.app.business.entity.Entity_Company;
 import com.shark.app.business.urlentity.EEnterprise;
 import com.shark.app.business.view.AbstractActivitySearchList;
+import com.shark.app.business.view.ActivityEnterpriseDetailOff;
 import com.wisdomregulation.data.entitybase.DateBase_Entity;
 import com.wisdomregulation.help.Demo_DBManager;
 import com.wisdomregulation.help.Demo_DbUtil;
@@ -92,7 +94,7 @@ public class ActivityEnterpriseListOffLine extends AbstractActivitySearchList {
                         mRefreshLayout.refreshComplete();
                         patetext.setText(page+"/"+totalpage);
                         totaltext.setText("总计:"+totalcount);
-                        StyledDialog.dismissLoading();
+                        StyledDialog.dismissLoading(getActivity());
                     }
                 });
             }
@@ -223,20 +225,20 @@ public class ActivityEnterpriseListOffLine extends AbstractActivitySearchList {
             @Override
             public void onClick(View v) {
                 System.out.println("我点击的是"+getAdapterPosition());
-//                if(intenttype==0){
-//
-//                    startActivity(new Intent(getBaseContext(),ActivityEnterpriseDetailOff.class).putExtra("qyid",qyid));
-//                }else{
-//                    Intent intent=new Intent()
-//                            .putExtra("qyid",qyid)
-//                            .putExtra("qymc",qymcs)
-//                            .putExtra("dz",dzs)
-//                            .putExtra("fddbr",fddbrs)
-//                            .putExtra("dh",dhs);
-//                    setResult(1000,intent);
-//                    finish();
-//                }
-//                //System.out.println("点击项目"+getAdapterPosition());
+                if(intenttype==0){
+
+                    startActivity(new Intent(getBaseContext(),ActivityEnterpriseDetailOff.class).putExtra("qyid",qyid));
+                }else{
+                    Intent intent=new Intent()
+                            .putExtra("qyid",qyid)
+                            .putExtra("qymc",qymcs)
+                            .putExtra("dz",dzs)
+                            .putExtra("fddbr",fddbrs)
+                            .putExtra("dh",dhs);
+                    setResult(1000,intent);
+                    finish();
+                }
+                //System.out.println("点击项目"+getAdapterPosition());
 
             }
 

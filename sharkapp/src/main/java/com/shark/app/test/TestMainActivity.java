@@ -34,6 +34,7 @@ import com.shark.app.business.view.tab.ActivityPdfBook;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class TestMainActivity extends FrameActivity {
@@ -285,4 +286,8 @@ public class TestMainActivity extends FrameActivity {
 
 
     }
+    public void startTestVideo(View view){
+        String path=Uri.fromFile(new File(StaticAppInfo.getInstance().getProjcetDir()+StaticSdkTool.TEST+"/"+"testcompany.mp4")).toString();
+        startActivity(new Intent(this, TextureVideoActivity.class).putExtra("path",path));
+}
 }
