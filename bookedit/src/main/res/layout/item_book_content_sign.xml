@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:gravity="center_vertical"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="15" />
+
+    <TextView
+        android:id="@+id/bookcontentName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="200"
+        android:gravity="center_vertical" />
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="300"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/bookcontentValue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:hint="未填写"
+            android:inputType="textMultiLine" />
+        <ImageView
+            android:id="@+id/signimage"
+            android:visibility="gone"
+            android:layout_width="0dp"
+            android:scaleType="fitCenter"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <ImageButton
+            android:id="@+id/signstart"
+            android:layout_width="90px"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:src="@drawable/bookedit"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>

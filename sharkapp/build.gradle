@@ -33,25 +33,25 @@ android {
         preDexLibraries = false
         javaMaxHeapSize "2g"
     }
-//    signingConfigs {
-//        debug {
-//            storeFile file("../aycloud_debug.keystore")
-//            keyPassword 'android'
-//            storePassword 'android'
-//            keyAlias 'androiddebugkey'
-//        }
-//        release {
-//            storeFile file("../aycloud.keystore")
-//            storePassword "anyuankeji"
-//            keyAlias "aycloud"
-//            keyPassword "anyuankeji"
-//        }
-//
-//    }
+    signingConfigs {
+        debug {
+            storeFile file("../aycloud_debug.keystore")
+            keyPassword 'android'
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+        }
+        release {
+            storeFile file("../aycloud.keystore")
+            storePassword "anyuankeji"
+            keyAlias "aycloud"
+            keyPassword "anyuankeji"
+        }
+
+    }
     buildTypes {
-//        debug {
-////            applicationIdSuffix ".debug"
-//        }
+        debug {
+            applicationIdSuffix ".debug"
+        }
 
         release {
             zipAlignEnabled true
@@ -59,26 +59,17 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
-//            signingConfig signingConfigs.release
         }
     }
     lintOptions{
         disable 'MissingTranslation'
     }
 //
-//    android.applicationVariants.all { variant ->
-//        variant.outputs.all {
-//            outputFileName = "移动3.0"+"${variant.name}-${variant.versionName}.apk"
-//        }
-//    }
-//    applicationVariants.all { variant ->
-//        variant.outputs.each { output ->
-////            output.outputFile = new File(
-////                    output.outputFile.parent,
-////                    output.outputFile.name.replace(output.outputFile.name, "移动3.0" + "_v${variant.versionName}.apk"))
-//            outputFileName = "移动3.0"+"${variant.name}-${variant.versionName}.apk"
-//        }
-//    }
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "移动3.0"+"-${variant.versionName}.apk"
+        }
+    }
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES'
         exclude 'META-INF/NOTICE'

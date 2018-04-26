@@ -27,6 +27,6 @@ dependencies {
     })
     implementation 'com.android.support:appcompat-v7:25.3.1'
     testimplementation 'junit:junit:4.12'
-    implementation 'com.sixdown.voicerecog:voicerecog:+'
+    implementation 'com.sixdown.voicerecog:voicerecog:1.0.1'
     implementation 'com.sixdown.amapfix:amapfix:+'//地图包
 }

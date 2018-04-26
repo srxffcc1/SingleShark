@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.shark.app.R;
-import com.shark.app.business.view.xingzhengzhifa.ActivityCheckMenu;
+import com.shark.app.business.ui.xingzhengzhifa.ActivityCheckMenu;
 import com.wisdomregulation.data.entitybase.DateBase_Entity;
 import com.zhy.autolayout.utils.AutoUtils;
 

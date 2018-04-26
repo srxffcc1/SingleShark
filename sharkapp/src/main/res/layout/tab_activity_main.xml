@@ -12,7 +12,7 @@
         android:background="#FFF"
         android:layout_weight="1">
 
-        <com.shark.app.business.view.home.view.NoScrollViewPager
+        <com.shark.app.business.ui.home.view.NoScrollViewPager
             android:id="@+id/vp_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

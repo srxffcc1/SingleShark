@@ -45,7 +45,7 @@ dependencies {
     api project(':blackframe')
 
     //////    api project(':kjhttp')
-    api project(':stepview')
+//    api project(':stepview')
     api('com.android.support:design:' + rootProject.supportVersion)
     api ('com.android.support:support-v4:'+rootProject.supportVersion)
     api ('com.android.support:appcompat-v7:'+rootProject.supportVersion)
@@ -58,7 +58,7 @@ dependencies {
     api 'com.sixdown.mupdf:mupdf:1.0.0'
 
     //pdf预览
-    api 'com.sixdown.voicerecog:voicerecog:1.0.0'
+    api 'com.sixdown.voicerecog:voicerecog:1.0.1'
 
     //语音包
     api 'com.sixdown.amapfix:amapfix:1.0.1'
@@ -73,8 +73,7 @@ dependencies {
     api 'com.sixdown.soundrecord:soundrecord:1.0.8'
 
     //录音
-
-    //    api 'com.aykjydz.bookedit:bookedit:1.0.1'
+    implementation project(':bookedit')
     api 'com.sixdown.common:common:1.0.1'
 
     //通用工具集

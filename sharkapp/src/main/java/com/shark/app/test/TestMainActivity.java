@@ -29,12 +29,11 @@ import com.ksyun.player.disk.ui.activity.player.TextureVideoActivity;
 import com.kymjs.common.FileUtils;
 import com.kymjs.common.Log;
 import com.shark.app.R;
-import com.shark.app.business.view.tab.ActivityPdfBook;
+import com.shark.app.business.ui.tab.ActivityPdfBook;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import java.io.File;
 import java.util.ArrayList;
 
 public class TestMainActivity extends FrameActivity {
