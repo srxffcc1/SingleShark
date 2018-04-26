@@ -287,7 +287,7 @@ public class TestMainActivity extends FrameActivity {
 
     }
     public void startTestVideo(View view){
-        String path=Uri.fromFile(new File(StaticAppInfo.getInstance().getProjcetDir()+StaticSdkTool.TEST+"/"+"testcompany.mp4")).toString();
-        startActivity(new Intent(this, TextureVideoActivity.class).putExtra("path",path));
+//        String path=Uri.fromFile(new File(StaticAppInfo.getInstance().getProjcetDir()+StaticSdkTool.TEST+"/"+"testcompany.mp4")).toString();
+        startActivity(new Intent(this, TestJiaoZ.class));
 }
 }

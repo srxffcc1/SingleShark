@@ -224,6 +224,10 @@ dependencies {
     api ('cn.rongcloud.android:IMKit:2.8.6'){//dialog库
         exclude group: 'com.android.support'
     }
-
+    api ('cn.jzvd:jiaozivideoplayer:6.2.9'){
+        exclude group: 'com.android.support'
+    }
+    api 'tv.danmaku.ijk.media:ijkplayer-java:0.8.4'
+    api 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.8.4'
 }
 
