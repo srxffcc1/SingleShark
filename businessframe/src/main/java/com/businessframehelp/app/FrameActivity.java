@@ -79,7 +79,25 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
         super.onStart();
 
     }
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId()==android.R.id.home){
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if(getMenuid()==-1){
+            return true;
+        }
+        getMenuInflater().inflate(getMenuid()==0?R.menu.menu_:getMenuid(), menu);
+        return true;
+    }
+    public Context getContext(){
+        return this;
+    }
     public Activity getActivity(){
         return this;
     }
@@ -392,6 +410,7 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
     @Override
     final public void startActivityForResult(Intent intent, int requestCode) {
         isauthentic=true;
+//        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         super.startActivityForResult(intent, requestCode);
     }
 
@@ -496,24 +515,6 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
 
 
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId()==android.R.id.home){
-            onBackPressed();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        if(getMenuid()==-1){
-            return true;
-        }
-        getMenuInflater().inflate(getMenuid()==0?R.menu.menu_:getMenuid(), menu);
-        return true;
-    }
-    public Context getContext(){
-        return this;
-    }
+
 
 }

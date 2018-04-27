@@ -62,6 +62,7 @@ dependencies {
 
     //语音包
     api 'com.sixdown.amapfix:amapfix:1.0.1'
+    //地图修复包
     api('com.sixdown.unzip:unzip:1.0.0') {
         exclude group: 'com.android.support'
         exclude group: 'commons-logging', module: 'commons-logging'
@@ -73,7 +74,7 @@ dependencies {
     api 'com.sixdown.soundrecord:soundrecord:1.0.8'
 
     //录音
-    implementation project(':bookedit')
+    api project(':bookedit')
     api 'com.sixdown.common:common:1.0.1'
 
     //通用工具集

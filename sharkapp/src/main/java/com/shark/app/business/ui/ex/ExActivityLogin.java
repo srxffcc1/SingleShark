@@ -371,7 +371,7 @@ public class ExActivityLogin extends FrameActivity implements View.OnClickListen
              */
             @Override
             public void onError(RongIMClient.ErrorCode errorCode) {
-
+                Toast.makeText(getActivity(),"请检查网络",Toast.LENGTH_SHORT).show();
                 Log.d("LoginActivity", "--onError" + errorCode);
             }
         });

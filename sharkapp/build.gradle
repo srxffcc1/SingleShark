@@ -96,8 +96,6 @@ dependencies {
 //    implementation project(':moduleapk')//资源模块2
     implementation project(':moduledemodb')//数据库模块
 
-//    implementation 'com.amap.api:navi-3dmap:latest.integration'//地图包
-//    implementation 'com.amap.api:search:latest.integration'//地图包
-//    implementation 'com.amap.api:location:latest.integration'//地图包
+
 
 }

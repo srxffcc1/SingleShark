@@ -1,0 +1,7 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.toolbardisk.MainActivity">
+    <item android:id="@+id/action_pdfadd" android:orderInCategory="100"
+        android:title="文书" app:showAsAction="never" />
+</menu>

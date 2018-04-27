@@ -39,14 +39,14 @@
 
         </activity>
         <activity android:name=".test.TestMainActivity">
+
+        </activity>
+        <activity android:name=".business.ui.ex.ExActivityLogin" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".business.ui.ex.ExActivityLogin" >
-
         </activity>
         <activity android:name=".business.ui.ConversationActivity" >
             <intent-filter>
@@ -102,6 +102,7 @@
         <activity android:name=".business.ui.ActivityEnterpriseDetailOff" android:launchMode="singleTop"/>
         <activity android:name=".business.ui.xingzhengzhifa.ActivityJiHuaList" android:launchMode="singleTop"/>
         <activity android:name=".test.TestJiaoZ" android:launchMode="singleTop" android:screenOrientation="landscape"/>
+        <activity android:name=".test.TestPdf" android:launchMode="singleTop"/>
 
 
     </application>

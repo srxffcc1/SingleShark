@@ -11,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
@@ -35,6 +36,7 @@ import com.shark.app.business.entity.Entity_ZeLingZhengGai;
 import com.shark.app.business.entity.Entity_ZhengGaiFuCha;
 import com.shark.app.business.entity.Entity_ZhiFaBianHao;
 import com.shark.app.business.entity.Entity_ZhiFaJiHua;
+import com.shark.app.test.TestPdf;
 import com.wisdomregulation.data.entitybase.DateBase_Entity;
 import com.wisdomregulation.help.Demo_DBManager;
 import com.wisdomregulation.help.Demo_DbUtil;
@@ -157,14 +159,25 @@ public class ActivityCheckMenu extends FrameActivity{
 
     @Override
     public int getMenuid() {
-        return -1;
+        return R.menu.pdfadd_menu;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId()==R.id.action_pdfadd){
+            startPdf();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void handleMessage(Message msg) {
 
     }
-
+    public void startPdf(){
+        startActivity(new Intent(getActivity(), TestPdf.class));
+    }
     @Override
     public boolean needActionBar() {
         return true;

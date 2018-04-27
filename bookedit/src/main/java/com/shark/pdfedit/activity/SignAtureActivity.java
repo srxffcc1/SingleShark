@@ -23,6 +23,9 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 
+/**
+ * 签名类
+ */
 public class SignAtureActivity extends Activity {
     public static final int RESULTOKS=14111;
 

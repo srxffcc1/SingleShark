@@ -1,6 +1,7 @@
 package com.shark.app.business.ui;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.os.Message;
@@ -61,7 +62,7 @@ public class ActivityEnterpriseDetailOff extends FrameActivity {
         initView();
     }
     public void initView(){
-        StyledDialog.buildLoading().show();
+        final Dialog dialog=StyledDialog.buildLoading().show();
         final EnterPriseDetailAdapter adapter=new EnterPriseDetailAdapter(this);
         new Thread(new Runnable() {
             @Override
@@ -72,7 +73,8 @@ public class ActivityEnterpriseDetailOff extends FrameActivity {
                     public void run() {
                         recycler_view.setAdapter(adapter);
                         adapter.notifyDataSetChanged();
-                        StyledDialog.dismissLoading(getActivity());
+//                        StyledDialog.dismissLoading(getActivity());
+                        dialog.dismiss();
                     }
                 });
             }

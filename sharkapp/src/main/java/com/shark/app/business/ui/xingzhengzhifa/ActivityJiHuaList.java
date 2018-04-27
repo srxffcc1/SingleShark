@@ -1,6 +1,7 @@
 package com.shark.app.business.ui.xingzhengzhifa;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.Fragment;
 import android.content.Intent;
 import android.database.MatrixCursor;
@@ -57,7 +58,7 @@ public class ActivityJiHuaList extends AbstractActivitySearchList {
     }
     public void getEnterpriseList(EEnterprise eEnterprise){
 
-        StyledDialog.buildLoading().show();
+        final Dialog dialog=StyledDialog.buildLoading().show();
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -80,7 +81,8 @@ public class ActivityJiHuaList extends AbstractActivitySearchList {
                         mRefreshLayout.refreshComplete();
                         patetext.setText(page+"/"+totalpage);
                         totaltext.setText("总计:"+totalcount);
-                        StyledDialog.dismissLoading(getActivity());
+//                        StyledDialog.dismissLoading(getActivity());
+                        dialog.dismiss();
                     }
                 });
             }
