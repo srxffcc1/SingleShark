@@ -1,16 +1,11 @@
-//include ':myapplication'
-//include ':mylibrary'
+
 
 include ':bookedit'
-//include ':stepview'
 include ':blackframe'
 include ':businessframe'
 include ':moduleresource'
-////
 include ':moduledemodb'
+
+
+
 include ':sharkapp'
-
-
-//include ':moduleclone'
-//include ':moduleapk'
-//include ':kjhttp'
