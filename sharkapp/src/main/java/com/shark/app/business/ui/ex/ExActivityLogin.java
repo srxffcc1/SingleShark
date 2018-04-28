@@ -33,6 +33,7 @@ import com.businessframehelp.app.FrameActivity;
 import com.businessframehelp.enums.ORIENTATION;
 import com.hss01248.dialog.StyledDialog;
 import com.hss01248.dialog.interfaces.MyDialogListener;
+import com.kymjs.common.NetworkUtils;
 import com.shark.app.R;
 import com.shark.app.business.entity.Friend;
 import com.shark.app.business.statich.UrlHome;
@@ -338,7 +339,10 @@ public class ExActivityLogin extends FrameActivity implements View.OnClickListen
     }
     private void connect(String token) {
 
-
+        if(!NetworkUtils.checkNet(this)){
+            Toast.makeText(getActivity(),"群组需要连接网络",Toast.LENGTH_SHORT).show();
+            return;
+        }
         /**
          * IMKit SDK调用第二步,建立与服务器的连接
          */

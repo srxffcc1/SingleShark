@@ -32,7 +32,7 @@ public class FileSdk {
             String[] alllist = context.getAssets().list("");
             for (int i = 0; i < alllist.length; i++) {
                 if (alllist[i].contains("test")) {
-                    copyAssetToPath(alllist[i], StaticAppInfo.getInstance().getProjcetDir()+ StaticSdkTool.TEST+"/"+alllist[i]);
+                    copyAssetToPath(alllist[i], StaticAppInfo.getInstance().getProjcetDir()+ StaticSdkTool.TEST);
                     System.gc();// gc
                     System.runFinalization();// gc
                 }

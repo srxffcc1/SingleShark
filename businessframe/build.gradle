@@ -52,10 +52,8 @@ dependencies {
     api ('com.android.support:appcompat-v7:'+rootProject.supportVersion)
     ////    //design包
     api('com.android.support:cardview-v7:' + rootProject.supportVersion)
-    api 'com.jakewharton:butterknife:8.5.1'
-
-    //butterknife包
-    annotationProcessor('com.jakewharton:butterknife-compiler:8.5.1')
+    api ('com.jakewharton:butterknife:'+ rootProject.butterlevel)
+    annotationProcessor ('com.jakewharton:butterknife-compiler:'+ rootProject.butterlevel)
     api 'com.sixdown.mupdf:mupdf:1.0.0'
 
     //pdf预览

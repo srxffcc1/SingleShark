@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
-//    enforceUniquePackageName = false
     defaultConfig {
         applicationId "com.shark.app"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -95,7 +94,6 @@ dependencies {
     implementation project(':moduleresource')//资源模块1
 //    implementation project(':moduleapk')//资源模块2
     implementation project(':moduledemodb')//数据库模块
-
-
-
+    api ('com.jakewharton:butterknife:'+ rootProject.butterlevel)
+    annotationProcessor ('com.jakewharton:butterknife-compiler:'+ rootProject.butterlevel)
 }

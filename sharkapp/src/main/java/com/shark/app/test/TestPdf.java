@@ -16,6 +16,7 @@ import com.shark.app.R;
 import com.shark.pdfedit.fragment.BookFragment;
 import com.wisdomregulation.data.entitybase.Base_Entity;
 import com.wisdomregulation.data.entitybook2017.Entity_Book_2017_0;
+import com.wisdomregulation.data.entitybook2017.Entity_Book_2017_2;
 import com.wisdomregulation.data.entitybook2017.Entity_Book_2017_4;
 
 import java.io.File;
@@ -50,7 +51,7 @@ public class TestPdf extends FrameActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.test_pdf);
-        Base_Entity base_entity=new Entity_Book_2017_4();
+        Base_Entity base_entity=new Entity_Book_2017_2();
         BookFragment bookFragment = BookFragment.getInstance2017(base_entity,BookFragment.TYPE_ADD);
         getFragmentManager().beginTransaction().replace(R.id.needp, bookFragment).commitAllowingStateLoss();
 
