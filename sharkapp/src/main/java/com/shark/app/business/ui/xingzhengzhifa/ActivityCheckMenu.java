@@ -187,7 +187,7 @@ public class ActivityCheckMenu extends FrameActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_checkmenu);
+        setContentView(R.layout.activity_i_checkmenu);
         initData();
         initLayout();
         initListener();

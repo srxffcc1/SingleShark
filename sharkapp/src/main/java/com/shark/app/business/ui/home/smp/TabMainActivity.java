@@ -1,5 +1,6 @@
 package com.shark.app.business.ui.home.smp;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -40,6 +41,7 @@ public class TabMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);// 去掉标题
         setContentView(R.layout.tab_activity_main);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         StatusBarCompat.setStatusBarColor(this, getResources().getColor(R.color.colorPrimary), true);
         Log.i("----------------", "主Activity");
         mShowAction = AnimationUtils.loadAnimation(this, R.anim.photo_dialog_in_anim);

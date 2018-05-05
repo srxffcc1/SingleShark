@@ -60,7 +60,7 @@ public class ActivityChuFa extends FrameActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chufa);
+        setContentView(R.layout.activity_i_chufa);
         WindowManager m = getWindowManager();
         Display d = m.getDefaultDisplay(); // 为获取屏幕宽、高
         android.view.WindowManager.LayoutParams p = getWindow().getAttributes();

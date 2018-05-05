@@ -5,15 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <LinearLayout
@@ -26,77 +24,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="被检查企业" />
-
-                <EditText
-                    android:id="@+id/beijianchaqiye"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                    android:text="计划名称:" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="地址" />
-
-                <EditText
-                    android:id="@+id/dizhi"
                     android:layout_width="0dp"
+                    android:id="@+id/jihuamingcheng"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
             </LinearLayout>
-
-
-            <LinearLayout
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="法定代表人" />
-
-                <EditText
-                    android:id="@+id/fadingdaibiaoren"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="联系电话" />
-
-                <EditText
-                    android:id="@+id/lianxidianhua"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-            </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -107,15 +42,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="检查场所" />
+                    android:text="计划来源:" />
 
-                <EditText
-                    android:id="@+id/jianchachangsuo"
+                <TextView
+                    android:id="@+id/jihualaiyuan"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -126,17 +60,15 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="检查时间" />
+                    android:text="计划类型:" />
 
-                <EditText
-                    android:id="@+id/jianchashijian"
+                <TextView
                     android:layout_width="0dp"
+                    android:id="@+id/jihualeixing"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
             </LinearLayout>
-
             <LinearLayout
-                android:id="@+id/fromfangan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -146,49 +78,54 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="检查项类别" />
+                    android:text="计划负责人:" />
 
-                <Spinner
-                    android:entries="@array/languages"
+                <TextView
+                    android:id="@+id/jihuafuzeren"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
-
-
-
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <com.businessframehelp.widget.ViewPagerForScrollView
-                    android:id="@+id/vp_2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"></com.businessframehelp.widget.ViewPagerForScrollView>
+                android:layout_margin="5dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-                <com.flyco.tablayout.SegmentTabLayout
-                    android:id="@+id/tl_3"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="2dp"
-                    android:paddingRight="2dp"
-                    android:paddingTop="5dp"
-                    tl:tl_bar_color="#ffffff"
-                    tl:tl_indicator_anim_enable="true"
-                    tl:tl_indicator_color="#F6CE59"
-                    tl:tl_indicator_corner_radius="8dp"
-                    tl:tl_textBold="SELECT" />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"></LinearLayout>
+                    android:text="计划成员:" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:id="@+id/jihuachengyuan"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="计划完成时间:" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:id="@+id/jihuawanchengshijian"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
             </LinearLayout>
 
         </LinearLayout>
 
-
     </ScrollView>
-
 
     <include layout="@layout/include_finish" />
 </LinearLayout>

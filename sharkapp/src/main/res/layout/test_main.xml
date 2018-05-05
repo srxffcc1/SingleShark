@@ -247,11 +247,14 @@
                     android:onClick="startTestVideo"
                     android:text="视频" />
 
-                <Button
+                <com.businessframehelp.widget.AutoClickShadowImageView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/bottom_4_1"
+                    android:clickable="true"
                     android:layout_weight="1"
-                    android:text="预留" />
+                     />
             </LinearLayout>
         </LinearLayout>
 

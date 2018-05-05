@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <!--在查看时顶部会显示包含的3分文书 可以编辑 具体状态还需要推敲-->
+    <ScrollView
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <FrameLayout
+                android:id="@+id/bookframe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></FrameLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="被检查企业" />
+
+                <EditText
+                    android:id="@+id/beijianchaqiye"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="复查意见" />
+
+                <EditText
+                    android:id="@+id/fuchayijian"
+                    android:layout_width="match_parent"
+                    android:gravity="left"
+                    android:minHeight="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="处罚决定文书" />
+
+                <EditText
+                    android:id="@+id/chufajuedingwenshu"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:visibility="gone"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/seach_linearlayoutbg4"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="5dp"
+                    android:text="选择"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="检查人" />
+
+                <EditText
+                    android:id="@+id/jiancharen"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+                <TextView
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/seach_linearlayoutbg4"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:text="选择"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:padding="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="复查结果:"></TextView>
+                <RadioGroup
+                    android:id="@+id/yinhuangroup"
+                    android:padding="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+                    <RadioButton
+                        android:id="@+id/yinhuanlevel1"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:checked="true"
+                        android:layout_height="wrap_content"
+                        android:text="通过"/>
+                    <RadioButton
+                        android:id="@+id/yinhuanlevel2"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="不通过"/>
+                </RadioGroup>
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </ScrollView>
+
+<include layout="@layout/include_finish"/>
+</LinearLayout>

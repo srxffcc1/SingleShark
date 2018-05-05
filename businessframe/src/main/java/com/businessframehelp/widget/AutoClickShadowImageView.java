@@ -58,7 +58,7 @@ public class AutoClickShadowImageView extends ImageView implements GestureDetect
         }
         if(drawable!=null){
             //设置滤镜
-            drawable.setColorFilter(Color.GRAY,PorterDuff.Mode.MULTIPLY);;
+            drawable.setColorFilter(0x33000000,PorterDuff.Mode.SRC_OVER);;
         }
     }
     private void scaleToSmaller()

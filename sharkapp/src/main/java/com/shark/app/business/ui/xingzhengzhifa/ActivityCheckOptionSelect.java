@@ -51,7 +51,7 @@ public class ActivityCheckOptionSelect extends FrameActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.checkoption_select_list);
+        setContentView(R.layout.checkoption_i_select_list);
         WindowManager m = getWindowManager();
         Display d = m.getDefaultDisplay(); // 为获取屏幕宽、高
         android.view.WindowManager.LayoutParams p = getWindow().getAttributes();

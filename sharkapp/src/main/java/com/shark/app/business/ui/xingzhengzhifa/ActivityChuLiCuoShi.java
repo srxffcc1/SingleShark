@@ -55,7 +55,7 @@ public class ActivityChuLiCuoShi extends FrameActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chulicuoshi);
+        setContentView(R.layout.activity_i_chulicuoshi);
         WindowManager m = getWindowManager();
         Display d = m.getDefaultDisplay(); // 为获取屏幕宽、高
         android.view.WindowManager.LayoutParams p = getWindow().getAttributes();

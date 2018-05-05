@@ -64,7 +64,7 @@ public class ActivityFangAn extends FrameActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fangan);
+        setContentView(R.layout.activity_i_fangan);
         WindowManager m = getWindowManager();
         Display d = m.getDefaultDisplay(); // 为获取屏幕宽、高
         android.view.WindowManager.LayoutParams p = getWindow().getAttributes();

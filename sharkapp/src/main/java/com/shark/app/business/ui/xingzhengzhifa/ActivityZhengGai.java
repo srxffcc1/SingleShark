@@ -57,7 +57,7 @@ public class ActivityZhengGai extends FrameActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_zhenggai);
+        setContentView(R.layout.activity_i_zhenggai);
         WindowManager m = getWindowManager();
         Display d = m.getDefaultDisplay(); // 为获取屏幕宽、高
         android.view.WindowManager.LayoutParams p = getWindow().getAttributes();
