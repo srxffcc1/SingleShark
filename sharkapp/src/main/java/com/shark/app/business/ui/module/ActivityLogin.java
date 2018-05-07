@@ -2,14 +2,17 @@ package com.shark.app.business.ui.module;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextUtils;
@@ -54,15 +57,13 @@ import io.rong.imlib.model.UserInfo;
  * Created by King6rf on 2017/5/17.
  */
 
-public class ActivityLogin extends FrameActivity implements View.OnClickListener,RongIM.UserInfoProvider {
+public class ActivityLogin extends AppCompatActivity implements View.OnClickListener,RongIM.UserInfoProvider {
 
-    @Override
     public ORIENTATION getORIENTATION() {
         return ORIENTATION.PORTRAIT;
     }
 
 
-    @Override
     public void handleMessage(Message msg) {
 
     }
@@ -82,7 +83,7 @@ public class ActivityLogin extends FrameActivity implements View.OnClickListener
     private View service;
     private int height = 0;
     String token = "cqBImz2pcE+UD+m+GXgkXVEowCAKPQvMfPzJtgvJ7stwhoUjeP66aC86nnA1mVCidDvbVlbmXXN0WK2Lvp1IPA==";
-    @Override
+
     public int getMenuid() {
         return -1;
     }
@@ -91,11 +92,12 @@ public class ActivityLogin extends FrameActivity implements View.OnClickListener
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //设置输入法不弹起
-        setContentView(R.layout.app_activity_login);
-        getSupportActionBar().hide();
-        initUserInfo();
+                        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        setContentView(R.layout.test_main);
+//        getSupportActionBar().hide();
+//        initUserInfo();
 //        AndroidBug5497Workaround.assistActivity(this);
-        intiView();
+//        intiView();
     }
 
     private void intiView() {
@@ -233,7 +235,7 @@ public class ActivityLogin extends FrameActivity implements View.OnClickListener
              */
             @Override
             public void onSuccess(String userid) {
-                startActivity(new Intent(getContext(), TabMainActivity.class));
+                startActivity(new Intent(getBaseContext(), TabMainActivity.class));
                 finish();
                 Log.d("LoginActivity", "--onSuccess" + userid);
             }
@@ -272,7 +274,7 @@ public class ActivityLogin extends FrameActivity implements View.OnClickListener
     Dialog menudialog;
 
     public void startMenuDialog() {
-        StyledDialog.init(getContext());
+        StyledDialog.init(getBaseContext());
         menudialog =
                 StyledDialog.buildNormalInput("修改IP", "请输入IP", "", "确定", "取消", new MyDialogListener() {
                     @Override
@@ -361,39 +363,39 @@ public class ActivityLogin extends FrameActivity implements View.OnClickListener
             connect(token);
         } else {
             HttpConfig.sCookie = "";
-            Toast.makeText(getContext(), "正在登录", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), "正在登录", Toast.LENGTH_SHORT).show();
             ELogin eLogin = new ELogin(et_username.getText().toString(), et_password.getText().toString());
             SpHome.getSpHome().put("username", et_username.getText().toString());
             SpHome.getSpHome().put("password", et_password.getText().toString());
-            httpGet(UrlHome.getUrl(this, UrlHome.login), UrlHome.entity2MapHashClassNoPrefix(eLogin), new HttpCallBack() {
-                @Override
-                public void onSuccess(String t) {
-                    super.onSuccess(t);
-                    try {
-                        JSONObject jsonObject = new JSONObject(t);
-                        if (jsonObject.getBoolean("status")) {
-                            String sessionid = jsonObject.getString("sessionId");
-                            HttpConfig.sCookie = sessionid;
-                            connect(token);
-                        } else {
-                            Toast.makeText(getContext(), jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
-                }
-
-                @Override
-                public void onFailure(int errorNo, String strMsg) {
-                    super.onFailure(errorNo, strMsg);
-                }
-
-                @Override
-                public void onCookieTimeOut() {
-
-                }
-            });
+//            httpGet(UrlHome.getUrl(this, UrlHome.login), UrlHome.entity2MapHashClassNoPrefix(eLogin), new HttpCallBack() {
+//                @Override
+//                public void onSuccess(String t) {
+//                    super.onSuccess(t);
+//                    try {
+//                        JSONObject jsonObject = new JSONObject(t);
+//                        if (jsonObject.getBoolean("status")) {
+//                            String sessionid = jsonObject.getString("sessionId");
+//                            HttpConfig.sCookie = sessionid;
+//                            connect(token);
+//                        } else {
+//                            Toast.makeText(getContext(), jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+//                        }
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//
+//                }
+//
+//                @Override
+//                public void onFailure(int errorNo, String strMsg) {
+//                    super.onFailure(errorNo, strMsg);
+//                }
+//
+//                @Override
+//                public void onCookieTimeOut() {
+//
+//                }
+//            });
         }
 
     }

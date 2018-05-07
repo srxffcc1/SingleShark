@@ -31,8 +31,12 @@
         android:supportsRtl="true" android:theme="@style/SharkAppBaseTheme" tools:replace="android:icon,android:theme">
         <activity
             android:theme="@style/FirstActivityTheme"
-            android:name=".business.ui.module.ActivitySplash" android:launchMode="singleTop">
+            android:name=".business.ui.module.ActivitySplash" android:launchMode="singleTop" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name="com.shark.app.business.ui.home.smp.TabMainActivity" android:launchMode="singleTop"
             android:theme="@style/SMPActivityTheme">
@@ -42,19 +46,15 @@
 
         </activity>
         <activity android:name=".business.ui.ex.ExActivityLogin" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-        <activity android:name=".business.ui.ConversationActivity" >
+        <activity android:name=".business.ui.ConversationActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
-                    android:host="com.shark.app"
+                    android:host="${APPID}"
                     android:pathPrefix="/conversation/"
                     android:scheme="rong" />
             </intent-filter>

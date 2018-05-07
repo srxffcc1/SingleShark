@@ -229,7 +229,7 @@ public class TestMainActivity extends FrameActivity {
     }
 
     public void testPDfPrint(View view) {
-        PrintUtil.print(FileUtils.assetsCopy(this, StaticAppInfo.getInstance().getProjcetDir()+ StaticSdkTool.TEST,"wtest"), this, 1000);
+//        PrintUtil.print(FileUtils.assetsCopy(this, StaticAppInfo.getInstance().getProjcetDir()+ StaticSdkTool.TEST,"wtest"), this, 1000);
     }
 
     public void testWeb(View view){

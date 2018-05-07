@@ -114,7 +114,6 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
         BroadCastManager.getInstance().registerListtener(this);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         checkActionBar();
-
         super.onCreate(savedInstanceState);
         if(savedInstanceState!=null&&savedInstanceState.getSerializable("newstatus")!=null){
             newstatus= (ORIENTATION) savedInstanceState.getSerializable("newstatus");
@@ -436,17 +435,17 @@ public abstract class FrameActivity extends AutoLayoutActivity implements IFrame
     }
     public void onBackPressedCopy() {
         isauthentic=true;
+//        newstatus=getORIENTATION();
+//        changeOrientation(getORIENTATION());
         super.onBackPressed();
-        newstatus=getORIENTATION();
-        changeOrientation(getORIENTATION());
     }
 
     @Override
     public void onBackPressed() {
         isauthentic=true;
+//        newstatus=getORIENTATION();
+//        changeOrientation(getORIENTATION());
         super.onBackPressed();
-        newstatus=getORIENTATION();
-        changeOrientation(getORIENTATION());
     }
     /**
      * 封装两个打开fragment的简单方法

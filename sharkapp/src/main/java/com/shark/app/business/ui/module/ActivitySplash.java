@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.shark.app.R;
+import com.shark.app.business.ui.ex.ExActivityLogin;
 import com.shark.app.business.utils.SpHome;
 
 /**
@@ -23,19 +24,27 @@ public class ActivitySplash extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         setContentView(R.layout.splash);
-        if(!"".equals(SpHome.getSpHome().getString("username"))){
-            startActivity(new Intent(ActivitySplash.this,ActivityAutoLogin.class));
-            ActivitySplash.this.finish();
-        }else{
-            new Handler().postDelayed(new Runnable() {
+        new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    startActivity(new Intent(ActivitySplash.this,ActivityLogin.class));
+                    startActivity(new Intent(ActivitySplash.this,ExActivityLogin.class));
                     ActivitySplash.this.finish();
                 }
-            },300);
-        }
+            },600);
+//        if(!"".equals(SpHome.getSpHome().getString("username"))){
+//            startActivity(new Intent(ActivitySplash.this,ActivityAutoLogin.class));
+//            ActivitySplash.this.finish();
+//        }else{
+//            new Handler().postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    startActivity(new Intent(ActivitySplash.this,ExActivityLogin.class));
+//                    ActivitySplash.this.finish();
+//                }
+//            },300);
+//        }
 
     }
 }
