@@ -18,7 +18,7 @@ import com.flyco.tablayout.listener.CustomTabEntity;
 import com.shark.app.R;
 import com.shark.app.business.entity.TabEntity;
 import com.shark.app.business.ui.fragment.FragmentManagers;
-import com.shark.app.business.ui.xingzhengzhifa.ActivityJiHuaList;
+import com.shark.app.business.ui.xingzhengzhifaold.ActivityJiHuaList;
 
 import java.util.ArrayList;
 

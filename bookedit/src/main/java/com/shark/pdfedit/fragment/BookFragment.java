@@ -538,6 +538,7 @@ public class BookFragment extends Fragment implements View.OnClickListener{
     }
     public void submit(){
         new TaskIdentify().execute();
+
     }
     class TaskIdentify extends AsyncTask<String,Integer,String>{
         @Override

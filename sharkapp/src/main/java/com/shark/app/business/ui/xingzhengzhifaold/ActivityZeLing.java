@@ -1,4 +1,4 @@
-package com.shark.app.business.ui.xingzhengzhifa;
+package com.shark.app.business.ui.xingzhengzhifaold;
 
 import android.os.Bundle;
 import android.os.Message;
@@ -10,15 +10,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.businessframehelp.app.FrameActivity;
 import com.businessframehelp.enums.ORIENTATION;
 import com.businessframehelp.widget.ScrollLinearLayoutManager;
 import com.shark.app.R;
-import com.shark.app.business.adapter.InsertMurderRecycleAdapter;
-import com.shark.app.business.entity.Entity_ChuFa;
+import com.shark.app.business.adapter.ChoseCheckRecycleAdapter;
 import com.shark.app.business.entity.Entity_JianChaXiang;
+import com.shark.app.business.entity.Entity_ZeLingZhengGai;
 import com.wisdomregulation.data.entitybase.Base_Entity;
 import com.wisdomregulation.data.entitybase.DateBase_Entity;
 import com.wisdomregulation.help.Demo_DBManager;
@@ -30,12 +29,8 @@ import java.util.List;
  * Created by Administrator on 2017/5/25. 临时模板复制就用
  */
 
-public class ActivityChuFa extends FrameActivity {
+public class ActivityZeLing extends FrameActivity {
 
-
-    private EditText jiaonafajingshuliang;
-    private EditText jiaonafajinzhanghao;
-    private String chulijueding;
 
     @Override
     public ORIENTATION getORIENTATION() {
@@ -60,7 +55,7 @@ public class ActivityChuFa extends FrameActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_i_chufa);
+        setContentView(R.layout.activity_i_zeling);
         WindowManager m = getWindowManager();
         Display d = m.getDefaultDisplay(); // 为获取屏幕宽、高
         android.view.WindowManager.LayoutParams p = getWindow().getAttributes();
@@ -74,62 +69,65 @@ public class ActivityChuFa extends FrameActivity {
     private void initView() {
         showlist= Demo_DbUtil.getSearchResult(Demo_DBManager.build().search(new Entity_JianChaXiang()
                 .putlogic2value("隐患级别","<>","无隐患")
-                .putlogic2value("进行的阶段转化id","=",chulijueding)
+                .putlogic2value("进行的阶段转化id","=","责令限期整改")
                 .putlogic2value("关联的执法编号id","=",bianhaoid)));
-        if(showlist.size()<1){
-            Toast.makeText(getContext(),"暂无违法记录,选择其他来源",Toast.LENGTH_SHORT).show();
-            finish();
-        }
         RecyclerView recycler_view = (RecyclerView) findViewById(R.id.recycler_view);
-        recycler_view.setLayoutManager(new ScrollLinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
-        recycler_view.setAdapter(new InsertMurderRecycleAdapter(this,showlist).setCanedit(false));
+        recycler_view.setLayoutManager(new ScrollLinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+        recycler_view.setAdapter(new ChoseCheckRecycleAdapter(this,showlist).setCanedit(false));
     }
     private String beijianchaqiyetext;
     private String bianhaoid;
-    private Base_Entity beanentity;
-    public void initData(){
-
-        beijianchaqiyetext = getIntent().getStringExtra("beijianchaqiyetext");
-
-        bianhaoid = getIntent().getStringExtra("bianhaoid");
-        chulijueding = getIntent().getStringExtra("chulijueding");
-        if(bianhaoid.equals("-1")){
-            beanentity=new Base_Entity();
-        }else{
-            beanentity = Demo_DbUtil.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_ChuFa().put("关联的执法编号id",bianhaoid)));
-        }
-    }
     private EditText beijianchaqiye;
     private EditText dizhi;
     private EditText fadingdaibiaoren;
+    private EditText lianxidianhua;
+    private EditText jianchachangsuo;
+    private EditText jianchashijian;
+    private String beanid;
+    private Base_Entity beanentity;
+    public void initData(){
+
+        bianhaoid = getIntent().getStringExtra("bianhaoid");
+        beijianchaqiyetext = getIntent().getStringExtra("beijianchaqiyetext");
+        beanid = getIntent().getStringExtra("beanid")==null?"-1":getIntent().getStringExtra("beanid");
+        if(beanid==null||beanid.equals("-1")){
+            beanentity=new Base_Entity();
+        }else{
+            beanentity = Demo_DbUtil.getSearchResultOnlyOne(Demo_DBManager.build().search(new Entity_ZeLingZhengGai().setId(beanid)));
+        }
+    }
     public void initLayout(){
         beijianchaqiye = (EditText) findViewById(R.id.beijianchaqiye);
         beijianchaqiye.setText(beijianchaqiyetext);
         dizhi = (EditText) findViewById(R.id.dizhi);
-        dizhi.setText(beanentity.getValue("企业地址"));
+        dizhi.setText(beanentity.getValue("被检查企业地址"));
         fadingdaibiaoren = (EditText) findViewById(R.id.fadingdaibiaoren);
         fadingdaibiaoren.setText(beanentity.getValue("法定代表人"));
-        jiaonafajingshuliang = (EditText) findViewById(R.id.jiaonafajingshuliang);
-        jiaonafajingshuliang.setText(beanentity.getValue("缴纳罚金数量"));
-        jiaonafajinzhanghao = (EditText) findViewById(R.id.jiaonazhanghao);
-        jiaonafajinzhanghao.setText(beanentity.getValue("缴纳罚金账号"));
+        lianxidianhua = (EditText) findViewById(R.id.lianxidianhua);
+        lianxidianhua.setText(beanentity.getValue("联系电话"));
+        jianchachangsuo = (EditText) findViewById(R.id.jianchachangsuo);
+        jianchachangsuo.setText("检查场所");
+        jianchashijian = (EditText) findViewById(R.id.jianchashijian);
+        jianchashijian.setText(beanentity.getValue("整改期限"));
         if(getIntent().getBooleanExtra("see",false)){
             findViewById(R.id.showfinish).setVisibility(View.GONE);
             beijianchaqiye.setEnabled(false);
-                    fadingdaibiaoren.setEnabled(false);
-            jiaonafajingshuliang.setEnabled(false);
-                    fadingdaibiaoren.setEnabled(false);
-            jiaonafajinzhanghao.setEnabled(false);
+            lianxidianhua.setEnabled(false);
+            dizhi.setEnabled(false);
+            fadingdaibiaoren.setEnabled(false);
+            jianchachangsuo.setEnabled(false);
+            jianchashijian.setEnabled(false);
         }
     }
     public void buttonSubmit(View view){
-        Demo_DBManager.build().save2update(new Entity_ChuFa()
+        Demo_DBManager.build().save2update(new Entity_ZeLingZhengGai()
                 .put("关联的执法编号id",bianhaoid)
                 .put("被检查企业名称",beijianchaqiye.getText().toString())
                 .put("被检查企业地址",dizhi.getText().toString())
                 .put("法定代表人",fadingdaibiaoren.getText().toString())
-                .put("缴纳罚金数量",jiaonafajingshuliang.getText().toString())
-                .put("缴纳罚金账号",jiaonafajinzhanghao.getText().toString())
+                .put("联系电话",lianxidianhua.getText().toString())
+                .put("检查场所",jianchachangsuo.getText().toString())
+                .put("整改期限",jianchashijian.getText().toString())
         );
         finish();
     }

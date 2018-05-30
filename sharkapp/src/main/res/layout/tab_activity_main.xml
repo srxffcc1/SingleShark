@@ -29,7 +29,7 @@
         <RadioGroup
             android:id="@+id/rg_group"
             android:layout_width="match_parent"
-            android:layout_height="154px"
+            android:layout_height="@dimen/tabhigh"
             android:layout_alignParentBottom="true"
             android:background="@drawable/bottom_line"
             android:gravity="center"
@@ -67,13 +67,33 @@
 
         </RadioGroup>
 
+
+
+        <RelativeLayout
+            android:id="@+id/outside"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:layout_above="@+id/rg_group">
+
+            <LinearLayout
+                android:id="@+id/needshow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="500px"
+                android:layout_alignParentBottom="true"
+                android:background="#000"
+                android:orientation="vertical"
+                android:visibility="gone"></LinearLayout>
+        </RelativeLayout>
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/rb_center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="56px"
+            android:layout_marginBottom="@dimen/tabhighb"
             android:scaleType="center"
             android:src="@drawable/ex_centerfb"
             app:backgroundTint="#00000000"
@@ -81,23 +101,6 @@
             app:elevation="4dp"
             app:fabSize="normal"
             />
-
-        <RelativeLayout
-            android:id="@+id/outside"
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/rg_group">
-
-            <LinearLayout
-                android:id="@+id/needshow"
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_alignParentBottom="true"
-                android:background="#000"
-                android:orientation="vertical"
-                android:visibility="gone"></LinearLayout>
-        </RelativeLayout>
     </RelativeLayout>
 
 

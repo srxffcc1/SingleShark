@@ -31,7 +31,7 @@ android {
 }
 dependencies {
 //    implementation project(':virtualapp')
-//    api  'com.sixdown.virtuallib:virtuallib:1.0.0'
+    api  'com.sixdown.virtuallib:virtuallib:1.0.0'
     //    implementation fileTree(include: ['*.jar'], dir: 'libs')
     //动态加载框架
 //    implementation 'com.sixdown.virtuallib:virtuallib:+'

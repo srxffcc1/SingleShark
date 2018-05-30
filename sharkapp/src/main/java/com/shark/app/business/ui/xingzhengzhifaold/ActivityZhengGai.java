@@ -1,4 +1,4 @@
-package com.shark.app.business.ui.xingzhengzhifa;
+package com.shark.app.business.ui.xingzhengzhifaold;
 
 import android.os.Bundle;
 import android.os.Message;
@@ -127,7 +127,6 @@ public class ActivityZhengGai extends FrameActivity {
                 .put("关联处罚决定书",chulijueding)
                 .put("检查人",jiancharen.getText().toString())
                 .put("复查结果",fuchajieguo)
-
         );
         finish();
     }

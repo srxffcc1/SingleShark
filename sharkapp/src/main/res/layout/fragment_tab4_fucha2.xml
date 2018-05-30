@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
-        android:id="@+id/linearpart6"
+        android:id="@+id/linearpart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -29,7 +29,7 @@
                 android:text="二次整改复查"></TextView>
 
             <TextView
-                android:id="@+id/zhenggaifuchaaddt"
+                android:id="@+id/add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -47,7 +47,7 @@
         </RelativeLayout>
 
         <android.support.v7.widget.CardView
-            android:id="@+id/card6"
+            android:id="@+id/card"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -65,7 +65,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -73,8 +73,8 @@
                         android:text="被检查企业" />
 
                     <TextView
-                        android:id="@+id/zhenggaiqiye"
-                        android:layout_width="0dp"
+                        android:id="@+id/qiyemingcheng"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1" />
                 </LinearLayout>
@@ -90,7 +90,6 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
                         android:text="复查意见" />
 
                     <TextView
@@ -108,7 +107,6 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
                         android:text="复查情况" />
 
                     <TextView
@@ -126,13 +124,42 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
                         android:text="复查相关文书" />
 
-                    <FrameLayout
+                    <LinearLayout
                         android:id="@+id/fuchabook"
+                        android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content" >
+                        <Button
+                            android:id="@+id/bookxcjc"
+                            android:text="现场检查"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="2dp"/>
+                        <Button
+                            android:id="@+id/bookzlzg"
+                            android:text="责令整改"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="2dp"/>
+                        <Button
+                            android:id="@+id/bookzgfc"
+                            android:text="整改复查"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="2dp"/>
+                        <Button
+                            android:id="@+id/bookxccl"
+                            android:text="现场处理"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="2dp"/>
+                    </LinearLayout>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -141,7 +168,7 @@
                     android:padding="6dp">
 
                     <TextView
-                        android:id="@+id/chakan6"
+                        android:id="@+id/chakan"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="2dp"
@@ -157,7 +184,7 @@
                         android:textColor="@color/white" />
 
                     <TextView
-                        android:id="@+id/bianji6"
+                        android:id="@+id/bianji"
                         android:visibility="gone"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -175,7 +202,7 @@
 
                     <TextView
                         android:visibility="gone"
-                        android:id="@+id/shanchu6"
+                        android:id="@+id/shanchu"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="2dp"
@@ -191,7 +218,7 @@
                         android:textColor="@color/white" />
 
                     <TextView
-                        android:id="@+id/yincang6"
+                        android:id="@+id/yincang"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="2dp"

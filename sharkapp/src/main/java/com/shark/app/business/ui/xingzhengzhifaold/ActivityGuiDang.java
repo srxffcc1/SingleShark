@@ -1,11 +1,9 @@
-package com.shark.app.business.ui.xingzhengzhifa;
+package com.shark.app.business.ui.xingzhengzhifaold;
 
 import android.os.Bundle;
 import android.os.Message;
 import android.support.annotation.Nullable;
-import android.view.Display;
 import android.view.MenuItem;
-import android.view.WindowManager;
 
 import com.businessframehelp.app.FrameActivity;
 import com.businessframehelp.enums.ORIENTATION;
@@ -15,7 +13,7 @@ import com.shark.app.R;
  * Created by Administrator on 2017/5/25. 临时模板复制就用
  */
 
-public class ActivityChuFaList extends FrameActivity {
+public class ActivityGuiDang extends FrameActivity {
 
 
     @Override
@@ -29,11 +27,6 @@ public class ActivityChuFaList extends FrameActivity {
     }
 
     @Override
-    public boolean needActionBar() {
-        return false;
-    }
-
-    @Override
     public int getMenuid() {
         return 0;
     }
@@ -41,12 +34,8 @@ public class ActivityChuFaList extends FrameActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_i_chufalist);
-        WindowManager m = getWindowManager();
-        Display d = m.getDefaultDisplay(); // 为获取屏幕宽、高
-        android.view.WindowManager.LayoutParams p = getWindow().getAttributes();
-        p.width = (int) (d.getWidth() * 0.9); // 宽度设置为屏幕的0.7
-        getWindow().setAttributes(p);
+        setContentView(R.layout.activity_guidang);
+
 
     }
 

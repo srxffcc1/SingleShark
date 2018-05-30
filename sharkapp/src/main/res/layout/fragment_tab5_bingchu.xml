@@ -28,7 +28,7 @@
                 android:text="并处立案"></TextView>
 
             <TextView
-                android:id="@+id/chufaaddt"
+                android:id="@+id/add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -46,7 +46,7 @@
         </RelativeLayout>
 
         <android.support.v7.widget.CardView
-            android:id="@+id/card7"
+            android:id="@+id/card"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -92,10 +92,7 @@
                         android:gravity="center"
                         android:text="发现的违法行为" />
 
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/chufarecycleview"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+
 
                 </LinearLayout>
                 <LinearLayout
@@ -110,7 +107,7 @@
                     android:padding="6dp">
 
                     <TextView
-                        android:id="@+id/chakan7"
+                        android:id="@+id/chakan"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="2dp"
@@ -126,7 +123,7 @@
                         android:textColor="@color/white" />
 
                     <TextView
-                        android:id="@+id/bianji7"
+                        android:id="@+id/bianji"
                         android:visibility="gone"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -143,8 +140,8 @@
                         android:textColor="@color/white" />
 
                     <TextView
-                        android:id="@+id/shanchu7"
                         android:visibility="gone"
+                        android:id="@+id/shanchu"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="2dp"
@@ -160,7 +157,7 @@
                         android:textColor="@color/white" />
 
                     <TextView
-                        android:id="@+id/yincang7"
+                        android:id="@+id/yincang"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="2dp"
