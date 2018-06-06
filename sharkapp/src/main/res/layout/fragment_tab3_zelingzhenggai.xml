@@ -42,7 +42,7 @@
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
                 android:paddingTop="5dp"
-                android:text="添加"
+                android:text="操作"
                 android:textColor="@color/white" />
 
         </RelativeLayout>
@@ -66,16 +66,16 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="被检查企业" />
+                        android:text="被检查企业:" />
 
                     <TextView
                         android:id="@+id/chufaqiye"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1" />
                 </LinearLayout>
@@ -91,8 +91,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="发现的违法行为" />
+                        android:text="发现的违法行为:" />
 
                     <TextView
                         android:id="@+id/weifaxingwei"
@@ -110,7 +109,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="相关文书" />
+                        android:text="相关文书:" />
 
                     <LinearLayout
                         android:id="@+id/jianchabook"
@@ -146,6 +145,39 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:padding="2dp"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/passl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="后续操作:" />
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <Button
+                            android:id="@+id/passzhenggai"
+                            android:text="转入整改复查"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content" />
+                        <Button
+                            android:id="@+id/passback"
+                            android:text="回退"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content" />
                     </LinearLayout>
 
                 </LinearLayout>

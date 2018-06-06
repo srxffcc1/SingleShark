@@ -860,9 +860,9 @@ public class ActivityCheckMenu extends FrameActivity{
             strings.add("复查来源:责令限期整改");
         }
 
-        StyledDialog.init(getContext());
+
         zhenggaimenudialog=
-                StyledDialog.buildBottomItemDialog( strings, "cancle",  new MyItemDialogListener() {
+                StyledDialog.buildBottomItemDialog( strings, "取消",  new MyItemDialogListener() {
                     @Override
                     public void onItemClick(CharSequence text, int position) {
                         if(text.toString().equals("复查来源:现场处理措施")){
@@ -899,11 +899,8 @@ public class ActivityCheckMenu extends FrameActivity{
             strings.add("处罚来源:整改复查");
             chufachulijueding=entityZhengGai.getValue("关联处罚决定书");
         }
-
-
-        StyledDialog.init(getContext());
         chufamenudialog=
-                StyledDialog.buildBottomItemDialog( strings, "cancle",  new MyItemDialogListener() {
+                StyledDialog.buildBottomItemDialog( strings, "取消",  new MyItemDialogListener() {
                     @Override
                     public void onItemClick(CharSequence text, int position) {
                         if(text.toString().equals("处罚来源:现场检查")){

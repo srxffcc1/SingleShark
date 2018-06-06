@@ -57,92 +57,92 @@ public class TabMainActivity extends AppCompatActivity {
         needshow = (LinearLayout) findViewById(R.id.needshow);
         rb_center = (ImageView) findViewById(R.id.rb_center);
 
-        outside.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(needshow.getVisibility()==View.VISIBLE){
-                    needshow.startAnimation(mHiddenAction);
-                    needshow.setVisibility(View.GONE);
-                    mHiddenAction.setAnimationListener(new Animation.AnimationListener() {
-                        @Override
-                        public void onAnimationStart(Animation animation) {
-
-                        }
-
-                        @Override
-                        public void onAnimationEnd(Animation animation) {
-
-                            outside.setVisibility(View.GONE);
-                        }
-
-                        @Override
-                        public void onAnimationRepeat(Animation animation) {
-
-                        }
-                    });
-                    isshow=false;
-                }
-
-            }
-        });
-        needshow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-        rb_center.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(animcan){
-                    if(isshow){
-                        needshow.startAnimation(mHiddenAction);
-                        needshow.setVisibility(View.GONE);
-                        mHiddenAction.setAnimationListener(new Animation.AnimationListener() {
-                            @Override
-                            public void onAnimationStart(Animation animation) {
-                                animcan=false;
-                            }
-
-                            @Override
-                            public void onAnimationEnd(Animation animation) {
-
-                                animcan=true;
-                                outside.setVisibility(View.GONE);
-                            }
-
-                            @Override
-                            public void onAnimationRepeat(Animation animation) {
-
-                            }
-                        });
-                    }else{
-                        needshow.startAnimation(mShowAction);
-                        mShowAction.setAnimationListener(new Animation.AnimationListener() {
-                            @Override
-                            public void onAnimationStart(Animation animation) {
-                                animcan=false;
-                            }
-
-                            @Override
-                            public void onAnimationEnd(Animation animation) {
-                                animcan=true;
-                            }
-
-                            @Override
-                            public void onAnimationRepeat(Animation animation) {
-
-                            }
-                        });
-                        needshow.setVisibility(View.VISIBLE);
-                        outside.setVisibility(View.VISIBLE);
-                    }
-                    isshow=!isshow;
-                }
-
-
-            }
-        });
+//        outside.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(needshow.getVisibility()==View.VISIBLE){
+//                    needshow.startAnimation(mHiddenAction);
+//                    needshow.setVisibility(View.GONE);
+//                    mHiddenAction.setAnimationListener(new Animation.AnimationListener() {
+//                        @Override
+//                        public void onAnimationStart(Animation animation) {
+//
+//                        }
+//
+//                        @Override
+//                        public void onAnimationEnd(Animation animation) {
+//
+//                            outside.setVisibility(View.GONE);
+//                        }
+//
+//                        @Override
+//                        public void onAnimationRepeat(Animation animation) {
+//
+//                        }
+//                    });
+//                    isshow=false;
+//                }
+//
+//            }
+//        });
+//        needshow.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
+//        rb_center.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if(animcan){
+//                    if(isshow){
+//                        needshow.startAnimation(mHiddenAction);
+//                        needshow.setVisibility(View.GONE);
+//                        mHiddenAction.setAnimationListener(new Animation.AnimationListener() {
+//                            @Override
+//                            public void onAnimationStart(Animation animation) {
+//                                animcan=false;
+//                            }
+//
+//                            @Override
+//                            public void onAnimationEnd(Animation animation) {
+//
+//                                animcan=true;
+//                                outside.setVisibility(View.GONE);
+//                            }
+//
+//                            @Override
+//                            public void onAnimationRepeat(Animation animation) {
+//
+//                            }
+//                        });
+//                    }else{
+//                        needshow.startAnimation(mShowAction);
+//                        mShowAction.setAnimationListener(new Animation.AnimationListener() {
+//                            @Override
+//                            public void onAnimationStart(Animation animation) {
+//                                animcan=false;
+//                            }
+//
+//                            @Override
+//                            public void onAnimationEnd(Animation animation) {
+//                                animcan=true;
+//                            }
+//
+//                            @Override
+//                            public void onAnimationRepeat(Animation animation) {
+//
+//                            }
+//                        });
+//                        needshow.setVisibility(View.VISIBLE);
+//                        outside.setVisibility(View.VISIBLE);
+//                    }
+//                    isshow=!isshow;
+//                }
+//
+//
+//            }
+//        });
         mAdapter = new MyAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(mAdapter);
 

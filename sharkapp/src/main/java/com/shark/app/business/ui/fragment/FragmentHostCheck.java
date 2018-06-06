@@ -49,8 +49,8 @@ public class FragmentHostCheck extends BaseSupportFragment {
     }
     public void initView(){
         resultlist.clear();
-//        resultlist.addAll(Demo_DbUtil.getSearchResult(Demo_DBManager.build().search(new Entity_ZhiFaBianHao())));
-        resultlist.add(new Entity_ZhiFaBianHao());
+        resultlist.addAll(Demo_DbUtil.getSearchResult(Demo_DBManager.build().search(new Entity_ZhiFaBianHao())));
+//        resultlist.add(new Entity_ZhiFaBianHao());
         adapter.notifyDataSetChanged();
 
     }
@@ -80,24 +80,24 @@ public class FragmentHostCheck extends BaseSupportFragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-//        if(requestCode==113){
-//            if(data!=null){
-//                String jhid=data.getStringExtra("jhid");
-//                String jhmc=data.getStringExtra("jhmc");
-//                String jhfzr=data.getStringExtra("jhfzr");
-//                String jhcy=data.getStringExtra("jhcy");
-//                String jhwcsj=data.getStringExtra("jhwcsj");
-//                DateBase_Entity zhifabianhao=new Entity_ZhiFaBianHao();
-//                SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
-//                Date date=new Date();
-//                zhifabianhao.put("执法编号",Demo_DbUtil.getZZHead(7).trim()+sdf.format(date));
-//                zhifabianhao.put("所属计划id",jhid);
-//                zhifabianhao.put("所属计划名称",jhmc);
-//                Demo_DBManager.build().save2update(zhifabianhao);
-//                initView();
-//            }
-//        }else{
-//            initView();
-//        }
+        if(requestCode==113){
+            if(data!=null){
+                String jhid=data.getStringExtra("jhid");
+                String jhmc=data.getStringExtra("jhmc");
+                String jhfzr=data.getStringExtra("jhfzr");
+                String jhcy=data.getStringExtra("jhcy");
+                String jhwcsj=data.getStringExtra("jhwcsj");
+                DateBase_Entity zhifabianhao=new Entity_ZhiFaBianHao();
+                SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+                Date date=new Date();
+                zhifabianhao.put("执法编号",Demo_DbUtil.getZZHead(7).trim()+sdf.format(date));
+                zhifabianhao.put("所属计划id",jhid);
+                zhifabianhao.put("所属计划名称",jhmc);
+                Demo_DBManager.build().save2update(zhifabianhao);
+                initView();
+            }
+        }else{
+            initView();
+        }
     }
 }

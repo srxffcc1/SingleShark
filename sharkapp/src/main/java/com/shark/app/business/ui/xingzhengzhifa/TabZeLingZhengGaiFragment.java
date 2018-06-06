@@ -1,6 +1,5 @@
 package com.shark.app.business.ui.xingzhengzhifa;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.CardView;
@@ -12,10 +11,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.shark.app.R;
-
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class TabZeLingZhengGaiFragment extends TabBaseFragment {
     private LinearLayout linearpart;
@@ -33,6 +28,9 @@ public class TabZeLingZhengGaiFragment extends TabBaseFragment {
     private TextView bianji;
     private TextView shanchu;
     private TextView yincang;
+    private LinearLayout passl;
+    private Button passzhenggai;
+    private Button passback;
 
 
     @Nullable
@@ -127,7 +125,15 @@ public class TabZeLingZhengGaiFragment extends TabBaseFragment {
     }
 
     private void initView() {
-
+        if (getStringValue("showType").equals("0")) {
+            initNotComplete();
+        } else if (getStringValue("showType").equals("1")) {
+            initAdd();
+        } else if (getStringValue("showType").equals("2")) {
+            initComplete();
+        } else {
+            initNotComplete();
+        }
         linearpart = (LinearLayout) findViewById(R.id.linearpart);
         xianchangl = (TextView) findViewById(R.id.xianchangl);
         add = (TextView) findViewById(R.id.add);
@@ -143,5 +149,8 @@ public class TabZeLingZhengGaiFragment extends TabBaseFragment {
         bianji = (TextView) findViewById(R.id.bianji);
         shanchu = (TextView) findViewById(R.id.shanchu);
         yincang = (TextView) findViewById(R.id.yincang);
+        passl = (LinearLayout) findViewById(R.id.passl);
+        passzhenggai = (Button) findViewById(R.id.passzhenggai);
+        passback = (Button) findViewById(R.id.passback);
     }
 }

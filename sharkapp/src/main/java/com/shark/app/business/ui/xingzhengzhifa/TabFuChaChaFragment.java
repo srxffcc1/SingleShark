@@ -1,6 +1,5 @@
 package com.shark.app.business.ui.xingzhengzhifa;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.CardView;
@@ -11,11 +10,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
 import com.shark.app.R;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class TabFuChaChaFragment extends TabBaseFragment {
     int fuchatype = 0;//用来判断是不是2次复查
@@ -37,6 +32,10 @@ public class TabFuChaChaFragment extends TabBaseFragment {
     private TextView bianji;
     private TextView shanchu;
     private TextView yincang;
+    private LinearLayout passl;
+    private Button passagainfucha;
+    private Button passzip;
+    private Button passback;
 
 
     @Nullable
@@ -142,6 +141,15 @@ public class TabFuChaChaFragment extends TabBaseFragment {
     }
 
     private void initView() {
+        if (getStringValue("showType").equals("0")) {
+            initNotComplete();
+        } else if (getStringValue("showType").equals("1")) {
+            initAdd();
+        } else if (getStringValue("showType").equals("2")) {
+            initComplete();
+        } else {
+            initNotComplete();
+        }
         linearpart = (LinearLayout) findViewById(R.id.linearpart);
         zhenggaifuchal = (TextView) findViewById(R.id.zhenggaifuchal);
         add = (TextView) findViewById(R.id.add);
@@ -158,5 +166,9 @@ public class TabFuChaChaFragment extends TabBaseFragment {
         bianji = (TextView) findViewById(R.id.bianji);
         shanchu = (TextView) findViewById(R.id.shanchu);
         yincang = (TextView) findViewById(R.id.yincang);
+        passl = (LinearLayout) findViewById(R.id.passl);
+        passagainfucha = (Button) findViewById(R.id.passagainfucha);
+        passzip = (Button) findViewById(R.id.passzip);
+        passback = (Button) findViewById(R.id.passback);
     }
 }

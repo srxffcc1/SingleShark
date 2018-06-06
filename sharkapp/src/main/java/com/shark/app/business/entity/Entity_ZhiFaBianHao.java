@@ -20,5 +20,8 @@ public class Entity_ZhiFaBianHao extends DateBase_Entity {
         fieldnamelsitchinese.add("所属计划名称");//1
         fieldnamelsitchinese.add("企业名称");//2
         fieldnamelsitchinese.add("检查时间");//3
+        fieldnamelsitchinese.add("当前阶段");//3
+        fieldnamelsitchinese.add("是否并处");//3
+        fieldnamelsitchinese.add("是否二次整改");//3
     }
 }

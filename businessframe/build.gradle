@@ -173,7 +173,7 @@ dependencies {
     api('com.contrarywind:Android-PickerView:3.2.5') {//时间选择器
         exclude group: 'com.android.support'
     }
-    api('com.github.hss01248:DialogUtil:2.0.2') {//dialog库
+    api('com.github.hss01248:DialogUtil:1.2.6') {//dialog库
         exclude group: 'com.android.support'
     }
     api('com.squareup.sqlbrite:sqlbrite:1.1.1') {//数据库增强

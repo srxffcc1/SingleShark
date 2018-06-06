@@ -8,6 +8,7 @@ import com.businessframehelp.service.GeTIntentService;
 import com.businessframehelp.service.GeTPushService;
 import com.businessframehelp.staticlib.StaticAppInfo;
 import com.businessframehelp.utils.ClassUtil;
+import com.hss01248.dialog.StyledDialog;
 import com.igexin.sdk.PushManager;
 import com.shark.app.R;
 import com.shark.app.business.utils.SpHome;
@@ -36,6 +37,7 @@ public class SingleApplication extends BusinessApplication {
         SpHome.getSpHome().setMcontext(this);//初始化sp
         HttpConfig.needPHPSESSID=false;
         HttpConfig.TIMEOUT=2000;
+        StyledDialog.init(getApplicationContext());
         Demo_DBManager.build().init(getApplicationContext(), getApplicationContext().getFilesDir().getAbsolutePath(),"releaseIII.db");//注册初始化离线数据库
         RongIM.init(this);
     }

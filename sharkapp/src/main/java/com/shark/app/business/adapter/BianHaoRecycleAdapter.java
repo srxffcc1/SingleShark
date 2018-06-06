@@ -67,7 +67,7 @@ public class BianHaoRecycleAdapter extends RecyclerView.Adapter<BianHaoRecycleAd
             @Override
             public void onClick(View v) {
 
-                ((Activity)mcontext).startActivityForResult(new Intent(mcontext, NewZhiFaJianChaDetailActivity.class).putExtra("bianhaoid",entity.getId()).putExtra("jihuaid",entity.getValue("所属计划id")),121);
+                ((Activity)mcontext).startActivityForResult(new Intent(mcontext, ActivityCheckMenu.class).putExtra("bianhaoid",entity.getId()).putExtra("jihuaid",entity.getValue("所属计划id")),121);
             }
         });
     }
