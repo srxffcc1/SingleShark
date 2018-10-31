@@ -80,8 +80,8 @@ public class TreeHelper
 
 		for (T t : datas)
 		{
-			int id = -1;
-			int pId = -1;
+			String id = "";
+			String pId = "";
 			String label = null;
 			Class<? extends Object> clazz = t.getClass();
 			Field[] declaredFields = clazz.getDeclaredFields();
@@ -90,19 +90,19 @@ public class TreeHelper
 				if (f.getAnnotation(TreeNodeId.class) != null)
 				{
 					f.setAccessible(true);
-					id = f.getInt(t);
+					id = (String) f.get(t);
 				}
 				if (f.getAnnotation(TreeNodePid.class) != null)
 				{
 					f.setAccessible(true);
-					pId = f.getInt(t);
+					pId = (String) f.get(t);
 				}
 				if (f.getAnnotation(TreeNodeLabel.class) != null)
 				{
 					f.setAccessible(true);
 					label = (String) f.get(t);
 				}
-				if (id != -1 && pId != -1 && label != null)
+				if (!id.equals("") && !pId.equals("") && label != null)
 				{
 					break;
 				}

@@ -21,7 +21,7 @@ public class PdfPrintHelp {
         //不推荐那种形式了
         } else {
             Uri fileuri = Uri.fromFile(new File(pdfpath));
-            if (Util_Apk.appIsInstalled13(activity, "com.dynamixsoftware.printershare")) {
+            if (Util_Apk.appIsInstalledWe(activity, "com.dynamixsoftware.printershare")) {
                 File file = new File(fileuri.toString());
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
@@ -34,7 +34,7 @@ public class PdfPrintHelp {
                     public void run() {
                         Looper.prepare();
                         Toast.makeText(activity, "安装打印插件", Toast.LENGTH_SHORT).show();
-                        Util_Apk.appInstall13(activity, "com.dynamixsoftware.printershare","PrinterShare_Crack.app");
+                        Util_Apk.appInstallWe(activity, "com.dynamixsoftware.printershare","PrinterShare_Crack.app");
                         Looper.loop();
                     }
                 }).start();

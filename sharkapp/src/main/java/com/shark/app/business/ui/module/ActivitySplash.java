@@ -32,7 +32,7 @@ public class ActivitySplash extends AppCompatActivity {
                     startActivity(new Intent(ActivitySplash.this,ExActivityLogin.class));
                     ActivitySplash.this.finish();
                 }
-            },600);
+            },100);
 //        if(!"".equals(SpHome.getSpHome().getString("username"))){
 //            startActivity(new Intent(ActivitySplash.this,ActivityAutoLogin.class));
 //            ActivitySplash.this.finish();

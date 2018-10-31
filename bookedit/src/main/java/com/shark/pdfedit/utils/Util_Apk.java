@@ -17,7 +17,7 @@ import java.util.List;
 
 
 public class Util_Apk {
-
+	public static final int welevel=14;
 	/**
 	 * 判断app是否安装
 	 * @param context
@@ -36,15 +36,15 @@ public class Util_Apk {
 
 
 	/**
-	 * 判断app是否安装 且为13版本
+	 * 判断app是否安装 且为14版本
 	 * @param context
 	 * @param pageName
 	 * @return
 	 */
-	public static boolean appIsInstalled13(Context context, String pageName) {
+	public static boolean appIsInstalledWe(Context context, String pageName) {
 		try {
 			int packagelevel=context.getPackageManager().getPackageInfo(pageName, 0).versionCode;
-			if(packagelevel==13){
+			if(packagelevel==welevel){
 				return true;
 			}else{
 
@@ -71,10 +71,10 @@ public class Util_Apk {
 	 * @param pageName
 	 * @param apkname
 	 */
-	public static void appInstall13(Activity activity,String pageName,String apkname) {
+	public static void appInstallWe(Activity activity, String pageName, String apkname) {
 		try {
 			int packagelevel=activity.getPackageManager().getPackageInfo(pageName, 0).versionCode;
-			if(packagelevel==13){
+			if(packagelevel==welevel){
 
 			}else{
 				unstallApp(activity,pageName);

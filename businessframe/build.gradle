@@ -44,7 +44,7 @@ dependencies {
     //    implementation 'com.sixdown.virtuallib:virtuallib:1.0.0'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     api project(':blackframe')
-
+    compile group: 'cglib', name: 'cglib-nodep', version: '2.2.2'
     //////    api project(':kjhttp')
 //    api project(':stepview')
     api('com.android.support:design:' + rootProject.supportVersion)
@@ -216,7 +216,6 @@ dependencies {
     }
 
     //圆形头像
-    api files('libs/cglib-nodep-2.2.2.jar')
     api ('cn.rongcloud.android:IMLib:2.8.6'){//dialog库
         exclude group: 'com.android.support'
     }

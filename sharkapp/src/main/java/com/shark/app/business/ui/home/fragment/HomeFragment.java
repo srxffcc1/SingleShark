@@ -3,7 +3,9 @@ package com.shark.app.business.ui.home.fragment;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -17,9 +19,15 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.businessframehelp.staticlib.StaticAppInfo;
+import com.businessframehelp.staticlib.StaticSdkTool;
+import com.businessframehelp.utils.FrameUtil;
 import com.shark.app.R;
 import com.shark.app.business.ui.module.ActivityEnterpriseListOffLine;
 import com.shark.app.business.ui.tab.ActivityCheckHost2Guest;
+import com.shark.app.test.TestJiaoZ;
+
+import java.io.File;
 
 
 public class HomeFragment extends BaseFragment implements View.OnClickListener {
@@ -81,6 +89,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         danger_level = find(R.id.danger_level);
         law_enforcement_time = find(R.id.law_enforcement_time);
         law_enforcer = find(R.id.law_enforcer);
+        case_handling.setOnClickListener(this);
         enterprise_info.setOnClickListener(this);
         law_enforcement.setOnClickListener(this);
         iv_more.setOnClickListener(new View.OnClickListener() {
@@ -158,6 +167,11 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 break;
             case R.id.enterprise_info:
                 startActivityForResult(new Intent(getContext(), ActivityEnterpriseListOffLine.class),111);
+                break;
+            case R.id.case_handling:
+//        String path= Uri.fromFile(new File(StaticAppInfo.getInstance().getProjcetDir()+ StaticSdkTool.TEST+"/"+"testcompany.mp4")).toString();
+//                startActivity(new Intent(getContext(), TestJiaoZ.class));
+                FrameUtil.instance().startRecord(getActivity(), 101, Environment.getExternalStorageDirectory() + "/shark.mp3");
                 break;
             default:
                 break;
